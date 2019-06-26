@@ -17,6 +17,7 @@ public class TitleScreen {
 	public void render() {
 		Random random = new Random();
 		Game.renderPixels[random.nextInt(Game.renderPixels.length)] = 0x00ffff00;
+		System.out.println("boing!");
 	}
 
 }
