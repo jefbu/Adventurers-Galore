@@ -1,0 +1,57 @@
+package com.redhaan.adventurersGalore.partyScreen;
+
+import java.util.Random;
+
+import com.redhaan.adventurersGalore.GameManager;
+import com.redhaan.adventurersGalore.GameObject;
+
+import gameEngine.ecclesiastes.GameContainer;
+import gameEngine.ecclesiastes.Renderer;
+import gameEngine.ecclesiastes.gfx.ImageTile;
+
+public class PortraitWidget extends GameObject {
+	
+	private ImageTile portrait;
+	private float temp;
+	private int animationLine;
+	Random random;
+	
+	private int offX, offY, width, height;
+	
+	public PortraitWidget(int offX, int offY, int width, int height) {
+		
+		portrait = new ImageTile("/Knight.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
+		temp = 0;
+		animationLine = 0;
+		random = new Random();
+		this.offX = offX;
+		this.offY = offY;
+		this.width = width;
+		this.height = height;
+		
+	}
+
+	@Override
+	public void update(GameContainer gameContainer, float deltaTime) {
+
+		temp += deltaTime * 4;
+		if (temp > 4) {
+			temp = 0;
+			if (random.nextInt(100) > 93) {
+				animationLine = random.nextInt(1) + 1;
+			} else {
+				animationLine = 0;
+			}
+		}
+		
+	}
+
+	@Override
+	public void render(GameContainer gameContainer, Renderer renderer) {
+
+		renderer.drawRectOpaque(offX, offY, width, height, 0xff242822);
+		renderer.drawImageTile(portrait, offX + width / 2 - GameManager.GAMETILESIZE / 2, offY + height / 2, (int) temp, animationLine);		
+	
+	}
+
+}
