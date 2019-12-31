@@ -12,33 +12,26 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class WeaponWidget extends GameObject {
 	
-	private ImageTile portrait;
-	private int temp;
-	Random random;
 	private int offX, offY, width, height;
 	private ImageTile icon;
+	
+	WeaponAffinityWidget weaponAffinityWidget;
 	
 	
 	public WeaponWidget(int offX, int offY, int width, int height) {
 		
-		portrait = new ImageTile("/weapons.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
-		temp = 0;
-		random = new Random();
 		this.offX = offX;
 		this.offY = offY;
 		this.width = width;
 		this.height = height;
 		icon = new ImageTile("/generic_icons.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
 		
+		weaponAffinityWidget = new WeaponAffinityWidget();
+		
 	}
 
 	@Override
 	public void update(GameContainer gameContainer, float deltaTime) {
-
-		temp += deltaTime * 4;
-		if (temp > 0) {
-			temp = 0;
-		}
 		
 	}
 
@@ -49,22 +42,35 @@ public class WeaponWidget extends GameObject {
 
 		renderer.drawRectOpaque(offX, offY, width, height, 0xff242822);
 		
-		renderer.drawImageTile(portrait, offX + 5, offY + 5, (int) temp, 0);
-		renderer.drawText(Integer.toString(weapon.damage), offX + 45, offY + 5, 0xffBBFFBB);
-		renderer.drawText(Integer.toString(weapon.hit), offX + 65, offY + 5, 0xffBBBBFF);
-		renderer.drawText(Integer.toString(weapon.crit), offX + 85, offY + 5, 0xffDDBBDD);
-		renderer.drawText(weapon.name, offX + 5, offY + 40, 0xffBBBBBB);
-		if(weapon.soul != null) {
-			renderer.drawText(weapon.soul.race.name + "slayer", offX + 5, offY + 50, 0xffBBBBBB);
-		} else {
-			renderer.drawText("Soulless", offX + 5, offY + 50, 0xffBBBBBB);
+		renderer.drawImageTile(weapon.icon, offX + 5, offY + 5, weapon.xTile, weapon.yTile);
+		
+		String soulText = "Soulless";
+		if(weapon.soul != null) { soulText = weapon.soul.race.name + "slayer"; }
+		renderer.drawText(weapon.name + ", " + soulText, offX + 45, offY + 25, 0xffBBBBBB);
+		
+		renderer.drawText(Integer.toString(weapon.damage), offX + 45, offY + 14, 0xffBBFFBB);
+		renderer.drawText(Integer.toString(weapon.hit), offX + 65, offY + 14, 0xffBBBBFF);
+		renderer.drawText(Integer.toString(weapon.crit), offX + 85, offY + 14, 0xffDDBBDD);
+		renderer.drawText(Integer.toString(weapon.weight), offX + 105, offY + 14, 0xffDDDDDD);
+
+		weaponAffinityWidget.render(gameContainer, renderer, weapon, offX, offY);
+		
+		if(!weapon.isLegendary) {		
+			for (int i = 0; i < weapon.runeSlots; i++) {
+				renderer.drawRectOpaque(offX + 5 + (i * 20), offY + 70, 15, 20, 0x55EEEEDD);
+			}
+			
+			if(weapon.gemStone != null) { renderer.drawImageTile(icon, offX + 80, offY + 65, weapon.gemStone.level, 1); }
+			if(weapon.upgrades > 0) { renderer.drawImageTile(icon, offX + 100, offY + 65, weapon.upgrades, 0); }			
 		}
 		
-		for (int i = 0; i < weapon.runeSlots; i++) {
-			renderer.drawRectOpaque(offX + 5 + (i * 20), offY + 70, 15, 20, 0x55EEEEDD);
+		else {
+			renderer.drawRectOpaque(offX + 5, offY + 65, width - 10, height / 4, 0x05DDAACC);
+			renderer.drawText("Legendary Weapon", offX + 10, offY + 73, 0xffCCBBBB);
 		}
+
 		
-		renderer.drawImageTile(icon, offX + 80, offY + 80, weapon.upgrades, 0);
+		
 	}
 		
 

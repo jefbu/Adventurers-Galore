@@ -51,6 +51,7 @@ public class Monster extends NPC {
 		currentStats = new Stats();
 		
 		job = Job.squire;
+		icon = job.icon;
 		
 		currentStats.HP = 400;
 		maxStats.HP = 400;

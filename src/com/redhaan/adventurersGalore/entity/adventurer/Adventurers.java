@@ -23,12 +23,14 @@ public class Adventurers extends GameObject {
 		Player player = new Player();
 		allAdventurers.add(player);
 		
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 100; i++) {
 			allAdventurers.add(adventurerFactory.createRandomAdventurer());
 		}
 		
 		allAdventurers.get(1).inParty = true;
 		allAdventurers.get(2).inParty = true;
+		allAdventurers.get(1).currentStats.TST = 100;
+		allAdventurers.get(2).currentStats.TST = 100;
 		
 	}
 

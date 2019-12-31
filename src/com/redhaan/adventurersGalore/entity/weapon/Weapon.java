@@ -3,21 +3,35 @@ package com.redhaan.adventurersGalore.entity.weapon;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.redhaan.adventurersGalore.GameManager;
+import com.redhaan.adventurersGalore.entity.weapon.gemStones.GemStone;
+
+import gameEngine.ecclesiastes.gfx.ImageTile;
+
 public class Weapon {
 	
-	public int damage, hit, crit;
+	public int damage, hit, crit, weight;
 	public String name;
 	public int upgrades;
 	
 	public Soul soul;
+	public GemStone gemStone;
 	
 	public int runeTier;
 	public int runeSlots;
-	public ArrayList<Rune> runes;	
+	public ArrayList<Rune> runes;
+	
+	public ImageTile icon;
+	public int xTile, yTile;
+	
+	public boolean isLegendary;
 	
 	public Weapon() {
 				
 		runes = new ArrayList<Rune>();
+		icon = new ImageTile("/weapons.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
+		isLegendary = false;
+		
 	}
 	
 	public void rollRuneSlots(int runeTier) {
@@ -57,9 +71,9 @@ public class Weapon {
 	
 	public void upgrade() {
 		
-		damage = damage * 11 / 10;
-		hit = hit * 105 / 100;
-		crit = crit * 11 / 10;
+		damage = damage * 105 / 100;
+		hit = hit + 2;
+		crit = crit * 105 / 100;
 		
 	}
 			

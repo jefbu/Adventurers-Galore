@@ -1,6 +1,5 @@
 package com.redhaan.adventurersGalore.entity;
 
-import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -12,9 +11,7 @@ public class NPC extends GameObject {
 	public ImageTile icon;
 	
 	public NPC() {
-		
-		icon = new ImageTile("/Knight.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
-		
+			
 	}
 	
 	

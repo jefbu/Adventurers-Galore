@@ -1,8 +1,10 @@
 package com.redhaan.adventurersGalore.entity.adventurer.player;
 
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
+import com.redhaan.adventurersGalore.entity.adventurer.Job;
+import com.redhaan.adventurersGalore.entity.armour.ReinforcedLeather;
 import com.redhaan.adventurersGalore.entity.town.Town;
-import com.redhaan.adventurersGalore.entity.weapon.weapons.IronSword;
+import com.redhaan.adventurersGalore.entity.weapon.swords.IronSword;
 
 public class Player extends Adventurer {
 
@@ -11,6 +13,8 @@ public class Player extends Adventurer {
 	public Player() {
 		
 		super();
+		job = Job.barbarian;
+		icon = job.icon;
 		inParty = true;
 		currentStats.move = 8;
 		currentStats.PHY = 100;
@@ -20,10 +24,11 @@ public class Player extends Adventurer {
 		name = "Moltke";
 		gender = "non binary";
 		age = 58;
-		currentStats.TST = 0;
+		currentStats.TST = 100;
 		homeTown = Town.apastan;
 		tier = 1;
 		weapon = new IronSword();
+		armour = new ReinforcedLeather();
 		
 	}
 

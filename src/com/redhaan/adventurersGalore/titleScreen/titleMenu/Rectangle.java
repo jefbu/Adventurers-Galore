@@ -20,8 +20,8 @@ public class Rectangle extends GameObject {
 		this.offY = offY;
 		this.width = width;
 		this.height = height;
-		activeColor = 0xffbb4411;
-		passiveColor = 0xffcc7733;
+		activeColor = 0xff117733;
+		passiveColor = 0xff994422;
 	}
 
 	@Override

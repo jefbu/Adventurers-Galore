@@ -4,8 +4,9 @@ import java.util.Arrays;
 import java.util.Random;
 
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
+import com.redhaan.adventurersGalore.entity.armour.ReinforcedLeather;
 import com.redhaan.adventurersGalore.entity.town.Towns;
-import com.redhaan.adventurersGalore.entity.weapon.weapons.IronSword;
+import com.redhaan.adventurersGalore.entity.weapon.swords.Excalibur;
 
 public class AdventurerFactory {
 
@@ -15,6 +16,7 @@ public class AdventurerFactory {
 	private LevelFactory levelFactory = new LevelFactory();
 	private RaceFactory raceFactory = new RaceFactory();
 	private NameFactory nameFactory = new NameFactory();
+	private WeaponFactory weaponFactory = new WeaponFactory();
 
 	public AdventurerFactory() {
 
@@ -40,6 +42,7 @@ public class AdventurerFactory {
 		adventurer.setLevel(levelFactory.setBaseLevel(adventurer.tier));
 		adventurer.race = raceFactory.setRace(adventurer.tier);
 		adventurer.job = jobFactory.setJob(adventurer.race, adventurer.getLevel());
+		adventurer.icon = adventurer.job.icon;
 
 		Random random = new Random();
 		adventurer.gender = "Male";
@@ -56,7 +59,8 @@ public class AdventurerFactory {
 		}
 
 		rollHomeTown();
-		adventurer.weapon = new IronSword();
+		adventurer.weapon = weaponFactory.rollAdventurerStartingWeapon(adventurer.tier, adventurer.maxStats.PHY, adventurer.job);
+		adventurer.armour = new ReinforcedLeather();
 
 	}
 
@@ -144,9 +148,7 @@ public class AdventurerFactory {
 		rolls[1] = random.nextInt(60);
 		rolls[2] = random.nextInt(60);
 		
-		Arrays.sort(rolls);
-		System.out.println(rolls[0] + "/" + rolls[1] + "/" + rolls[2]);
-		
+		Arrays.sort(rolls);		
 		return rolls[0] + 16;
 		
 		

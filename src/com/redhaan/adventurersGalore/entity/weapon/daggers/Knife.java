@@ -1,19 +1,27 @@
-package com.redhaan.adventurersGalore.entity.weapon.weapons;
+package com.redhaan.adventurersGalore.entity.weapon.daggers;
 
 import java.util.Random;
 
 import com.redhaan.adventurersGalore.entity.weapon.Rune;
 import com.redhaan.adventurersGalore.entity.weapon.Soul;
 import com.redhaan.adventurersGalore.entity.weapon.Weapon;
+import com.redhaan.adventurersGalore.entity.weapon.gemStones.Pearl;
 
-public class IronSword extends Weapon {
+public class Knife extends Weapon {
 	
-	public IronSword() {
+	public static final int TIER = 1;
+	
+	public Knife() {
 		
-		name = "Iron Sword";
-		hit = 80;
-		damage = 100;
-		crit = 10;
+		name = "Knife";
+		hit = 75;
+		damage = 35;
+		crit = 30;
+		weight = 35;
+		
+		xTile = 0;
+		yTile = 1;
+		
 		rollRuneSlots(1);
 		
 		Random random = new Random();
@@ -29,7 +37,12 @@ public class IronSword extends Weapon {
 		}
 		soul = Soul.dwarfSlayer;
 		
+		int roll = random.nextInt(10) + 1;
+		if (roll == 10) { gemStone = new Pearl(4); }
+		else if (roll == 9) { gemStone = new Pearl(3); }
+		else if (roll == 8) { gemStone = new Pearl(2); }
+		else if (roll == 7) { gemStone = new Pearl(1); }
+		
 	}
-	
 
 }

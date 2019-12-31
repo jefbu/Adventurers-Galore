@@ -23,9 +23,9 @@ public class TitleMenu extends GameObject {
 		arrowX = 15;
 		arrowY = 15;
 		
-		startRect = new Rectangle("(S)tart", 10, 10, 150, 30);
-		loadRect = new Rectangle("(L)oad", 10, 45, 150, 30);
-		exitRect = new Rectangle("(E)xit", 10, 80, 150, 30);
+		startRect = new Rectangle("(S)TART", 10, 10, 150, 30);
+		loadRect = new Rectangle("(L)OAD", 10, 45, 150, 30);
+		exitRect = new Rectangle("(E)XIT", 10, 80, 150, 30);
 		
 		startRect.setActive(true);
 		
@@ -96,7 +96,7 @@ public class TitleMenu extends GameObject {
 		loadRect.render(gameContainer, renderer);
 		exitRect.render(gameContainer, renderer);
 		
-		renderer.drawRect(arrowX, arrowY, 20, 20, 0xffcc4411);
+		renderer.drawRect(arrowX, arrowY, 20, 20, 0xff338877);
 		
 	}
 

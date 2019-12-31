@@ -7,8 +7,16 @@ import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
 public class StatsWidget extends GameObject {
+	
+	private int offX, offY;
+	private int width, height;
 
-	public StatsWidget() {
+	public StatsWidget(int offX, int offY, int width, int height) {
+		
+		this.offX = offX;
+		this.offY = offY;
+		this.width = width;
+		this.height = height;
 
 	}
 
@@ -22,7 +30,7 @@ public class StatsWidget extends GameObject {
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
 
-		renderer.drawRectOpaque(20, 130, 170, 300, 0xff282224);
+		renderer.drawRectOpaque(offX, offY, width, height, 0xff282224);
 
 		
 		renderer.drawText(" HP: " + GameManager.adventurers.allAdventurers.get(PartyScreen.member).maxStats.HP, 25, 135, 0xffBBBBBB);

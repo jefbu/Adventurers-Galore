@@ -9,6 +9,7 @@ import com.redhaan.adventurersGalore.combat.CombatLeftClicker;
 import com.redhaan.adventurersGalore.combat.MoveAreaDrawer;
 import com.redhaan.adventurersGalore.combat.PlayerTurnLeftClickSituations;
 import com.redhaan.adventurersGalore.entity.Monster;
+import com.redhaan.adventurersGalore.entity.armour.Armour;
 import com.redhaan.adventurersGalore.entity.combatAddOns.HealthBar;
 import com.redhaan.adventurersGalore.entity.town.Town;
 import com.redhaan.adventurersGalore.entity.weapon.Weapon;
@@ -33,6 +34,7 @@ public class Adventurer extends Monster {
 	public PlayerTurnLeftClickSituations leftClickSituation;
 
 	public Weapon weapon;
+	public Armour armour;
 	
 	public int tier;
 	
@@ -84,6 +86,7 @@ public class Adventurer extends Monster {
 					switch (leftClickSituation) {
 
 					case Active_Enemy_INRange:
+						System.out.println("here");
 						attackAnimation = true;
 						for (Monster enemy : Combat.enemies) {
 							if (enemy.getCombatX() == gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE

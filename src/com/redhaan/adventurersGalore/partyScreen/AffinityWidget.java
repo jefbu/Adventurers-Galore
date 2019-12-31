@@ -7,7 +7,15 @@ import gameEngine.ecclesiastes.Renderer;
 
 public class AffinityWidget extends GameObject {
 	
-	public AffinityWidget() {
+	private int offX, offY;
+	private int width, height;
+	
+	public AffinityWidget(int offX, int offY, int width, int height) {
+				
+		this.offX = offX;
+		this.offY = offY;
+		this.width = width;
+		this.height = height;
 		
 	}
 
@@ -19,7 +27,7 @@ public class AffinityWidget extends GameObject {
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
 
-		renderer.drawRectOpaque(200, 130, 215, 100, 0xff242626);
+		renderer.drawRectOpaque(offX, offY, width, height, 0xff242626);
 		
 	}
 	

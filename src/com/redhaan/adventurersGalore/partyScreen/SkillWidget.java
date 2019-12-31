@@ -7,7 +7,15 @@ import gameEngine.ecclesiastes.Renderer;
 
 public class SkillWidget extends GameObject {
 	
-	public SkillWidget() {
+	private int offX, offY;
+	private int width, height;
+	
+	public SkillWidget(int offX, int offY, int width, int height) {
+		
+		this.offX = offX;
+		this.offY = offY;
+		this.width = width;
+		this.height = height;
 		
 	}
 
@@ -20,7 +28,7 @@ public class SkillWidget extends GameObject {
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
 
-		renderer.drawRectOpaque(200, 240, 215, 150, 0xff282820);
+		renderer.drawRectOpaque(offX, offY, width, height, 0xff282420);
 		
 	}
 	
