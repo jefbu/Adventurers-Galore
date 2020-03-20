@@ -15,9 +15,9 @@ public class Foil extends Weapon {
 		
 		name = "Foil";
 		hit = 85;
-		damage = 60;
+		damage = 7;
 		crit = 25;
-		weight = 60;
+		weight = 6;
 		
 		xTile = 4;
 		yTile = 0;

@@ -1,7 +1,6 @@
 package com.redhaan.adventurersGalore.partyScreen;
 
 import java.awt.Color;
-import java.awt.event.KeyEvent;
 
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
@@ -24,21 +23,23 @@ public class PartyScreen extends GameObject {
 	private SkillWidget skillWidget;
 	private OptionsWidget optionsWidget;
 	private CommentWidget commentWidget;
+	private TotemWidget totemWidget;
 	
 	public PartyScreen() {
 		
 		member = 0;
 		bgColour = 0xffBBBBAA;
 		portrait = new PortraitWidget(15, 15, 60, 100);
-		basicInfo = new BasicInfoWidget(80, 15, 100, 100);
-		weapon = new WeaponWidget(190, 15, 200, 100);
+		basicInfo = new BasicInfoWidget(77, 15, 103, 100);
+		weapon = new WeaponWidget(185, 15, 208, 100);
 		armourImage = new ArmourWidget(395, 15, 60, 100);
-		statsInfo = new StatsWidget(15, 125, 165, 280);
-		tattooWidget = new TattooWidget(190, 125, 265, 80);
-		affinityWidget = new AffinityWidget(190, 210, 265, 80);
-		skillWidget = new SkillWidget(190, 295, 265, 110);
-		optionsWidget = new OptionsWidget(465, 15, 160, 390);
-		commentWidget = new CommentWidget(15, 415, 610, 45);
+		statsInfo = new StatsWidget(15, 120, 165, 280);
+		tattooWidget = new TattooWidget(185, 120, 270, 80);
+		affinityWidget = new AffinityWidget(185, 202, 270, 80);
+		skillWidget = new SkillWidget(185, 284, 270, 116);
+		optionsWidget = new OptionsWidget(460, 15, 165, 267);
+		commentWidget = new CommentWidget(15, 405, 610, 60);
+		totemWidget = new TotemWidget(460, 284, 165, 116 );
 		
 	}
 
@@ -54,14 +55,7 @@ public class PartyScreen extends GameObject {
 		
 		case PartyScreen:
 			calculateBGColour();
-			
-			if(gameContainer.getInput().isKeyUp(KeyEvent.VK_LEFT)) {
-				if(member > 0) { member--; }
-			}
-			if(gameContainer.getInput().isKeyUp(KeyEvent.VK_RIGHT)) {
-				if(member < GameManager.adventurers.allAdventurers.size() - 1) { member++; }
-			}
-			
+						
 			portrait.update(gameContainer, deltaTime);
 			basicInfo.update(gameContainer, deltaTime);
 			statsInfo.update(gameContainer, deltaTime);
@@ -72,6 +66,7 @@ public class PartyScreen extends GameObject {
 			skillWidget.update(gameContainer, deltaTime);
 			optionsWidget.update(gameContainer, deltaTime);
 			commentWidget.update(gameContainer, deltaTime);
+			totemWidget.update(gameContainer, deltaTime);
 			break;
 		
 		}
@@ -98,7 +93,8 @@ public class PartyScreen extends GameObject {
 			affinityWidget.render(gameContainer, renderer);
 			skillWidget.render(gameContainer, renderer);
 			optionsWidget.render(gameContainer, renderer);
-			commentWidget.render(gameContainer, renderer);			
+			commentWidget.render(gameContainer, renderer);	
+			totemWidget.render(gameContainer, renderer);
 			break;
 		
 		}
@@ -116,9 +112,11 @@ public class PartyScreen extends GameObject {
 			}
 		}
 		int finalTrust = totalTrust / partyMembers;
-		int red = 50 - (finalTrust / 2);
-		int green = 0 + (finalTrust / 2);
-		int blue = 15;
+		int red = 200 - (finalTrust / 2);
+		int green = 150 + (finalTrust / 2);
+		int blue = 0;
+		if (green > red) { blue = 175; }
+		else { blue = 150; }
 		Color tmpColor = new Color (red, green, blue);
 		bgColour = tmpColor.getRGB();
 		

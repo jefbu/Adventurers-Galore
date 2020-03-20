@@ -21,7 +21,6 @@ public class PlaceHolder extends GameObject {
 	public void update(GameContainer gameContainer, float deltaTime) {
 		if(gameContainer.getInput().isKey(KeyEvent.VK_A)) { 
 			GameManager.gameState = GameState.WorldMap;
-			System.out.println("clicked A");
 			}
 	}
 

@@ -1,8 +1,10 @@
 package com.redhaan.adventurersGalore.combat.combatAI;
 
-public enum CombatStrategies {
+public enum HighLevelPlan {
 	
 	Defend,
-	Attack
+	Attack,
+	Kill,
+	Guard
 
 }

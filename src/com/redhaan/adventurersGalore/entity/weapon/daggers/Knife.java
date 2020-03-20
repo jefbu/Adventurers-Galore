@@ -15,9 +15,9 @@ public class Knife extends Weapon {
 		
 		name = "Knife";
 		hit = 75;
-		damage = 35;
+		damage = 5;
 		crit = 30;
-		weight = 35;
+		weight = 3;
 		
 		xTile = 0;
 		yTile = 1;

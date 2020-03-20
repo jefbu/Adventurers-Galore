@@ -15,9 +15,9 @@ public class Katar extends Weapon {
 		
 		name = "Katar";
 		hit = 70;
-		damage = 70;
+		damage = 7;
 		crit = 40;
-		weight = 60;
+		weight = 6;
 		
 		xTile = 5;
 		yTile = 1;

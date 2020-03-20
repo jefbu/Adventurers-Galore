@@ -45,42 +45,6 @@ public class LevelFactory {
 		
 		return level;
 		
-	}
+	}	
 	
-	/*
-	protected void setLevel(int tier, Adventurer adventurer) {
-		
-		Random random = new Random();
-		int roll = random.nextInt(100) + 1;
-		
-		switch(tier) {
-		case 0: 
-			if(roll <= 80) { adventurer.setLevel(random.nextInt(10) + 1); }
-			else if(roll<= 95) { adventurer.setLevel(random.nextInt(10) + 11); }
-			else { adventurer.setLevel(random.nextInt(10) + 21); }
-			break;
-		case 1: 
-			if(roll <= 70) { adventurer.setLevel(random.nextInt(10) + 1); }
-			else if(roll<= 90) { adventurer.setLevel(random.nextInt(10) + 11); }
-			else { adventurer.setLevel(random.nextInt(10) + 21); }
-			break;
-		case 2: 
-			if(roll <= 60) { adventurer.setLevel(random.nextInt(10) + 1); }
-			else if(roll<= 85) { adventurer.setLevel(random.nextInt(10) + 11); }
-			else { adventurer.setLevel(random.nextInt(10) + 21); }
-			break;
-		case 3: 
-			if(roll <= 50) { adventurer.setLevel(random.nextInt(10) + 1); }
-			else if(roll<= 75) { adventurer.setLevel(random.nextInt(10) + 11); }
-			else { adventurer.setLevel(random.nextInt(10) + 21); }
-			break;
-		case 4: 
-			if(roll <= 40) { adventurer.setLevel(random.nextInt(10) + 1); }
-			else if(roll<= 70) { adventurer.setLevel(random.nextInt(10) + 11); }
-			else { adventurer.setLevel(random.nextInt(10) + 21); }
-			break;
-		}
-	}
-	*/
-
 }

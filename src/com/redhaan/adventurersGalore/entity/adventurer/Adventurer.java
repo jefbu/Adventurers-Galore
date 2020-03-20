@@ -1,6 +1,7 @@
 package com.redhaan.adventurersGalore.entity.adventurer;
 
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.combat.Attack;
@@ -22,6 +23,7 @@ public class Adventurer extends Monster {
 	public Race race;
 	public String name;
 	public String gender;
+	private int genderInt;
 	public int age;
 
 	private int level;
@@ -32,11 +34,12 @@ public class Adventurer extends Monster {
 	public boolean inParty;
 	public boolean moving;
 	public PlayerTurnLeftClickSituations leftClickSituation;
-
-	public Weapon weapon;
-	public Armour armour;
+	public int battlesPassed;
 	
 	public int tier;
+	
+	public int tattooSlots;
+	public ArrayList<Tattoo> tattoos;
 	
 	public Adventurer() {
 
@@ -46,6 +49,9 @@ public class Adventurer extends Monster {
 		inParty = false;
 		moving = false;
 		leftClickSituation = PlayerTurnLeftClickSituations.NothingToDo;
+		battlesPassed = 0;
+		tattoos = new ArrayList<Tattoo>();
+		genderInt = 0;
 
 	}
 
@@ -56,6 +62,7 @@ public class Adventurer extends Monster {
 
 		case Combat:
 
+			if (gender.equals("Female")) { genderInt = 4; } else { genderInt = 0; }
 			switch (Combat.combatState) {
 
 			case EnemyTurn:
@@ -86,7 +93,6 @@ public class Adventurer extends Monster {
 					switch (leftClickSituation) {
 
 					case Active_Enemy_INRange:
-						System.out.println("here");
 						attackAnimation = true;
 						for (Monster enemy : Combat.enemies) {
 							if (enemy.getCombatX() == gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE
@@ -166,12 +172,10 @@ public class Adventurer extends Monster {
 
 			break;
 
-		case InTown:
-			break;
-		case Titlescreen:
-			break;
-		case WorldMap:
-			break;
+		case InTown: break;
+		case Titlescreen: break;
+		case WorldMap: break;
+		case PartyScreen: break;
 
 		}
 
@@ -187,7 +191,7 @@ public class Adventurer extends Monster {
 			switch (Combat.combatState) {
 			case EnemyTurn:
 
-				renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, 0,
+				renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, genderInt,
 						0);
 				break;
 
@@ -200,13 +204,13 @@ public class Adventurer extends Monster {
 
 				if (!attackAnimation && !turnPassed) {
 					renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
-							(int) idleTimer, 0);
+							(int) idleTimer + genderInt, 0);
 				} else if (attackAnimation && !turnPassed) {
 					renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
-							(int) attackTimer, 1);
+							(int) attackTimer + genderInt, 1);
 				} else {
 					renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
-							0, 0);
+							0 + genderInt, 0);
 				}
 
 				break;
@@ -215,12 +219,10 @@ public class Adventurer extends Monster {
 			HealthBar.drawHealthBar(this, renderer);
 			break;
 
-		case InTown:
-			break;
-		case Titlescreen:
-			break;
-		case WorldMap:
-			break;
+		case InTown: break;
+		case Titlescreen: break;
+		case WorldMap: break;
+		case PartyScreen: break;
 
 		}
 

@@ -6,10 +6,217 @@ import com.redhaan.adventurersGalore.entity.adventurer.Race;
 
 public class NameFactory {
 	
-	public NameFactory() { }
+	String name;
+	Random random;
+	
+	public NameFactory() { 	
+		random = new Random();
+	}
 	
 	public String rollName(Race race, String gender) {
+	
+		name = "Bob Dylan";
 		
+		switch (race.raceEnum) {		
+		case Human: rollHumanName(gender); break;
+		case Elf: rollElfName(gender); break;
+		case Dwarf: rollDwarfName(gender); break;
+		case Dryad: rollDryadName(gender); break;								
+		}
+				
+		return name;
+		
+	}
+	
+	private void rollHumanName(String gender) {
+		
+		int rarityRoll = random.nextInt(10) + 1;
+		
+		if (rarityRoll == 10) {
+			int nameRoll = random.nextInt(10) + 1;
+			switch(nameRoll) {
+			case 1: if (gender.equals("Male")) { name = "Napoleon"; } else { name = "Cleopatra"; } break;
+			case 2: if (gender.equals("Male")) { name = "Julius"; } else { name = "Scully"; } break;
+			case 3: if (gender.equals("Male")) { name = "Brigadeiro"; } else { name = "Leia"; } break;
+			case 4: if (gender.equals("Male")) { name = "Scipio"; } else { name = "Catniss"; } break;
+			case 5: if (gender.equals("Male")) { name = "Hannibal"; } else { name = "Anna Comnena"; } break;
+			case 6: if (gender.equals("Male")) { name = "Joffre"; } else { name = "Hermione"; } break;
+			case 7: if (gender.equals("Male")) { name = "Bismarck"; } else { name = "Sansa"; } break;
+			case 8: if (gender.equals("Male")) { name = "El Cid"; } else { name = "Holly Golightly"; } break;
+			case 9: if (gender.equals("Male")) { name = "Hector"; } else { name = "Xena"; } break;
+			case 10: if (gender.equals("Male")) { name = "Musashi"; } else { name = "Lorelai"; } break;
+			}
+		}
+		
+		else {			
+			int nameRoll = random.nextInt(20) + 1;
+			switch(nameRoll) {
+			case 1: if (gender.equals("Male")) { name = "George"; } else { name = "Lucy"; } break;
+			case 2: if (gender.equals("Male")) { name = "Peter"; } else { name = "Catherine"; } break;
+			case 3: if (gender.equals("Male")) { name = "Andrew"; } else { name = "Anne"; } break;
+			case 4: if (gender.equals("Male")) { name = "John"; } else { name = "Evelyn"; } break;
+			case 5: if (gender.equals("Male")) { name = "Stephen"; } else { name = "Julia"; } break;
+			case 6: if (gender.equals("Male")) { name = "Richard"; } else { name = "Mary"; } break;
+			case 7: if (gender.equals("Male")) { name = "Bruce"; } else { name = "Priscilla"; } break;
+			case 8: if (gender.equals("Male")) { name = "Marc"; } else { name = "Tamara"; } break;
+			case 9: if (gender.equals("Male")) { name = "Luke"; } else { name = "Erika"; } break;
+			case 10: if (gender.equals("Male")) { name = "Thomas"; } else { name = "Valerie"; } break;
+			case 11: if (gender.equals("Male")) { name = "Kaito"; } else { name = "Yui"; } break;
+			case 12: if (gender.equals("Male")) { name = "Sora"; } else { name = "Mei"; } break;
+			case 13: if (gender.equals("Male")) { name = "Haruto"; } else { name = "Sakura"; } break;
+			case 14: if (gender.equals("Male")) { name = "Aarav"; } else { name = "Saanvi"; } break;
+			case 15: if (gender.equals("Male")) { name = "Aditya"; } else { name = "Prisha"; } break;
+			case 16: if (gender.equals("Male")) { name = "Ramvinoth"; } else { name = "Diya"; } break;
+			case 17: if (gender.equals("Male")) { name = "Sergei"; } else { name = "Svetlana"; } break;
+			case 18: if (gender.equals("Male")) { name = "Ivan"; } else { name = "Olga"; } break;
+			case 19: if (gender.equals("Male")) { name = "Dmitri"; } else { name = "Irina"; } break;
+			case 20: if (gender.equals("Male")) { name = "Andrei"; } else { name = "Yelena"; } break;			
+			}			
+		}
+				
+	}
+	
+	private void rollElfName(String gender) {
+		
+		int syllableRoll = random.nextInt(10) + 1;
+		int syllables = 0;
+		if (syllableRoll > 8) { syllables = 2; }
+		else if (syllableRoll > 6) { syllables = 4; }
+		else { syllables = 3; }
+		
+		String tempName = "";
+		
+		int firstSyllableRoll = random.nextInt(11) + 1;
+		switch(firstSyllableRoll) {
+		case 1: tempName = tempName + "Hal"; break;
+		case 2: tempName = tempName + "Mi"; break;
+		case 3: tempName = tempName + "El"; break;
+		case 4: tempName = tempName + "Lo"; break;
+		case 5: tempName = tempName + "Le"; break;
+		case 6: tempName = tempName + "Thran"; break;
+		case 7: tempName = tempName + "Tau"; break;
+		case 8: tempName = tempName + "Ga"; break;
+		case 9: tempName = tempName + "Ar"; break;
+		case 10: tempName = tempName + "Lu"; break;
+		case 11: tempName = tempName + "I"; break;
+		}
+		
+		int secondSyllableRoll = random.nextInt(11) + 1;
+		switch(secondSyllableRoll) {
+		case 1: tempName = tempName + "dir"; break;
+		case 2: tempName = tempName + "wen"; break;
+		case 3: tempName = tempName + "duil"; break;
+		case 4: tempName = tempName + "rien"; break;
+		case 5: tempName = tempName + "go"; break;
+		case 6: tempName = tempName + "rond"; break;
+		case 7: tempName = tempName + "riel"; break;
+		case 8: tempName = tempName + "la"; break;
+		case 9: tempName = tempName + "thran"; break;
+		case 10: tempName = tempName + "thien"; break;
+		case 11: tempName = tempName + "ser"; break;
+		}		
+		
+		if (syllables > 2) {
+			int thirdSyllableRoll = random.nextInt(11) + 1;
+			switch(thirdSyllableRoll) {
+			case 1: tempName = tempName + "el"; break;
+			case 2: tempName = tempName + "eon"; break;
+			case 3: tempName = tempName + "sa"; break;
+			case 4: tempName = tempName + "ia"; break;
+			case 5: tempName = tempName + "dri"; break;
+			case 6: tempName = tempName + "dor"; break;
+			case 7: tempName = tempName + "a"; break;
+			case 8: tempName = tempName + "e"; break;
+			case 9: tempName = tempName + "i"; break;
+			case 10: tempName = tempName + "to"; break;
+			case 11: tempName = tempName + "las"; break;			
+			}			
+		}
+		
+		if (syllables > 3) {
+			int fourthSyllableRoll = random.nextInt(5) + 1;
+			switch (fourthSyllableRoll) {
+			case 1: tempName = tempName + "el"; break;
+			case 2: tempName = tempName + "min"; break;
+			case 3: tempName = tempName + "do"; break;
+			case 4: tempName = tempName + "en"; break;
+			case 5: tempName = tempName + "yu"; break;
+			}
+		}
+		
+		name = tempName;
+	}
+	
+	private void rollDwarfName(String gender) {
+		
+		int roll = random.nextInt(30) + 1;
+		
+		switch(roll) {
+		case 1: name = "Dain"; break;
+		case 2: name = "Gloin"; break;
+		case 3: name = "Gimli"; break;
+		case 4: name = "Gunna"; break;
+		case 5: name = "Ungri"; break;
+		case 6: name = "Bimbor"; break;
+		case 7: name = "Bronk"; break;
+		case 8: name = "Ingli"; break;
+		case 9: name = "Dari"; break;
+		case 10: name = "Dibrang"; break;
+		case 11: name = "Balin"; break;
+		case 12: name = "Bifur"; break;
+		case 13: name = "Dorin"; break;
+		case 14: name = "Dwain"; break;
+		case 15: name = "Undwong"; break;
+		case 16: name = "Fingar"; break;
+		case 17: name = "Falifor"; break;
+		case 18: name = "Gifa"; break;
+		case 19: name = "Gufi"; break;
+		case 20: name = "Karn"; break;
+		case 21: name = "Kring"; break;
+		case 22: name = "Narwi"; break;
+		case 23: name = "Thurng"; break;
+		case 24: name = "Bingdor"; break;
+		case 25: name = "Daler"; break;
+		case 26: name = "Kiraka"; break;
+		case 27: name = "Ogri"; break;
+		case 28: name = "Ongbur"; break;
+		case 29: name = "Rhuin"; break;
+		case 30: name = "Urno"; break;
+		}
+	}
+	
+	private void rollDryadName(String gender) {
+		
+		int syllables = random.nextInt(2) + 3;
+		String tempName = "";
+		
+		for (int i = 0; i < syllables; i++) {
+			int roll = random.nextInt(15) + 1;
+			switch(roll) {
+			case 1: if (gender.equals("Male")) { tempName = tempName + "ya"; } else { tempName = tempName + "ye"; } break;
+			case 2: if (gender.equals("Male")) { tempName = tempName + "yi"; } else { tempName = tempName + "yo"; } break;
+			case 3: if (gender.equals("Male")) { tempName = tempName + "yu"; } else { tempName = tempName + "yu"; } break;
+			case 4: if (gender.equals("Male")) { tempName = tempName + "ka"; } else { tempName = tempName + "ke"; } break;
+			case 5: if (gender.equals("Male")) { tempName = tempName + "ke"; } else { tempName = tempName + "ko"; } break;
+			case 6: if (gender.equals("Male")) { tempName = tempName + "ku"; } else { tempName = tempName + "ku"; } break;
+			case 7: if (gender.equals("Male")) { tempName = tempName + "sha"; } else { tempName = tempName + "she"; } break;
+			case 8: if (gender.equals("Male")) { tempName = tempName + "she"; } else { tempName = tempName + "sho"; } break;
+			case 9: if (gender.equals("Male")) { tempName = tempName + "shu"; } else { tempName = tempName + "shu"; } break;
+			case 10: if (gender.equals("Male")) { tempName = tempName + "l"; } else { tempName = tempName + "t"; } break;
+			case 11: if (gender.equals("Male")) { tempName = tempName + "l"; } else { tempName = tempName + "t"; } break;
+			case 12: if (gender.equals("Male")) { tempName = tempName + "l"; } else { tempName = tempName + "t"; } break;
+			case 13: if (gender.equals("Male")) { tempName = tempName + "l"; } else { tempName = tempName + "t"; } break;
+			case 14: if (gender.equals("Male")) { tempName = tempName + "l"; } else { tempName = tempName + "t"; } break;
+			case 15: if (gender.equals("Male")) { tempName = tempName + "l"; } else { tempName = tempName + "t"; } break;
+			}
+		}
+		
+		name = tempName.substring(0, 1).toUpperCase() + tempName.substring(1);
+		
+	}
+	
+		
+/*		
 		String name = "";
 		Random random = new Random();
 		int syllables = 0;
@@ -194,9 +401,9 @@ public class NameFactory {
 		
 		
 		return syllable;
+	
+		*/
 		
-	}
-	
-	
+		
 
 }

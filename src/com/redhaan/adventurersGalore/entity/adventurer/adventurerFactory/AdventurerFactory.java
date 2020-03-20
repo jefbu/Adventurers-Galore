@@ -6,7 +6,6 @@ import java.util.Random;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.entity.armour.ReinforcedLeather;
 import com.redhaan.adventurersGalore.entity.town.Towns;
-import com.redhaan.adventurersGalore.entity.weapon.swords.Excalibur;
 
 public class AdventurerFactory {
 
@@ -17,10 +16,10 @@ public class AdventurerFactory {
 	private RaceFactory raceFactory = new RaceFactory();
 	private NameFactory nameFactory = new NameFactory();
 	private WeaponFactory weaponFactory = new WeaponFactory();
+	private TattooFactory tattooFactory = new TattooFactory();
+	private AffinityFactory affinityFactory = new AffinityFactory();
 
-	public AdventurerFactory() {
-
-	}
+	public AdventurerFactory() { }
 
 	public Adventurer createRandomAdventurer() {
 
@@ -39,10 +38,10 @@ public class AdventurerFactory {
 		adventurer = new Adventurer();
 		adventurer.tier = tier;
 
-		adventurer.setLevel(levelFactory.setBaseLevel(adventurer.tier));
 		adventurer.race = raceFactory.setRace(adventurer.tier);
 		adventurer.job = jobFactory.setJob(adventurer.race, adventurer.getLevel());
 		adventurer.icon = adventurer.job.icon;
+		//adventurer.levelupPercentages = levelFactory.setLevelPercentages(adventurer);
 
 		Random random = new Random();
 		adventurer.gender = "Male";
@@ -52,15 +51,24 @@ public class AdventurerFactory {
 		adventurer.name = nameFactory.rollName(adventurer.race, adventurer.gender);
 		adventurer.age = rollAge();
 
+		adventurer.weapon = weaponFactory.rollAdventurerStartingWeapon(adventurer.tier, adventurer.maxStats.PHY, adventurer.job);
+		adventurer.armour = new ReinforcedLeather();
+		
 		createBaseStats();
 		createDerivateStats();
-		for (int i = 1; i < adventurer.getLevel(); i++) {
+		
+		int level = levelFactory.setBaseLevel(adventurer.tier);
+		for (int i = 0; i < level; i++) {
 			adventurer.levelUp();
 		}
 
 		rollHomeTown();
-		adventurer.weapon = weaponFactory.rollAdventurerStartingWeapon(adventurer.tier, adventurer.maxStats.PHY, adventurer.job);
-		adventurer.armour = new ReinforcedLeather();
+
+		
+		adventurer.tattooSlots = tattooFactory.rollTattooSlots(adventurer.tier, adventurer.tattooSlots);
+		adventurer.tattoos = tattooFactory.rollTattoos(adventurer.tattooSlots);
+		adventurer.affinities = affinityFactory.rollAffinities(adventurer.tier, adventurer.race, adventurer.job);
+		
 
 	}
 
@@ -68,16 +76,17 @@ public class AdventurerFactory {
 
 		Random random = new Random();
 
-		adventurer.maxStats.HP = (200 + adventurer.race.raceBonusStats.HP + adventurer.job.jobBonusStats.HP + rollRandomStats() * 10 + rollTierBonusStats() * 10);
-		adventurer.maxStats.MP = (50 + adventurer.race.raceBonusStats.MP + adventurer.job.jobBonusStats.MP + rollRandomStats() * 10 + rollTierBonusStats() * 10);
-		adventurer.maxStats.PHY = (30 + adventurer.race.raceBonusStats.PHY + adventurer.job.jobBonusStats.PHY + rollRandomStats() + rollTierBonusStats());
-		adventurer.maxStats.AGI = (30 + adventurer.race.raceBonusStats.AGI + adventurer.job.jobBonusStats.AGI + rollRandomStats() + rollTierBonusStats());
-		adventurer.maxStats.MAG = (30 + adventurer.race.raceBonusStats.MAG + adventurer.job.jobBonusStats.MAG + rollRandomStats() + rollTierBonusStats());
-		adventurer.maxStats.DEX = (30 + adventurer.race.raceBonusStats.DEX + adventurer.job.jobBonusStats.DEX + rollRandomStats() + rollTierBonusStats());
-		adventurer.maxStats.PRC = (30 + adventurer.race.raceBonusStats.PRC + adventurer.job.jobBonusStats.PRC + rollRandomStats() + rollTierBonusStats());
-		adventurer.maxStats.INT = (30 + adventurer.race.raceBonusStats.INT + adventurer.job.jobBonusStats.INT + rollRandomStats() + rollTierBonusStats());
+		adventurer.maxStats.HP = (15 + adventurer.race.raceBonusStats.HP + adventurer.job.jobBonusStats.HP + rollRandomStats()  + rollTierBonusStats(adventurer.tier));
+		adventurer.maxStats.MP = (10 + adventurer.race.raceBonusStats.MP + adventurer.job.jobBonusStats.MP + rollRandomStats()  + rollTierBonusStats(adventurer.tier));
+		adventurer.maxStats.PHY = (5 + adventurer.race.raceBonusStats.PHY + adventurer.job.jobBonusStats.PHY + rollRandomStats() + rollTierBonusStats(adventurer.tier));
+		adventurer.maxStats.AGI = (5 + adventurer.race.raceBonusStats.AGI + adventurer.job.jobBonusStats.AGI + rollRandomStats() + rollTierBonusStats(adventurer.tier));
+		adventurer.maxStats.MAG = (5 + adventurer.race.raceBonusStats.MAG + adventurer.job.jobBonusStats.MAG + rollRandomStats() + rollTierBonusStats(adventurer.tier));
+		adventurer.maxStats.DEX = (5 + adventurer.race.raceBonusStats.DEX + adventurer.job.jobBonusStats.DEX + rollRandomStats() + rollTierBonusStats(adventurer.tier));
+		adventurer.maxStats.PRC = (5 + adventurer.race.raceBonusStats.PRC + adventurer.job.jobBonusStats.PRC + rollRandomStats() + rollTierBonusStats(adventurer.tier));
+		adventurer.maxStats.INT = (5 + adventurer.race.raceBonusStats.INT + adventurer.job.jobBonusStats.INT + rollRandomStats() + rollTierBonusStats(adventurer.tier));
 		adventurer.maxStats.TST = (20 + random.nextInt(21));
 		adventurer.maxStats.FUN = (random.nextInt(100) + 1);
+		adventurer.maxStats.move = (3 + adventurer.race.raceBonusStats.move + adventurer.job.jobBonusStats.move);
 
 		adventurer.currentStats.HP = adventurer.maxStats.HP;
 		adventurer.currentStats.MP = adventurer.maxStats.MP;
@@ -89,6 +98,18 @@ public class AdventurerFactory {
 		adventurer.currentStats.INT = adventurer.maxStats.INT;
 		adventurer.currentStats.TST = adventurer.maxStats.TST;
 		adventurer.currentStats.FUN = adventurer.maxStats.FUN;
+		adventurer.currentStats.move = adventurer.maxStats.move;
+		
+		adventurer.levelupPercentages.HP = 10 + adventurer.race.percentageStats.HP + adventurer.job.percentageStats.HP + rollTierStatBonus(adventurer.tier) + random.nextInt(11);
+		adventurer.levelupPercentages.MP = 5 + adventurer.race.percentageStats.MP + adventurer.job.percentageStats.MP + rollTierStatBonus(adventurer.tier) + random.nextInt(6);
+		adventurer.levelupPercentages.PHY = 10 + adventurer.race.percentageStats.PHY + adventurer.job.percentageStats.PHY + rollTierStatBonus(adventurer.tier)+ random.nextInt(11); 
+		adventurer.levelupPercentages.AGI = 10 + adventurer.race.percentageStats.AGI + adventurer.job.percentageStats.AGI + rollTierStatBonus(adventurer.tier)+ random.nextInt(11); 
+		adventurer.levelupPercentages.MAG = 10 + adventurer.race.percentageStats.MAG + adventurer.job.percentageStats.MAG + rollTierStatBonus(adventurer.tier)+ random.nextInt(11); 
+		adventurer.levelupPercentages.DEX = 10 + adventurer.race.percentageStats.DEX + adventurer.job.percentageStats.DEX + rollTierStatBonus(adventurer.tier)+ random.nextInt(11); 
+		adventurer.levelupPercentages.INT = 10 + adventurer.race.percentageStats.INT + adventurer.job.percentageStats.INT + rollTierStatBonus(adventurer.tier)+ random.nextInt(11); 
+		adventurer.levelupPercentages.PRC = 10 + adventurer.race.percentageStats.PRC + adventurer.job.percentageStats.PRC + rollTierStatBonus(adventurer.tier)+ random.nextInt(11); 
+		adventurer.levelupPercentages.move = 5 + adventurer.job.percentageStats.PHY + random.nextInt(6); 
+				
 
 	}
 
@@ -98,25 +119,38 @@ public class AdventurerFactory {
 		
 	}
 
-	private int rollTierBonusStats() {
+	private int rollTierBonusStats(int tier) {
 
 		Random random = new Random();
-		int roll = 0;
-		while (roll <= adventurer.tier) {
-			int tempRoll = random.nextInt(10) + 1;
-			if (tempRoll > roll) {
-				roll = tempRoll;
-			}
+		int roll = random.nextInt(10) + 1;
+		switch(tier) {
+		case 0: if (roll < 8) { return 0; } else if (roll < 10) { return 1; } else { return 2; }
+		case 1: if (roll < 7) { return 0; } else if (roll < 10) { return 1; } else { return 2; }
+		case 2: if (roll < 6) { return 0; } else if (roll < 10) { return 1; } else { return 2; }
+		case 3: if (roll < 6) { return 0; } else if (roll < 9) { return 1; } else { return 2; }
+		case 4: if (roll < 5) { return 0; } else if (roll < 8) { return 1; } else { return 2; }
+		default: return 0;
 		}
-
-		return roll;
 
 	}
 
 	private int rollRandomStats() {
 		Random random = new Random();
 		int roll = random.nextInt(10) + 1;
-		return roll;
+		switch(roll) {
+		case 1: return 0;
+		case 2: return 0;
+		case 3: return 0;
+		case 4: return 0;
+		case 5: return 0;
+		case 6: return 0;
+		case 7: return 1;
+		case 8: return 1;
+		case 9: return 1;
+		case 10: return 2;
+		default: return 0;
+		}
+		
 	}
 
 	private int rollTier() {
@@ -150,6 +184,20 @@ public class AdventurerFactory {
 		
 		Arrays.sort(rolls);		
 		return rolls[0] + 16;
+		
+		
+	}
+	
+	private int rollTierStatBonus(int tier) {
+		
+		switch (tier) {
+		case 0: return 0;
+		case 1: return 2;
+		case 2: return 3;
+		case 3: return 4;
+		case 4: return 5;
+		default: return 100;
+		}
 		
 		
 	}

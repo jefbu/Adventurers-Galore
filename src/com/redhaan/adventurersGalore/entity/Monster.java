@@ -8,12 +8,17 @@ import com.redhaan.adventurersGalore.combat.Combat;
 import com.redhaan.adventurersGalore.combat.MoveAreaDrawer;
 import com.redhaan.adventurersGalore.combat.MoveRangeFiller;
 import com.redhaan.adventurersGalore.combat.combatAI.ActionDecision;
+import com.redhaan.adventurersGalore.combat.combatAI.AttackDecision;
 import com.redhaan.adventurersGalore.combat.combatAI.CombatActions;
 import com.redhaan.adventurersGalore.combat.combatAI.MoveDecision;
+import com.redhaan.adventurersGalore.entity.adventurer.Affinities;
 import com.redhaan.adventurersGalore.entity.adventurer.Job;
+import com.redhaan.adventurersGalore.entity.adventurer.Race;
 import com.redhaan.adventurersGalore.entity.adventurer.Stats;
+import com.redhaan.adventurersGalore.entity.armour.Armour;
 import com.redhaan.adventurersGalore.entity.combatAddOns.HealthBar;
 import com.redhaan.adventurersGalore.entity.combatAddOns.SkillBar;
+import com.redhaan.adventurersGalore.entity.weapon.Weapon;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
@@ -22,8 +27,11 @@ public class Monster extends NPC {
 	
 	public Stats maxStats;
 	public Stats currentStats;
+	public Affinities affinities;
+	public Stats levelupPercentages;
 	
 	public Job job;
+	public Race race;
 	
 	protected int combatX, combatY;
 	protected boolean dead;
@@ -31,11 +39,11 @@ public class Monster extends NPC {
 	protected int attackAnimationSpeed;
 	protected float idleTimer;
 	protected float attackTimer;
-	protected boolean attackAnimation;
+	public boolean attackAnimation;
 	public ArrayList<int[]> moveRange;
 	
-	private boolean flareUpAnimation;
-	private int ticksToFlareUp;
+	private boolean moveRangeFlareUp;
+	private int moveRangeCounter;
 		
 	public boolean turnPassed;
 	
@@ -43,15 +51,20 @@ public class Monster extends NPC {
 	
 	public SkillBar skillBar;
 	
+	public Weapon weapon;
+	public Armour armour;
+	
 	public Monster() {
 		
 		super();
 		
 		maxStats = new Stats();
 		currentStats = new Stats();
+		levelupPercentages = new Stats();
 		
 		job = Job.squire;
 		icon = job.icon;
+		race = Race.human;
 		
 		currentStats.HP = 400;
 		maxStats.HP = 400;
@@ -68,8 +81,8 @@ public class Monster extends NPC {
 		
 		skillBar = new SkillBar(this);
 		
-		ticksToFlareUp = 0;
-		flareUpAnimation = false;
+		moveRangeCounter = 0;
+		moveRangeFlareUp = false;
 		attackAnimation = false;
 		turnPassed = false;
 				
@@ -88,40 +101,39 @@ public class Monster extends NPC {
 			case PlayerTurn: break;
 			
 			case EnemyTurn:
-			idleTimer += (deltaTime * idleAnimationSpeed);
-			if(idleTimer > 4 ) {
-				idleTimer = 0;
-			}
-			
-			if(attackAnimation) {
-				attackTimer +=(deltaTime * attackAnimationSpeed);
-				if(attackTimer > 4) {
-					attackTimer = 0;
-					attackAnimation = false;
-					turnPassed = true;
-				}
-			}
 				
-			if(moveRange.size() == 0) { moveRange = MoveRangeFiller.fillMoveRange(combatX, combatY, currentStats.move); }
-
-			ticksToFlareUp++;
-			if (ticksToFlareUp < 10) { flareUpAnimation = true; } 
-			else if (ticksToFlareUp < 20) { flareUpAnimation = false; }
-			else if (ticksToFlareUp < 70) { flareUpAnimation = true; }
-			else { 
-				ticksToFlareUp = 0;
-				flareUpAnimation = false;
-			}
-			
-			if(!flareUpAnimation && ticksToFlareUp == 0) {
-				CombatActions action = ActionDecision.decideActionDecision(Combat.combatStrategy);
-				int[] moveDecision = MoveDecision.decideMoveDecision(action, moveRange);
-				combatX = moveDecision[0];
-				combatY = moveDecision[1];
-				//AttackDecision.decideAttackDecision();
-				moveRange.clear();
-				turnPassed = true;
-				}
+					idleTimer += (deltaTime * idleAnimationSpeed);
+					if(idleTimer > 4 ) {
+						idleTimer = 0;
+					}
+					
+					if(attackAnimation) {
+						attackTimer +=(deltaTime * attackAnimationSpeed);
+						if(attackTimer > 4) {
+							attackTimer = 0;
+							attackAnimation = false;
+							turnPassed = true;
+						}
+					}
+						
+					if(moveRange.size() == 0) { moveRange = MoveRangeFiller.fillMoveRange(combatX, combatY, currentStats.move); }
+		
+					moveRangeCounter++;
+					if (moveRangeCounter < 60) { moveRangeFlareUp = true; } 
+					else { 
+						moveRangeCounter = 0;
+						moveRangeFlareUp = false;
+					}
+					
+					if(!moveRangeFlareUp && moveRangeCounter == 0) {
+						CombatActions action = ActionDecision.decideActionDecision(Combat.highLevelPlan);
+						int[] moveDecision = MoveDecision.decideMoveDecision(action, moveRange, getCombatX(), getCombatY());
+						combatX = moveDecision[0];
+						combatY = moveDecision[1];
+						AttackDecision.decideAttackDecision(this, getCombatX(), getCombatY());
+						moveRange.clear();
+						turnPassed = true;
+						}
 					
 			break;
 			}
@@ -130,6 +142,7 @@ public class Monster extends NPC {
 		case WorldMap: break;
 		case Titlescreen: break;
 		case InTown: break;
+		case PartyScreen: break;
 		
 		}
 		
@@ -142,10 +155,10 @@ public class Monster extends NPC {
 		switch(GameManager.gameState) {
 		
 		case Combat:
-			renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, (int) idleTimer, 1);
+			renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, (int) idleTimer, 0);
 			HealthBar.drawHealthBar(this, renderer);
 			
-			if(flareUpAnimation) {
+			if(moveRangeFlareUp) {
 				MoveAreaDrawer.drawMoveArea(moveRange, renderer);
 			}
 			
@@ -153,6 +166,7 @@ public class Monster extends NPC {
 		case InTown: break;
 		case Titlescreen: break;
 		case WorldMap: break;
+		case PartyScreen: break;
 	
 		}
 		
@@ -160,7 +174,6 @@ public class Monster extends NPC {
 	}
 	
 	public void calculateSecondaryStats() {
-		calculateMove();
 		calculateTravelSpeed();
 		calculateAttack();
 		calculateDefence();
@@ -169,38 +182,35 @@ public class Monster extends NPC {
 	}
 	
 	
-	public void calculateMove() {
-		maxStats.move = job.jobBonusStats.move;
-		currentStats.move = maxStats.move;
-	}
-	
-	public void calculateTravelSpeed() {
+	private void calculateTravelSpeed() {
 		int bonus = 0;
-		if ((maxStats.PHY + maxStats.PRC / 4) < 80) { }
-		else if (maxStats.PHY + maxStats.PRC / 4 < 100) { bonus = 1; }
-		else if (maxStats.PHY + maxStats.PRC / 4 < 110) { bonus = 2; }
-		else if (maxStats.PHY + maxStats.PRC / 4 < 120) {	bonus = 3; }
+		if ((maxStats.PHY + maxStats.PRC / 2) < 15) { }
+		else if (maxStats.PHY + maxStats.PRC / 2 < 20) { bonus = 1; }
+		else if (maxStats.PHY + maxStats.PRC / 2 < 30) { bonus = 2; }
+		else if (maxStats.PHY + maxStats.PRC / 2 < 40) {	bonus = 3; }
 		else { bonus = 4; }
 		maxStats.travelSpeed = maxStats.move + bonus;
 		currentStats.travelSpeed = maxStats.travelSpeed;
 	}
 		
-	public void calculateAttack() {
-		maxStats.attack = maxStats.PHY * 3;
+	private void calculateAttack() {
+		maxStats.attack = maxStats.PHY + weapon.damage;
 		currentStats.attack = maxStats.attack;
 	}
 	
-	public void calculateDefence() {
-		maxStats.defence = maxStats.PHY * 2;
+	private void calculateDefence() {
+		maxStats.defence = maxStats.PHY + armour.defence;
 		currentStats.defence = maxStats.defence;
 	}
 	
-	public void calculateHit() {
-		maxStats.hit = maxStats.AGI;
+	private void calculateHit() {
+		maxStats.hit = weapon.hit + maxStats.AGI * 2 + maxStats.DEX;
+		currentStats.hit = maxStats.hit;
 	}
 	
-	public void calculateCritical() {
-		maxStats.critical = maxStats.DEX / 5;
+	private void calculateCritical() {
+		maxStats.critical = maxStats.DEX + maxStats.AGI / 2;
+		currentStats.critical = maxStats.critical;
 	}
 	
 

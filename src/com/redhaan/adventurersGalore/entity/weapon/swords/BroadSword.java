@@ -14,10 +14,10 @@ public class BroadSword extends Weapon {
 	public BroadSword() {
 		
 		name = "Broadsword";
-		hit = 70;
-		damage = 60;
+		hit = 60;
+		damage = 8;
 		crit = 10;
-		weight = 55;
+		weight = 10;
 		
 		xTile = 1;
 		yTile = 0;

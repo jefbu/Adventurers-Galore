@@ -4,13 +4,16 @@ import com.redhaan.adventurersGalore.entity.Monster;
 
 public abstract class Attack {
 	
-	public static int attacks = 0;
+	//public static int attacks = 0;
 	
 	public static void attack(Monster attacker, Monster defender) {
 		
-		attacks++;
+		//attacks++;
 		boolean hit = checkToHit(attacker, defender);
 		if(hit) {
+			PowAnimation.activated = true;
+			PowAnimation.x = defender.getCombatX();
+			PowAnimation.y = defender.getCombatY();
 			calculateDamage(attacker, defender);
 		}
 						
@@ -27,9 +30,9 @@ public abstract class Attack {
 	}
 	
 	private static void calculateDamage(Monster attacker, Monster defender) {
-		
-		defender.currentStats.HP = defender.currentStats.HP - attacker.currentStats.attack;
 
+		defender.currentStats.HP = defender.currentStats.HP - attacker.currentStats.attack;
+		
 		if(defender.currentStats.HP <= 0) {
 			defender.setDead(true);
 		}

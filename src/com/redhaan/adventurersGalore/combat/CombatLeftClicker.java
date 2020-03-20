@@ -103,8 +103,6 @@ public abstract class CombatLeftClicker {
 
 	private static boolean checkIfEnemyInWeaponRange(Adventurer adventurer, int[] clickLocation) {
 
-		System.out.println(adventurer.getCombatX() + " / " + clickLocation[0] + " / " + adventurer.getCombatY() + " / "
-				+ clickLocation[1]);
 
 		if (adventurer.getCombatX() - 1 == clickLocation[0] && adventurer.getCombatY() == clickLocation[1]) {
 			return true;

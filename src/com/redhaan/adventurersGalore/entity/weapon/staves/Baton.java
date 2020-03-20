@@ -15,9 +15,9 @@ public class Baton extends Weapon {
 		
 		name = "Baton";
 		hit = 95;
-		damage = 50;
+		damage = 5;
 		crit = 10;
-		weight = 45;
+		weight = 5;
 		
 		xTile = 2;
 		yTile = 2;

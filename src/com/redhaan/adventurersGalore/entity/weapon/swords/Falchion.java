@@ -15,9 +15,9 @@ public class Falchion extends Weapon {
 		
 		name = "Falchion";
 		hit = 85;
-		damage = 75;
+		damage = 10;
 		crit = 20;
-		weight = 80;
+		weight = 8;
 		
 		xTile = 9;
 		yTile = 0;

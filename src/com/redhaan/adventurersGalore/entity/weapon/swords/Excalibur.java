@@ -15,9 +15,9 @@ public class Excalibur extends Weapon {
 		
 		name = "Excalibur";
 		hit = 75;
-		damage = 120;
+		damage = 14;
 		crit = 10;
-		weight = 90;
+		weight = 18;
 		
 		xTile = 11;
 		yTile = 0;

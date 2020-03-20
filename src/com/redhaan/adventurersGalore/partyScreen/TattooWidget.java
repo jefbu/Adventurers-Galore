@@ -1,5 +1,6 @@
 package com.redhaan.adventurersGalore.partyScreen;
 
+import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -28,6 +29,13 @@ public class TattooWidget extends GameObject {
 	public void render(GameContainer gameContainer, Renderer renderer) {
 
 		renderer.drawRectOpaque(offX, offY, width, height, 0xff282028);
+		
+		for (int i = 0; i < GameManager.adventurers.allAdventurers.get(PartyScreen.member).tattooSlots; i++) {
+			
+			renderer.drawRectOpaque(offX + 5, (offY + 5) +  i * (height / 4 + 5), width - 10, height / 4, 0xff584858);
+			renderer.drawText(GameManager.adventurers.allAdventurers.get(PartyScreen.member).tattoos.get(i).name, offX + 10, (offY + 10) +  i * (height / 4 + 5), 0xffCCBBCC);
+			
+		}
 		
 	}
 	

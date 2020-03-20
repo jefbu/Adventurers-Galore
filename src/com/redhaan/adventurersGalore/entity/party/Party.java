@@ -38,11 +38,6 @@ public class Party extends GameObject {
 		
 		switch (GameManager.gameState) {
 		
-		case Combat:
-			break;
-		
-		case Titlescreen:
-			break;
 		case WorldMap:
 			switch (WorldMap.getSubState()) {
 			case GlobalMap:
@@ -62,8 +57,11 @@ public class Party extends GameObject {
 				break;
 			}
 			break;
-		case InTown:
-			break;
+			
+		case InTown: break;
+		case PartyScreen: break;
+		case Combat: break;
+		case Titlescreen: break;
 
 		}
 		
@@ -74,11 +72,6 @@ public class Party extends GameObject {
 		
 		switch (GameManager.gameState) {
 		
-		case Combat:
-			break;
-		
-		case Titlescreen:
-			break;
 		case WorldMap:
 			switch (WorldMap.getSubState()) {
 			case DetailMap:
@@ -99,8 +92,11 @@ public class Party extends GameObject {
 				break;
 			}
 			break;
-		case InTown:
-			break;
+			
+		case InTown: break;
+		case Combat: break;
+		case Titlescreen: break;
+		case PartyScreen: break;
 
 		}
 		

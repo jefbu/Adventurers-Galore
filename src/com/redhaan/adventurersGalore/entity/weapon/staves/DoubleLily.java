@@ -15,9 +15,9 @@ public class DoubleLily extends Weapon {
 		
 		name = "Double Lily";
 		hit = 120;
-		damage = 70;
+		damage = 7;
 		crit = 25;
-		weight = 70;
+		weight = 7;
 		
 		xTile = 5;
 		yTile = 2;

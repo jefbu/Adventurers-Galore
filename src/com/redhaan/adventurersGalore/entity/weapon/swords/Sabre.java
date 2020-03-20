@@ -16,9 +16,9 @@ public class Sabre extends Weapon {
 		
 		name = "Sabre";
 		hit = 80;
-		damage = 60;
+		damage = 8;
 		crit = 15;
-		weight = 60;
+		weight = 7;
 		
 		xTile = 3;
 		yTile = 0;

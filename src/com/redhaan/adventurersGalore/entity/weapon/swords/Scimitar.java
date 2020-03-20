@@ -15,9 +15,9 @@ public class Scimitar extends Weapon {
 		
 		name = "Scimitar";
 		hit = 70;
-		damage = 80;
+		damage = 8;
 		crit = 20;
-		weight = 70;
+		weight = 8;
 		
 		xTile = 5;
 		yTile = 0;

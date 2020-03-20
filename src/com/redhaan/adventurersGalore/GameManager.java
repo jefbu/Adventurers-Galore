@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.redhaan.adventurersGalore.calendar.Calendar;
 import com.redhaan.adventurersGalore.combat.Combat;
+import com.redhaan.adventurersGalore.combat.PowAnimation;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurers;
 import com.redhaan.adventurersGalore.entity.party.Party;
 import com.redhaan.adventurersGalore.entity.party.TravelerEngine;
@@ -38,6 +39,7 @@ public class GameManager extends AbstractGame {
 		gameObjects.add(new Towns());
 		gameObjects.add(new Party());
 		gameObjects.add(new PartyScreen());
+		gameObjects.add(new PowAnimation());
 		
 		adventurers = new Adventurers();
 		//gameObjects.add(adventurers);
@@ -58,10 +60,6 @@ public class GameManager extends AbstractGame {
 			}
 		}
 
-		/*
-		 * if(gameContainer.getInput().isKey(KeyEvent.VK_A)) { clip.play();
-		 * System.out.println("A"); } temp += deltaTime * 5; if(temp > 3) { temp = 0; }
-		 */
 	}
 
 	@Override

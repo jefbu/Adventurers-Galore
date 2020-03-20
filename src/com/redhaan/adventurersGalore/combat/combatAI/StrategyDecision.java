@@ -3,9 +3,9 @@ package com.redhaan.adventurersGalore.combat.combatAI;
 public abstract class StrategyDecision {
 	
 	
-	public static CombatStrategies decideCombatStrategy() {
+	public static HighLevelPlan decideCombatStrategy() {
 		
-		return CombatStrategies.Defend;
+		return HighLevelPlan.Defend;
 		
 	}
 

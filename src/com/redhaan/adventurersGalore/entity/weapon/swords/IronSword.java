@@ -15,9 +15,9 @@ public class IronSword extends Weapon {
 		
 		name = "Iron Sword";
 		hit = 80;
-		damage = 50;
+		damage = 7;
 		crit = 10;
-		weight = 50;
+		weight = 6;
 		
 		xTile = 0;
 		yTile = 0;

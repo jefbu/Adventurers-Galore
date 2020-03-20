@@ -15,9 +15,9 @@ public class Dagger extends Weapon {
 		
 		name = "Dagger";
 		hit = 75;
-		damage = 40;
+		damage = 6;
 		crit = 25;
-		weight = 40;
+		weight = 4;
 		
 		xTile = 1;
 		yTile = 1;

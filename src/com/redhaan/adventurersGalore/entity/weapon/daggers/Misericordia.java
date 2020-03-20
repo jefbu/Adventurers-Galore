@@ -15,9 +15,9 @@ public class Misericordia extends Weapon {
 		
 		name = "Misericordia";
 		hit = 95;
-		damage = 80;
+		damage = 8;
 		crit = 35;
-		weight = 65;
+		weight = 6;
 		
 		xTile = 6;
 		yTile = 1;

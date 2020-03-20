@@ -15,9 +15,9 @@ public class SilverSword extends Weapon {
 		
 		name = "Silver Sword";
 		hit = 80;
-		damage = 80;
+		damage = 11;
 		crit = 20;
-		weight = 75;
+		weight = 10;
 		
 		xTile = 7;
 		yTile = 0;

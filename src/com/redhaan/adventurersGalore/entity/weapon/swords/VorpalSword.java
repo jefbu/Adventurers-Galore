@@ -15,9 +15,9 @@ public class VorpalSword extends Weapon {
 		
 		name = "Vorpal Sword";
 		hit = 100;
-		damage = 90;
+		damage = 12;
 		crit = 20;
-		weight = 85;
+		weight = 14;
 		
 		xTile = 10;
 		yTile = 0;

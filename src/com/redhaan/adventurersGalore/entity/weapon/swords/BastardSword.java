@@ -15,9 +15,9 @@ public class BastardSword extends Weapon {
 		
 		name = "Bastard Sword";
 		hit = 65;
-		damage = 75;
+		damage = 8;
 		crit = 15;
-		weight = 70;
+		weight = 12;
 		
 		xTile = 2;
 		yTile = 0;

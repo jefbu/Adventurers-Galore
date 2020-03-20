@@ -210,6 +210,7 @@ public class WorldMap extends GameObject {
 		case Titlescreen: break;
 		case InTown: break;
 		case Combat: break;
+		case PartyScreen: break;
 		
 		case WorldMap:
 

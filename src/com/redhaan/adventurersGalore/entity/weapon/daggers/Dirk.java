@@ -15,9 +15,9 @@ public class Dirk extends Weapon {
 		
 		name = "Dirk";
 		hit = 75;
-		damage = 50;
+		damage = 6;
 		crit = 30;
-		weight = 50;
+		weight = 4;
 		
 		xTile = 2;
 		yTile = 1;

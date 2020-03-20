@@ -40,6 +40,7 @@ public class Calendar extends GameObject {
 		case Combat: break;
 		case InTown: break;
 		case Titlescreen: break;
+		case PartyScreen: break;
 		
 		case WorldMap:
 			
@@ -90,12 +91,14 @@ public class Calendar extends GameObject {
 		case Combat: break;
 		case Titlescreen: break;
 		case InTown: break;
+		case PartyScreen: break;
+		
 		case WorldMap:
 		
-		renderer.drawRectOpaque(520, 20, 100, 20, 0x33cccccc);
-		renderer.drawRect(525, 22, 20, 16, 0xff000000);
-		renderer.drawImageTile(image, 525, 22, imgX, imgY);
-		renderer.drawText(month.toString() + ", " + monthDay + "  (S)", 550, 25, 0xff000000);
+		renderer.drawRectOpaque(500, 20, 120, 20, 0x33cccccc);
+		renderer.drawRect(505, 22, 20, 16, 0xff000000);
+		renderer.drawImageTile(image, 505, 22, imgX, imgY);
+		renderer.drawText(month.toString() + ", " + monthDay + "  (S)", 530, 25, 0xff000000);
 		
 		break;
 		}

@@ -14,10 +14,10 @@ public class Machete extends Weapon {
 	public Machete() {
 		
 		name = "Machete";
-		hit = 80;
-		damage = 60;
+		hit = 85;
+		damage = 6;
 		crit = 30;
-		weight = 60;
+		weight = 6;
 		
 		xTile = 4;
 		yTile = 1;

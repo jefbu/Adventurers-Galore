@@ -15,9 +15,9 @@ public class Epee extends Weapon {
 		
 		name = "Epee";
 		hit = 90;
-		damage = 60;
+		damage = 8;
 		crit = 30;
-		weight = 70;
+		weight = 7;
 		
 		xTile = 8;
 		yTile = 0;

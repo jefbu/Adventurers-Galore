@@ -15,9 +15,9 @@ public class Katana extends Weapon {
 		
 		name = "Katana";
 		hit = 85;
-		damage = 70;
+		damage = 9;
 		crit = 15;
-		weight = 70;
+		weight = 10;
 		
 		xTile = 6;
 		yTile = 0;

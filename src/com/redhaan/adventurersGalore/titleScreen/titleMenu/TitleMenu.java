@@ -35,7 +35,6 @@ public class TitleMenu extends GameObject {
 	public void update(GameContainer gameContainer, float deltaTime) {
 		
 		if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
-			System.out.println("clicked");
 		};
 		
 		if(startRect.isActive()) {

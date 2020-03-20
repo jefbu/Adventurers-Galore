@@ -14,10 +14,10 @@ public class Cinqueada extends Weapon {
 	public Cinqueada() {
 		
 		name = "Cinqueada";
-		hit = 85;
-		damage = 50;
+		hit = 80;
+		damage = 6;
 		crit = 35;
-		weight = 55;
+		weight = 5;
 		
 		xTile = 3;
 		yTile = 1;
