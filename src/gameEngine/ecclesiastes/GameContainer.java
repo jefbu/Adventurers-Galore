@@ -48,7 +48,7 @@ public class GameContainer implements Runnable {
 		
 		while (running) {
 			
-			//render = false;
+			render = false;
 			
 			firstTime = System.nanoTime() / 1000000000.0;
 			passedTime = firstTime - lastTime;
@@ -64,7 +64,6 @@ public class GameContainer implements Runnable {
 				
 				game.update(this, (float)UPDATE_CAP); 
 				
-				//System.out.println("X: " + input.getMouseX() + ", Y: " + input.getMouseY()); 
 				input.update();
 				
 				if(frameTime >= 1.0) {

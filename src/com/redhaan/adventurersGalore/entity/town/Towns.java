@@ -16,9 +16,14 @@ public class Towns extends GameObject {
 		super();
 		allTowns = new ArrayList<Town>();
 		allTowns.add(Town.kaghak);
-		allTowns.add(Town.datark);
 		allTowns.add(Town.apastan);
-		allTowns.add(Town.chahich);
+		allTowns.add(Town.ydatopto);
+		allTowns.add(Town.vrochi);
+		allTowns.add(Town.omichli);
+		allTowns.add(Town.potami);
+		allTowns.add(Town.taranau);
+		allTowns.add(Town.sioc);
+		allTowns.add(Town.cebl);
 		
 	}
 

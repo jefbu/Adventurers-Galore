@@ -14,12 +14,11 @@ public abstract class Deployer {
 		boolean finished = false;
 		
 		for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {
-			
 			adventurer.setCombatX(0);
 			adventurer.setCombatY(0);
 			
 			if(adventurer.inParty) {
-			
+
 			finished = false;
 			
 			while(!finished) {

@@ -111,10 +111,16 @@ public class Town extends GameObject {
 
 	}
 
-	public static Town kaghak = new Town("Kaghak", new int[] { 14, 14, 15 }, new int[] { 12, 11, 11 });
-	public static Town datark = new Town("Datark", new int[] { 5, 6 }, new int[] { 9, 9 });
-	public static Town apastan = new Town("Apastan", new int[] { 15 }, new int[] { 5 });
-	public static Town chahich = new Town("Chahich", new int[] { 24 }, new int[] { 10 });
+	public static Town kaghak = new Town("Kaghak", new int[] { 14, 14 }, new int[] { 12, 11 });
+	public static Town apastan = new Town("Apastan", new int[] { 18 }, new int[] { 25 });
+	public static Town ydatopto = new Town("Ydatopto", new int[] { 8, 9, 8, 9 }, new int[] { 54, 54, 55, 55 });
+	public static Town vrochi = new Town("Vrochi", new int[] { 13, 13 }, new int[] { 51, 52 });
+	public static Town omichli= new Town("Omichli", new int[] { 16, 16, 17 }, new int[] { 58, 59, 59 });
+	public static Town potami = new Town("Potami", new int[] { 5, 6 }, new int[] { 62, 62 });
+	public static Town taranau = new Town("Taranau", new int[] { 31 }, new int[] { 37 });
+	public static Town sioc = new Town("Sioc", new int[] { 27, 28 }, new int[] { 44, 44 });
+	public static Town cebl = new Town("Cebl", new int[] { 35 }, new int[] { 46 });
+
 
 	public static ArrayList<Town> allTowns = new ArrayList<Town>();
 

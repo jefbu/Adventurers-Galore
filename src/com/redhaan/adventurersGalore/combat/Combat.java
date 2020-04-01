@@ -51,7 +51,6 @@ public class Combat extends GameObject {
 			case Conclusion: CombatConclusion.combatConclude(); break;
 						
 			case Combat:
-			
 				switch(Combat.combatState) {
 				
 				case PlayerTurn:

@@ -76,7 +76,7 @@ public class GameManager extends AbstractGame {
 		GameContainer gameContainer = new GameContainer(new GameManager());
 		gameContainer.setWidth(GAMEWIDTH);
 		gameContainer.setHeight(GAMEHEIGHT);
-		gameContainer.setScale(2.00f);
+		gameContainer.setScale(1.50f);
 		gameContainer.start();
 		
 	}
