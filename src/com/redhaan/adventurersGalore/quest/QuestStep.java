@@ -44,4 +44,23 @@ public class QuestStep  {
 		
 	}
 	
+	public void decideOtherQuestStepLocation(QuestLocationType questLocationType, QuestStep questStep, Town town, Inn inn, int[] xLocations, int[]yLocations, int distance) {
+		
+		Random random = new Random();
+		
+		switch(questLocationType) {
+		case CloseToTown: break;
+		case InInn: break;
+		case InTown:
+			
+			break;
+		
+		default: break;
+		
+		}
+		
+	}
+	
+	
+	
 }
