@@ -54,7 +54,16 @@ public class OptionsWidget extends GameObject {
 			}
 			if (gameContainer.getInput().isKeyUp(KeyEvent.VK_ENTER)) {
 				switch(activeOption) {
-				case 1: if (PartyScreen.member < partyMembers - 1) { PartyScreen.member++; } break;
+				
+				case 1: if (PartyScreen.member < partyMembers - 1) { PartyScreen.member++; } 
+						Adventurer hero = GameManager.adventurers.allAdventurers.get(PartyScreen.member);
+						System.out.println("Adventurer: " + hero.name);
+						System.out.println("HP Rate: " + hero.levelupPercentages.HP + ", " + "MP Rate: " + hero.levelupPercentages.MP);
+						System.out.println("PHY Rate: " + hero.levelupPercentages.PHY + ", " + "AGI Rate: " + hero.levelupPercentages.AGI + ", " + "MAG Rate: " + hero.levelupPercentages.MAG);
+						System.out.println("DEX Rate: " + hero.levelupPercentages.DEX + ", " + "INT Rate: " + hero.levelupPercentages.INT + ", " + "PRC Rate: " + hero.levelupPercentages.PRC);
+						System.out.println("MOV Rate: " + hero.levelupPercentages.move);
+						System.out.println("##########################	");
+				break;				
 				case 2: if (PartyScreen.member > 0) { PartyScreen.member--; } break;
 				case 3: break;
 				case 4: break;

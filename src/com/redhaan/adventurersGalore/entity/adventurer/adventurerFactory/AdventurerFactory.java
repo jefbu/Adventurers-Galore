@@ -108,7 +108,7 @@ public class AdventurerFactory {
 		adventurer.levelupPercentages.DEX = 10 + adventurer.race.percentageStats.DEX + adventurer.job.percentageStats.DEX + rollTierStatBonus(adventurer.tier)+ random.nextInt(11); 
 		adventurer.levelupPercentages.INT = 10 + adventurer.race.percentageStats.INT + adventurer.job.percentageStats.INT + rollTierStatBonus(adventurer.tier)+ random.nextInt(11); 
 		adventurer.levelupPercentages.PRC = 10 + adventurer.race.percentageStats.PRC + adventurer.job.percentageStats.PRC + rollTierStatBonus(adventurer.tier)+ random.nextInt(11); 
-		adventurer.levelupPercentages.move = 5 + adventurer.job.percentageStats.PHY + random.nextInt(6); 
+		adventurer.levelupPercentages.move = 5 + adventurer.job.percentageStats.move + random.nextInt(6); 
 				
 
 	}
