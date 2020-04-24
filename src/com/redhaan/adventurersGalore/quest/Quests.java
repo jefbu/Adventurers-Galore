@@ -37,7 +37,7 @@ public class Quests extends GameObject {
 		
 		case WorldMap:
 			for (Quest quest: allQuests) {
-				quest.update();
+				quest.update(gameContainer, deltaTime);
 			}			
 			break;
 		

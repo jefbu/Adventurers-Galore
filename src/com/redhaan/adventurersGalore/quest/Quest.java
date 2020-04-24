@@ -2,10 +2,14 @@ package com.redhaan.adventurersGalore.quest;
 
 import java.util.ArrayList;
 
+import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.entity.adventurer.adventurerFactory.AdventurerFactory;
 
-public class Quest {
+import gameEngine.ecclesiastes.GameContainer;
+import gameEngine.ecclesiastes.Renderer;
+
+public class Quest extends GameObject {
 	
 	public ArrayList<QuestStep> questSteps;
 	public Adventurer questRequester;
@@ -21,7 +25,14 @@ public class Quest {
 		
 	}
 
-	public void update() { }
+
+	@Override
+	public void update(GameContainer gameContainer, float deltaTime) {		
+	}
+
+	@Override
+	public void render(GameContainer gameContainer, Renderer renderer) {		
+	}
 
 
 }
