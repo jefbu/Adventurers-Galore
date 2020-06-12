@@ -67,24 +67,24 @@ public class TravelerEvent extends GameObject {
 		switch(Calendar.calendarSpeed) {
 		
 		case 1: 
-			if (roll > 98) { createMajorEvent(); }
-			else if (roll > 92) { createMediumEvent(); }
-			else if (roll > 83) { createMinorEvent(); }
+			if (roll > 99) { createMajorEvent(); }
+			else if (roll > 97) { createMediumEvent(); }
+			else if (roll > 92) { createMinorEvent(); }
 			break;
 		case 3: 
-			if (roll > 96) { createMajorEvent(); }
-			else if (roll > 90) { createMediumEvent(); }
-			else if (roll > 85) { createMinorEvent(); }			
+			if (roll > 99) { createMajorEvent(); }
+			else if (roll > 97) { createMediumEvent(); }
+			else if (roll > 95) { createMinorEvent(); }			
 			break;
 		case 10: 
-			if (roll > 95) { createMajorEvent(); }
-			else if (roll > 90) { createMediumEvent(); }
-			else if (roll > 87) { createMinorEvent(); }
+			if (roll > 98) { createMajorEvent(); }
+			else if (roll > 96) { createMediumEvent(); }
+			else if (roll > 95) { createMinorEvent(); }
 			break;
 		case 40: 
-			if (roll > 94) { createMajorEvent(); }
-			else if (roll > 92) { createMediumEvent(); }
-			else if (roll > 90) { createMinorEvent(); }
+			if (roll > 98) { createMajorEvent(); }
+			else if (roll > 97) { createMediumEvent(); }
+			else if (roll > 96) { createMinorEvent(); }
 			break;
 		
 		default: System.out.println("Error in rollTravelerEvent"); break;

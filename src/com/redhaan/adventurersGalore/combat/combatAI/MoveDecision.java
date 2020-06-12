@@ -1,7 +1,6 @@
 package com.redhaan.adventurersGalore.combat.combatAI;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;

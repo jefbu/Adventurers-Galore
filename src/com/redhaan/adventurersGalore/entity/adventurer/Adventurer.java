@@ -10,10 +10,9 @@ import com.redhaan.adventurersGalore.combat.CombatLeftClicker;
 import com.redhaan.adventurersGalore.combat.MoveAreaDrawer;
 import com.redhaan.adventurersGalore.combat.PlayerTurnLeftClickSituations;
 import com.redhaan.adventurersGalore.entity.Monster;
-import com.redhaan.adventurersGalore.entity.armour.Armour;
+import com.redhaan.adventurersGalore.entity.adventurer.personality.Personality;
 import com.redhaan.adventurersGalore.entity.combatAddOns.HealthBar;
 import com.redhaan.adventurersGalore.entity.town.Town;
-import com.redhaan.adventurersGalore.entity.weapon.Weapon;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
@@ -25,6 +24,8 @@ public class Adventurer extends Monster {
 	public String gender;
 	private int genderInt;
 	public int age;
+	
+	public int mapX, mapY;
 
 	private int level;
 	private int money;
@@ -41,6 +42,8 @@ public class Adventurer extends Monster {
 	public int tattooSlots;
 	public ArrayList<Tattoo> tattoos;
 	
+	public Personality personality;
+	
 	public Adventurer() {
 
 		super();
@@ -52,6 +55,7 @@ public class Adventurer extends Monster {
 		battlesPassed = 0;
 		tattoos = new ArrayList<Tattoo>();
 		genderInt = 0;
+		personality = new Personality();
 
 	}
 

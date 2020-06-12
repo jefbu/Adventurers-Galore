@@ -6,6 +6,8 @@ public enum GameState {
 	WorldMap,
 	InTown, 
 	Combat,
-	PartyScreen
+	PartyScreen,
+	QuestUI,
+	Transition
 
 }

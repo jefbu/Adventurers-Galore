@@ -18,8 +18,8 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 public class Town extends GameObject {
 
 	public String name;
-	private int[] xLocations;
-	private int[] yLocations;
+	public int[] xLocations;
+	public int[] yLocations;
 	private ImageTile tileSet;
 
 	public ArrayList<Building> buildings;

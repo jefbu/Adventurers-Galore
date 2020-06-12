@@ -9,12 +9,10 @@ import com.redhaan.adventurersGalore.entity.weapon.swords.IronSword;
 
 public class Player extends Adventurer {
 
-	private static int xTile, yTile;
-
 	public Player() {
 		
 		super();
-		job = Job.squire;
+		job = Job.archer;
 		icon = job.icon;
 		inParty = true;
 		currentStats.move = 8;
@@ -24,30 +22,18 @@ public class Player extends Adventurer {
 		armour = new ReinforcedLeather();
 		calculateSecondaryStats();
 		name = "Moltke";
-		gender = "Male";
+		gender = "male";
 		age = 58;
 		currentStats.TST = 0;
 		homeTown = Town.apastan;
 		tier = 1;
 		affinities = new Affinities();
+		mapX = 10;
+		mapY = 10;
 		
 	}
 
 	
-	public static int getXTile() {
-		return xTile;
-	}
-	
-	public static int getYTile() {
-		return yTile;
-	}
-	
-	public static void setXTile(int xTile) {
-		Player.xTile = xTile;
-	}
-	
-	public static void setYTile(int yTile) {
-		Player.yTile = yTile;
-	}
+
 
 }

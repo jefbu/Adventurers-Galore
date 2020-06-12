@@ -8,13 +8,14 @@ public class FetchQuest extends Quest {
 	
 	public FetchQuest() {
 		
+		maxPartySize = 20;
 		questSteps.add(new GoGetMyTrinket());
 		
 	}
 	
 	
 	@Override
-	public void update(GameContainer gameContainer, float deltaTime) {		
+	public void update(GameContainer gameContainer, float deltaTime) {	
 		questSteps.get(questStepNumber).update(gameContainer, this);		
 	}
 

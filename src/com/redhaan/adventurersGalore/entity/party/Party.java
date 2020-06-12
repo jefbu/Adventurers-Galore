@@ -2,6 +2,7 @@ package com.redhaan.adventurersGalore.entity.party;
 
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
+import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.worldMap.WorldMap;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -35,6 +36,10 @@ public class Party extends GameObject {
 
 	@Override
 	public void update(GameContainer gameContainer, float deltaTime) {
+		
+		for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {
+			if(adventurer.inParty) { adventurer.mapX = xTile; adventurer.mapY = yTile; }
+		}
 		
 		switch (GameManager.gameState) {
 		

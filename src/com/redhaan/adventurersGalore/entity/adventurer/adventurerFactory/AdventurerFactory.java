@@ -171,6 +171,8 @@ public class AdventurerFactory {
 		Random random = new Random();
 		int roll = random.nextInt(Towns.allTowns.size());
 		adventurer.homeTown = Towns.allTowns.get(roll);
+		adventurer.mapX = adventurer.homeTown.xLocations[0];
+		adventurer.mapY = adventurer.homeTown.yLocations[0];
 
 	}
 	

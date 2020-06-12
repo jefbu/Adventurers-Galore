@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.entity.adventurer.adventurerFactory.AdventurerFactory;
+import com.redhaan.adventurersGalore.quest.quests.fetchQuest.GoGetMyTrinket;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
@@ -12,16 +13,22 @@ import gameEngine.ecclesiastes.Renderer;
 public class Quest extends GameObject {
 	
 	public ArrayList<QuestStep> questSteps;
-	public Adventurer questRequester;
+	public Adventurer requester;
 	private AdventurerFactory adventurerFactory;
 	public int questStepNumber;
+	public Adventurer owner;
+	public int maxPartySize;
+	public ArrayList<Adventurer> questParty;
+	public boolean playerQuest;
 	
 	public Quest() {
 		
 		questSteps = new ArrayList<QuestStep>();
 		adventurerFactory = new AdventurerFactory();
-		questRequester = adventurerFactory.createTieredAdventurer(0);
+		requester = adventurerFactory.createTieredAdventurer(0);
 		questStepNumber = 0;
+		questParty = new ArrayList<Adventurer>();
+		playerQuest = false;
 		
 	}
 
@@ -33,6 +40,12 @@ public class Quest extends GameObject {
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {		
 	}
-
-
+	
+	
+	public void conclude() {
+		
+	}
+	
+	
+	
 }

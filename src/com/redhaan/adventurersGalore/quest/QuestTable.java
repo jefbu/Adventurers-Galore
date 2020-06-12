@@ -9,9 +9,9 @@ public abstract class QuestTable {
 		
 	switch(roll) {
 		
-		case 0: return new VampireVirgin();
-		case 1: return new FetchQuest();
-		default: return new FetchQuest();
+		case 0: return new FetchQuest();
+		//case 1: return new VampireVirgin();
+		default: return new FetchQuest(); 
 		
 	}
 }

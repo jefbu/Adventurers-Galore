@@ -27,16 +27,16 @@ public class WorldMap extends GameObject {
 	private static int scrollSpeedControlX, scrollSpeedControlY;
 	public WorldMapTileInfo worldMapTileInfo;
 	private TravelerEvent baseEvent;
-	
+
 	private ImageTile birds;
 	private boolean birdsFlying;
 	private int birdsX, birdsY;
 	private int birdsCounter;
-	
+
 	private Image clouds;
 	private int cloudsX, cloudsY;
 	private int cloudsCounter;
-	
+
 	Random random;
 
 	public WorldMap() {
@@ -44,7 +44,7 @@ public class WorldMap extends GameObject {
 		levelDrawer = new LevelDrawer();
 		globalMap = new Image("/worldMap/WorldMap.png");
 		detailMap = new Image("/worldMap/DetailMap.png");
-		
+
 		random = new Random();
 		birds = new ImageTile("/worldMap/birds.png", GameManager.GAMETILESIZE * 2, GameManager.GAMETILESIZE * 2);
 		birdsFlying = false;
@@ -56,29 +56,33 @@ public class WorldMap extends GameObject {
 		cloudsX = 0;
 		cloudsY = 0;
 		cloudsCounter = 0;
-		
+
 		worldMapTileInfo = new WorldMapTileInfo();
 
 		offX = 0;
 		offY = 0;
 		scrollSpeedControlX = 0;
 		scrollSpeedControlY = 0;
-		
+
 		baseEvent = new TravelerEvent();
 
 	}
 
 	public void update(GameContainer gameContainer, float deltaTime) {
-		
-		switch (GameManager.gameState) {
-		
-		case Titlescreen: break;
-		case Combat: break;
-		case InTown: break;
-		case PartyScreen: break;
-		
-		case WorldMap:
 
+		switch (GameManager.gameState) {
+
+		case Titlescreen:
+			break;
+		case Combat:
+			break;
+		case InTown:
+			break;
+		case PartyScreen:
+			break;
+
+		case WorldMap:
+			
 			switch (subState) {
 			case DetailMap:
 				if (gameContainer.getInput().getScroll() < 0) {
@@ -124,48 +128,53 @@ public class WorldMap extends GameObject {
 				}
 
 				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON3)) {
-					Party.setxDestinationTile((offX + (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE)));
+					Party.setxDestinationTile(
+							(offX + (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE)));
 					Party.setyDestinationTile(offY + (gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE));
 					TravelerEngine.traveling = true;
 				}
 
 				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
-					int number = (gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE + offY)
-							* (160)
+					int number = (gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE + offY) * (160)
 							+ gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE + offX;
-					System.out.println(WorldMapTileInfo.tiles[number].toString());
 				}
 
 				break;
 			case GlobalMap:
-				
+
 				cloudsCounter++;
-				if(cloudsCounter > 5) {
+				if (cloudsCounter > 5) {
 					cloudsX--;
 					cloudsCounter = 0;
 				}
-				
-				if(cloudsX < -GameManager.GAMEWIDTH * 4) { cloudsX = 0; }
-				
-				if(birdsFlying) {
+
+				if (cloudsX < -GameManager.GAMEWIDTH * 4) {
+					cloudsX = 0;
+				}
+
+				if (birdsFlying) {
 
 					birdsX++;
 					birdsY--;
-					if (random.nextInt(100) > 80) { birdsCounter ++; }
-					if (birdsCounter > 3) { birdsCounter = 0; }
-					
-					if(birdsX > GameManager.GAMEWIDTH + 64 || birdsY < -64) {
+					if (random.nextInt(100) > 80) {
+						birdsCounter++;
+					}
+					if (birdsCounter > 3) {
+						birdsCounter = 0;
+					}
+
+					if (birdsX > GameManager.GAMEWIDTH + 64 || birdsY < -64) {
 						birdsFlying = false;
 						birdsX = random.nextInt(GameManager.GAMEWIDTH);
 						birdsY = GameManager.GAMEHEIGHT - 10;
 						birdsCounter = 0;
 					}
+				} else {
+					if (random.nextInt(1000) > 995) {
+						birdsFlying = true;
+					}
 				}
-				else {
-					if (random.nextInt(1000) > 995) { birdsFlying = true; }
-				}
-				
-				
+
 				if (gameContainer.getInput().getScroll() > 0) {
 					offX = (gameContainer.getInput().getMouseX() / 4
 							- (GameManager.GAMEWIDTH / GameManager.GAMETILESIZE / 2));
@@ -197,7 +206,7 @@ public class WorldMap extends GameObject {
 			break;
 
 		}
-		
+
 		if (gameContainer.getInput().isKeyUp(KeyEvent.VK_P)) {
 			GameManager.gameState = GameState.PartyScreen;
 		}
@@ -206,37 +215,47 @@ public class WorldMap extends GameObject {
 
 	public void render(GameContainer gameContainer, Renderer renderer) {
 		switch (GameManager.gameState) {
-		
-		case Titlescreen: break;
-		case InTown: break;
-		case Combat: break;
-		case PartyScreen: break;
-		
+
+		case Titlescreen:
+			break;
+		case InTown:
+			break;
+		case Combat:
+			break;
+		case PartyScreen:
+			break;
+
 		case WorldMap:
 
 			switch (subState) {
 			case GlobalMap:
-				
+
 				renderer.drawImage(globalMap, 0, 0);
-				
+
 				renderer.drawImage(clouds, cloudsX, cloudsY);
-				
-				if(birdsFlying) {
+
+				if (birdsFlying) {
 					renderer.drawImageTile(birds, birdsX, birdsY, birdsCounter, 0);
 				}
 				break;
 			case DetailMap:
-				levelDrawer.drawLevel(renderer, detailMap, offX, offY);
+				levelDrawer.drawLevel(renderer, detailMap, offX, offY, false);
 				break;
 			case TravelerEvent:
-				switch(previousSubState) {
-				case GlobalMap: renderer.drawImage(globalMap, 0, 0); break;
-				case DetailMap: levelDrawer.drawLevel(renderer, detailMap, offX, offY); break;
-				case TravelerEvent: System.out.println("Error: Previous Substate was TravelerEvent"); break;
+				switch (previousSubState) {
+				case GlobalMap:
+					renderer.drawImage(globalMap, 0, 0);
+					break;
+				case DetailMap:
+					levelDrawer.drawLevel(renderer, detailMap, offX, offY, false);
+					break;
+				case TravelerEvent:
+					System.out.println("Error: Previous Substate was TravelerEvent");
+					break;
 				}
-			baseEvent.render(gameContainer, renderer);
-			TravelerEvent.currentEvent.render(gameContainer, renderer);
-				
+				baseEvent.render(gameContainer, renderer);
+				TravelerEvent.currentEvent.render(gameContainer, renderer);
+
 			}
 		}
 

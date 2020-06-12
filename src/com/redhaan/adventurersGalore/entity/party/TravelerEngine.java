@@ -3,7 +3,6 @@ package com.redhaan.adventurersGalore.entity.party;
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.calendar.Calendar;
-import com.redhaan.adventurersGalore.entity.party.travelerEvent.TravelerEvent;
 import com.redhaan.adventurersGalore.worldMap.SubState;
 import com.redhaan.adventurersGalore.worldMap.WorldMap;
 import com.redhaan.adventurersGalore.worldMap.WorldMapTileInfo;
@@ -45,7 +44,7 @@ public class TravelerEngine extends GameObject {
 				
 				if(timer * Calendar.calendarSpeed * deltaTime > 1) {
 					
-					TravelerEvent.rollTravelerEvent();
+					//TravelerEvent.rollTravelerEvent();
 					
 					int number = 0;
 					number = Party.getyTile() * 160 + Party.getxTile();

@@ -116,7 +116,7 @@ public class Monster extends NPC {
 						}
 					}
 						
-					if(moveRange.size() == 0) { moveRange = MoveRangeFiller.fillMoveRange(combatX, combatY, currentStats.move); }
+					if(moveRange.size() == 0) { moveRange = MoveRangeFiller.fillMoveRange(combatX, combatY, currentStats.move);}
 		
 					moveRangeCounter++;
 					if (moveRangeCounter < 60) { moveRangeFlareUp = true; } 

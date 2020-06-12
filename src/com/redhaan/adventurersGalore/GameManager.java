@@ -6,12 +6,14 @@ import com.redhaan.adventurersGalore.calendar.Calendar;
 import com.redhaan.adventurersGalore.combat.Combat;
 import com.redhaan.adventurersGalore.combat.PowAnimation;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurers;
+import com.redhaan.adventurersGalore.entity.adventurer.personality.Conversations;
 import com.redhaan.adventurersGalore.entity.party.Party;
 import com.redhaan.adventurersGalore.entity.party.TravelerEngine;
 import com.redhaan.adventurersGalore.entity.town.Towns;
 import com.redhaan.adventurersGalore.inTown.TownMap;
 import com.redhaan.adventurersGalore.partyScreen.PartyScreen;
 import com.redhaan.adventurersGalore.quest.Quests;
+import com.redhaan.adventurersGalore.quest.questUI.QuestUI;
 import com.redhaan.adventurersGalore.titleScreen.TitleScreen;
 import com.redhaan.adventurersGalore.worldMap.WorldMap;
 
@@ -42,6 +44,9 @@ public class GameManager extends AbstractGame {
 		gameObjects.add(new PartyScreen());
 		gameObjects.add(new PowAnimation());
 		gameObjects.add(new Quests());
+		gameObjects.add(new QuestUI());
+		gameObjects.add(new Transition());
+		gameObjects.add(new Conversations());
 		
 		adventurers = new Adventurers();
 		//gameObjects.add(adventurers);

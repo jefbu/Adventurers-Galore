@@ -39,7 +39,7 @@ public class TownMap extends GameObject {
 			if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON3)) {
 				GameManager.gameState = GameState.WorldMap;
 			}
-			
+						
 			break;
 		
 		case Titlescreen: break;

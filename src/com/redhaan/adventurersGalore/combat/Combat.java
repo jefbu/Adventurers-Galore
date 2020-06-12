@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.combat.combatAI.HighLevelPlan;
-import com.redhaan.adventurersGalore.combat.combatAI.StrategyDecision;
 import com.redhaan.adventurersGalore.entity.Monster;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.worldMap.LevelDrawer;
@@ -122,7 +121,7 @@ public class Combat extends GameObject {
 		switch(GameManager.gameState) {
 		
 		case Combat:
-			levelDrawer.drawLevel(renderer, combatMap, 0, 0);
+			levelDrawer.drawLevel(renderer, combatMap, 0, 0, true);
 			
 			for(Adventurer adventurer: GameManager.adventurers.allAdventurers) {
 				if(adventurer.inParty) {
