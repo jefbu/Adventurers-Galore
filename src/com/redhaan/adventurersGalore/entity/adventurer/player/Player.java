@@ -3,6 +3,8 @@ package com.redhaan.adventurersGalore.entity.adventurer.player;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.entity.adventurer.Affinities;
 import com.redhaan.adventurersGalore.entity.adventurer.Job;
+import com.redhaan.adventurersGalore.entity.adventurer.personality.Personality;
+import com.redhaan.adventurersGalore.entity.adventurer.personality.PersonalityTrait;
 import com.redhaan.adventurersGalore.entity.armour.ReinforcedLeather;
 import com.redhaan.adventurersGalore.entity.town.Town;
 import com.redhaan.adventurersGalore.entity.weapon.swords.IronSword;
@@ -30,6 +32,8 @@ public class Player extends Adventurer {
 		affinities = new Affinities();
 		mapX = 10;
 		mapY = 10;
+		personality = new Personality();
+		personality.traits.add(PersonalityTrait.Pedantic);
 		
 	}
 

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
+import com.redhaan.adventurersGalore.entity.adventurer.personality.PersonalityTrait;
 import com.redhaan.adventurersGalore.entity.armour.ReinforcedLeather;
 import com.redhaan.adventurersGalore.entity.town.Towns;
 
@@ -63,6 +64,7 @@ public class AdventurerFactory {
 		}
 
 		rollHomeTown();
+		rollPersonality();
 
 		
 		adventurer.tattooSlots = tattooFactory.rollTattooSlots(adventurer.tier, adventurer.tattooSlots);
@@ -174,6 +176,23 @@ public class AdventurerFactory {
 		adventurer.mapX = adventurer.homeTown.xLocations[0];
 		adventurer.mapY = adventurer.homeTown.yLocations[0];
 
+	}
+	
+	private void rollPersonality() {
+		
+		Random random = new Random();
+		for (int i = 0; i < 3; i++) {
+			int roll = random.nextInt(4);
+			switch(roll) {
+			case 0: adventurer.personality.traits.add(PersonalityTrait.Cynical); break;
+			case 1: adventurer.personality.traits.add(PersonalityTrait.Drunk); break;
+			case 2: adventurer.personality.traits.add(PersonalityTrait.Pedantic); break;
+			case 3: adventurer.personality.traits.add(PersonalityTrait.Witty); break;
+			default: 	System.out.println("Error at personality trait factory");
+						adventurer.personality.traits.add(PersonalityTrait.Pedantic);
+						break;
+			}
+		}
 	}
 	
 	private int rollAge() {

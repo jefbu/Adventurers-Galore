@@ -14,15 +14,19 @@ public class Conversations extends GameObject {
 	
 	public static boolean active;
 	Random random;
-	Adventurer speaker;
 	ConversationUI conversationUI;
-	String conversation;
+	Conversation conversation;
+	String stringToBeDrawn;
+	String stringToBeDrawnFrom;
+	private int timer;
 	
 	public Conversations() {
 		active = false;
 		random = new Random();
 		conversationUI = new ConversationUI();
-		conversation = "";
+		stringToBeDrawn = "";
+		stringToBeDrawnFrom = "";
+		timer = 0;
 	}
 	
 
@@ -36,24 +40,35 @@ public class Conversations extends GameObject {
 			
 			if(!active) {
 
-				if(random.nextInt(600) == 0) { 
+				if(random.nextInt(60) == 0) { 
 					ArrayList<Adventurer> candidates = new ArrayList<Adventurer>();
 					for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {
 						if(adventurer.inParty) { candidates.add(adventurer); }
 					}
-					if(candidates.size() > 1) {
+					if(candidates.size() > 2) {
 						active = true;
-						conversationUI.update(gameContainer, deltaTime);
-						conversation = ConversationStrings.rollConversation();
-						speaker = candidates.get(random.nextInt(candidates.size()));						
+						conversation = ConversationTable.rollConversation(candidates);
 					}
 				}
 				
 			} else {
 				
+				if(stringToBeDrawnFrom.length() == 0) {
+					stringToBeDrawnFrom = conversation.lines.get(conversation.lineNumber).line;
+				}
+				
+				if(stringToBeDrawn.length() != stringToBeDrawnFrom.length()) {
+					stringToBeDrawn = stringToBeDrawn + stringToBeDrawnFrom.substring(timer, timer + 1);
+					if(timer != stringToBeDrawnFrom.length() - 1) { timer++; }			
+				} 
+
+				
+				
 				
 				
 			}
+			
+			conversationUI.update(gameContainer, deltaTime);
 
 			break;
 			
@@ -79,8 +94,7 @@ public class Conversations extends GameObject {
 		case WorldMap:
 			if(active) {
 				conversationUI.render(gameContainer, renderer);
-				renderer.drawImageTile(speaker.icon, conversationUI.offX + 10, conversationUI.offY + 20 , 0, 0);
-				renderer.drawText(conversation, conversationUI.offX + 60, conversationUI.offY + 10, 0xffffffff);
+				renderer.drawText(stringToBeDrawn, 50, 50, 0xffffffff);
 			}
 			break;
 			
