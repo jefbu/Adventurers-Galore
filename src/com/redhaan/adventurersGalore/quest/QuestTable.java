@@ -1,6 +1,5 @@
 package com.redhaan.adventurersGalore.quest;
 
-import com.redhaan.adventurersGalore.quest.quests.VampireVirgin;
 import com.redhaan.adventurersGalore.quest.quests.fetchQuest.FetchQuest;
 
 public abstract class QuestTable {

@@ -10,7 +10,7 @@ public class JobFactory {
 	public JobFactory() { }
 	
 	
-	protected Job setJob(Race race, int level) {
+	protected Job setJob(Race race) {
 		
 		Job job = null;
 		Random random = new Random();
@@ -19,116 +19,32 @@ public class JobFactory {
 		switch(race.raceEnum) {
 		
 		case Human:
-			if (roll > 90) {
-				if (level > 20) { job = Job.redMist; }
-				else if (level > 10) { job = Job.berserker; }
-				else { job = Job.barbarian; }
-			}
-			else if (roll > 75) {
-				if (level > 20) { job = Job.sniper; }
-				else if (level > 10) { job = Job.hunter; }
-				else { job = Job.archer; }
-			}
-			else if (roll > 50) {
-				if (level > 20) { job = Job.catBurglar; }
-				else if (level > 10) { job = Job.knave; }
-				else { job = Job.thief; }
-			}
-			else if (roll > 25) {
-				if (level > 20) { job = Job.archMage; }
-				else if (level > 10) { job = Job.magus; }
-				else { job = Job.mage; }
-			}
-			else {
-				if (level > 20) { job = Job.paladin; }
-				else if (level > 10) { job = Job.knight; }
-				else { job = Job.squire; }
-			}
-			break;
+			if (roll > 90) { return Job.barbarian; 	}
+			else if (roll > 75) { return Job.archer; }
+			else if (roll > 50) { return Job.thief; }
+			else if (roll > 25) { return Job.mage; }
+			else { return Job.squire; }
 			
 		case Elf:
-			if (roll > 95) {
-				if (level > 20) { job = Job.redMist; }
-				else if (level > 10) { job = Job.berserker; }
-				else { job = Job.barbarian; }
-			}
-			else if (roll > 70) {
-				if (level > 20) { job = Job.sniper; }
-				else if (level > 10) { job = Job.hunter; }
-				else { job = Job.archer; }
-			}
-			else if (roll > 50) {
-				if (level > 20) { job = Job.catBurglar; }
-				else if (level > 10) { job = Job.knave; }
-				else { job = Job.thief; }
-			}
-			else if (roll > 25) {
-				if (level > 20) { job = Job.archMage; }
-				else if (level > 10) { job = Job.magus; }
-				else { job = Job.mage; }
-			}
-			else {
-				if (level > 20) { job = Job.paladin; }
-				else if (level > 10) { job = Job.knight; }
-				else { job = Job.squire; }
-			}
-			break;
+			if (roll > 95) { return Job.barbarian; }
+			else if (roll > 70) { return Job.archer; }
+			else if (roll > 50) { return Job.thief; }
+			else if (roll > 25) { return Job.mage; }
+			else { return Job.squire; }
 			
 		case Dwarf:
-			if (roll > 75) {
-				if (level > 20) { job = Job.redMist; }
-				else if (level > 10) { job = Job.berserker; }
-				else { job = Job.barbarian; }
-			}
-			else if (roll > 65) {
-				if (level > 20) { job = Job.sniper; }
-				else if (level > 10) { job = Job.hunter; }
-				else { job = Job.archer; }
-			}
-			else if (roll > 55) {
-				if (level > 20) { job = Job.catBurglar; }
-				else if (level > 10) { job = Job.knave; }
-				else { job = Job.thief; }
-			}
-			else if (roll > 35) {
-				if (level > 20) { job = Job.archMage; }
-				else if (level > 10) { job = Job.magus; }
-				else { job = Job.mage; }
-			}
-			else {
-				if (level > 20) { job = Job.paladin; }
-				else if (level > 10) { job = Job.knight; }
-				else { job = Job.squire; }
-			}
-			break;
+			if (roll > 75) { return Job.barbarian; }
+			else if (roll > 65) { return Job.archer; }
+			else if (roll > 55) { return Job.thief; }
+			else if (roll > 35) { return Job.mage; }
+			else { return Job.squire; }
 			
 		case Dryad:
-			if (roll > 95) {
-				if (level > 20) { job = Job.redMist; }
-				else if (level > 10) { job = Job.berserker; }
-				else { job = Job.barbarian; }
-			}
-			else if (roll > 90) {
-				if (level > 20) { job = Job.sniper; }
-				else if (level > 10) { job = Job.hunter; }
-				else { job = Job.archer; }
-			}
-			else if (roll > 60) {
-				if (level > 20) { job = Job.catBurglar; }
-				else if (level > 10) { job = Job.knave; }
-				else { job = Job.thief; }
-			}
-			else if (roll > 30) {
-				if (level > 20) { job = Job.archMage; }
-				else if (level > 10) { job = Job.magus; }
-				else { job = Job.mage; }
-			}
-			else {
-				if (level > 20) { job = Job.paladin; }
-				else if (level > 10) { job = Job.knight; }
-				else { job = Job.squire; }
-			}
-			break;
+			if (roll > 95) { return Job.barbarian; }
+			else if (roll > 90) { return Job.archer; }
+			else if (roll > 60) { return Job.thief; }
+			else if (roll > 30) { return Job.mage; }
+			else { return Job.squire; }
 		
 		}
 		

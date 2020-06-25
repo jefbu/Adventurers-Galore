@@ -34,6 +34,10 @@ public class Player extends Adventurer {
 		mapY = 10;
 		personality = new Personality();
 		personality.traits.add(PersonalityTrait.Pedantic);
+		personality.traits.add(PersonalityTrait.Pedantic);
+		personality.traits.add(PersonalityTrait.Pedantic);
+		titbit.strings.add("This is you, we don't pretend to know you that well");
+
 		
 	}
 

@@ -14,7 +14,7 @@ public abstract class AttackDecision {
 		for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {
 			
 			if (!targetChosen) {
-			if (adventurer.inParty) {
+			if (adventurer.inParty && !adventurer.isDead()) {
 				if (adventurer.getCombatX() == x + 1 && adventurer.getCombatY() == y) { targetChosen = true; attackEnemy(monster, adventurer); }
 				else if (adventurer.getCombatX() == x - 1 && adventurer.getCombatY() == y) { targetChosen = true; attackEnemy(monster, adventurer); }
 				else if (adventurer.getCombatX() == x && adventurer.getCombatY() == y + 1) { targetChosen = true; attackEnemy(monster, adventurer); }

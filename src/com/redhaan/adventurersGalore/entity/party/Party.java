@@ -67,6 +67,8 @@ public class Party extends GameObject {
 		case PartyScreen: break;
 		case Combat: break;
 		case Titlescreen: break;
+		case QuestUI: break;
+		case Transition: break;
 
 		}
 		
@@ -102,6 +104,8 @@ public class Party extends GameObject {
 		case Combat: break;
 		case Titlescreen: break;
 		case PartyScreen: break;
+		case QuestUI: break;
+		case Transition: break;
 
 		}
 		

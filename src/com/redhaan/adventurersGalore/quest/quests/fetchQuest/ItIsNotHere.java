@@ -5,7 +5,6 @@ import java.util.Random;
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameState;
 import com.redhaan.adventurersGalore.combat.Combat;
-import com.redhaan.adventurersGalore.combat.CombatMapRoller;
 import com.redhaan.adventurersGalore.combat.CombatPhase;
 import com.redhaan.adventurersGalore.combat.combatAI.HighLevelPlan;
 import com.redhaan.adventurersGalore.entity.Monster;
@@ -13,8 +12,6 @@ import com.redhaan.adventurersGalore.entity.town.Town;
 import com.redhaan.adventurersGalore.quest.Quest;
 import com.redhaan.adventurersGalore.quest.QuestStep;
 import com.redhaan.adventurersGalore.quest.questUI.QuestUI;
-import com.redhaan.adventurersGalore.worldMap.WorldMap;
-import com.redhaan.adventurersGalore.worldMap.WorldMapTiles;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.gfx.ImageTile;

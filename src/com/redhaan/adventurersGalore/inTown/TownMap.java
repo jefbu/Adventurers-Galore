@@ -46,6 +46,8 @@ public class TownMap extends GameObject {
 		case WorldMap: break;
 		case Combat: break;
 		case PartyScreen: break;
+		case QuestUI: break;
+		case Transition: break;
 
 		}
 		
@@ -82,6 +84,9 @@ public class TownMap extends GameObject {
 		case WorldMap: break;
 		case Combat: break;
 		case PartyScreen: break;
+		case QuestUI: break;
+		case Transition: break;
+		
 		}
 		
 	}

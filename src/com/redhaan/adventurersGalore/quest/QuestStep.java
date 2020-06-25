@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import com.redhaan.adventurersGalore.GameManager;
-import com.redhaan.adventurersGalore.GameState;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.entity.town.Town;
 import com.redhaan.adventurersGalore.entity.town.Towns;
-import com.redhaan.adventurersGalore.quest.questUI.QuestUI;
 
 import gameEngine.ecclesiastes.GameContainer;
 

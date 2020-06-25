@@ -56,6 +56,8 @@ public class TitleScreen extends GameObject {
 		case InTown: break;
 		case Combat: break;
 		case PartyScreen: break;
+		case QuestUI: break;
+		case Transition: break;
 			
 		}
 
@@ -83,6 +85,8 @@ public class TitleScreen extends GameObject {
 		case InTown: break;
 		case Combat: break;
 		case PartyScreen: break;
+		case QuestUI: break;
+		case Transition: break;
 
 		}
 	}

@@ -39,10 +39,12 @@ public class Adventurer extends Monster {
 	
 	public int tier;
 	
-	public int tattooSlots;
-	public ArrayList<Tattoo> tattoos;
+	public int sigilSlots;
+	public ArrayList<Sigil> sigils;
+	public Tattoo tattoo;
 	
 	public Personality personality;
+	public Titbit titbit;
 	
 	public Adventurer() {
 
@@ -53,9 +55,10 @@ public class Adventurer extends Monster {
 		moving = false;
 		leftClickSituation = PlayerTurnLeftClickSituations.NothingToDo;
 		battlesPassed = 0;
-		tattoos = new ArrayList<Tattoo>();
+		sigils = new ArrayList<Sigil>();
 		genderInt = 0;
 		personality = new Personality();
+		titbit = new Titbit();
 
 	}
 
@@ -180,6 +183,8 @@ public class Adventurer extends Monster {
 		case Titlescreen: break;
 		case WorldMap: break;
 		case PartyScreen: break;
+		case QuestUI: break;
+		case Transition: break;
 
 		}
 
@@ -227,6 +232,8 @@ public class Adventurer extends Monster {
 		case Titlescreen: break;
 		case WorldMap: break;
 		case PartyScreen: break;
+		case QuestUI: break;
+		case Transition: break;
 
 		}
 

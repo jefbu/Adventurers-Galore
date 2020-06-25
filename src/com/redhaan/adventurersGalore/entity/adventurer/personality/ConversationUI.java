@@ -1,43 +1,22 @@
 package com.redhaan.adventurersGalore.entity.adventurer.personality;
 
-import java.util.Random;
-
 import com.redhaan.adventurersGalore.GameManager;
-import com.redhaan.adventurersGalore.GameObject;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
-public class ConversationUI extends GameObject {
+public class ConversationUI {
 	
-	protected int offX, offY;
-	private Random random;
-	public boolean initiated;
 	
 	public ConversationUI() {
-		random = new Random();
-		offX = 0;
-		offY = 0;
-		initiated = false;
+
 	}
 
-	@Override
-	public void update(GameContainer gameContainer, float deltaTime) {
-		
-		if(!initiated) {
-			offX = random.nextInt(240);
-			offY = random.nextInt(380);
-			initiated = true;
-		}
-		
-	}
+	public void render(GameContainer gameContainer, Renderer renderer, int offX, int offY) {
 
-	@Override
-	public void render(GameContainer gameContainer, Renderer renderer) {
-
-		renderer.drawRectOpaque(offX, offY, 400, 70, 0x88221513);
-		renderer.drawRectOpaque(offX + 5, offY + 5, GameManager.GAMETILESIZE + 10, 60, 0x99131333);
-		renderer.drawRectOpaque(offX + 55, offY + 5, 330, 60, 0x99131333);
+		renderer.drawRectOpaque(offX, offY, 380, 50, 0x88221513);
+		renderer.drawRectOpaque(offX + 3, offY + 3, GameManager.GAMETILESIZE + 10, 44, 0x99131333);
+		renderer.drawRectOpaque(offX + 48, offY + 3, 330, 44, 0x99131333);
 		
 		
 		

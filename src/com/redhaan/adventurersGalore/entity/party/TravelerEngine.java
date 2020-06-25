@@ -35,6 +35,8 @@ public class TravelerEngine extends GameObject {
 		case Titlescreen: break;
 		case Combat: break;
 		case PartyScreen: break;
+		case QuestUI: break;
+		case Transition: break;
 		
 		case WorldMap:
 			

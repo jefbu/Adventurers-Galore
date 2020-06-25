@@ -3,7 +3,6 @@ package com.redhaan.adventurersGalore.quest.questUI;
 import java.awt.event.MouseEvent;
 
 import com.redhaan.adventurersGalore.GameObject;
-import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
