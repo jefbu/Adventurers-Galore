@@ -111,6 +111,8 @@ public class Combat extends GameObject {
 		case Titlescreen: break;
 		case WorldMap: break;
 		case PartyScreen: break;
+		case QuestUI: break;
+		case Transition: break;
 		
 		}
 	}
@@ -144,6 +146,8 @@ public class Combat extends GameObject {
 		case Titlescreen: break;
 		case WorldMap: break;
 		case PartyScreen: break;
+		case QuestUI: break;
+		case Transition: break;
 		
 		}
 		

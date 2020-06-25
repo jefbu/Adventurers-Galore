@@ -143,6 +143,8 @@ public class Monster extends NPC {
 		case Titlescreen: break;
 		case InTown: break;
 		case PartyScreen: break;
+		case QuestUI: break;
+		case Transition: break;
 		
 		}
 		
@@ -167,6 +169,8 @@ public class Monster extends NPC {
 		case Titlescreen: break;
 		case WorldMap: break;
 		case PartyScreen: break;
+		case QuestUI: break;
+		case Transition: break;
 	
 		}
 		

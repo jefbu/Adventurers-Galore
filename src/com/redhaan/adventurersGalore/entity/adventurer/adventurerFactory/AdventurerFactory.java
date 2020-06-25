@@ -17,8 +17,10 @@ public class AdventurerFactory {
 	private RaceFactory raceFactory = new RaceFactory();
 	private NameFactory nameFactory = new NameFactory();
 	private WeaponFactory weaponFactory = new WeaponFactory();
-	private TattooFactory tattooFactory = new TattooFactory();
+	private SigilFactory sigilFactory = new SigilFactory();
 	private AffinityFactory affinityFactory = new AffinityFactory();
+	private TattooFactory tattooFactory = new TattooFactory();
+	private TitbitFactory titbitFactory = new TitbitFactory();
 
 	public AdventurerFactory() { }
 
@@ -40,7 +42,7 @@ public class AdventurerFactory {
 		adventurer.tier = tier;
 
 		adventurer.race = raceFactory.setRace(adventurer.tier);
-		adventurer.job = jobFactory.setJob(adventurer.race, adventurer.getLevel());
+		adventurer.job = jobFactory.setJob(adventurer.race);
 		adventurer.icon = adventurer.job.icon;
 		//adventurer.levelupPercentages = levelFactory.setLevelPercentages(adventurer);
 
@@ -67,9 +69,11 @@ public class AdventurerFactory {
 		rollPersonality();
 
 		
-		adventurer.tattooSlots = tattooFactory.rollTattooSlots(adventurer.tier, adventurer.tattooSlots);
-		adventurer.tattoos = tattooFactory.rollTattoos(adventurer.tattooSlots);
+		adventurer.sigilSlots = sigilFactory.rollSigilSlots(adventurer.tier, adventurer.sigilSlots);
+		adventurer.sigils = sigilFactory.rollSigils(adventurer.sigilSlots);
+		adventurer.tattoo = tattooFactory.rollTattoo(adventurer.tier);
 		adventurer.affinities = affinityFactory.rollAffinities(adventurer.tier, adventurer.race, adventurer.job);
+		adventurer.titbit = titbitFactory.createTitBit(adventurer);
 		
 
 	}

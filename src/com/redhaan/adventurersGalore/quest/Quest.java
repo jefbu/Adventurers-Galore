@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.entity.adventurer.adventurerFactory.AdventurerFactory;
-import com.redhaan.adventurersGalore.quest.quests.fetchQuest.GoGetMyTrinket;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;

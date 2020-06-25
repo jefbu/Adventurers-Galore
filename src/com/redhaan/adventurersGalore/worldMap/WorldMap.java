@@ -72,14 +72,12 @@ public class WorldMap extends GameObject {
 
 		switch (GameManager.gameState) {
 
-		case Titlescreen:
-			break;
-		case Combat:
-			break;
-		case InTown:
-			break;
-		case PartyScreen:
-			break;
+		case Titlescreen: break;
+		case Combat: break;
+		case InTown: break;
+		case PartyScreen: break;
+		case QuestUI: break;
+		case Transition: break;
 
 		case WorldMap:
 			
@@ -134,12 +132,9 @@ public class WorldMap extends GameObject {
 					TravelerEngine.traveling = true;
 				}
 
-				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
-					int number = (gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE + offY) * (160)
-							+ gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE + offX;
-				}
 
 				break;
+				
 			case GlobalMap:
 
 				cloudsCounter++;
@@ -216,14 +211,12 @@ public class WorldMap extends GameObject {
 	public void render(GameContainer gameContainer, Renderer renderer) {
 		switch (GameManager.gameState) {
 
-		case Titlescreen:
-			break;
-		case InTown:
-			break;
-		case Combat:
-			break;
-		case PartyScreen:
-			break;
+		case Titlescreen: break;
+		case InTown: break;
+		case Combat: break;
+		case PartyScreen: break;
+		case QuestUI: break;
+		case Transition: break;
 
 		case WorldMap:
 

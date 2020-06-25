@@ -41,6 +41,8 @@ public class Calendar extends GameObject {
 		case InTown: break;
 		case Titlescreen: break;
 		case PartyScreen: break;
+		case QuestUI: break;
+		case Transition: break;
 		
 		case WorldMap:
 			
@@ -92,6 +94,8 @@ public class Calendar extends GameObject {
 		case Titlescreen: break;
 		case InTown: break;
 		case PartyScreen: break;
+		case QuestUI: break;
+		case Transition: break;
 		
 		case WorldMap:
 		

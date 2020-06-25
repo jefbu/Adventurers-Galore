@@ -48,6 +48,8 @@ public class PowAnimation extends GameObject {
 		case PartyScreen: break;
 		case Titlescreen: break;
 		case WorldMap: break;
+		case QuestUI: break;
+		case Transition: break;
 		
 		}			
 	}
@@ -67,6 +69,8 @@ public class PowAnimation extends GameObject {
 		case PartyScreen:break;
 		case Titlescreen: break;
 		case WorldMap: break;
+		case QuestUI: break;
+		case Transition: break;
 		
 		}
 		

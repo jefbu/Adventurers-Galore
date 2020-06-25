@@ -18,12 +18,12 @@ public class PartyScreen extends GameObject {
 	private WeaponWidget weapon;
 	private ArmourWidget armourImage;
 	private StatsWidget statsInfo;
-	private TattooWidget tattooWidget;
+	private SigilWidget sigilWidget;
 	private AffinityWidget affinityWidget;
 	private SkillWidget skillWidget;
 	private OptionsWidget optionsWidget;
 	private CommentWidget commentWidget;
-	private TotemWidget totemWidget;
+	private TattooWidget tattooWidget;
 	
 	public PartyScreen() {
 		
@@ -34,12 +34,12 @@ public class PartyScreen extends GameObject {
 		weapon = new WeaponWidget(185, 15, 208, 100);
 		armourImage = new ArmourWidget(395, 15, 60, 100);
 		statsInfo = new StatsWidget(15, 120, 165, 280);
-		tattooWidget = new TattooWidget(185, 120, 270, 80);
+		sigilWidget = new SigilWidget(185, 120, 270, 80);
 		affinityWidget = new AffinityWidget(185, 202, 270, 80);
 		skillWidget = new SkillWidget(185, 284, 270, 116);
 		optionsWidget = new OptionsWidget(460, 15, 165, 267);
 		commentWidget = new CommentWidget(15, 405, 610, 60);
-		totemWidget = new TotemWidget(460, 284, 165, 116 );
+		tattooWidget = new TattooWidget(460, 284, 165, 116 );
 		
 	}
 
@@ -52,6 +52,8 @@ public class PartyScreen extends GameObject {
 		case InTown: break;
 		case Titlescreen: break;
 		case WorldMap: break;
+		case QuestUI: break;
+		case Transition: break;
 		
 		case PartyScreen:
 			calculateBGColour();
@@ -61,12 +63,12 @@ public class PartyScreen extends GameObject {
 			statsInfo.update(gameContainer, deltaTime);
 			weapon.update(gameContainer, deltaTime);
 			armourImage.update(gameContainer, deltaTime);
-			tattooWidget.update(gameContainer, deltaTime);
+			sigilWidget.update(gameContainer, deltaTime);
 			affinityWidget.update(gameContainer, deltaTime);
 			skillWidget.update(gameContainer, deltaTime);
 			optionsWidget.update(gameContainer, deltaTime);
 			commentWidget.update(gameContainer, deltaTime);
-			totemWidget.update(gameContainer, deltaTime);
+			tattooWidget.update(gameContainer, deltaTime);
 			break;
 		
 		}
@@ -80,7 +82,9 @@ public class PartyScreen extends GameObject {
 		case Combat: break;
 		case InTown: break;
 		case Titlescreen: break;
-		case WorldMap: break;		
+		case WorldMap: break;
+		case QuestUI: break;
+		case Transition: break;
 		
 		case PartyScreen:
 			renderer.drawRectOpaque(10, 10, 620, 460, bgColour);
@@ -89,12 +93,12 @@ public class PartyScreen extends GameObject {
 			statsInfo.render(gameContainer, renderer);
 			weapon.render(gameContainer, renderer);
 			armourImage.render(gameContainer, renderer);
-			tattooWidget.render(gameContainer, renderer);
+			sigilWidget.render(gameContainer, renderer);
 			affinityWidget.render(gameContainer, renderer);
 			skillWidget.render(gameContainer, renderer);
 			optionsWidget.render(gameContainer, renderer);
 			commentWidget.render(gameContainer, renderer);	
-			totemWidget.render(gameContainer, renderer);
+			tattooWidget.render(gameContainer, renderer);
 			break;
 		
 		}

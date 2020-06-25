@@ -49,7 +49,6 @@ public class Quests extends GameObject {
 				for (int i = 0; i < allQuests.size(); i++) {
 					if (allQuests.get(i).questSteps.get(0).daysPassed > allQuests.get(i).questSteps.get(0).maxDays ) {
 						allQuests.remove(i);
-						Random random = new Random();
 						Quest questToBeAdded = QuestTable.rollQuest(0);
 						allQuests.add(questToBeAdded);
 						i--;
