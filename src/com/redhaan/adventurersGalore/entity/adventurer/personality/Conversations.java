@@ -40,7 +40,7 @@ public class Conversations extends GameObject {
 			
 			if(!active) {
 
-				if(random.nextInt(60) == 0) { 
+				if(random.nextInt(6000000) == 0) { 
 					ArrayList<Adventurer> candidates = new ArrayList<Adventurer>();
 					for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {
 						if(adventurer.inParty) { candidates.add(adventurer); }
