@@ -44,7 +44,6 @@ public class AdventurerFactory {
 		adventurer.race = raceFactory.setRace(adventurer.tier);
 		adventurer.job = jobFactory.setJob(adventurer.race);
 		adventurer.icon = adventurer.job.icon;
-		//adventurer.levelupPercentages = levelFactory.setLevelPercentages(adventurer);
 
 		Random random = new Random();
 		adventurer.gender = "Male";

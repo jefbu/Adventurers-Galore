@@ -26,7 +26,7 @@ public class Player extends Adventurer {
 		name = "Moltke";
 		gender = "male";
 		age = 58;
-		currentStats.TST = 0;
+		currentStats.TST = 100;
 		homeTown = Town.apastan;
 		tier = 1;
 		affinities = new Affinities();

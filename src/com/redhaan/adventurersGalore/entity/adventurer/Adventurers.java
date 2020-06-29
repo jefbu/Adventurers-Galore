@@ -28,10 +28,14 @@ public class Adventurers extends GameObject {
 		}
 		
 		allAdventurers.get(0).inParty = true;
-		
-		for (int i = 0; i < 7; i++) {
-			allAdventurers.get(i).inParty = true;
-		}
+		allAdventurers.get(3).inParty = true;
+		allAdventurers.get(4).inParty = true;
+		allAdventurers.get(6).inParty = true;
+		allAdventurers.get(8).inParty = true;
+		allAdventurers.get(9).inParty = true;
+		allAdventurers.get(10).inParty = true;
+
+
 		
 		
 	}

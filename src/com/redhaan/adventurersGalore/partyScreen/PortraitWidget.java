@@ -39,6 +39,8 @@ public class PortraitWidget extends GameObject {
 				animationLine = random.nextInt(1) + 1;
 			} else { animationLine = 0; }
 		}
+		
+		
 
 		if (GameManager.adventurers.allAdventurers.get(PartyScreen.member).gender.equals("Female")) { gender = 4; } 
 		else { gender = 0; }

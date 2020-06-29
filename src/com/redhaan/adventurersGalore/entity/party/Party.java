@@ -2,6 +2,7 @@ package com.redhaan.adventurersGalore.entity.party;
 
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
+import com.redhaan.adventurersGalore.calendar.Calendar;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.worldMap.WorldMap;
 
@@ -21,6 +22,9 @@ public class Party extends GameObject {
 	public static boolean traveling;
 	public static int MH;
 	
+	private int day;
+	private PartyCohesionChecker partyCohesionChecker;
+	
 	public Party() {
 		
 		xTile = 10;
@@ -31,6 +35,9 @@ public class Party extends GameObject {
 		
 		traveling = false;
 		MH = 5000;
+		
+		day = Calendar.daysPassed;
+		partyCohesionChecker = new PartyCohesionChecker();
 		
 	}
 
@@ -60,6 +67,11 @@ public class Party extends GameObject {
 				break;
 			case TravelerEvent:
 				break;
+			}
+			
+			if(day != Calendar.daysPassed) {
+				partyCohesionChecker.checkDailyPartyCohesion();
+				day = Calendar.daysPassed;
 			}
 			break;
 			

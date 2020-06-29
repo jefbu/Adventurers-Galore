@@ -45,7 +45,7 @@ public class Adventurer extends Monster {
 	
 	public Personality personality;
 	public Titbit titbit;
-	
+		
 	public Adventurer() {
 
 		super();
@@ -137,43 +137,6 @@ public class Adventurer extends Monster {
 						break;
 					}
 
-					/*
-					 * if(gameContainer.getInput().getMouseX() > combatX * GameManager.GAMETILESIZE
-					 * && gameContainer.getInput().getMouseX() < combatX * GameManager.GAMETILESIZE
-					 * + GameManager.GAMETILESIZE && gameContainer.getInput().getMouseY() > combatY
-					 * * GameManager.GAMETILESIZE && gameContainer.getInput().getMouseY() < combatY
-					 * * GameManager.GAMETILESIZE + GameManager.GAMETILESIZE) {
-					 * 
-					 * if(!clicked && !turnPassed) {
-					 * 
-					 * moveRange = MoveRangeFiller.fillMoveRange(combatX, combatY, 5);
-					 * 
-					 * for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {
-					 * adventurer.clicked = false; }
-					 * 
-					 * clicked = true; } else { clicked = false; attackAnimation = true; }
-					 * 
-					 * }
-					 * 
-					 * else {
-					 * 
-					 * if(clicked && !turnPassed) {
-					 * 
-					 * int[] clickedLocation = new int[] {gameContainer.getInput().getMouseX() /
-					 * GameManager.GAMETILESIZE, gameContainer.getInput().getMouseY() /
-					 * GameManager.GAMETILESIZE};
-					 * 
-					 * for (int i = 0; i < moveRange.size(); i++) {
-					 * 
-					 * if (clickedLocation[0] == moveRange.get(i)[0] && clickedLocation[1] ==
-					 * moveRange.get(i)[1]) { clicked = false; combatX = clickedLocation[0]; combatY
-					 * = clickedLocation[1]; turnPassed = true; //moveRange =
-					 * MoveRangeFiller.fillMoveRange(combatX, combatY, 5); } }
-					 * 
-					 * clicked = false;
-					 * 
-					 * } }
-					 */
 				}
 			}
 

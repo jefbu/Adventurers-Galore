@@ -57,17 +57,17 @@ public class OptionsWidget extends GameObject {
 			if (gameContainer.getInput().isKeyUp(KeyEvent.VK_ENTER)) {
 				switch(activeOption) {
 				
-				case 1: if (PartyScreen.member < partyMembers - 1) { PartyScreen.member++; }
+				case 1: calculatePartyScreenNumber(true);
 						CommentWidget.timer = 0;
-						Adventurer hero = GameManager.adventurers.allAdventurers.get(PartyScreen.member);
+						/*Adventurer hero = GameManager.adventurers.allAdventurers.get(PartyScreen.member);
 						System.out.println("Adventurer: " + hero.name);
 						System.out.println("HP Rate: " + hero.levelupPercentages.HP + ", " + "MP Rate: " + hero.levelupPercentages.MP);
 						System.out.println("PHY Rate: " + hero.levelupPercentages.PHY + ", " + "AGI Rate: " + hero.levelupPercentages.AGI + ", " + "MAG Rate: " + hero.levelupPercentages.MAG);
 						System.out.println("DEX Rate: " + hero.levelupPercentages.DEX + ", " + "INT Rate: " + hero.levelupPercentages.INT + ", " + "PRC Rate: " + hero.levelupPercentages.PRC);
 						System.out.println("MOV Rate: " + hero.levelupPercentages.move);
-						System.out.println("##########################	");
+						System.out.println("##########################	");*/
 				break;				
-				case 2: if (PartyScreen.member > 0) { PartyScreen.member--; } break;
+				case 2: calculatePartyScreenNumber(false); break;
 				case 3: break;
 				case 4: break;
 				case 5: GameManager.gameState = GameState.WorldMap;
@@ -128,6 +128,30 @@ public class OptionsWidget extends GameObject {
 					);
 			}
 		
+		
+	}
+	
+	
+	private void calculatePartyScreenNumber(boolean increasing) {
+		
+		boolean gotNumber = false;
+		int tempPartyNumber = 0;
+		
+		for (int i = 0; i < GameManager.adventurers.allAdventurers.size(); i++) {
+			if(increasing) {
+				if(GameManager.adventurers.allAdventurers.get(i).inParty && i > PartyScreen.member && !gotNumber) {
+					PartyScreen.member = i;
+					gotNumber = true;
+				}
+			} else {
+				if(GameManager.adventurers.allAdventurers.get(i).inParty && i < PartyScreen.member) {
+					System.out.println("Diminished");
+					tempPartyNumber = i;
+				}
+			}
+		}
+		
+		if(!gotNumber) { PartyScreen.member = tempPartyNumber; }
 		
 	}
 	
