@@ -46,13 +46,12 @@ public class Conversations extends GameObject {
 
 		case WorldMap:
 
-//<<<<<<< HEAD
+
 				if(random.nextInt(6000000) == 0) { 
-//=======
+
 			if (!active) {
 
 				if (random.nextInt(60) == 0) {
-//>>>>>>> branch 'master' of https://github.com/jefbu/Adventurers-Galore.git
 					ArrayList<Adventurer> candidates = new ArrayList<Adventurer>();
 					for (Adventurer adventurer : GameManager.adventurers.allAdventurers) {
 						if (adventurer.inParty) {
