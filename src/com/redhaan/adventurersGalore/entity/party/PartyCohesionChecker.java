@@ -76,9 +76,6 @@ public class PartyCohesionChecker {
 		}
 
 		
-		
-		
-
 		partySize = 0;
 
 	
