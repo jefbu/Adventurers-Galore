@@ -21,6 +21,7 @@ public class AdventurerFactory {
 	private AffinityFactory affinityFactory = new AffinityFactory();
 	private TattooFactory tattooFactory = new TattooFactory();
 	private TitbitFactory titbitFactory = new TitbitFactory();
+	private SkillFactory skillFactory = new SkillFactory();
 
 	public AdventurerFactory() { }
 
@@ -73,6 +74,7 @@ public class AdventurerFactory {
 		adventurer.tattoo = tattooFactory.rollTattoo(adventurer.tier);
 		adventurer.affinities = affinityFactory.rollAffinities(adventurer.tier, adventurer.race, adventurer.job);
 		adventurer.titbit = titbitFactory.createTitBit(adventurer);
+		adventurer.skills = skillFactory.rollSkills(adventurer);
 		
 
 	}

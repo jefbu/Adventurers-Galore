@@ -10,6 +10,7 @@ import com.redhaan.adventurersGalore.combat.Combat;
 import com.redhaan.adventurersGalore.combat.CombatMapRoller;
 import com.redhaan.adventurersGalore.entity.Monster;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
+import com.redhaan.adventurersGalore.entity.party.PartyCohesionChecker;
 import com.redhaan.adventurersGalore.quest.Quest;
 import com.redhaan.adventurersGalore.quest.QuestStep;
 import com.redhaan.adventurersGalore.worldMap.WorldMapTiles;
@@ -19,7 +20,7 @@ import gameEngine.ecclesiastes.Renderer;
 
 public class QuestUI extends GameObject {
 
-	public static GameState previousGameState;
+	public static GameState nextGameState;
 	public static QuestStep nextQuestStep;
 	private Requester requester;
 	private QuestParty party;
@@ -30,18 +31,20 @@ public class QuestUI extends GameObject {
 	
 	public static ArrayList<Monster> monsters;
 	public static boolean itsaFight;
-
+	
+	private PartyCohesionChecker partyCohesionChecker;
 
 	public QuestUI() {
 
 		requester = new Requester();
 		party = new QuestParty();
 		text = new TextBlock();
-		previousGameState = GameState.InTown;
+		nextGameState = GameState.InTown;
 		questAccepted = false;
 		questRefused = false;
 		monsters = new ArrayList<Monster>();
 		itsaFight = false;
+		partyCohesionChecker = new PartyCohesionChecker();
 
 	}
 
@@ -55,6 +58,7 @@ public class QuestUI extends GameObject {
 			text.update(gameContainer, deltaTime);
 			
 			if (questAccepted) {
+				partyCohesionChecker.checkNewQuestPartyCohesion(gameContainer, nextGameState);
 				quest.playerQuest = true;
 				questAccepted = false;
 				for(Adventurer adventurer: QuestUI.quest.questParty) {
@@ -68,14 +72,14 @@ public class QuestUI extends GameObject {
 					Transition.nextGameState = GameState.Combat;
 					GameManager.gameState = GameState.Transition;	
 				} else {
-					Transition.nextGameState = QuestUI.previousGameState;
+					Transition.nextGameState = QuestUI.nextGameState;
 					GameManager.gameState = GameState.Transition;
 				}
 			}
 
 			else if (questRefused) {
 				questRefused = false;
-				Transition.nextGameState = QuestUI.previousGameState;
+				Transition.nextGameState = QuestUI.nextGameState;
 				GameManager.gameState = GameState.Transition;
 			}
 			break;
@@ -98,7 +102,7 @@ public class QuestUI extends GameObject {
 
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
-
+		
 		switch (GameManager.gameState) {
 
 		case QuestUI:

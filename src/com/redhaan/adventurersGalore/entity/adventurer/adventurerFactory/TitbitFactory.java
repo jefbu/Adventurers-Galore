@@ -32,7 +32,7 @@ public class TitbitFactory {
 
 		for (int i = 0; i < 2; i++) {
 
-			int roll = random.nextInt(10);
+			int roll = random.nextInt(12);
 
 			switch (roll) {
 
@@ -78,6 +78,11 @@ public class TitbitFactory {
 			case 9:
 				titbit.strings.add("Likes: Dozing off in a hangmat in the sun with a cocktail");
 				break;
+			case 10:
+				titbit.strings.add("Likes: Making handcrafted furniture");
+				break;
+			case 11:
+				titbit.strings.add("Likes: Wine tasting and collecting");
 
 			}
 
@@ -314,24 +319,24 @@ public class TitbitFactory {
 		
 		switch(roll) {
 		
-		case 0: titbit.strings.add("What would you do if you had 1,000,000$? Buy a cottage in the country for my mama"); break;
-		case 1: titbit.strings.add("What would you do if you had 1,000,000$? "
-				+ "Live life to the fullest. Parties, depravity, intoxication. Sodom and Gomorrah!"); break;
-		case 2: titbit.strings.add("What would you do if you had 1,000,000$? Retire from adventuring. Be an angel investor in some startups"); break;
-		case 3: titbit.strings.add("What would you do if you had 1,000,000$? I like what I do, so pretty much the same. I'd get a new weapon though"); break;
+		case 0: titbit.strings.add("'What would you do if you had 1,000,000$?' 'Buy a cottage in the country for my mama'"); break;
+		case 1: titbit.strings.add("'What would you do if you had 1,000,000$?' "
+				+ "'Live life to the fullest. Parties, depravity, intoxication. Sodom and Gomorrah!'"); break;
+		case 2: titbit.strings.add("'What would you do if you had 1,000,000$?' 'Retire from adventuring. Be an angel investor in some startups'"); break;
+		case 3: titbit.strings.add("'What would you do if you had 1,000,000$?' 'I like what I do, so pretty much the same. I'd get a new weapon though'"); break;
 		
 		}
 	}
 
 	private void rollLifeMotto(Titbit titbit) {
 
-		int roll = random.nextInt(10);
+		int roll = random.nextInt(12);
 
 		switch (roll) {
 
 		case 0:
-			titbit.strings.add("Life motto: 'It is better to be the judge between two enemies, than two friends. "
-					+ "For one of the enemies will become a friend, whereas one of the friends will become an enemy'");
+			titbit.strings.add("Life motto: 'Better to judge between two enemies, than two friends. "
+					+ "One of the enemies will turn friend, but one of the friends will turn enemy'");
 			break;
 		case 1:
 			titbit.strings.add("Life motto: 'Most problems will solve themselves if you ignore them long enough'");
@@ -350,18 +355,23 @@ public class TitbitFactory {
 			titbit.strings.add("Life motto: 'Reality is a bore'");
 			break;
 		case 6:
-			titbit.strings.add("Life motto: 'When you lack talent, compensate with entertainment'");
+			titbit.strings.add("Life motto: 'What you lack in talent, can be compensated with entertainment'");
 			break;
 		case 7:
-			titbit.strings.add("Life motto: 'On this long and winding road, the only one that can follow me, is me'");
+			titbit.strings.add("Life motto: 'On this long road, the only one that can follow me, is me'");
 			break;
 		case 8:
 			titbit.strings.add(
-					"Life motto: 'Shame is like a disease the body can rid itself of with time. Glorious death on the other hand, is forever'");
+					"Life motto: 'Shame is a disease the body cures with time. Glorious death is forever'");
 			break;
 		case 9:
-			titbit.strings.add("Life motto: I've got some beer in the back of my truck'");
+			titbit.strings.add("Life motto: 'I've got some beer in the back of my truck'");
 			break;
+		case 10:
+			titbit.strings.add("Life motto: 'Failure is not the end'");
+			break;
+		case 11:
+			titbit.strings.add("Life motto: 'Try and keep up'");
 
 		}
 

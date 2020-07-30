@@ -1,5 +1,7 @@
 package com.redhaan.adventurersGalore;
 
+import java.util.Random;
+
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
@@ -9,12 +11,27 @@ public class Transition extends GameObject {
 	public static GameState nextGameState;
 	private boolean increasing;
 	
+	private int colour;
+	private Random random;
+	
 	public Transition() {
 		
 		width = 0;
 		height = 0;
 		nextGameState = GameState.WorldMap;
 		increasing = true;
+		random = new Random();
+		int roll = random.nextInt(7);
+		switch (roll) {
+		case 0: colour = 0xff161623; break;
+		case 1: colour = 0xff162316; break;
+		case 2: colour = 0xff231616; break;
+		case 3: colour = 0xff232316; break;
+		case 4: colour = 0xff231623; break;
+		case 5: colour = 0xff162323; break;
+		case 6: colour = 0xff232323; break;
+		default: colour = 0xffEEEEEE; break;
+		}
 		
 	}
 
@@ -36,6 +53,17 @@ public class Transition extends GameObject {
 			
 			if(width < 1 && !increasing) {
 				increasing = true;
+				int roll = random.nextInt(7);
+				switch (roll) {
+				case 0: colour = 0xff161623; break;
+				case 1: colour = 0xff162316; break;
+				case 2: colour = 0xff231616; break;
+				case 3: colour = 0xff232316; break;
+				case 4: colour = 0xff231623; break;
+				case 5: colour = 0xff162323; break;
+				case 6: colour = 0xff232323; break;
+				default: colour = 0xffEEEEEE; break;
+				}
 				GameManager.gameState = nextGameState;
 			}
 			
@@ -60,10 +88,10 @@ public class Transition extends GameObject {
 		
 		case Transition:
 
-			renderer.drawRectOpaque(0, 0, width, GameManager.GAMEHEIGHT, 0xff181309);
-			renderer.drawRectOpaque(GameManager.GAMEWIDTH - width, 0, width, GameManager.GAMEHEIGHT, 0xff091318);
-			renderer.drawRectOpaque(0, 0, GameManager.GAMEWIDTH, height, 0xff130918);
-			renderer.drawRectOpaque(0, GameManager.GAMEHEIGHT - height, GameManager.GAMEWIDTH, height, 0xff151515);
+			renderer.drawRectOpaque(0, 0, width, GameManager.GAMEHEIGHT, colour);
+			renderer.drawRectOpaque(GameManager.GAMEWIDTH - width, 0, width, GameManager.GAMEHEIGHT, colour);
+			renderer.drawRectOpaque(0, 0, GameManager.GAMEWIDTH, height, colour);
+			renderer.drawRectOpaque(0, GameManager.GAMEHEIGHT - height, GameManager.GAMEWIDTH, height, colour);
 			
 			break;
 			

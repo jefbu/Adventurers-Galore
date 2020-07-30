@@ -4,21 +4,31 @@ import java.util.Random;
 
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameState;
+import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.quest.Quest;
 import com.redhaan.adventurersGalore.quest.QuestStep;
 import com.redhaan.adventurersGalore.quest.questUI.QuestUI;
 
 import gameEngine.ecclesiastes.GameContainer;
 
-public class GoGetMyTrinket extends QuestStep {
+	public class GoGetMyTrinket extends QuestStep {
 	
-	public GoGetMyTrinket() {
+	Random random;
+	
+	public GoGetMyTrinket(Adventurer adventurer) {
+		
+		random = new Random();
 		daysPassed = 0;
 		maxDays = 50;
 		questStepLocation.questLocationTown = rollForQuestStepLocationTown();
 		questStepLocation.nextLocationTown = rollForQuestStepLocationTown();
+		String gender = "";
+		String pronoun = "";
+		if(adventurer.gender == "male") { gender = "man"; pronoun = "he"; } else { gender = "woman"; pronoun = "she"; }
 		
-		playerGetsEmptyQuestInTown.add("A trinket lost, and lost to me. Perchance for all eternity. "
+		playerGetsEmptyQuestInTown.add("A " + gender + " is sauntering nearby, and watches you nonchalantly.");
+		playerGetsEmptyQuestInTown.add("After hesitating a spell, " + pronoun + " ambles up to you, and beseeches your help");
+		playerGetsEmptyQuestInTown.add(adventurer.name + ": A trinket lost, and lost to me. Perchance for all eternity. "
 				+ "Unless thee heedst my tear-eyed plea, and soothe my poignant mysery. "
 				+ "And bring that trinket back to me.");
 		playerGetsEmptyQuestInTown.add("Well how hast lost thine joie de vivre?");
@@ -55,7 +65,7 @@ public class GoGetMyTrinket extends QuestStep {
 		
 		case InTown:
 				QuestUI.quest = quest;
-				QuestUI.previousGameState = GameState.InTown;
+				QuestUI.nextGameState = GameState.InTown;
 				GameManager.gameState = GameState.QuestUI;
 				if(random.nextBoolean()) { QuestUI.nextQuestStep = new ItIsNotHere(questStepLocation.nextLocationTown); }
 				else { QuestUI.nextQuestStep = new YouFoundIt(questStepLocation.nextLocationTown); }

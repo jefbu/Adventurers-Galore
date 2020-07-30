@@ -11,6 +11,7 @@ import com.redhaan.adventurersGalore.combat.MoveAreaDrawer;
 import com.redhaan.adventurersGalore.combat.PlayerTurnLeftClickSituations;
 import com.redhaan.adventurersGalore.entity.Monster;
 import com.redhaan.adventurersGalore.entity.adventurer.personality.Personality;
+import com.redhaan.adventurersGalore.entity.adventurer.skills.Skills;
 import com.redhaan.adventurersGalore.entity.combatAddOns.HealthBar;
 import com.redhaan.adventurersGalore.entity.town.Town;
 
@@ -42,6 +43,7 @@ public class Adventurer extends Monster {
 	public int sigilSlots;
 	public ArrayList<Sigil> sigils;
 	public Tattoo tattoo;
+	public Skills skills;
 	
 	public Personality personality;
 	public Titbit titbit;
@@ -59,6 +61,7 @@ public class Adventurer extends Monster {
 		genderInt = 0;
 		personality = new Personality();
 		titbit = new Titbit();
+		skills = new Skills();
 
 	}
 

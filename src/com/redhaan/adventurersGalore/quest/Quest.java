@@ -15,10 +15,10 @@ public class Quest extends GameObject {
 	public Adventurer requester;
 	private AdventurerFactory adventurerFactory;
 	public int questStepNumber;
-	public Adventurer owner;
 	public int maxPartySize;
 	public ArrayList<Adventurer> questParty;
 	public boolean playerQuest;
+	public String title;
 	
 	public Quest() {
 		

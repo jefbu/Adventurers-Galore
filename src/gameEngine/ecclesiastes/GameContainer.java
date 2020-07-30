@@ -4,7 +4,7 @@ public class GameContainer implements Runnable {
 	
 	private Thread thread;
 	private Window window;
-	private Renderer renderer;
+	public Renderer renderer;
 	private Input input;
 	private AbstractGame game;
 	

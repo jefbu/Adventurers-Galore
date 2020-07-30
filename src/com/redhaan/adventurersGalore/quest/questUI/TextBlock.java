@@ -98,7 +98,7 @@ public class TextBlock extends GameObject {
 		temp = 0;			
 		//if(QuestUI.quest.questParty.size() == 0) {	QuestUI.quest.questParty.add(new Adventurer()); QuestUI.quest.questParty.get(0).name = "Sucker";}
 		
-		switch(QuestUI.previousGameState) {
+		switch(QuestUI.nextGameState) {
 		
 		case InTown:			
 			if(stringToBeDrawnFrom.length() == 0) { 

@@ -63,7 +63,7 @@ public class ItIsNotHere extends QuestStep {
 							QuestUI.monsters.get(1).currentStats.attack = 140;
 							Combat.highLevelPlan = HighLevelPlan.Attack;
 							Combat.combatPhase = CombatPhase.Setup;
-							QuestUI.previousGameState = GameState.WorldMap;
+							QuestUI.nextGameState = GameState.WorldMap;
 							GameManager.gameState = GameState.QuestUI;							
 						}
 					}
@@ -81,7 +81,7 @@ public class ItIsNotHere extends QuestStep {
 			
 		case InTown:
 			QuestUI.quest = quest;
-			QuestUI.previousGameState = GameState.InTown;
+			QuestUI.nextGameState = GameState.InTown;
 			GameManager.gameState = GameState.QuestUI;
 			break;	
 		

@@ -24,7 +24,7 @@ public class Party extends GameObject {
 	
 	private int day;
 	private PartyCohesionChecker partyCohesionChecker;
-	
+		
 	public Party() {
 		
 		xTile = 10;
@@ -70,7 +70,7 @@ public class Party extends GameObject {
 			}
 			
 			if(day != Calendar.daysPassed) {
-				partyCohesionChecker.checkDailyPartyCohesion();
+				partyCohesionChecker.checkDailyPartyCohesion(0, gameContainer);
 				day = Calendar.daysPassed;
 			}
 			break;
@@ -88,7 +88,7 @@ public class Party extends GameObject {
 
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
-		
+				
 		switch (GameManager.gameState) {
 		
 		case WorldMap:

@@ -1,5 +1,12 @@
 package com.redhaan.adventurersGalore;
 
+
+import java.awt.Cursor;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import com.redhaan.adventurersGalore.calendar.Calendar;
@@ -8,18 +15,21 @@ import com.redhaan.adventurersGalore.combat.PowAnimation;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurers;
 import com.redhaan.adventurersGalore.entity.adventurer.personality.Conversations;
 import com.redhaan.adventurersGalore.entity.party.Party;
+import com.redhaan.adventurersGalore.entity.party.PartyCohesionCheckerUI;
 import com.redhaan.adventurersGalore.entity.party.TravelerEngine;
 import com.redhaan.adventurersGalore.entity.town.Towns;
 import com.redhaan.adventurersGalore.inTown.TownMap;
 import com.redhaan.adventurersGalore.partyScreen.PartyScreen;
 import com.redhaan.adventurersGalore.quest.Quests;
 import com.redhaan.adventurersGalore.quest.questUI.QuestUI;
+import com.redhaan.adventurersGalore.questScreen.QuestScreen;
 import com.redhaan.adventurersGalore.titleScreen.TitleScreen;
 import com.redhaan.adventurersGalore.worldMap.WorldMap;
 
 import gameEngine.ecclesiastes.AbstractGame;
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
+import gameEngine.ecclesiastes.Window;
 
 public class GameManager extends AbstractGame {
 
@@ -47,6 +57,8 @@ public class GameManager extends AbstractGame {
 		gameObjects.add(new QuestUI());
 		gameObjects.add(new Transition());
 		gameObjects.add(new Conversations());
+		gameObjects.add(new PartyCohesionCheckerUI());
+		gameObjects.add(new QuestScreen());
 		
 		adventurers = new Adventurers();
 		//gameObjects.add(adventurers);
@@ -66,7 +78,6 @@ public class GameManager extends AbstractGame {
 				i--;
 			}
 		}
-
 	}
 
 	@Override
@@ -83,7 +94,7 @@ public class GameManager extends AbstractGame {
 		GameContainer gameContainer = new GameContainer(new GameManager());
 		gameContainer.setWidth(GAMEWIDTH);
 		gameContainer.setHeight(GAMEHEIGHT);
-		gameContainer.setScale(1.50f);
+		gameContainer.setScale(1.33f);
 		gameContainer.start();
 		
 	}

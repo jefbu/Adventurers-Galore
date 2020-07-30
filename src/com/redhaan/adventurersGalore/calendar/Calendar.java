@@ -21,6 +21,7 @@ public class Calendar extends GameObject {
 	private Months month;
 	private ImageTile image;
 	private int imgX, imgY;
+	private boolean hover;
 	
 	public Calendar() {
 		daysPassed = 0;
@@ -31,6 +32,7 @@ public class Calendar extends GameObject {
 		image = new ImageTile("/spriteSheets/CalendarSpeeds.png", GameManager.GAMETILESIZE / 2, GameManager.GAMETILESIZE / 2);
 		imgX = 0;
 		imgY = 0;
+		hover = false;
 	}
 
 	@Override
@@ -47,17 +49,20 @@ public class Calendar extends GameObject {
 		case WorldMap:
 			
 		if(WorldMap.subState != SubState.TravelerEvent) {
-			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
-				if(gameContainer.getInput().getMouseX() > 520 && gameContainer.getInput().getMouseX() < 620) {
-				if(gameContainer.getInput().getMouseY() > 20 && gameContainer.getInput().getMouseY() < 40) {
-					updateSpeed();
-				}
-				}
-			}
 			
-			if(gameContainer.getInput().isKeyUp(KeyEvent.VK_S)) {
+			if(gameContainer.getInput().getMouseX() > 520 && gameContainer.getInput().getMouseX() < 620 &&
+					gameContainer.getInput().getMouseY() > 20 && gameContainer.getInput().getMouseY() < 40) {
+		
+					if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+						updateSpeed();
+					} else { hover = true; }
+			} 
+			
+			else if(gameContainer.getInput().isKeyUp(KeyEvent.VK_S)) {
 				updateSpeed();
 			}
+			
+			else { hover = false; }
 			
 			timer++;
 			if(timer * deltaTime * calendarSpeed > 3 ) {
@@ -98,7 +103,7 @@ public class Calendar extends GameObject {
 		case Transition: break;
 		
 		case WorldMap:
-		
+		if(hover) { renderer.drawRect(499, 19, 122, 22, 0x88FFFFFF); }
 		renderer.drawRectOpaque(500, 20, 120, 20, 0x33cccccc);
 		renderer.drawRect(505, 22, 20, 16, 0xff000000);
 		renderer.drawImageTile(image, 505, 22, imgX, imgY);

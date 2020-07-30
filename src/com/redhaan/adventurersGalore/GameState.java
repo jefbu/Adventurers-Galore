@@ -8,6 +8,8 @@ public enum GameState {
 	Combat,
 	PartyScreen,
 	QuestUI,
-	Transition
+	Transition,
+	PartyCohesionCheckerUI,
+	QuestScreen
 
 }

@@ -1,11 +1,11 @@
 package com.redhaan.adventurersGalore.partyScreen;
 
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.GameState;
-import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
@@ -18,6 +18,9 @@ public class OptionsWidget extends GameObject {
 	private int activeOption;
 	private int activeColor, passiveColor;
 	
+	private boolean hover;
+	private int hoverX, hoverY;
+	
 	public OptionsWidget(int offX, int offY, int width, int height) {
 		
 		this.offX = offX;
@@ -28,6 +31,10 @@ public class OptionsWidget extends GameObject {
 		activeOption = 1;
 		activeColor = 0xff666666;
 		passiveColor = 0xff333333;
+		
+		hover = false;
+		hoverX = 0;
+		hoverY = 0;
 		
 	}
 
@@ -44,10 +51,24 @@ public class OptionsWidget extends GameObject {
 		
 		case PartyScreen:
 			
-			int partyMembers = 0;
-			for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {
-				if (adventurer.inParty) { partyMembers++; }
-			}
+			if (checkHover(offX + 5, offX + width - 10, offY + 10, offY + 10 + height / 6, gameContainer)) { 
+				hover = true; 
+				if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { calculatePartyScreenNumber(true); CommentWidget.timer = 0; } }
+			
+			else if (checkHover(offX + 5, offX + width - 10, offY + 15 + height / 6, offY + 15 + 2 * height / 6, gameContainer)) { 
+				hover = true; 
+				if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { calculatePartyScreenNumber(false); CommentWidget.timer = 0; } }
+			
+			else if (checkHover(offX + 5, offX + width - 10, offY + 20 + 2 * height / 6, offY + 20 + 3 * height / 6, gameContainer)) { hover = true; }
+			
+			else if (checkHover(offX + 5, offX + width - 10, offY + 25 + 3 * height / 6, offY + 25 + 4 * height / 6, gameContainer)) { hover = true; }
+			
+			else if (checkHover(offX + 5, offX + width - 10, offY + 30 + 4 * height / 6, offY + 30 + 5 * height / 6, gameContainer)) { hover = true; }						
+			
+			else { hover = false; }
+			
+			
+			
 			if (gameContainer.getInput().isKeyUp(KeyEvent.VK_UP)) {
 				if (activeOption > 1) { activeOption --; }
 			}
@@ -59,6 +80,7 @@ public class OptionsWidget extends GameObject {
 				
 				case 1: calculatePartyScreenNumber(true);
 						CommentWidget.timer = 0;
+						System.out.println(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.skillSlots + " skill slots");
 						/*Adventurer hero = GameManager.adventurers.allAdventurers.get(PartyScreen.member);
 						System.out.println("Adventurer: " + hero.name);
 						System.out.println("HP Rate: " + hero.levelupPercentages.HP + ", " + "MP Rate: " + hero.levelupPercentages.MP);
@@ -128,6 +150,7 @@ public class OptionsWidget extends GameObject {
 					);
 			}
 		
+		if(hover) { renderer.drawRect(hoverX, hoverY, width - 8, height / 6 + 2, 0xff999999); }		
 		
 	}
 	
@@ -145,13 +168,24 @@ public class OptionsWidget extends GameObject {
 				}
 			} else {
 				if(GameManager.adventurers.allAdventurers.get(i).inParty && i < PartyScreen.member) {
-					System.out.println("Diminished");
 					tempPartyNumber = i;
 				}
 			}
 		}
 		
 		if(!gotNumber) { PartyScreen.member = tempPartyNumber; }
+		
+	}
+	
+	
+	private boolean checkHover(int leftSide, int rightSide, int top, int bottom, GameContainer gameContainer) {
+		
+		if(gameContainer.getInput().getMouseX() > leftSide && gameContainer.getInput().getMouseX() < rightSide &&
+				gameContainer.getInput().getMouseY() > top && gameContainer.getInput().getMouseY() < bottom) {
+			hoverX = leftSide - 1;
+			hoverY = top - 1;
+			return true;
+		} else { return false; }
 		
 	}
 	

@@ -202,10 +202,6 @@ public class WorldMap extends GameObject {
 
 		}
 
-		if (gameContainer.getInput().isKeyUp(KeyEvent.VK_P)) {
-			GameManager.gameState = GameState.PartyScreen;
-		}
-
 	}
 
 	public void render(GameContainer gameContainer, Renderer renderer) {

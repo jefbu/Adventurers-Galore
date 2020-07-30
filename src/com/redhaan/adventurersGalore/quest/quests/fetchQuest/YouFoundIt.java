@@ -1,10 +1,20 @@
 package com.redhaan.adventurersGalore.quest.quests.fetchQuest;
 
+import java.util.Random;
+
+import com.redhaan.adventurersGalore.GameManager;
+import com.redhaan.adventurersGalore.GameState;
+import com.redhaan.adventurersGalore.combat.Combat;
+import com.redhaan.adventurersGalore.combat.CombatPhase;
+import com.redhaan.adventurersGalore.combat.combatAI.HighLevelPlan;
+import com.redhaan.adventurersGalore.entity.Monster;
 import com.redhaan.adventurersGalore.entity.town.Town;
 import com.redhaan.adventurersGalore.quest.Quest;
 import com.redhaan.adventurersGalore.quest.QuestStep;
+import com.redhaan.adventurersGalore.quest.questUI.QuestUI;
 
 import gameEngine.ecclesiastes.GameContainer;
+import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class YouFoundIt extends QuestStep {
 
@@ -29,24 +39,40 @@ public class YouFoundIt extends QuestStep {
 	
 	@Override
 	public void update(GameContainer gameContainer, Quest quest) {
-		/*
-		if(!quest.playerQuest) {
-			if(!waitingAtLocation) {
-				if(partyArrivedAtNewQuestStepLocation(quest, this)) {
-					waitingAtLocation = true;
+
+		switch(GameManager.gameState) {	
+		
+		case WorldMap:
+			if(!quest.playerQuest) {
+				if(!waitingAtLocation) {
+					if(partyArrivedAtNewQuestStepLocation(quest, this)) {
+						waitingAtLocation = true;
+					}
+					else { 
+						if(playerInterceptsQuest(quest)) {
+							QuestUI.quest = quest;
+							QuestUI.quest.questSteps.add(this);						
+						}
+					}
 				}
-				else { playerInterceptsQuest(quest); }
+				
+				if(waitingAtLocation) {			
+					daysPassed = daysPassed + 100;
+				}
 			}
+			break;
 			
-			if(waitingAtLocation) {			
-				quest.conclude();
-				daysPassed = 999;
-			}
+		case InTown: break;	
+		case Combat: break;		
+		case PartyScreen: break;
+		case QuestUI: break;
+		case Titlescreen: break;
+		default: break;	
+			
 		}
-		*/
+		
 		daysPassed++;
 		
 	}
-	
-	
+		
 }

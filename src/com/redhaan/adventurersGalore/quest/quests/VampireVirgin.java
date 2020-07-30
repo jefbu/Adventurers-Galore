@@ -10,7 +10,7 @@ public class VampireVirgin extends Quest {
 	public VampireVirgin() {
 
 		maxPartySize = 4;
-		questSteps.add(new GoGetMyTrinket());
+		questSteps.add(new GoGetMyTrinket(requester));
 		
 	}
 	
