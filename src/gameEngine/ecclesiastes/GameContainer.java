@@ -8,7 +8,7 @@ public class GameContainer implements Runnable {
 	private Input input;
 	private AbstractGame game;
 	
-	private boolean running = false;
+	public static boolean running = false;
 	private final double UPDATE_CAP = 1.0 / 60.0;
 	private int width = 640; 
 	private int height = 480;
@@ -94,7 +94,7 @@ public class GameContainer implements Runnable {
 	}
 	
 	private void dispose() {
-		
+		window.frame.dispose();
 	}
 
 	public int getWidth() {

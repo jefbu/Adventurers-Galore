@@ -17,9 +17,9 @@ import javax.swing.JFrame;
 
 public class Window {
 
-	private JFrame frame;
+	public JFrame frame;
 	private BufferedImage image;
-	private Canvas canvas;
+	public Canvas canvas;
 	private BufferStrategy bufferStrategy;
 	private Graphics g;
 

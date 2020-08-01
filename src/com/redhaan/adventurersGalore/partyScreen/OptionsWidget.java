@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.GameState;
+import com.redhaan.adventurersGalore.Transition;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
@@ -53,17 +54,30 @@ public class OptionsWidget extends GameObject {
 			
 			if (checkHover(offX + 5, offX + width - 10, offY + 10, offY + 10 + height / 6, gameContainer)) { 
 				hover = true; 
+				activeOption = 1;
 				if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { calculatePartyScreenNumber(true); CommentWidget.timer = 0; } }
 			
 			else if (checkHover(offX + 5, offX + width - 10, offY + 15 + height / 6, offY + 15 + 2 * height / 6, gameContainer)) { 
 				hover = true; 
+				activeOption = 2;
 				if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { calculatePartyScreenNumber(false); CommentWidget.timer = 0; } }
 			
-			else if (checkHover(offX + 5, offX + width - 10, offY + 20 + 2 * height / 6, offY + 20 + 3 * height / 6, gameContainer)) { hover = true; }
+			else if (checkHover(offX + 5, offX + width - 10, offY + 20 + 2 * height / 6, offY + 20 + 3 * height / 6, gameContainer)) { 
+				hover = true; 
+				activeOption = 3; }
 			
-			else if (checkHover(offX + 5, offX + width - 10, offY + 25 + 3 * height / 6, offY + 25 + 4 * height / 6, gameContainer)) { hover = true; }
+			else if (checkHover(offX + 5, offX + width - 10, offY + 25 + 3 * height / 6, offY + 25 + 4 * height / 6, gameContainer)) { 
+				hover = true; 
+				activeOption = 4; }
 			
-			else if (checkHover(offX + 5, offX + width - 10, offY + 30 + 4 * height / 6, offY + 30 + 5 * height / 6, gameContainer)) { hover = true; }						
+			else if (checkHover(offX + 5, offX + width - 10, offY + 30 + 4 * height / 6, offY + 30 + 5 * height / 6, gameContainer)) { 
+				hover = true; 
+				activeOption = 5;
+				if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { 
+					Transition.nextGameState = GameState.WorldMap;
+					GameManager.gameState = GameState.Transition; 
+					PartyScreen.member = 0;
+				}	}						
 			
 			else { hover = false; }
 			
