@@ -1,5 +1,7 @@
 package com.redhaan.adventurersGalore.worldMap;
 
+import java.io.Serializable;
+
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.combat.MoveRangeFiller;
 
@@ -7,8 +9,9 @@ import gameEngine.ecclesiastes.Renderer;
 import gameEngine.ecclesiastes.gfx.Image;
 import gameEngine.ecclesiastes.gfx.ImageTile;
 
-public class LevelDrawer {
+public class LevelDrawer implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private ImageTile tileSet;
 
 	public LevelDrawer() {

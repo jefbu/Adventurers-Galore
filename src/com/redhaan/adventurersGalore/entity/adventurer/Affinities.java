@@ -1,7 +1,10 @@
 package com.redhaan.adventurersGalore.entity.adventurer;
 
-public class Affinities {
-	
+import java.io.Serializable;
+
+public class Affinities implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	public int white = 0;
 	public int yellow = 0;
 	public int teal = 0;

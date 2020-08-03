@@ -24,7 +24,8 @@ import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
 public class Monster extends NPC {
-	
+
+	private static final long serialVersionUID = 1L;
 	public Stats maxStats;
 	public Stats currentStats;
 	public Affinities affinities;
@@ -145,6 +146,8 @@ public class Monster extends NPC {
 		case PartyScreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 		
 		}
 		
@@ -171,6 +174,8 @@ public class Monster extends NPC {
 		case PartyScreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 	
 		}
 		

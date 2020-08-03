@@ -1,12 +1,10 @@
 package com.redhaan.adventurersGalore.worldMap;
 
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.Random;
 
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
-import com.redhaan.adventurersGalore.GameState;
 import com.redhaan.adventurersGalore.entity.party.Party;
 import com.redhaan.adventurersGalore.entity.party.TravelerEngine;
 import com.redhaan.adventurersGalore.entity.party.travelerEvent.TravelerEvent;
@@ -18,6 +16,7 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class WorldMap extends GameObject {
 
+	private static final long serialVersionUID = 1L;
 	public static SubState subState;
 	public static SubState previousSubState;
 	private LevelDrawer levelDrawer;
@@ -78,6 +77,8 @@ public class WorldMap extends GameObject {
 		case PartyScreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 
 		case WorldMap:
 			
@@ -213,6 +214,8 @@ public class WorldMap extends GameObject {
 		case PartyScreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 
 		case WorldMap:
 

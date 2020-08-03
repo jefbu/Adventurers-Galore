@@ -18,6 +18,7 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class QuestScreen extends GameObject {
 	
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Quest> playerQuests;
 	private boolean initiated;
 	private int[] colours;

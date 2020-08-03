@@ -1,11 +1,13 @@
 package com.redhaan.adventurersGalore.entity.adventurer.adventurerFactory;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import com.redhaan.adventurersGalore.entity.adventurer.Race;
 
-public class NameFactory {
-	
+public class NameFactory implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	String name;
 	Random random;
 	

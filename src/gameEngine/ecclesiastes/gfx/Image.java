@@ -2,11 +2,13 @@ package gameEngine.ecclesiastes.gfx;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.imageio.ImageIO;
 
-public class Image {
-	
+public class Image implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private int width, height;
 	private int[] pixels;
 	

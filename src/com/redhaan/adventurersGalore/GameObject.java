@@ -1,9 +1,13 @@
 package com.redhaan.adventurersGalore;
 
+import java.io.Serializable;
+
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
-public abstract class GameObject {
+public abstract class GameObject implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private float posX, posY;
 	private String tag;

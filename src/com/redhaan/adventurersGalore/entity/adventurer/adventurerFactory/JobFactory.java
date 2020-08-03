@@ -1,12 +1,15 @@
 package com.redhaan.adventurersGalore.entity.adventurer.adventurerFactory;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import com.redhaan.adventurersGalore.entity.adventurer.Job;
 import com.redhaan.adventurersGalore.entity.adventurer.Race;
 
-public class JobFactory {
-	
+public class JobFactory implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	public JobFactory() { }
 	
 	

@@ -8,8 +8,8 @@ import gameEngine.ecclesiastes.Renderer;
 import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class TitleBard extends GameObject {
-	
 
+	private static final long serialVersionUID = 1L;
 	private ImageTile castlePrincessImage;
 	private float temp = 0;
 	private int xTile;

@@ -5,7 +5,10 @@ import com.redhaan.adventurersGalore.quest.Quest;
 import gameEngine.ecclesiastes.GameContainer;
 
 public class FetchQuest extends Quest {
-	
+
+	private static final long serialVersionUID = 1L;
+
+
 	public FetchQuest() {
 		
 		maxPartySize = 20;

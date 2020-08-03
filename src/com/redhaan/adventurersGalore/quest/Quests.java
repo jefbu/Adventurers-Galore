@@ -13,6 +13,7 @@ import gameEngine.ecclesiastes.Renderer;
 
 public class Quests extends GameObject {
 
+	private static final long serialVersionUID = 1L;
 	public static ArrayList<Quest> allQuests;
 	private int day;
 	public static boolean playerInteractedWithQuestRecently;

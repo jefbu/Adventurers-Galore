@@ -10,7 +10,8 @@ import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
 public class Adventurers extends GameObject {
-	
+
+	private static final long serialVersionUID = 1L;
 	public ArrayList<Adventurer> allAdventurers;
 	private AdventurerFactory adventurerFactory;
 	

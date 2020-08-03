@@ -13,7 +13,8 @@ import gameEngine.ecclesiastes.Renderer;
 import gameEngine.ecclesiastes.gfx.Image;
 
 public class TownMap extends GameObject {
-	
+
+	private static final long serialVersionUID = 1L;
 	private Image village;
 	private Image town;
 	private Image city;
@@ -48,6 +49,8 @@ public class TownMap extends GameObject {
 		case PartyScreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 
 		}
 		
@@ -86,6 +89,8 @@ public class TownMap extends GameObject {
 		case PartyScreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 		
 		}
 		

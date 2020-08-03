@@ -7,7 +7,8 @@ import gameEngine.ecclesiastes.Renderer;
 import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class NPC extends GameObject {
-	
+
+	private static final long serialVersionUID = 1L;
 	public ImageTile icon;
 	
 	public NPC() {

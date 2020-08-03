@@ -9,6 +9,7 @@ import gameEngine.ecclesiastes.Renderer;
 
 public class Towns extends GameObject {
 	
+	private static final long serialVersionUID = 1L;
 	public static ArrayList<Town> allTowns;
 	
 	public Towns() {

@@ -20,6 +20,8 @@ import gameEngine.ecclesiastes.Renderer;
 
 public class Adventurer extends Monster {
 
+	private static final long serialVersionUID = 1L;
+
 	public Race race;
 	public String name;
 	public String gender;
@@ -151,6 +153,8 @@ public class Adventurer extends Monster {
 		case PartyScreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 
 		}
 
@@ -200,6 +204,8 @@ public class Adventurer extends Monster {
 		case PartyScreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 
 		}
 

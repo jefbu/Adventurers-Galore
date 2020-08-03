@@ -13,7 +13,8 @@ import gameEngine.ecclesiastes.Renderer;
 import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class Calendar extends GameObject {
-	
+
+	private static final long serialVersionUID = 1L;
 	public static int daysPassed;
 	private int monthDay;
 	private int timer;
@@ -45,6 +46,8 @@ public class Calendar extends GameObject {
 		case PartyScreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 		
 		case WorldMap:
 			
@@ -101,6 +104,8 @@ public class Calendar extends GameObject {
 		case PartyScreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 		
 		case WorldMap:
 		if(hover) { renderer.drawRect(499, 19, 122, 22, 0x88FFFFFF); }

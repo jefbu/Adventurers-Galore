@@ -16,8 +16,8 @@ import gameEngine.ecclesiastes.Renderer;
 import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class BanditsOnTheRoad extends TravelerEvent {
-	
-	
+
+	private static final long serialVersionUID = 1L;
 	String stage1Text;
 	String optionAConclusion;
 	String optionAText;

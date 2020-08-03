@@ -10,6 +10,7 @@ import gameEngine.ecclesiastes.gfx.Image;
 
 public class TitleScreen extends GameObject {
 
+	private static final long serialVersionUID = 1L;
 	Image titleScreen;
 	CastleFlag castleFlag1;
 	CastleFlag castleFlag2;
@@ -58,6 +59,8 @@ public class TitleScreen extends GameObject {
 		case PartyScreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 			
 		}
 
@@ -87,6 +90,8 @@ public class TitleScreen extends GameObject {
 		case PartyScreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 
 		}
 	}

@@ -1,11 +1,13 @@
 package com.redhaan.adventurersGalore.entity.adventurer.adventurerFactory;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import com.redhaan.adventurersGalore.entity.adventurer.Tattoo;
 
-public class TattooFactory {
+public class TattooFactory implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	Random random;
 	
 	public TattooFactory() {

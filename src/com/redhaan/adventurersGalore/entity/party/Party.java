@@ -11,8 +11,8 @@ import gameEngine.ecclesiastes.Renderer;
 import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class Party extends GameObject {
-	
-	
+
+	private static final long serialVersionUID = 1L;
 	private static int xTile, yTile;
 	private static int xDestinationTile, yDestinationTile;
 	private ImageTile icon;
@@ -81,6 +81,8 @@ public class Party extends GameObject {
 		case Titlescreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 
 		}
 		
@@ -118,6 +120,8 @@ public class Party extends GameObject {
 		case PartyScreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 
 		}
 		

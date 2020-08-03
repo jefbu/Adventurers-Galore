@@ -1,7 +1,9 @@
 package com.redhaan.adventurersGalore.entity.weapon.gemStones;
 
 public class Pearl extends GemStone {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	public Pearl(int level) {
 		
 		super(1, 0, 0, 0, 0, 0, 0, 0, 0);

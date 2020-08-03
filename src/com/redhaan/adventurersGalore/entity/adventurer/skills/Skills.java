@@ -1,7 +1,11 @@
 package com.redhaan.adventurersGalore.entity.adventurer.skills;
 
-public class Skills {
-	
+import java.io.Serializable;
+
+public class Skills implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	public int skillSlots;
 	
 	public Skill sword;

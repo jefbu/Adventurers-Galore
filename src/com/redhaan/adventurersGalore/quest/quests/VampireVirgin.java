@@ -6,7 +6,9 @@ import com.redhaan.adventurersGalore.quest.quests.fetchQuest.GoGetMyTrinket;
 import gameEngine.ecclesiastes.GameContainer;
 
 public class VampireVirgin extends Quest {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	public VampireVirgin() {
 
 		maxPartySize = 4;

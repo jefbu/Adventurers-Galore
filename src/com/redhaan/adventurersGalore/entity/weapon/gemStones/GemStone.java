@@ -1,7 +1,10 @@
 package com.redhaan.adventurersGalore.entity.weapon.gemStones;
 
-public class GemStone {
+import java.io.Serializable;
+
+public class GemStone implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	public int whiteBonus;
 	public int yellowBonus;
 	public int tealBonus;

@@ -14,7 +14,8 @@ import gameEngine.ecclesiastes.Renderer;
 import gameEngine.ecclesiastes.gfx.Image;
 
 public class Combat extends GameObject {
-	
+
+	private static final long serialVersionUID = 1L;
 	public static Image combatMap;
 	public static ArrayList<Monster> enemies;
 	
@@ -113,6 +114,8 @@ public class Combat extends GameObject {
 		case PartyScreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 		
 		}
 	}
@@ -148,6 +151,8 @@ public class Combat extends GameObject {
 		case PartyScreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 		
 		}
 		

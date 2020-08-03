@@ -7,7 +7,8 @@ import gameEngine.ecclesiastes.Renderer;
 import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class Inn extends Building {
-	
+
+	private static final long serialVersionUID = 1L;
 	private ImageTile image;
 	private int xTile, yTile;
 	

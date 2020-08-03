@@ -11,6 +11,7 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class TitleAdventurer extends GameObject {
 
+	private static final long serialVersionUID = 1L;
 	private ImageTile castleFlagImage;
 	private float temp = 0;
 	private int xTile;

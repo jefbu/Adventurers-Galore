@@ -1,7 +1,11 @@
 package com.redhaan.adventurersGalore.entity.adventurer;
 
-public class Stats {
-	
+import java.io.Serializable;
+
+public class Stats implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	public int HP;
 	public int MP;
 	public int PHY;

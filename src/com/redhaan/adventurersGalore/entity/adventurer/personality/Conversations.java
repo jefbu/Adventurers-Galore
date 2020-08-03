@@ -12,6 +12,7 @@ import gameEngine.ecclesiastes.Renderer;
 
 public class Conversations extends GameObject {
 
+	private static final long serialVersionUID = 1L;
 	public static boolean active;
 	Random random;
 	ConversationUI conversationUI;

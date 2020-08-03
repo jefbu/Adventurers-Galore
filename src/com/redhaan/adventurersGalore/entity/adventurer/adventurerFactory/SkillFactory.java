@@ -1,16 +1,16 @@
 package com.redhaan.adventurersGalore.entity.adventurer.adventurerFactory;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.Random;
 
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.entity.adventurer.Job;
-import com.redhaan.adventurersGalore.entity.adventurer.skills.Skill;
 import com.redhaan.adventurersGalore.entity.adventurer.skills.SkillEnum;
 import com.redhaan.adventurersGalore.entity.adventurer.skills.Skills;
 
-public class SkillFactory {
+public class SkillFactory implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	Random random;
 	
 	public SkillFactory() {

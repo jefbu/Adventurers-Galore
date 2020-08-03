@@ -10,6 +10,7 @@ import gameEngine.ecclesiastes.Renderer;
 
 public class PortraitWidget extends GameObject {
 
+	private static final long serialVersionUID = 1L;
 	private float temp;
 	private int animationLine;
 	Random random;

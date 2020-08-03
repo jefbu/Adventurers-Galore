@@ -8,6 +8,7 @@ import gameEngine.ecclesiastes.Renderer;
 
 public class SigilWidget extends GameObject {
 	
+	private static final long serialVersionUID = 1L;
 	private int offX, offY;
 	private int width, height;
 	private boolean hover;

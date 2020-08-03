@@ -1,7 +1,10 @@
 package com.redhaan.adventurersGalore.entity.adventurer;
 
-public class Race {
+import java.io.Serializable;
 
+public class Race implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	public Stats raceBonusStats;
 	public Stats percentageStats;
 	public String name;

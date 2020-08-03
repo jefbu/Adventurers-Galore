@@ -11,7 +11,8 @@ import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
 public class TravelerEngine extends GameObject {
-	
+
+	private static final long serialVersionUID = 1L;
 	public static boolean traveling;
 	private int distanceTraveled;
 	private int timer;
@@ -37,6 +38,8 @@ public class TravelerEngine extends GameObject {
 		case PartyScreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 		
 		case WorldMap:
 			

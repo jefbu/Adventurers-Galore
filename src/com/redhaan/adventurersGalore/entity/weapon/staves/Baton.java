@@ -1,5 +1,6 @@
 package com.redhaan.adventurersGalore.entity.weapon.staves;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import com.redhaan.adventurersGalore.entity.weapon.Rune;
@@ -7,8 +8,9 @@ import com.redhaan.adventurersGalore.entity.weapon.Soul;
 import com.redhaan.adventurersGalore.entity.weapon.Weapon;
 import com.redhaan.adventurersGalore.entity.weapon.gemStones.Pearl;
 
-public class Baton extends Weapon {
+public class Baton extends Weapon implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	public static final int TIER = 2;
 	
 	public Baton() {

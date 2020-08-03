@@ -1,11 +1,14 @@
 package com.redhaan.adventurersGalore.entity.adventurer.adventurerFactory;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import com.redhaan.adventurersGalore.entity.adventurer.Race;
 
-public class RaceFactory {
-	
+public class RaceFactory implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	public RaceFactory() { }
 	
 	

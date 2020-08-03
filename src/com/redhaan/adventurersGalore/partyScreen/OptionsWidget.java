@@ -12,7 +12,8 @@ import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
 public class OptionsWidget extends GameObject {
-	
+
+	private static final long serialVersionUID = 1L;
 	private int offX, offY;
 	private int width, height;
 	
@@ -49,6 +50,8 @@ public class OptionsWidget extends GameObject {
 		case WorldMap: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 		
 		case PartyScreen:
 			

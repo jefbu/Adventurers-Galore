@@ -1,9 +1,12 @@
 package com.redhaan.adventurersGalore.worldMap;
 
+import java.io.Serializable;
+
 import gameEngine.ecclesiastes.gfx.Image;
 
-public class WorldMapTileInfo {
-	
+public class WorldMapTileInfo implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private Image detailMap;
 	public static WorldMapTiles[] tiles;
 	

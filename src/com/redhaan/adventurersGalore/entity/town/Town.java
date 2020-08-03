@@ -17,6 +17,7 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class Town extends GameObject {
 
+	private static final long serialVersionUID = 1L;
 	public String name;
 	public int[] xLocations;
 	public int[] yLocations;
@@ -46,6 +47,8 @@ public class Town extends GameObject {
 		case PartyScreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 
 		case WorldMap:
 			switch (WorldMap.getSubState()) {
@@ -88,6 +91,8 @@ public class Town extends GameObject {
 		case PartyScreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 		
 		case WorldMap:
 

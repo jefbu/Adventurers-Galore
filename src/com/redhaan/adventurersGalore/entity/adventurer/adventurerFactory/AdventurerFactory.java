@@ -1,5 +1,6 @@
 package com.redhaan.adventurersGalore.entity.adventurer.adventurerFactory;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -8,7 +9,9 @@ import com.redhaan.adventurersGalore.entity.adventurer.personality.PersonalityTr
 import com.redhaan.adventurersGalore.entity.armour.ReinforcedLeather;
 import com.redhaan.adventurersGalore.entity.town.Towns;
 
-public class AdventurerFactory {
+public class AdventurerFactory implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private Adventurer adventurer;
 

@@ -1,12 +1,14 @@
 package com.redhaan.adventurersGalore.entity.adventurer.adventurerFactory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
 import com.redhaan.adventurersGalore.entity.adventurer.Sigil;
 
-public class SigilFactory {
+public class SigilFactory implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	Random random;
 	
 	public SigilFactory() { 

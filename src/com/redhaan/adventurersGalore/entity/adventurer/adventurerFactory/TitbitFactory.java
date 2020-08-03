@@ -1,12 +1,14 @@
 package com.redhaan.adventurersGalore.entity.adventurer.adventurerFactory;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.entity.adventurer.Titbit;
 
-public class TitbitFactory {
+public class TitbitFactory implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private Random random;
 
 	public TitbitFactory() {

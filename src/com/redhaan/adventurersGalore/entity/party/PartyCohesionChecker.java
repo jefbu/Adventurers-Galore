@@ -1,5 +1,6 @@
 package com.redhaan.adventurersGalore.entity.party;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import com.redhaan.adventurersGalore.GameManager;
@@ -8,17 +9,18 @@ import com.redhaan.adventurersGalore.Transition;
 
 import gameEngine.ecclesiastes.GameContainer;
 
-public class PartyCohesionChecker {
-	
+public class PartyCohesionChecker implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private int partySize;
 	private Random random;
-	private PartyCohesionCheckerUI partyCohesionCheckerUI;	
+	//private PartyCohesionCheckerUI partyCohesionCheckerUI;	
 	
 	public PartyCohesionChecker() {
 		
 		partySize = 0;
 		random = new Random();
-		partyCohesionCheckerUI = new PartyCohesionCheckerUI();
+		//partyCohesionCheckerUI = new PartyCohesionCheckerUI();
 		
 	}
 	

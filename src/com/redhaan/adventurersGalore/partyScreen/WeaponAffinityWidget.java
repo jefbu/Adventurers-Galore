@@ -1,5 +1,7 @@
 package com.redhaan.adventurersGalore.partyScreen;
 
+import java.io.Serializable;
+
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.entity.weapon.Weapon;
 
@@ -7,8 +9,9 @@ import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 import gameEngine.ecclesiastes.gfx.ImageTile;
 
-public class WeaponAffinityWidget {
-	
+public class WeaponAffinityWidget implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private ImageTile icon;
 	private ImageTile jewelIcon;
 	

@@ -9,7 +9,8 @@ import gameEngine.ecclesiastes.Renderer;
 import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class WeaponWidget extends GameObject {
-	
+
+	private static final long serialVersionUID = 1L;
 	private int offX, offY, width, height;
 	private ImageTile icon;
 	

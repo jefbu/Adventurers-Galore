@@ -8,7 +8,8 @@ import com.redhaan.adventurersGalore.entity.weapon.Weapon;
 import com.redhaan.adventurersGalore.entity.weapon.gemStones.Pearl;
 
 public class Quarterstaff extends Weapon {
-	
+
+	private static final long serialVersionUID = 1L;
 	public static final int TIER = 1;
 	
 	public Quarterstaff() {

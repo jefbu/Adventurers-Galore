@@ -1,5 +1,6 @@
 package com.redhaan.adventurersGalore.entity.weapon;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -8,8 +9,9 @@ import com.redhaan.adventurersGalore.entity.weapon.gemStones.GemStone;
 
 import gameEngine.ecclesiastes.gfx.ImageTile;
 
-public class Weapon {
-	
+public class Weapon implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	public int damage, hit, crit, weight;
 	public String name;
 	public int upgrades;

@@ -1,9 +1,12 @@
 package com.redhaan.adventurersGalore.entity.weapon;
 
+import java.io.Serializable;
+
 import gameEngine.ecclesiastes.gfx.ImageTile;
 
-public class Rune {
-	
+public class Rune implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	public String name;
 	ImageTile icon;
 	

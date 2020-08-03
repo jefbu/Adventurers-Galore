@@ -14,8 +14,8 @@ import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
 public class TravelerEvent extends GameObject {
-	
-	
+
+	private static final long serialVersionUID = 1L;
 	public static TravelerEvent currentEvent;
 	public static int optionsOffX;
 	public static int optionsWidth;

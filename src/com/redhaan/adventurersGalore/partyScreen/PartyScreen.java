@@ -16,7 +16,8 @@ import gameEngine.ecclesiastes.Renderer;
 import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class PartyScreen extends GameObject {
-	
+
+	private static final long serialVersionUID = 1L;
 	protected static int member;
 	private int bgColour;
 	
@@ -77,6 +78,8 @@ public class PartyScreen extends GameObject {
 		case Titlescreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 		
 		case PartyScreen:
 			
@@ -142,6 +145,8 @@ public class PartyScreen extends GameObject {
 		case Titlescreen: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 		
 		case PartyScreen:
 			renderer.drawRectOpaque(10, 10, 620, 460, bgColour);

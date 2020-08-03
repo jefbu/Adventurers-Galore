@@ -7,6 +7,7 @@ import gameEngine.ecclesiastes.Renderer;
 
 public class Rectangle extends GameObject {
 	
+	private static final long serialVersionUID = 1L;
 	boolean active;
 	int offX, offY;
 	int width, height;

@@ -11,6 +11,8 @@ import com.redhaan.adventurersGalore.entity.weapon.swords.IronSword;
 
 public class Player extends Adventurer {
 
+	private static final long serialVersionUID = 1L;
+
 	public Player() {
 		
 		super();

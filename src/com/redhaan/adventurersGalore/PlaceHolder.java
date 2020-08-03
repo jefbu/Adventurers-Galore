@@ -6,7 +6,9 @@ import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
 public class PlaceHolder extends GameObject {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	public PlaceHolder(int posX, int posY) {
 		
 		this.setTag("");

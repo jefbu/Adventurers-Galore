@@ -1,7 +1,9 @@
 package com.redhaan.adventurersGalore.entity.weapon.gemStones;
 
 public class MoonStone extends GemStone {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	public MoonStone(int level) {
 		
 		super(0, 0, 2, 0, 1, 1, 0, 0, 0);

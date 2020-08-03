@@ -7,7 +7,8 @@ import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
 public class BasicInfoWidget extends GameObject {
-	
+
+	private static final long serialVersionUID = 1L;
 	private int offX, offY, width, height;
 
 	public BasicInfoWidget(int offX, int offY, int width, int height) {

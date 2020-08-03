@@ -1,5 +1,6 @@
 package com.redhaan.adventurersGalore.entity.adventurer.adventurerFactory;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import com.redhaan.adventurersGalore.entity.adventurer.Job;
@@ -31,8 +32,9 @@ import com.redhaan.adventurersGalore.entity.weapon.swords.Scimitar;
 import com.redhaan.adventurersGalore.entity.weapon.swords.SilverSword;
 import com.redhaan.adventurersGalore.entity.weapon.swords.VorpalSword;
 
-public class WeaponFactory {
-	
+public class WeaponFactory implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	Random random;
 	
 	

@@ -13,7 +13,8 @@ import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
 public class PartyCohesionCheckerUI extends GameObject {
-	
+
+	private static final long serialVersionUID = 1L;
 	public static GameState nextGameState;	
 	private boolean textFinished;
 	

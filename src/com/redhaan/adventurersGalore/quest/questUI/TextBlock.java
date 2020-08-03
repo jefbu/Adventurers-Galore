@@ -9,6 +9,7 @@ import gameEngine.ecclesiastes.Renderer;
 
 public class TextBlock extends GameObject {
 	
+	private static final long serialVersionUID = 1L;
 	private String stringToBeDrawn;
 	private String stringToBeDrawnFrom;
 	private int stringNumber;

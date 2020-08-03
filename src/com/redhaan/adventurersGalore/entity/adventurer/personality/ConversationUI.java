@@ -1,13 +1,16 @@
 package com.redhaan.adventurersGalore.entity.adventurer.personality;
 
+import java.io.Serializable;
+
 import com.redhaan.adventurersGalore.GameManager;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
-public class ConversationUI {
+public class ConversationUI implements Serializable {
 	
-	
+	private static final long serialVersionUID = 1L;
+
 	public ConversationUI() {
 
 	}

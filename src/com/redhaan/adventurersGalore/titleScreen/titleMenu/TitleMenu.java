@@ -2,22 +2,28 @@ package com.redhaan.adventurersGalore.titleScreen.titleMenu;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.io.FileInputStream;
 
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.GameState;
+import com.redhaan.adventurersGalore.LoadGame;
 import com.redhaan.adventurersGalore.Transition;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
 public class TitleMenu extends GameObject {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	private int arrowX, arrowY;
 	
 	Rectangle startRect;
 	Rectangle loadRect;
 	Rectangle exitRect;
+	
+	FileInputStream saveFile;
 	
 	private boolean hover;
 	
@@ -57,7 +63,15 @@ public class TitleMenu extends GameObject {
 			loadRect.setActive(true); startRect.setActive(false); exitRect.setActive(false);
 			arrowY = 50;
 			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
-			};
+				
+		        try {
+		            saveFile = new FileInputStream("saveTest.sav");
+		            } catch (Exception e) {}
+		            
+		        if (saveFile!=null) {
+		            LoadGame.load();
+		        }
+			}
 		}
 		
 		

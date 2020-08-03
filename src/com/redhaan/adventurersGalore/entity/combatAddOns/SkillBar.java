@@ -8,7 +8,9 @@ import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
 public class SkillBar extends GameObject {
-	
+
+	private static final long serialVersionUID = 1L;
+
 	public SkillBar(Monster monster) {
 		
 		

@@ -1,9 +1,12 @@
 package com.redhaan.adventurersGalore.entity.adventurer.adventurerFactory;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class LevelFactory {
-	
+public class LevelFactory implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	public LevelFactory() {
 		
 	}

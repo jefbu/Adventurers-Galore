@@ -8,7 +8,8 @@ import com.redhaan.adventurersGalore.entity.weapon.Weapon;
 import com.redhaan.adventurersGalore.entity.weapon.gemStones.Pearl;
 
 public class Katar extends Weapon {
-	
+
+	private static final long serialVersionUID = 1L;
 	public static final int TIER = 4;
 	
 	public Katar() {

@@ -1,7 +1,10 @@
 package com.redhaan.adventurersGalore.entity.adventurer;
 
-public class Sigil {
-	
+import java.io.Serializable;
+
+public class Sigil implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	public String name;
 	
 	public Sigil(String name) {

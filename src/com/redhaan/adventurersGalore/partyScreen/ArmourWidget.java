@@ -8,7 +8,8 @@ import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
 public class ArmourWidget extends GameObject {
-	
+
+	private static final long serialVersionUID = 1L;
 	int offX, offY;
 	int width, height;
 	

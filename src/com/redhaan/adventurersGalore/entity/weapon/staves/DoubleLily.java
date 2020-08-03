@@ -8,7 +8,8 @@ import com.redhaan.adventurersGalore.entity.weapon.Weapon;
 import com.redhaan.adventurersGalore.entity.weapon.gemStones.Emerald;
 
 public class DoubleLily extends Weapon {
-	
+
+	private static final long serialVersionUID = 1L;
 	public static final int TIER = 5;
 	
 	public DoubleLily() {

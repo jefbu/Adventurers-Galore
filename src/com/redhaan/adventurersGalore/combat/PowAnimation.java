@@ -10,7 +10,8 @@ import gameEngine.ecclesiastes.Renderer;
 import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class PowAnimation extends GameObject {
-	
+
+	private static final long serialVersionUID = 1L;
 	private float timer;
 	public static boolean activated;
 	public static int x, y;
@@ -50,6 +51,8 @@ public class PowAnimation extends GameObject {
 		case WorldMap: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
 		
 		}			
 	}
@@ -71,6 +74,9 @@ public class PowAnimation extends GameObject {
 		case WorldMap: break;
 		case QuestUI: break;
 		case Transition: break;
+		case QuestScreen: break;
+		case PartyCohesionCheckerUI: break;
+		
 		
 		}
 		

@@ -20,6 +20,7 @@ import gameEngine.ecclesiastes.Renderer;
 
 public class QuestUI extends GameObject {
 
+	private static final long serialVersionUID = 1L;
 	public static GameState nextGameState;
 	public static QuestStep nextQuestStep;
 	private Requester requester;
