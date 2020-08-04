@@ -5,6 +5,8 @@ import java.awt.Canvas;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
@@ -43,8 +45,13 @@ public class Window {
 		}
 		Point hotSpot = new Point(0,0);
 		Cursor customCursor = toolkit.createCustomCursor(cursor, hotSpot, "Custom Cursor");
+		
+		//GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		//GraphicsDevice graphicsDevice = graphicsEnvironment.getDefaultScreenDevice();
 
 		frame = new JFrame(gameContainer.getTitle());
+		//frame.setPreferredSize(new Dimension(canvas.getWidth(), canvas.getHeight()));
+		frame.setUndecorated(true);
 		frame.setCursor(customCursor);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
@@ -52,12 +59,16 @@ public class Window {
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
+		//graphicsDevice.setFullScreenWindow(frame);
 		frame.setVisible(true);
 		
-		
+
+					
 		canvas.createBufferStrategy(2);
 		bufferStrategy = canvas.getBufferStrategy();
 		g = bufferStrategy.getDrawGraphics();
+		
+
 		
 	}
 	

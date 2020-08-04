@@ -1,6 +1,8 @@
 package com.redhaan.adventurersGalore;
 
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import com.redhaan.adventurersGalore.calendar.Calendar;
@@ -89,6 +91,10 @@ public class GameManager extends AbstractGame {
 		GameContainer gameContainer = new GameContainer(new GameManager());
 		gameContainer.setWidth(GAMEWIDTH);
 		gameContainer.setHeight(GAMEHEIGHT);
+		//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		//double screenWidth = screenSize.getWidth();
+		//float screenHeight = (float) screenSize.getHeight();
+		//float scale = screenHeight / (GAMEHEIGHT); 
 		gameContainer.setScale(1.33f);
 		gameContainer.start();
 		
