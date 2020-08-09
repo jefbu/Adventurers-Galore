@@ -41,7 +41,6 @@ public abstract class CombatConclusion {
 		int roll = random.nextInt(100) + 1;
 		if (roll + adventurer.battlesPassed > adventurer.getLevel() * 5 + 5) {
 			LevelUpRoller.levelUp(adventurer);
-			adventurer.setLevel(adventurer.getLevel() + 1);
 		}
 		
 	}

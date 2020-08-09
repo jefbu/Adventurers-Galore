@@ -3,6 +3,7 @@ package com.redhaan.adventurersGalore;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import com.redhaan.adventurersGalore.calendar.Calendar;
@@ -55,18 +56,22 @@ public class GameManager extends AbstractGame {
 		gameObjects.add(new Conversations());
 		gameObjects.add(new PartyCohesionCheckerUI());
 		gameObjects.add(new QuestScreen());
-		gameObjects.add(new SavePopup());
+		gameObjects.add(new SavePopup());		
+		gameObjects.add(new TravelerEngine());		
 		
 		adventurers = new Adventurers();
 		//gameObjects.add(adventurers);
-				
-		gameObjects.add(new TravelerEngine());
+
 		
 	}
 
 	@Override
 	public void update(GameContainer gameContainer, float deltaTime) {
 
+		if(gameContainer.getInput().isKeyUp(KeyEvent.VK_ESCAPE)) {
+			GameContainer.running = false;
+		}
+		
 		for (int i = 0; i < gameObjects.size(); i++) {
 			gameObjects.get(i).update(gameContainer, deltaTime);
 
@@ -79,7 +84,7 @@ public class GameManager extends AbstractGame {
 
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
-
+		
 		for (GameObject gameObject : gameObjects) {
 			gameObject.render(gameContainer, renderer);
 		}
@@ -91,11 +96,19 @@ public class GameManager extends AbstractGame {
 		GameContainer gameContainer = new GameContainer(new GameManager());
 		gameContainer.setWidth(GAMEWIDTH);
 		gameContainer.setHeight(GAMEHEIGHT);
-		//Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		//double screenWidth = screenSize.getWidth();
-		//float screenHeight = (float) screenSize.getHeight();
-		//float scale = screenHeight / (GAMEHEIGHT); 
-		gameContainer.setScale(1.33f);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		float screenHeight = (float) screenSize.getHeight();
+		float scale = screenHeight / (GAMEHEIGHT); 
+		gameContainer.setScale(scale);
+		
+		System.out.println("Screen width: " + screenSize.getWidth());
+		System.out.println("Screen height: " + screenHeight);
+		System.out.println("Scale: " + scale);
+		System.out.println("Game Width: " + GAMEWIDTH);
+		System.out.println("Game Height: " + GAMEHEIGHT);
+		System.out.println("Scaled width: " + GAMEWIDTH * scale);
+		System.out.println("Scaled height: " + GAMEHEIGHT * scale);
+		
 		gameContainer.start();
 		
 	}

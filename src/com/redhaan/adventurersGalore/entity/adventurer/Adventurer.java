@@ -81,6 +81,8 @@ public class Adventurer extends Monster {
 				break;
 
 			case PlayerTurn:
+				
+				if(moving) { skillBar.update(gameContainer, deltaTime); }
 
 				idleTimer += (deltaTime * idleAnimationSpeed);
 				if (idleTimer > 4) {
@@ -134,7 +136,6 @@ public class Adventurer extends Monster {
 						break;
 					case Unit_Active_NOTMoved:
 						moving = true;
-						skillBar.update(gameContainer, deltaTime);
 						break;
 					case Unit_Inactive_TurnPassed:
 						moving = false;

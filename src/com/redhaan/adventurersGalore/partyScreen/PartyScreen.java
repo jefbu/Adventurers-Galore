@@ -87,6 +87,10 @@ public class PartyScreen extends GameObject {
 			
 			case Main: 
 				
+				if (gameContainer.getInput().isKeyUp(KeyEvent.VK_L)) {
+					GameManager.adventurers.allAdventurers.get(PartyScreen.member).levelUp();
+				}
+				
 				calculateBGColour();
 				
 				portrait.update(gameContainer, deltaTime);

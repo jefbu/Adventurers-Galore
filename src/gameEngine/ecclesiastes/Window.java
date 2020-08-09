@@ -2,11 +2,10 @@ package gameEngine.ecclesiastes;
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
@@ -14,6 +13,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class Window {
 
@@ -48,22 +48,42 @@ public class Window {
 		
 		//GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		//GraphicsDevice graphicsDevice = graphicsEnvironment.getDefaultScreenDevice();
-
+		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int screenHeight = (int) screenSize.getHeight();
+		int screenWidth = (int) screenSize.getWidth();
+		double ratio = 100 * screenSize.getHeight() / screenSize.getWidth();
+		System.out.println("Ratio of screenSize: " + ratio);
+		
+		int division = 0;
+		if(ratio > 60) { division = 12; } else { division = 8; }
+		
+		JPanel leftPanel = new JPanel();
+		leftPanel.setBackground(Color.BLACK);
+		leftPanel.setPreferredSize(new Dimension (screenWidth / division, screenHeight));
+		System.out.println("Black Panels width: " + screenWidth / division);
+		System.out.println("Black Panels height: " + screenHeight);
+		JPanel rightPanel = new JPanel();
+		rightPanel.setBackground(Color.BLACK);
+		rightPanel.setPreferredSize(new Dimension (screenWidth / division, screenHeight));
+		
 		frame = new JFrame(gameContainer.getTitle());
-		//frame.setPreferredSize(new Dimension(canvas.getWidth(), canvas.getHeight()));
+		frame.setPreferredSize(new Dimension(screenWidth, screenHeight));
 		frame.setUndecorated(true);
 		frame.setCursor(customCursor);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
+		frame.add(leftPanel, BorderLayout.WEST);
 		frame.add(canvas, BorderLayout.CENTER);
+		frame.add(rightPanel, BorderLayout.EAST);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
 		//graphicsDevice.setFullScreenWindow(frame);
 		frame.setVisible(true);
 		
-
-					
+		System.out.println("Frame width: " + frame.getWidth());
+						
 		canvas.createBufferStrategy(2);
 		bufferStrategy = canvas.getBufferStrategy();
 		g = bufferStrategy.getDrawGraphics();
