@@ -67,8 +67,8 @@ public class Monster extends NPC {
 		icon = job.icon;
 		race = Race.human;
 		
-		currentStats.HP = 400;
-		maxStats.HP = 400;
+		currentStats.HP = 20;
+		maxStats.HP = 20;
 		
 		dead = false;
 		random = new Random();

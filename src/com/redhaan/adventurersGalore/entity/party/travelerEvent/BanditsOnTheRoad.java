@@ -67,8 +67,8 @@ public class BanditsOnTheRoad extends TravelerEvent {
 			Combat.enemies.get(1).icon = new ImageTile("/Monsters.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
 			Combat.enemies.get(0).currentStats.move = 3;
 			Combat.enemies.get(1).currentStats.move = 7;
-			Combat.enemies.get(0).currentStats.attack = 40;
-			Combat.enemies.get(1).currentStats.attack = 140;
+			Combat.enemies.get(0).currentStats.attack = 10;
+			Combat.enemies.get(1).currentStats.attack = 14;
 			
 			Combat.highLevelPlan = HighLevelPlan.Attack;
 			Combat.combatPhase = CombatPhase.Setup;

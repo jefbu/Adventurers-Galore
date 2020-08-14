@@ -16,7 +16,7 @@ public class Player extends Adventurer {
 	public Player() {
 		
 		super();
-		job = Job.archer;
+		job = Job.thief;
 		icon = job.icon;
 		inParty = true;
 		currentStats.move = 8;
@@ -26,7 +26,7 @@ public class Player extends Adventurer {
 		armour = new ReinforcedLeather();
 		calculateSecondaryStats();
 		name = "Moltke";
-		gender = "male";
+		gender = "Female";
 		age = 58;
 		currentStats.TST = 100;
 		homeTown = Town.apastan;

@@ -25,6 +25,8 @@ public class Combat extends GameObject {
 	public static HighLevelPlan highLevelPlan;
 	public static CombatPhase combatPhase;
 	
+	private CombatConclusion combatConclusion;
+	
 	private int activeEnemy;
 	
 	public Combat() {
@@ -38,6 +40,8 @@ public class Combat extends GameObject {
 		combatPhase = CombatPhase.Setup;
 
 		activeEnemy = 0;
+		
+		combatConclusion = new CombatConclusion();
 	}
 
 	@Override
@@ -48,7 +52,7 @@ public class Combat extends GameObject {
 			
 			switch(combatPhase) {
 			case Setup: CombatInitialiser.CombatInitialise(); break;
-			case Conclusion: CombatConclusion.combatConclude(); break;
+			case Conclusion: combatConclusion.update(gameContainer, deltaTime); break;
 						
 			case Combat:
 				switch(Combat.combatState) {
@@ -78,7 +82,9 @@ public class Combat extends GameObject {
 						if(!enemy.isDead() ) { endCombat = false; }
 					}
 					
-					if(endCombat) { Combat.combatPhase = CombatPhase.Conclusion; }
+					if(endCombat) { 
+						combatConclusion.playerVictorious = true;
+						Combat.combatPhase = CombatPhase.Conclusion; }
 					
 				break;
 				
@@ -126,21 +132,31 @@ public class Combat extends GameObject {
 		switch(GameManager.gameState) {
 		
 		case Combat:
-			levelDrawer.drawLevel(renderer, combatMap, 0, 0, true);
 			
-			for(Adventurer adventurer: GameManager.adventurers.allAdventurers) {
-				if(adventurer.inParty) {
-					if(!adventurer.isDead()) {
-						adventurer.render(gameContainer, renderer);
+			switch(combatPhase) {
+			
+			case Combat:
+				levelDrawer.drawLevel(renderer, combatMap, 0, 0, true);
+				
+				for(Adventurer adventurer: GameManager.adventurers.allAdventurers) {
+					if(adventurer.inParty) {
+						if(!adventurer.isDead()) {
+							adventurer.render(gameContainer, renderer);
+						}
 					}
 				}
-			}
-			
-			for (Monster enemy: enemies) {
-				if(!enemy.isDead()) {
-				enemy.render(gameContainer, renderer);
+				
+				for (Monster enemy: enemies) {
+					if(!enemy.isDead()) {
+					enemy.render(gameContainer, renderer);
+					}
 				}
+				break;
+				
+			case Conclusion: combatConclusion.render(gameContainer, renderer); break;
+			case Setup: break;			
 			}
+
 			break;
 			
 			
