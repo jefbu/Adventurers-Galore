@@ -6,14 +6,13 @@ import com.redhaan.adventurersGalore.combat.Combat;
 import com.redhaan.adventurersGalore.combat.CombatMapRoller;
 import com.redhaan.adventurersGalore.combat.CombatPhase;
 import com.redhaan.adventurersGalore.combat.combatAI.HighLevelPlan;
-import com.redhaan.adventurersGalore.entity.Monster;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
+import com.redhaan.adventurersGalore.entity.enemies.Wolf;
 import com.redhaan.adventurersGalore.worldMap.WorldMap;
 import com.redhaan.adventurersGalore.worldMap.WorldMapTiles;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
-import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class BanditsOnTheRoad extends TravelerEvent {
 
@@ -61,14 +60,8 @@ public class BanditsOnTheRoad extends TravelerEvent {
 			Combat.combatMap = CombatMapRoller.rollCombatMap(WorldMapTiles.GRASS);
 			WorldMap.subState = WorldMap.previousSubState;
 			
-			Combat.enemies.add(new Monster());
-			Combat.enemies.add(new Monster());
-			Combat.enemies.get(0).icon = new ImageTile("/Monsters.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
-			Combat.enemies.get(1).icon = new ImageTile("/Monsters.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
-			Combat.enemies.get(0).currentStats.move = 3;
-			Combat.enemies.get(1).currentStats.move = 7;
-			Combat.enemies.get(0).currentStats.attack = 10;
-			Combat.enemies.get(1).currentStats.attack = 14;
+			Combat.enemies.add(new Wolf());
+			Combat.enemies.add(new Wolf());
 			
 			Combat.highLevelPlan = HighLevelPlan.Attack;
 			Combat.combatPhase = CombatPhase.Setup;

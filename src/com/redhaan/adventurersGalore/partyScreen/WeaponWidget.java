@@ -2,7 +2,7 @@ package com.redhaan.adventurersGalore.partyScreen;
 
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
-import com.redhaan.adventurersGalore.entity.weapon.Weapon;
+import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;

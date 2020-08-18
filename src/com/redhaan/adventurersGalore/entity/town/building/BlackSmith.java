@@ -1,23 +1,17 @@
 package com.redhaan.adventurersGalore.entity.town.building;
 
-import com.redhaan.adventurersGalore.GameManager;
-
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
-import gameEngine.ecclesiastes.gfx.ImageTile;
 	
 	public class BlackSmith extends Building {
 
 		private static final long serialVersionUID = 1L;
-		private ImageTile image;
-		private int xTile, yTile;
 		
-		public BlackSmith(int xTile, int yTile) {
+		public BlackSmith() {
 			
 			super();
-			this.xTile = xTile;
-			this.yTile = yTile;
-			image = new ImageTile("/spritesheets/Buildings.png", 96, 64);
+			x = 1;
+			y = 0;
 			
 		}
 		
@@ -27,7 +21,7 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 		
 		public void render(GameContainer gameContainer, Renderer renderer) {
 			
-			renderer.drawImageTile(image, xTile * GameManager.GAMETILESIZE, yTile * GameManager.GAMETILESIZE, 0, 0);
+			renderer.drawImageTile(icon, 375, 280, x, y);
 			
 		}
 

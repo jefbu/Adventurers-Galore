@@ -1,23 +1,17 @@
 package com.redhaan.adventurersGalore.entity.town.building;
 
-import com.redhaan.adventurersGalore.GameManager;
-
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
-import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class Inn extends Building {
 
 	private static final long serialVersionUID = 1L;
-	private ImageTile image;
-	private int xTile, yTile;
 	
-	public Inn(int xTile, int yTile) {
+	public Inn() {
 		
 		super();
-		this.xTile = xTile;
-		this.yTile = yTile;
-		image = new ImageTile("/spritesheets/Buildings.png", 96, 64);
+		x = 0;
+		y = 0;
 		
 	}
 	
@@ -27,7 +21,7 @@ public class Inn extends Building {
 	
 	public void render(GameContainer gameContainer, Renderer renderer) {
 		
-		renderer.drawImageTile(image, xTile * GameManager.GAMETILESIZE, yTile * GameManager.GAMETILESIZE, 0, 1);
+		renderer.drawImageTile(icon, 255, 170, x, y);
 		
 	}
 

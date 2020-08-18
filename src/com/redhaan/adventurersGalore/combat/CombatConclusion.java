@@ -10,6 +10,8 @@ import com.redhaan.adventurersGalore.GameState;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.entity.adventurer.LevelUpRoller;
 import com.redhaan.adventurersGalore.entity.adventurer.Stats;
+import com.redhaan.adventurersGalore.entity.enemies.Enemy;
+import com.redhaan.adventurersGalore.entity.item.Item;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
@@ -24,6 +26,7 @@ public class CombatConclusion extends GameObject {
 	
 	private ArrayList<ImageTile> icons;
 	private ArrayList<String> strings;
+	private ArrayList<Item> loot;
 	
 	public CombatConclusion() {
 		random = new Random();
@@ -31,6 +34,7 @@ public class CombatConclusion extends GameObject {
 		conclusionStarted = false;
 		strings = new ArrayList<String>();
 		icons = new ArrayList<ImageTile>();
+		loot = new ArrayList<Item>();
 	}
 	
 
@@ -77,10 +81,19 @@ public class CombatConclusion extends GameObject {
 				}			
 			}
 			
+			for (Enemy enemy: Combat.enemies) {
+				enemy.rollLoot(loot);
+			}
+			
 			CombatInitialiser.deployment = false;
 			Combat.enemies.clear();
 
 			conclusionStarted = true;
+			
+			System.out.println(loot.size() + " items dropped");
+			if(loot.size() > 0) {
+				System.out.println("first item is: " + loot.get(0).name);
+			}
 			
 		}
 		
@@ -88,6 +101,7 @@ public class CombatConclusion extends GameObject {
 				gameContainer.getInput().getMouseY() > 300 && gameContainer.getInput().getMouseY() < 321) {
 			if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
 				strings.clear();
+				loot.clear();
 				conclusionStarted = false;
 				GameManager.gameState = GameState.WorldMap;
 			}
@@ -101,13 +115,25 @@ public class CombatConclusion extends GameObject {
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
 
-		renderer.drawRectOpaque(10, 10, 600, 400, 0x66BB7758);
+		renderer.drawRectOpaque(10, 20, 600, 400, 0xff211814);
 		
-		renderer.drawRectOpaque(500, 300, 50, 20, 0xff332222);
+		renderer.drawRectOpaque(15, 25, 580, 120, 0xff141821);
+		renderer.drawText("The Spoils of War: ", 20, 30, 0xff545481);
+		for (int i = 0; i < loot.size(); i++) {
+			renderer.drawText(loot.get(i).name, 20 + i * 50, 50, 0xff545481);
+		}
+
 		
 		for (int i = 0; i < strings.size(); i++) {
-			renderer.drawText(strings.get(i), 10, 10 + i * 15, 0xffCC8855);
+			renderer.drawText(strings.get(i), 10, 200 + i * 15, 0xffCC8855);
 		}
+		
+		
+		
+		
+		
+		
+		renderer.drawRectOpaque(530, 350, 50, 20, 0xff141824);
 	
 	}
 	

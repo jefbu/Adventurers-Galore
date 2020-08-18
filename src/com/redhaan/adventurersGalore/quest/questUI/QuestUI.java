@@ -10,6 +10,7 @@ import com.redhaan.adventurersGalore.combat.Combat;
 import com.redhaan.adventurersGalore.combat.CombatMapRoller;
 import com.redhaan.adventurersGalore.entity.Monster;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
+import com.redhaan.adventurersGalore.entity.enemies.Enemy;
 import com.redhaan.adventurersGalore.entity.party.PartyCohesionChecker;
 import com.redhaan.adventurersGalore.quest.Quest;
 import com.redhaan.adventurersGalore.quest.QuestStep;
@@ -30,7 +31,7 @@ public class QuestUI extends GameObject {
 	public static boolean questAccepted;
 	public static boolean questRefused;
 	
-	public static ArrayList<Monster> monsters;
+	public static ArrayList<Enemy> enemies;
 	public static boolean itsaFight;
 	
 	private PartyCohesionChecker partyCohesionChecker;
@@ -43,7 +44,7 @@ public class QuestUI extends GameObject {
 		nextGameState = GameState.InTown;
 		questAccepted = false;
 		questRefused = false;
-		monsters = new ArrayList<Monster>();
+		enemies = new ArrayList<Enemy>();
 		itsaFight = false;
 		partyCohesionChecker = new PartyCohesionChecker();
 
@@ -66,8 +67,8 @@ public class QuestUI extends GameObject {
 					adventurer.inParty = true;
 				}
 				if(itsaFight) {
-					for (Monster monster: monsters) {
-						Combat.enemies.add(monster);
+					for (Enemy enemy: enemies) {
+						Combat.enemies.add(enemy);
 					}
 					Combat.combatMap = CombatMapRoller.rollCombatMap(WorldMapTiles.GRASS);
 					Transition.nextGameState = GameState.Combat;

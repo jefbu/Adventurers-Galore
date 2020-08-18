@@ -5,9 +5,9 @@ import com.redhaan.adventurersGalore.entity.adventurer.Affinities;
 import com.redhaan.adventurersGalore.entity.adventurer.Job;
 import com.redhaan.adventurersGalore.entity.adventurer.personality.Personality;
 import com.redhaan.adventurersGalore.entity.adventurer.personality.PersonalityTrait;
-import com.redhaan.adventurersGalore.entity.armour.ReinforcedLeather;
+import com.redhaan.adventurersGalore.entity.item.armour.ReinforcedLeather;
+import com.redhaan.adventurersGalore.entity.item.weapon.swords.IronSword;
 import com.redhaan.adventurersGalore.entity.town.Town;
-import com.redhaan.adventurersGalore.entity.weapon.swords.IronSword;
 
 public class Player extends Adventurer {
 

@@ -15,19 +15,16 @@ import gameEngine.ecclesiastes.gfx.Image;
 public class TownMap extends GameObject {
 
 	private static final long serialVersionUID = 1L;
-	private Image village;
 	private Image town;
-	private Image city;
-	private Image metropole;
 	
 	public static Town activeTown;
 	
-	public TownMap() {
-		
-		village = new Image("/town/Town1.png");
-		town = new Image("/town/Town2.png");
-		city = new Image("/town/Town3.png");
-		metropole = new Image("/town/Town4.png");
+	private boolean hover;
+	private int hoverOption;
+	
+	public TownMap() {		
+		town = new Image("/town/NewTown7.png");		
+		hover = false;
 	}
 
 	@Override
@@ -40,6 +37,46 @@ public class TownMap extends GameObject {
 			if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON3)) {
 				GameManager.gameState = GameState.WorldMap;
 			}
+			
+			if (gameContainer.getInput().getMouseX() > 258 && gameContainer.getInput().getMouseX() < 283 &&
+					gameContainer.getInput().getMouseY() > 170 && gameContainer.getInput().getMouseY() < 203) {
+				hover = true;
+				hoverOption = 1;
+				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+					System.out.println("clicked");
+				}
+			}
+			
+			else if (gameContainer.getInput().getMouseX() > 378 && gameContainer.getInput().getMouseX() < 403 &&
+					gameContainer.getInput().getMouseY() > 280 && gameContainer.getInput().getMouseY() < 313) {
+				hover = true;
+				hoverOption = 2;
+				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+					System.out.println("clicked");
+				}
+			}
+			
+			else if (gameContainer.getInput().getMouseX() > 100 && gameContainer.getInput().getMouseX() < 125 &&
+					gameContainer.getInput().getMouseY() > 115 && gameContainer.getInput().getMouseY() < 143) {
+				hover = true;
+				hoverOption = 3;
+				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+					System.out.println("clicked");
+				}
+			}
+			
+			else if (gameContainer.getInput().getMouseX() > 243 && gameContainer.getInput().getMouseX() < 267 &&
+					gameContainer.getInput().getMouseY() > 64 && gameContainer.getInput().getMouseY() < 92) {
+				hover = true;
+				hoverOption = 4;
+				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+					System.out.println("clicked");
+				}
+			}
+			
+			
+			
+			else { hover = false; }
 						
 			break;
 		
@@ -62,20 +99,18 @@ public class TownMap extends GameObject {
 		switch(GameManager.gameState) {
 		
 		case InTown: 
-			
-			switch(activeTown.getxLocations().length) {
-			
-			case 1: renderer.drawImage(village, 0, 0); 
-				break;
-			case 2: renderer.drawImage(town, 0, 0);
-				break;
-			case 3: renderer.drawImage(city, 0, 0);
-				break;
-			case 4: renderer.drawImage(metropole, 0, 0);
-				break;
-			
-			default: System.out.println("Error in townSize"); break;
-			
+
+			renderer.drawImage(town, 0, 0);
+
+			if(hover) {
+				
+				switch(hoverOption) {
+				case 1: renderer.drawRect(259, 175, 23, 23, 0xffCCBB66); break;
+				case 2: renderer.drawRect(380, 285, 23, 23, 0xffCCBB66); break;
+				case 3: renderer.drawRect(101, 120, 23, 23, 0xffCCBB66); break;
+				case 4: renderer.drawRect(245, 65, 23, 23, 0xffCCBB66); break;
+				}
+				
 			}
 			
 			for (Building building: activeTown.buildings) {

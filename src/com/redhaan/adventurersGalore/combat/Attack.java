@@ -11,9 +11,6 @@ public abstract class Attack {
 		//attacks++;
 		boolean hit = checkToHit(attacker, defender);
 		if(hit) {
-			PowAnimation.activated = true;
-			PowAnimation.x = defender.getCombatX();
-			PowAnimation.y = defender.getCombatY();
 			calculateDamage(attacker, defender);
 		}
 						

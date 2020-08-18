@@ -7,6 +7,7 @@ import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.combat.combatAI.HighLevelPlan;
 import com.redhaan.adventurersGalore.entity.Monster;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
+import com.redhaan.adventurersGalore.entity.enemies.Enemy;
 import com.redhaan.adventurersGalore.worldMap.LevelDrawer;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -17,7 +18,7 @@ public class Combat extends GameObject {
 
 	private static final long serialVersionUID = 1L;
 	public static Image combatMap;
-	public static ArrayList<Monster> enemies;
+	public static ArrayList<Enemy> enemies;
 	
 	private LevelDrawer levelDrawer;
 	
@@ -32,7 +33,7 @@ public class Combat extends GameObject {
 	public Combat() {
 		
 		levelDrawer = new LevelDrawer();
-		enemies = new ArrayList<Monster>();
+		enemies = new ArrayList<Enemy>();
 
 		
 		combatState = CombatState.PlayerTurn;

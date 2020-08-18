@@ -6,7 +6,7 @@ import java.util.Random;
 
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.entity.adventurer.personality.PersonalityTrait;
-import com.redhaan.adventurersGalore.entity.armour.ReinforcedLeather;
+import com.redhaan.adventurersGalore.entity.item.armour.ReinforcedLeather;
 import com.redhaan.adventurersGalore.entity.town.Towns;
 
 public class AdventurerFactory implements Serializable {

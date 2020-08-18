@@ -3,22 +3,13 @@ package com.redhaan.adventurersGalore.entity;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.redhaan.adventurersGalore.GameManager;
-import com.redhaan.adventurersGalore.combat.Combat;
-import com.redhaan.adventurersGalore.combat.MoveAreaDrawer;
-import com.redhaan.adventurersGalore.combat.MoveRangeFiller;
-import com.redhaan.adventurersGalore.combat.combatAI.ActionDecision;
-import com.redhaan.adventurersGalore.combat.combatAI.AttackDecision;
-import com.redhaan.adventurersGalore.combat.combatAI.CombatActions;
-import com.redhaan.adventurersGalore.combat.combatAI.MoveDecision;
 import com.redhaan.adventurersGalore.entity.adventurer.Affinities;
 import com.redhaan.adventurersGalore.entity.adventurer.Job;
 import com.redhaan.adventurersGalore.entity.adventurer.Race;
 import com.redhaan.adventurersGalore.entity.adventurer.Stats;
-import com.redhaan.adventurersGalore.entity.armour.Armour;
-import com.redhaan.adventurersGalore.entity.combatAddOns.HealthBar;
 import com.redhaan.adventurersGalore.entity.combatAddOns.SkillBar;
-import com.redhaan.adventurersGalore.entity.weapon.Weapon;
+import com.redhaan.adventurersGalore.entity.item.armour.Armour;
+import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
@@ -26,11 +17,13 @@ import gameEngine.ecclesiastes.Renderer;
 public class Monster extends NPC {
 
 	private static final long serialVersionUID = 1L;
+	
 	public Stats maxStats;
 	public Stats currentStats;
 	public Affinities affinities;
 	public Stats levelupPercentages;
 	
+	public String name;
 	public Job job;
 	public Race race;
 	
@@ -43,8 +36,8 @@ public class Monster extends NPC {
 	public boolean attackAnimation;
 	public ArrayList<int[]> moveRange;
 	
-	private boolean moveRangeFlareUp;
-	private int moveRangeCounter;
+	public boolean moveRangeFlareUp;
+	public int moveRangeCounter;
 		
 	public boolean turnPassed;
 	
@@ -93,92 +86,11 @@ public class Monster extends NPC {
 	@Override
 	public void update (GameContainer gameContainer, float deltaTime) {
 		
-		switch(GameManager.gameState) {
-		
-		case Combat:
-			
-			switch(Combat.combatState) {
-				
-			case PlayerTurn: break;
-			
-			case EnemyTurn:
-				
-					idleTimer += (deltaTime * idleAnimationSpeed);
-					if(idleTimer > 4 ) {
-						idleTimer = 0;
-					}
-					
-					if(attackAnimation) {
-						attackTimer +=(deltaTime * attackAnimationSpeed);
-						if(attackTimer > 4) {
-							attackTimer = 0;
-							attackAnimation = false;
-							turnPassed = true;
-						}
-					}
-						
-					if(moveRange.size() == 0) { moveRange = MoveRangeFiller.fillMoveRange(combatX, combatY, currentStats.move);}
-		
-					moveRangeCounter++;
-					if (moveRangeCounter < 60) { moveRangeFlareUp = true; } 
-					else { 
-						moveRangeCounter = 0;
-						moveRangeFlareUp = false;
-					}
-					
-					if(!moveRangeFlareUp && moveRangeCounter == 0) {
-						CombatActions action = ActionDecision.decideActionDecision(Combat.highLevelPlan);
-						int[] moveDecision = MoveDecision.decideMoveDecision(action, moveRange, getCombatX(), getCombatY());
-						combatX = moveDecision[0];
-						combatY = moveDecision[1];
-						AttackDecision.decideAttackDecision(this, getCombatX(), getCombatY());
-						moveRange.clear();
-						turnPassed = true;
-						}
-					
-			break;
-			}
-			
-		break;	
-		case WorldMap: break;
-		case Titlescreen: break;
-		case InTown: break;
-		case PartyScreen: break;
-		case QuestUI: break;
-		case Transition: break;
-		case QuestScreen: break;
-		case PartyCohesionCheckerUI: break;
-		
-		}
-		
 	}
 	
 
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
-		
-		switch(GameManager.gameState) {
-		
-		case Combat:
-			renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, (int) idleTimer, 0);
-			HealthBar.drawHealthBar(this, renderer);
-			
-			if(moveRangeFlareUp) {
-				MoveAreaDrawer.drawMoveArea(moveRange, renderer);
-			}
-			
-			break;
-		case InTown: break;
-		case Titlescreen: break;
-		case WorldMap: break;
-		case PartyScreen: break;
-		case QuestUI: break;
-		case Transition: break;
-		case QuestScreen: break;
-		case PartyCohesionCheckerUI: break;
-	
-		}
-		
 		
 	}
 	

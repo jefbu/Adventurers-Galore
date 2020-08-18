@@ -2,7 +2,7 @@ package com.redhaan.adventurersGalore.partyScreen;
 
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
-import com.redhaan.adventurersGalore.entity.armour.Armour;
+import com.redhaan.adventurersGalore.entity.item.armour.Armour;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
@@ -33,7 +33,7 @@ public class ArmourWidget extends GameObject {
 		Armour armour = GameManager.adventurers.allAdventurers.get(PartyScreen.member).armour;
 		
 		renderer.drawRectOpaque(offX, offY, width, height, 0xff242822);
-		renderer.drawImageTile(armour.icon, offX + 14, offY + 5, armour.iconX, armour.iconY);	
+		renderer.drawImageTile(armour.icon, offX + 14, offY + 5, armour.xTile, armour.yTile);	
 		renderer.drawText(Integer.toString(armour.defence), offX + 23, offY + 50, 0xffBBFFBB);
 		renderer.drawText(Integer.toString(armour.weight), offX + 23, offY + 60, 0xffDDDDDD);
 	

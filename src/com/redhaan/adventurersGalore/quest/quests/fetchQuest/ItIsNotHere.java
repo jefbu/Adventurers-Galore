@@ -7,14 +7,13 @@ import com.redhaan.adventurersGalore.GameState;
 import com.redhaan.adventurersGalore.combat.Combat;
 import com.redhaan.adventurersGalore.combat.CombatPhase;
 import com.redhaan.adventurersGalore.combat.combatAI.HighLevelPlan;
-import com.redhaan.adventurersGalore.entity.Monster;
+import com.redhaan.adventurersGalore.entity.enemies.Wolf;
 import com.redhaan.adventurersGalore.entity.town.Town;
 import com.redhaan.adventurersGalore.quest.Quest;
 import com.redhaan.adventurersGalore.quest.QuestStep;
 import com.redhaan.adventurersGalore.quest.questUI.QuestUI;
 
 import gameEngine.ecclesiastes.GameContainer;
-import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class ItIsNotHere extends QuestStep {
 	
@@ -53,14 +52,8 @@ public class ItIsNotHere extends QuestStep {
 							QuestUI.quest = quest;
 							QuestUI.quest.questSteps.add(this);
 							QuestUI.itsaFight = true;
-							QuestUI.monsters.add(new Monster());
-							QuestUI.monsters.add(new Monster());
-							QuestUI.monsters.get(0).icon = new ImageTile("/Monsters.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
-							QuestUI.monsters.get(1).icon = new ImageTile("/Monsters.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
-							QuestUI.monsters.get(0).currentStats.move = 3;
-							QuestUI.monsters.get(1).currentStats.move = 7;
-							QuestUI.monsters.get(0).currentStats.attack = 40;
-							QuestUI.monsters.get(1).currentStats.attack = 140;
+							QuestUI.enemies.add(new Wolf());
+							QuestUI.enemies.add(new Wolf());
 							Combat.highLevelPlan = HighLevelPlan.Attack;
 							Combat.combatPhase = CombatPhase.Setup;
 							QuestUI.nextGameState = GameState.WorldMap;

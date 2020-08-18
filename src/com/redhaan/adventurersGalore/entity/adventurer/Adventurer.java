@@ -23,7 +23,6 @@ public class Adventurer extends Monster {
 	private static final long serialVersionUID = 1L;
 
 	public Race race;
-	public String name;
 	public String gender;
 	private int genderInt;
 	public int age;
