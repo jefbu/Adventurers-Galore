@@ -13,6 +13,9 @@ public class MoonStone extends GemStone {
 		addLevelModifiers();
 		makeName();
 		
+		xTile = 8 + this.level;
+
+		
 	}
 
 }

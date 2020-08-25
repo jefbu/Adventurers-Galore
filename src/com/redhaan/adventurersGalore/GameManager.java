@@ -15,6 +15,7 @@ import com.redhaan.adventurersGalore.entity.party.PartyCohesionCheckerUI;
 import com.redhaan.adventurersGalore.entity.party.TravelerEngine;
 import com.redhaan.adventurersGalore.entity.town.Towns;
 import com.redhaan.adventurersGalore.inTown.TownMap;
+import com.redhaan.adventurersGalore.inventory.InventoryScreen.InventoryScreen;
 import com.redhaan.adventurersGalore.partyScreen.PartyScreen;
 import com.redhaan.adventurersGalore.quest.Quests;
 import com.redhaan.adventurersGalore.quest.questUI.QuestUI;
@@ -48,6 +49,7 @@ public class GameManager extends AbstractGame {
 		gameObjects.add(new Towns());
 		gameObjects.add(new Party());
 		gameObjects.add(new PartyScreen());
+		gameObjects.add(new InventoryScreen());
 		gameObjects.add(new Quests());
 		gameObjects.add(new QuestUI());
 		gameObjects.add(new Transition());

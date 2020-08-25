@@ -4,6 +4,7 @@ import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.calendar.Calendar;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
+import com.redhaan.adventurersGalore.inventory.Inventory;
 import com.redhaan.adventurersGalore.worldMap.WorldMap;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -24,6 +25,8 @@ public class Party extends GameObject {
 	
 	private int day;
 	private PartyCohesionChecker partyCohesionChecker;
+	
+	public static Inventory inventory;
 		
 	public Party() {
 		
@@ -38,6 +41,8 @@ public class Party extends GameObject {
 		
 		day = Calendar.daysPassed;
 		partyCohesionChecker = new PartyCohesionChecker();
+		
+		inventory = new Inventory();
 		
 	}
 

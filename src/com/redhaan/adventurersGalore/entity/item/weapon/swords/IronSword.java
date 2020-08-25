@@ -6,6 +6,7 @@ import java.util.Random;
 import com.redhaan.adventurersGalore.entity.item.weapon.Rune;
 import com.redhaan.adventurersGalore.entity.item.weapon.Soul;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
+import com.redhaan.adventurersGalore.entity.item.weapon.WeaponType;
 import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.Pearl;
 
 public class IronSword extends Weapon implements Serializable {
@@ -20,11 +21,15 @@ public class IronSword extends Weapon implements Serializable {
 		damage = 7;
 		crit = 10;
 		weight = 6;
-		
+
+		type = WeaponType.SWORD;
+
 		xTile = 0;
 		yTile = 0;
 		
-		rollRuneSlots(1);
+		ID = 4;
+		
+		rollRuneSlots(2);
 		
 		Random random = new Random();
 		for (int i = 0; i < runeSlots; i++) {
@@ -33,17 +38,16 @@ public class IronSword extends Weapon implements Serializable {
 			else if (roll > 30) { runes.add(Rune.Er); }			
 		}
 		
-		upgrades = random.nextInt(3);
-		for (int i = 0; i < upgrades; i++) {
-			upgrade();
-		}
-		soul = Soul.dwarfSlayer;
+		upgrades = rollUpgrades(4);
+		if(upgrades > 0) { for (int i = 0; i < upgrades; i++) { upgrade(); } }
 		
-		int roll = random.nextInt(10) + 1;
-		if (roll == 10) { gemStone = new Pearl(4); }
-		else if (roll == 9) { gemStone = new Pearl(3); }
-		else if (roll == 8) { gemStone = new Pearl(2); }
-		else if (roll == 7) { gemStone = new Pearl(1); }
+		soul = rollSoul();
+		
+		gemStone = rollGemStone(2);
+		
+		if (rollBonusUpgrades(50)) { hit++; }
+		if (rollBonusUpgrades(70)) { damage++; }
+		if (rollBonusUpgrades(60)) { crit++; }
 		
 	}
 	

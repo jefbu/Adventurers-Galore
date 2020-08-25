@@ -7,6 +7,10 @@ public class Fang extends CraftItems {
 	public Fang() {
 		
 		name = "Fang";
+		xTile = 0;
+		yTile = 1;
+		
+		ID = 11;
 		
 	}
 

@@ -74,6 +74,15 @@ public class TownMap extends GameObject {
 				}
 			}
 			
+			else if (gameContainer.getInput().getMouseX() > 419 && gameContainer.getInput().getMouseX() < 444 &&
+					gameContainer.getInput().getMouseY() > 144 && gameContainer.getInput().getMouseY() < 169) {
+				hover = true;
+				hoverOption = 5;
+				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+					System.out.println("clicked");
+				}
+			}
+			
 			
 			
 			else { hover = false; }
@@ -109,6 +118,7 @@ public class TownMap extends GameObject {
 				case 2: renderer.drawRect(380, 285, 23, 23, 0xffCCBB66); break;
 				case 3: renderer.drawRect(101, 120, 23, 23, 0xffCCBB66); break;
 				case 4: renderer.drawRect(245, 65, 23, 23, 0xffCCBB66); break;
+				case 5: renderer.drawRect(420, 145, 23, 23, 0xffCCBB66); break;
 				}
 				
 			}

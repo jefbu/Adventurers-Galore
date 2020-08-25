@@ -4,9 +4,9 @@ import com.redhaan.adventurersGalore.entity.item.items.BeastBlood;
 import com.redhaan.adventurersGalore.entity.item.items.Fang;
 import com.redhaan.adventurersGalore.entity.item.items.Hide;
 import com.redhaan.adventurersGalore.entity.item.items.Lesses;
-import com.redhaan.adventurersGalore.entity.item.items.Pelt;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Cinqueada;
 import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.Amber;
+import com.redhaan.adventurersGalore.entity.item.weapon.staves.Waddy;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.Sabre;
 
 public class Wolf extends Enemy {
@@ -50,7 +50,7 @@ public class Wolf extends Enemy {
 		
 		int gemStoneLevel = rollGemStoneLevel(60, 30, 9, 1);
 		
-		dropTable.itemDrops.add(new Pelt());
+		dropTable.itemDrops.add(new Waddy());
 		dropTable.itemDrops.add(new Fang());
 		dropTable.itemDrops.add(new BeastBlood());
 		dropTable.itemDrops.add(new Hide());

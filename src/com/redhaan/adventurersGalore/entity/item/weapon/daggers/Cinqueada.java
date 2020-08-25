@@ -5,6 +5,7 @@ import java.util.Random;
 import com.redhaan.adventurersGalore.entity.item.weapon.Rune;
 import com.redhaan.adventurersGalore.entity.item.weapon.Soul;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
+import com.redhaan.adventurersGalore.entity.item.weapon.WeaponType;
 import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.Topaz;
 
 public class Cinqueada extends Weapon {
@@ -20,10 +21,14 @@ public class Cinqueada extends Weapon {
 		crit = 35;
 		weight = 5;
 		
+		type = WeaponType.DAGGER;
+		
 		xTile = 3;
 		yTile = 1;
 		
-		rollRuneSlots(1);
+		ID = 4;
+		
+		rollRuneSlots(4);
 		
 		Random random = new Random();
 		for (int i = 0; i < runeSlots; i++) {
@@ -32,17 +37,16 @@ public class Cinqueada extends Weapon {
 			else if (roll > 30) { runes.add(Rune.Er); }			
 		}
 		
-		upgrades = random.nextInt(3);
-		for (int i = 0; i < upgrades; i++) {
-			upgrade();
-		}
-		soul = Soul.dwarfSlayer;
+		upgrades = rollUpgrades(1);
+		if(upgrades > 0) { for (int i = 0; i < upgrades; i++) { upgrade(); } }
 		
-		int roll = random.nextInt(10) + 1;
-		if (roll == 10) { gemStone = new Topaz(4); }
-		else if (roll == 9) { gemStone = new Topaz(3); }
-		else if (roll == 8) { gemStone = new Topaz(2); }
-		else if (roll == 7) { gemStone = new Topaz(1); }
+		soul = rollSoul();
+		
+		gemStone = rollGemStone(3);
+		
+		if (rollBonusUpgrades(70)) { hit++; }
+		if (rollBonusUpgrades(90)) { damage++; }
+		if (rollBonusUpgrades(65)) { crit++; }
 		
 	}
 

@@ -7,6 +7,10 @@ public class Pelt extends CraftItems {
 	public Pelt() {
 		
 		name = "Pelt";
+		xTile = 0;
+		yTile = 4;
+		
+		ID = 13;
 		
 	}
 

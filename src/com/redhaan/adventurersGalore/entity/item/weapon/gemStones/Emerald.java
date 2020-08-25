@@ -13,6 +13,9 @@ public class Emerald extends GemStone {
 		addLevelModifiers();
 		makeName();
 		
+		xTile = 8 + this.level;
+		yTile = 1;
+		
 	}
 
 }

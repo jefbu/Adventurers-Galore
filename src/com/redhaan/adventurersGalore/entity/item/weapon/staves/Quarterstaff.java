@@ -5,6 +5,7 @@ import java.util.Random;
 import com.redhaan.adventurersGalore.entity.item.weapon.Rune;
 import com.redhaan.adventurersGalore.entity.item.weapon.Soul;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
+import com.redhaan.adventurersGalore.entity.item.weapon.WeaponType;
 import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.Pearl;
 
 public class Quarterstaff extends Weapon {
@@ -19,11 +20,15 @@ public class Quarterstaff extends Weapon {
 		damage = 4;
 		crit = 0;
 		weight = 6;
-		
+
+		type = WeaponType.STAFF;
+
 		xTile = 0;
 		yTile = 2;
 		
-		rollRuneSlots(1);
+		ID = 4;
+		
+		rollRuneSlots(2);
 		
 		Random random = new Random();
 		for (int i = 0; i < runeSlots; i++) {
@@ -32,17 +37,16 @@ public class Quarterstaff extends Weapon {
 			else if (roll > 30) { runes.add(Rune.Er); }			
 		}
 		
-		upgrades = random.nextInt(3);
-		for (int i = 0; i < upgrades; i++) {
-			upgrade();
-		}
-		soul = Soul.dwarfSlayer;
+		upgrades = rollUpgrades(4);
+		if(upgrades > 0) { for (int i = 0; i < upgrades; i++) { upgrade(); } }
 		
-		int roll = random.nextInt(10) + 1;
-		if (roll == 10) { gemStone = new Pearl(4); }
-		else if (roll == 9) { gemStone = new Pearl(3); }
-		else if (roll == 8) { gemStone = new Pearl(2); }
-		else if (roll == 7) { gemStone = new Pearl(1); }
+		soul = rollSoul();
+		
+		gemStone = rollGemStone(1);
+		
+		if (rollBonusUpgrades(60)) { hit++; }
+		if (rollBonusUpgrades(90)) { damage++; }
+		if (rollBonusUpgrades(85)) { crit++; }
 		
 	}
 	

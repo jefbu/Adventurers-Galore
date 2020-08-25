@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.Random;
 
 import com.redhaan.adventurersGalore.entity.item.weapon.Rune;
-import com.redhaan.adventurersGalore.entity.item.weapon.Soul;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
-import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.MoonStone;
+import com.redhaan.adventurersGalore.entity.item.weapon.WeaponType;
+import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.Sapphire;
 
 public class VorpalSword extends Weapon implements Serializable {
 
@@ -20,9 +20,13 @@ public class VorpalSword extends Weapon implements Serializable {
 		damage = 12;
 		crit = 20;
 		weight = 14;
-		
+
+		type = WeaponType.SWORD;
+
 		xTile = 10;
 		yTile = 0;
+		
+		ID = 4;
 		
 		isLegendary = true;
 		
@@ -35,13 +39,15 @@ public class VorpalSword extends Weapon implements Serializable {
 			else if (roll > 30) { runes.add(Rune.Er); }			
 		}
 		
-		upgrades = random.nextInt(3);
-		for (int i = 0; i < upgrades; i++) {
-			upgrade();
-		}
-		soul = Soul.dwarfSlayer;
+		//rollUpgrades(3);
 		
-		gemStone = new MoonStone(4);
+		soul = rollSoul();
+		
+		gemStone = new Sapphire(4);
+		
+		if (rollBonusUpgrades(50)) { hit++; }
+		if (rollBonusUpgrades(70)) { damage++; }
+		if (rollBonusUpgrades(50)) { crit++; }
 		
 	}
 	

@@ -7,6 +7,10 @@ public class Hide extends CraftItems {
 	public Hide() {
 		
 		name = "Hide";
+		xTile = 0;
+		yTile = 3;
+		
+		ID = 12;
 		
 	}
 

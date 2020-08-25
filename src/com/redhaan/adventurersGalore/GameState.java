@@ -10,6 +10,7 @@ public enum GameState {
 	QuestUI,
 	Transition,
 	PartyCohesionCheckerUI,
-	QuestScreen
+	QuestScreen,
+	Inventory
 
 }

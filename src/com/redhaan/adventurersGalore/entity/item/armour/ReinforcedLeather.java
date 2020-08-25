@@ -18,6 +18,8 @@ public class ReinforcedLeather extends Armour {
 		xTile = 2;
 		yTile = 1;
 		
+		ID = 3;
+		
 		
 	}
 

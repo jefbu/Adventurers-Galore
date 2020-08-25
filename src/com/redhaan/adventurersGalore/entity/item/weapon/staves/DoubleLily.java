@@ -5,6 +5,7 @@ import java.util.Random;
 import com.redhaan.adventurersGalore.entity.item.weapon.Rune;
 import com.redhaan.adventurersGalore.entity.item.weapon.Soul;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
+import com.redhaan.adventurersGalore.entity.item.weapon.WeaponType;
 import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.Emerald;
 
 public class DoubleLily extends Weapon {
@@ -22,6 +23,10 @@ public class DoubleLily extends Weapon {
 		
 		xTile = 5;
 		yTile = 2;
+
+		type = WeaponType.STAFF;
+
+		ID = 4;
 		
 		isLegendary = true;
 		
@@ -34,13 +39,15 @@ public class DoubleLily extends Weapon {
 			else if (roll > 30) { runes.add(Rune.Er); }			
 		}
 		
-		upgrades = random.nextInt(3);
-		for (int i = 0; i < upgrades; i++) {
-			upgrade();
-		}
-		soul = Soul.dwarfSlayer;
+		//rollUpgrades(3);
+		
+		soul = rollSoul();
 		
 		gemStone = new Emerald(4);
+		
+		if (rollBonusUpgrades(60)) { hit++; }
+		if (rollBonusUpgrades(60)) { damage++; }
+		if (rollBonusUpgrades(60)) { crit++; }
 		
 	}
 	

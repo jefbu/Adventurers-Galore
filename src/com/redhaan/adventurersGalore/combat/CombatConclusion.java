@@ -12,6 +12,7 @@ import com.redhaan.adventurersGalore.entity.adventurer.LevelUpRoller;
 import com.redhaan.adventurersGalore.entity.adventurer.Stats;
 import com.redhaan.adventurersGalore.entity.enemies.Enemy;
 import com.redhaan.adventurersGalore.entity.item.Item;
+import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
@@ -85,15 +86,12 @@ public class CombatConclusion extends GameObject {
 				enemy.rollLoot(loot);
 			}
 			
+			Inventory.update(loot);
+			
 			CombatInitialiser.deployment = false;
 			Combat.enemies.clear();
 
 			conclusionStarted = true;
-			
-			System.out.println(loot.size() + " items dropped");
-			if(loot.size() > 0) {
-				System.out.println("first item is: " + loot.get(0).name);
-			}
 			
 		}
 		

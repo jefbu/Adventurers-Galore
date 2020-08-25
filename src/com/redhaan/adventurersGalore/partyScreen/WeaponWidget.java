@@ -1,8 +1,13 @@
 package com.redhaan.adventurersGalore.partyScreen;
 
+import java.awt.event.MouseEvent;
+
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
+import com.redhaan.adventurersGalore.GameState;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
+import com.redhaan.adventurersGalore.inventory.Inventory;
+import com.redhaan.adventurersGalore.inventory.InventoryScreen.MenuBar;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
@@ -13,6 +18,10 @@ public class WeaponWidget extends GameObject {
 	private static final long serialVersionUID = 1L;
 	private int offX, offY, width, height;
 	private ImageTile icon;
+	private Weapon weapon;
+	
+	private int passiveColour, activeColour;
+	private boolean hover;
 	
 	WeaponAffinityWidget weaponAffinityWidget;
 	
@@ -25,6 +34,10 @@ public class WeaponWidget extends GameObject {
 		this.height = height;
 		icon = new ImageTile("/generic_icons.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
 		
+		passiveColour = 0xff242822;
+		activeColour = 0xff484442;
+		hover = false;
+		
 		weaponAffinityWidget = new WeaponAffinityWidget();
 		
 	}
@@ -32,14 +45,32 @@ public class WeaponWidget extends GameObject {
 	@Override
 	public void update(GameContainer gameContainer, float deltaTime) {
 		
+		if(gameContainer.getInput().getMouseX() > offX && gameContainer.getInput().getMouseX() < offX + width &&
+				gameContainer.getInput().getMouseY() > offY && gameContainer.getInput().getMouseY() < offY + height) {
+			
+			hover = true;
+			
+			if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				MenuBar.selectedTab = 3;
+				Inventory.weaponChange = true;
+				GameManager.gameState = GameState.Inventory;
+			}
+			
+		}
+		else { hover = false; }
+		
 	}
 
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
 		
-		Weapon weapon = GameManager.adventurers.allAdventurers.get(PartyScreen.member).weapon;
-
-		renderer.drawRectOpaque(offX, offY, width, height, 0xff242822);
+		weapon = GameManager.adventurers.allAdventurers.get(PartyScreen.member).weapon;
+		
+		if (hover) { 
+			renderer.drawRectOpaque(offX, offY, width, height, activeColour); 
+			renderer.drawRect(offX - 1, offY - 1, width + 2, height + 2, 0xff7191D1);
+			}
+		else { renderer.drawRectOpaque(offX, offY, width, height, passiveColour); }
 		
 		renderer.drawImageTile(weapon.icon, offX + 5, offY + 5, weapon.xTile, weapon.yTile);
 		

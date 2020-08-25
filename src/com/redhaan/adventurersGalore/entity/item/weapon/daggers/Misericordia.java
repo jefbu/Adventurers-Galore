@@ -5,6 +5,7 @@ import java.util.Random;
 import com.redhaan.adventurersGalore.entity.item.weapon.Rune;
 import com.redhaan.adventurersGalore.entity.item.weapon.Soul;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
+import com.redhaan.adventurersGalore.entity.item.weapon.WeaponType;
 import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.Amethyst;
 
 public class Misericordia extends Weapon {
@@ -19,9 +20,13 @@ public class Misericordia extends Weapon {
 		damage = 8;
 		crit = 35;
 		weight = 6;
-		
+
+		type = WeaponType.DAGGER;
+
 		xTile = 6;
 		yTile = 1;
+		
+		ID = 4;
 		
 		isLegendary = true;
 		
@@ -34,13 +39,15 @@ public class Misericordia extends Weapon {
 			else if (roll > 30) { runes.add(Rune.Er); }			
 		}
 		
-		upgrades = random.nextInt(3);
-		for (int i = 0; i < upgrades; i++) {
-			upgrade();
-		}
-		soul = Soul.dwarfSlayer;				
+		//rollUpgrades(3);
+		
+		soul = rollSoul();
 		
 		gemStone = new Amethyst(4);
+		
+		if (rollBonusUpgrades(60)) { hit++; }
+		if (rollBonusUpgrades(60)) { damage++; }
+		if (rollBonusUpgrades(60)) { crit++; }
 		
 	}
 

@@ -13,6 +13,8 @@ public class Amber extends GemStone {
 		addLevelModifiers();
 		makeName();
 		
+		xTile = 8 + this.level;
+		yTile = 7;
 	}
 
 }

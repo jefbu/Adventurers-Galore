@@ -6,6 +6,7 @@ import java.util.Random;
 import com.redhaan.adventurersGalore.entity.item.weapon.Rune;
 import com.redhaan.adventurersGalore.entity.item.weapon.Soul;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
+import com.redhaan.adventurersGalore.entity.item.weapon.WeaponType;
 import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.Pearl;
 
 public class Falchion extends Weapon implements Serializable {
@@ -20,11 +21,15 @@ public class Falchion extends Weapon implements Serializable {
 		damage = 10;
 		crit = 20;
 		weight = 8;
-		
+
+		type = WeaponType.SWORD;
+
 		xTile = 9;
 		yTile = 0;
 		
-		rollRuneSlots(1);
+		ID = 4;
+		
+		rollRuneSlots(4);
 		
 		Random random = new Random();
 		for (int i = 0; i < runeSlots; i++) {
@@ -33,17 +38,16 @@ public class Falchion extends Weapon implements Serializable {
 			else if (roll > 30) { runes.add(Rune.Er); }			
 		}
 		
-		upgrades = random.nextInt(3);
-		for (int i = 0; i < upgrades; i++) {
-			upgrade();
-		}
-		soul = Soul.dwarfSlayer;
+		upgrades = rollUpgrades(3);
+		if(upgrades > 0) { for (int i = 0; i < upgrades; i++) { upgrade(); } }
 		
-		int roll = random.nextInt(10) + 1;
-		if (roll == 10) { gemStone = new Pearl(4); }
-		else if (roll == 9) { gemStone = new Pearl(3); }
-		else if (roll == 8) { gemStone = new Pearl(2); }
-		else if (roll == 7) { gemStone = new Pearl(1); }
+		soul = rollSoul();
+		
+		gemStone = rollGemStone(3);
+		
+		if (rollBonusUpgrades(90)) { hit++; }
+		if (rollBonusUpgrades(95)) { damage++; }
+		if (rollBonusUpgrades(85)) { crit++; }
 		
 	}
 

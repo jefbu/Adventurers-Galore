@@ -12,6 +12,7 @@ public abstract class BuildingFactory {
 		createInns(list);
 		createFarm(list);
 		createAlchemist(list);
+		createJeweller(list);
 		createBlackSmiths(list, townSize);
 				
 		
@@ -24,7 +25,8 @@ public abstract class BuildingFactory {
 	private static void createInns(ArrayList<Building> list) { list.add(new Inn()); }
 	private static void createFarm(ArrayList<Building> list) { list.add(new Farm()); }
 	private static void createAlchemist(ArrayList<Building> list) { list.add(new Alchemist()); }
-	
+	private static void createJeweller(ArrayList<Building> list) { list.add(new Jeweller()); }
+
 	private static void createBlackSmiths(ArrayList<Building> list, int townSize) {
 		
 		Random random = new Random();

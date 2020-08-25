@@ -18,7 +18,7 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 public class PartyScreen extends GameObject {
 
 	private static final long serialVersionUID = 1L;
-	protected static int member;
+	public static int member;
 	private int bgColour;
 	
 	public static PartyScreenSubState subState;

@@ -7,6 +7,10 @@ public class BeastBlood extends CraftItems {
 	public BeastBlood() {
 		
 		name = "Beast Blood";
+		xTile = 0;
+		yTile = 0;
+		
+		ID = 21;
 		
 	}
 

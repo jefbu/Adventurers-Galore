@@ -13,5 +13,7 @@ public class Item implements Serializable {
 	
 	public ImageTile icon;
 	public int xTile, yTile;
+	
+	public int ID;
 
 }

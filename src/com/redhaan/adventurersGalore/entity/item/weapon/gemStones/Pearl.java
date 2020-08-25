@@ -13,6 +13,9 @@ public class Pearl extends GemStone {
 		addLevelModifiers();
 		makeName();
 		
+		xTile = 8 + this.level;
+		yTile = 5;
+		
 		
 	}
 

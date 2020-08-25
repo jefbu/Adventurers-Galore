@@ -2,7 +2,10 @@ package com.redhaan.adventurersGalore.entity.item.weapon.gemStones;
 
 import java.io.Serializable;
 
+import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.entity.item.Item;
+
+import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class GemStone extends Item implements Serializable {
 	
@@ -18,6 +21,9 @@ public class GemStone extends Item implements Serializable {
 	public int blackBonus;
 	
 	public int level;
+	
+	public static ImageTile icon = new ImageTile("/smallIcons.png", GameManager.GAMETILESIZE / 4, GameManager.GAMETILESIZE / 4);
+	public int xTile, yTile;
 	
 	public GemStoneEnum gemStoneEnum;
 	

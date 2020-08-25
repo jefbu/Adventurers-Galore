@@ -7,6 +7,10 @@ public class Lesses extends CraftItems {
 	public Lesses() {
 		
 		name = "Lesses";
+		xTile = 0;
+		yTile = 2;
+		
+		ID = 22;
 		
 	}
 	

@@ -135,7 +135,7 @@ public class Enemy extends Monster {
 			int roll = random.nextInt(10000) + 1;
 			if (roll < dropTable.dropRates[i]) {
 				for (int ii = 0; ii < dropTable.quantities[i]; ii++) {
-					loot.add(dropTable.itemDrops.get(i));
+					loot.add(dropTable.itemDrops.get(i));					
 				}
 			}
 		}

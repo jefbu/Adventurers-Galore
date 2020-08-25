@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
+import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.GemStone;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
@@ -19,7 +20,7 @@ public class WeaponAffinityWidget implements Serializable {
 	public WeaponAffinityWidget() {
 		
 		icon = new ImageTile("/smallIcons.png", GameManager.GAMETILESIZE / 4, GameManager.GAMETILESIZE / 4);
-		jewelIcon = new ImageTile("/mediumIcons.png", GameManager.GAMETILESIZE / 2, GameManager.GAMETILESIZE / 2);
+		jewelIcon = new ImageTile("/generic_icons.png", GameManager.GAMETILESIZE / 2, GameManager.GAMETILESIZE / 2);
 		
 	}
 
@@ -53,7 +54,7 @@ public class WeaponAffinityWidget implements Serializable {
 			}
 					
 			if(!weapon.isLegendary) {
-				renderer.drawImageTile(jewelIcon, offX + 105, offY + 45, gemStoneInt, weapon.gemStone.level);
+				renderer.drawImageTile(jewelIcon, offX + 105, offY + 45, gemStoneInt, 1);
 			}
 			
 		}

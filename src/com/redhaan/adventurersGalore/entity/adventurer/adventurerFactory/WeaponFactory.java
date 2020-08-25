@@ -45,7 +45,7 @@ public class WeaponFactory implements Serializable {
 	
 	public Weapon rollAdventurerStartingWeapon(int adventurerTier, int PHY, Job job) {
 		
-		Weapon weapon = new IronSword();
+		Weapon weapon = new Dagger();
 		int weaponTier = 0;
 							
 		int rollTier = random.nextInt(100) + 1;

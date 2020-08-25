@@ -13,6 +13,9 @@ public class Topaz extends GemStone {
 		addLevelModifiers();
 		makeName();
 		
+		xTile = 8 + this.level;
+		yTile = 3;
+		
 	}
 
 }

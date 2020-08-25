@@ -6,6 +6,7 @@ import java.util.Random;
 import com.redhaan.adventurersGalore.entity.item.weapon.Rune;
 import com.redhaan.adventurersGalore.entity.item.weapon.Soul;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
+import com.redhaan.adventurersGalore.entity.item.weapon.WeaponType;
 import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.Topaz;
 
 public class Excalibur extends Weapon implements Serializable {
@@ -20,9 +21,13 @@ public class Excalibur extends Weapon implements Serializable {
 		damage = 14;
 		crit = 10;
 		weight = 18;
-		
+
+		type = WeaponType.SWORD;
+
 		xTile = 11;
 		yTile = 0;
+		
+		ID = 4;
 		
 		isLegendary = true;
 		
@@ -35,13 +40,15 @@ public class Excalibur extends Weapon implements Serializable {
 			else if (roll > 30) { runes.add(Rune.Er); }			
 		}
 		
-		upgrades = random.nextInt(3);
-		for (int i = 0; i < upgrades; i++) {
-			upgrade();
-		}
-		soul = Soul.dwarfSlayer;
+		//rollUpgrades(3);
+		
+		soul = rollSoul();
 		
 		gemStone = new Topaz(4);
+		
+		if (rollBonusUpgrades(60)) { hit++; }
+		if (rollBonusUpgrades(60)) { damage++; }
+		if (rollBonusUpgrades(60)) { crit++; }
 		
 	}
 

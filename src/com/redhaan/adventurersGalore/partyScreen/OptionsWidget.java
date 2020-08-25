@@ -107,9 +107,18 @@ public class OptionsWidget extends GameObject {
 						System.out.println("##########################	");*/
 				break;				
 				case 2: calculatePartyScreenNumber(false); break;
-				case 3: break;
-				case 4: break;
-				case 5: GameManager.gameState = GameState.WorldMap;
+				case 3: 
+					Transition.nextGameState = GameState.Inventory;
+					GameManager.gameState = GameState.Transition;
+					break;
+				case 4:
+					Transition.nextGameState = GameState.QuestScreen;
+					GameManager.gameState = GameState.Transition;
+					break;
+				case 5: 
+					Transition.nextGameState = GameState.WorldMap;
+					GameManager.gameState = GameState.Transition;
+					break;
 				}
 			}		
 			break;
@@ -141,29 +150,29 @@ public class OptionsWidget extends GameObject {
 		
 		if (activeOption == 3) { 
 			renderer.drawRectOpaque(offX + 5, offY + 20 + (2 * height / 6), width - 10, height / 6, activeColor);	
-			renderer.drawText("Change Equipment", offX + 10, offY + 40 + (2 * height / 6), passiveColor);
+			renderer.drawText("(I)nventory", offX + 10, offY + 40 + (2 * height / 6), passiveColor);
 			}
 		else { 
 			renderer.drawRectOpaque(offX + 5, offY + 20 + (2 * height / 6), width - 10, height / 6, passiveColor); 
-			renderer.drawText("Change Equipment", offX + 10, offY + 40 + (2 * height / 6), activeColor);
+			renderer.drawText("(I)nventory", offX + 10, offY + 40 + (2 * height / 6), activeColor);
 			}
 		
 		if (activeOption == 4) { 
 			renderer.drawRectOpaque(offX + 5, offY + 25 + (3 * height / 6), width - 10, height / 6, activeColor);	
-			renderer.drawText("???", offX + 10, offY + 45 + (3 * height / 6), passiveColor);
+			renderer.drawText("(Q)uests", offX + 10, offY + 45 + (3 * height / 6), passiveColor);
 			}
 		else { 
 			renderer.drawRectOpaque(offX + 5, offY + 25 + (3 * height / 6), width - 10, height / 6, passiveColor); 
-			renderer.drawText("???", offX + 10, offY + 45 + (3 * height / 6), activeColor);
+			renderer.drawText("(Q)uests", offX + 10, offY + 45 + (3 * height / 6), activeColor);
 			}		
 		
 		if (activeOption == 5) { 
 			renderer.drawRectOpaque(offX + 5, offY + 30 + (4 * height / 6), width - 10, height / 6, activeColor);	
-			renderer.drawText("(X) Exit", offX + 10, offY + 50 + (4 * height / 6), passiveColor);
+			renderer.drawText("(E)xit", offX + 10, offY + 50 + (4 * height / 6), passiveColor);
 			}
 		else { 
 			renderer.drawRectOpaque(offX + 5, offY + 30 + (4 * height / 6), width - 10, height / 6, passiveColor); 
-			renderer.drawText("(X) Exit", offX + 10, offY + 50 + (4 * height / 6), activeColor
+			renderer.drawText("(E)xit", offX + 10, offY + 50 + (4 * height / 6), activeColor
 					);
 			}
 		
