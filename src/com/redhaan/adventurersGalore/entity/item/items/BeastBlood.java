@@ -1,5 +1,7 @@
 package com.redhaan.adventurersGalore.entity.item.items;
 
+import com.redhaan.adventurersGalore.entity.item.weapon.ItemID;
+
 public class BeastBlood extends CraftItems {
 
 	private static final long serialVersionUID = 1L;
@@ -10,7 +12,7 @@ public class BeastBlood extends CraftItems {
 		xTile = 0;
 		yTile = 0;
 		
-		ID = 21;
+		ID = ItemID.BeastBlood;
 		
 	}
 

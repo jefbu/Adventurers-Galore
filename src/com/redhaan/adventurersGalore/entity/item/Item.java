@@ -2,6 +2,8 @@ package com.redhaan.adventurersGalore.entity.item;
 
 import java.io.Serializable;
 
+import com.redhaan.adventurersGalore.entity.item.weapon.ItemID;
+
 import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class Item implements Serializable {
@@ -14,6 +16,6 @@ public class Item implements Serializable {
 	public ImageTile icon;
 	public int xTile, yTile;
 	
-	public int ID;
+	public ItemID ID;
 
 }

@@ -6,13 +6,15 @@ import java.util.ArrayList;
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.combat.Attack;
 import com.redhaan.adventurersGalore.combat.Combat;
-import com.redhaan.adventurersGalore.combat.CombatLeftClicker;
 import com.redhaan.adventurersGalore.combat.MoveAreaDrawer;
-import com.redhaan.adventurersGalore.combat.PlayerTurnLeftClickSituations;
+import com.redhaan.adventurersGalore.combat.MoveRangeFiller;
+import com.redhaan.adventurersGalore.combat.PlayerCombatSituation;
+import com.redhaan.adventurersGalore.combat.PlayerTurnLeftClickSituation;
 import com.redhaan.adventurersGalore.entity.Monster;
 import com.redhaan.adventurersGalore.entity.adventurer.personality.Personality;
 import com.redhaan.adventurersGalore.entity.adventurer.skills.Skills;
 import com.redhaan.adventurersGalore.entity.combatAddOns.HealthBar;
+import com.redhaan.adventurersGalore.entity.enemies.Enemy;
 import com.redhaan.adventurersGalore.entity.town.Town;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -35,8 +37,12 @@ public class Adventurer extends Monster {
 	public Town homeTown;
 
 	public boolean inParty;
-	public boolean moving;
-	public PlayerTurnLeftClickSituations leftClickSituation;
+	public PlayerCombatSituation combatSituation;
+	public boolean selected;
+	public boolean hasMoved;
+	public boolean hasActed;
+	ArrayList<Enemy> enemiesInRange;
+	//public PlayerTurnLeftClickSituation leftClickSituation;
 	public int battlesPassed;
 	
 	public int tier;
@@ -55,14 +61,18 @@ public class Adventurer extends Monster {
 
 		race = Race.human;
 		inParty = false;
-		moving = false;
-		leftClickSituation = PlayerTurnLeftClickSituations.NothingToDo;
+		combatSituation = PlayerCombatSituation.notSelected_turnAvailable;
+		selected = false;
+		hasMoved = false;
+		hasActed = false;
+		//leftClickSituation = PlayerTurnLeftClickSituation.NothingToDo;
 		battlesPassed = 0;
 		sigils = new ArrayList<Sigil>();
 		genderInt = 0;
 		personality = new Personality();
 		titbit = new Titbit();
 		skills = new Skills();
+		enemiesInRange = new ArrayList<Enemy>();
 
 	}
 
@@ -74,13 +84,159 @@ public class Adventurer extends Monster {
 		case Combat:
 
 			if (gender.equals("Female")) { genderInt = 4; } else { genderInt = 0; }
+			
+			if (attackAnimation) {
+				attackTimer += (deltaTime * attackAnimationSpeed);
+				if (attackTimer > 4) {
+					attackTimer = 0;
+					attackAnimation = false;
+					selected = false;
+					hasMoved = true;
+					hasActed = true;
+				}
+			}
+			
 			switch (Combat.combatState) {
 
 			case EnemyTurn:
 				break;
 
 			case PlayerTurn:
+
+				combatSituation = decidePlayerCombatSituation();
 				
+				switch (combatSituation) {
+				
+				case notSelected_turnAvailable:
+					
+					idleTimer += (deltaTime * idleAnimationSpeed);
+					if (idleTimer > 4) {
+						idleTimer = 0;
+					}
+					
+					if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+						if (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE == getCombatX() &&
+								gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == getCombatY()) {
+							selected = true;
+						}
+					}
+					
+					break;
+					
+				case selected_notMoved_notActed:
+					
+					idleTimer += (deltaTime * idleAnimationSpeed);
+					if (idleTimer > 4) {
+						idleTimer = 0;
+					}
+					
+					skillBar.update(gameContainer, deltaTime);
+					moveRange = MoveRangeFiller.fillMoveRange(getCombatX(), getCombatY(), currentStats.move);
+					
+					if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+						
+						boolean keepGoing = true; 
+						
+						enemiesInRange = checkEnemiesInWeaponRange(combatX, combatY);
+						if(enemiesInRange.size() > 0) { 
+					
+								Enemy enemy = checkSelectedEnemy(
+										enemiesInRange, gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE, gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE);
+								
+								if(enemy != null) {
+									keepGoing = false;
+									attackAnimation = true;
+									Attack.attack(this, enemy); 
+								}								
+						}
+							
+						if(gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE == combatX &&
+								gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == combatY) {
+							selected = false;
+							hasMoved = true;
+							hasActed = true;
+						}
+						
+						if(keepGoing) {
+							boolean inMoveRange = false;
+							for (int i = 0; i < moveRange.size(); i++) {
+								if (moveRange.get(i)[0] == gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE &&
+										moveRange.get(i)[1] == gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE) {
+									combatX = gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE;
+									combatY = gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE;
+									hasMoved = true;
+									inMoveRange = true;
+								}
+							}
+							if(!inMoveRange) { selected = false; }
+						}
+
+							
+					}
+												
+					break;
+					
+				case selected_moved_notActed:
+					
+					idleTimer += (deltaTime * idleAnimationSpeed);
+					if (idleTimer > 4) {
+						idleTimer = 0;
+					}
+					
+					skillBar.update(gameContainer, deltaTime);
+					
+					enemiesInRange = checkEnemiesInWeaponRange(combatX, combatY);
+					if(enemiesInRange.size() > 0) {
+						
+						if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+							
+							Enemy enemy = checkSelectedEnemy(
+									enemiesInRange, gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE, gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE);
+							if(enemy == null) {
+								System.out.println("enemy null");
+								selected = false;
+								hasActed = true;
+							}							
+							else {
+								attackAnimation = true;
+								Attack.attack(this, enemy); 
+								}
+						}
+						
+					}
+					
+					else {
+						hasActed = true;
+						selected = false;
+					}					
+					
+					break;
+
+					
+				case notSelected_turnFinished:
+					turnPassed = true;
+				break;
+				
+				
+				default:
+					break;
+				
+				}
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				/*
 				if(moving) { skillBar.update(gameContainer, deltaTime); }
 
 				idleTimer += (deltaTime * idleAnimationSpeed);
@@ -125,7 +281,7 @@ public class Adventurer extends Monster {
 						combatX = gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE;
 						combatY = gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE;
 						moving = false;
-						// leftClickSituation = PlayerTurnLeftClickSituations.NothingToDo;
+						leftClickSituation = PlayerTurnLeftClickSituations.NothingToDo;
 						break;
 					case Unit_Active_Moved_EnemyNOTINRANGE:
 						combatX = gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE;
@@ -143,8 +299,10 @@ public class Adventurer extends Monster {
 					}
 
 				}
+				break;
+				*/
 			}
-
+			
 			break;
 
 		case InTown: break;
@@ -176,8 +334,8 @@ public class Adventurer extends Monster {
 
 			case PlayerTurn:
 
-				if (moving) {
-					MoveAreaDrawer.drawMoveArea(moveRange, renderer);
+				if (selected) {
+					if(!hasMoved) { MoveAreaDrawer.drawMoveArea(moveRange, renderer); }
 					skillBar.render(gameContainer, renderer);
 				}
 
@@ -210,6 +368,54 @@ public class Adventurer extends Monster {
 		}
 
 	}
+	
+	private PlayerCombatSituation decidePlayerCombatSituation() {
+		if(selected) {
+			if(hasMoved) { return PlayerCombatSituation.selected_moved_notActed; }
+			else { return PlayerCombatSituation.selected_notMoved_notActed; }
+		}
+		else {
+			if(hasMoved) { return PlayerCombatSituation.notSelected_turnFinished; }
+			else { return PlayerCombatSituation.notSelected_turnAvailable; }
+		}
+		
+	}
+	
+	
+	private ArrayList<Enemy> checkEnemiesInWeaponRange(int x, int y) {
+
+		ArrayList<Enemy> enemiesInRange = new ArrayList<Enemy>();
+		for (int i = 0; i < Combat.enemies.size(); i++) {
+			if (x - 1 == Combat.enemies.get(i).getCombatX() && y == Combat.enemies.get(i).getCombatY()) { enemiesInRange.add(Combat.enemies.get(i)); } 
+			else if (x + 1 == Combat.enemies.get(i).getCombatX() && y == Combat.enemies.get(i).getCombatY()) { enemiesInRange.add(Combat.enemies.get(i)); } 
+			else if (x == Combat.enemies.get(i).getCombatX() && y - 1 == Combat.enemies.get(i).getCombatY()) { enemiesInRange.add(Combat.enemies.get(i)); } 
+			else if (x == Combat.enemies.get(i).getCombatX() && y + 1 == Combat.enemies.get(i).getCombatY()) { enemiesInRange.add(Combat.enemies.get(i)); }
+		}
+		return enemiesInRange;
+	}
+	
+	private Enemy checkSelectedEnemy(ArrayList<Enemy> enemiesInRange, int x, int y) {
+		
+		for (int i = 0; i < enemiesInRange.size(); i++) {
+			if (x == enemiesInRange.get(i).getCombatX() && y == enemiesInRange.get(i).getCombatY()) { return enemiesInRange.get(i); } 
+		}
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public void levelUp() {
 		LevelUpRoller.levelUp(this);
@@ -230,5 +436,13 @@ public class Adventurer extends Monster {
 	public void setMoney(int money) {
 		this.money = money;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

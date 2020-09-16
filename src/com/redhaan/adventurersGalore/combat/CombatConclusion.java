@@ -49,10 +49,15 @@ public class CombatConclusion extends GameObject {
 					adventurer.battlesPassed++;
 					adventurer.attackAnimation = false;
 					adventurer.turnPassed = false;
+					adventurer.selected = false;
+					adventurer.hasMoved = false;
+					adventurer.hasActed = false;
 					adventurer.setDead(false);
-					adventurer.leftClickSituation = PlayerTurnLeftClickSituations.NothingToDo;
-					adventurer.moving = false;
+					//adventurer.leftClickSituation = PlayerTurnLeftClickSituation.NothingToDo;
+					adventurer.refreshStats();
 
+				if(playerVictorious) {
+					
 					int currentLevel = adventurer.getLevel();
 					Stats currentStats = new Stats();
 					currentStats.HP = adventurer.maxStats.HP;
@@ -79,14 +84,20 @@ public class CombatConclusion extends GameObject {
 						if(adventurer.maxStats.move > currentStats.move) { strings.add("move increased"); }
 						strings.add("############");
 					}
-				}			
+				}	
+					
 			}
 			
-			for (Enemy enemy: Combat.enemies) {
-				enemy.rollLoot(loot);
-			}
+		}
 			
-			Inventory.update(loot);
+			if(playerVictorious) {
+				for (Enemy enemy: Combat.enemies) {
+					enemy.rollLoot(loot);
+				}
+				
+				Inventory.update(loot);
+			}
+
 			
 			CombatInitialiser.deployment = false;
 			Combat.enemies.clear();
@@ -116,17 +127,19 @@ public class CombatConclusion extends GameObject {
 		renderer.drawRectOpaque(10, 20, 600, 400, 0xff211814);
 		
 		renderer.drawRectOpaque(15, 25, 580, 120, 0xff141821);
-		renderer.drawText("The Spoils of War: ", 20, 30, 0xff545481);
-		for (int i = 0; i < loot.size(); i++) {
-			renderer.drawText(loot.get(i).name, 20 + i * 50, 50, 0xff545481);
+		if(playerVictorious) {
+			
+			renderer.drawText("The Spoils of War: ", 20, 30, 0xff545481);
+			for (int i = 0; i < loot.size(); i++) {
+				renderer.drawText(loot.get(i).name, 20 + i * 50, 50, 0xff545481);
+			}
+	
+			
+			for (int i = 0; i < strings.size(); i++) {
+				renderer.drawText(strings.get(i), 10, 200 + i * 15, 0xffCC8855);
+			}
+		
 		}
-
-		
-		for (int i = 0; i < strings.size(); i++) {
-			renderer.drawText(strings.get(i), 10, 200 + i * 15, 0xffCC8855);
-		}
-		
-		
 		
 		
 		

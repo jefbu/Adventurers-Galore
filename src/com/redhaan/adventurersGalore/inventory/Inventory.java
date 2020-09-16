@@ -6,12 +6,21 @@ import com.redhaan.adventurersGalore.entity.item.Item;
 
 public class Inventory {
 	
+	public static int antlers = 0;
 	public static int beastBlood = 0;
-	public static int fangs = 0;
-	public static int pelts = 0;
+	public static int bone = 0;
+	public static int claw = 0;
+	public static int coral = 0;	
+	public static int fang = 0;
+	public static int gold = 0;
+	public static int hide = 0;
+	public static int iron = 0;
 	public static int lesses = 0;
-	public static int hides = 0;
-	
+	public static int oakwood = 0;
+	public static int pelt = 0;
+	public static int silver = 0;
+	public static int tusk = 0;
+
 	public static ArrayList<Item> armours;
 	public static ArrayList<Item> weapons;
 	
@@ -37,25 +46,31 @@ public class Inventory {
 		for (int i = 0; i < loot.size(); i++) {
 			
 			switch(loot.get(i).ID) {
-				
-			case 11: fangs++; break;
-			case 12: hides++; break;
-			case 13: pelts++; break;
 			
-			case 21: beastBlood++; break;
-			case 22: lesses++; break;
+			case Weapon: weapons.add(loot.get(i)); break;
+			case Armour: armours.add(loot.get(i)); break;
 			
-			case 3: armours.add(loot.get(i)); break;
-			
-			case 4: weapons.add(loot.get(i)); break;
-				
+			case Antlers: antlers++; break;
+			case BeastBlood: beastBlood++; break;
+			case Bone: bone++; break;
+			case Claw: claw++; break;
+			case Coral: coral++; break;
+			case Fang: fang++; break;
+			case Gold: gold++; break;
+			case Hide: hide++; break;
+			case Iron: iron++; break;
+			case Lesses: lesses++; break;
+			case OakWood: oakwood++; break;
+			case Pelt: pelt++; break; 
+			case Silver: silver++; break;
+			case Tusk: tusk++; break;
+
+			default: break;
+							
 			}
 						
-		}
-		
-		
-		
-		
+		}		
+				
 	}
 	
 }

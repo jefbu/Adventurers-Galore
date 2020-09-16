@@ -36,8 +36,8 @@ public class Window {
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Image cursor = null;
 		try {
-			//cursor = toolkit.getImage("/res/mouseCursor.png");
-			cursor = toolkit.getImage("C:\\Adventurers-Galore\\res\\mouseCursor.png");
+			cursor = toolkit.getImage("res/mouseCursor.png");
+			//cursor = toolkit.getImage("C:\\Adventurers-Galore\\res\\mouseCursor.png");
 			//cursor = toolkit.getImage(new URL("https://lh3.googleusercontent.com/BpEdb0usPM1TcTcqThDuOuIN0YkBnbPhvVKxx76nH7KdXb9gKIJAWEFXKZe_yNklLssrdjZp=w128-h128-e365"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

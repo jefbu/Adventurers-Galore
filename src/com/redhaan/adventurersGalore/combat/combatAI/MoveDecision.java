@@ -30,11 +30,13 @@ public abstract class MoveDecision {
 				
 				for(Adventurer adventurer: GameManager.adventurers.allAdventurers) {
 					if (adventurer.inParty) {
-						int distanceToAdventurer = calculateDistanceFromOnePointToAnother(x, y, adventurer.getCombatX(), adventurer.getCombatY());
-						if (distanceToAdventurer < distanceToTarget) {
-							targetX = adventurer.getCombatX();
-							targetY = adventurer.getCombatY();
-							distanceToTarget = distanceToAdventurer;
+						if(!adventurer.isDead()) {
+							int distanceToAdventurer = calculateDistanceFromOnePointToAnother(x, y, adventurer.getCombatX(), adventurer.getCombatY());
+							if (distanceToAdventurer < distanceToTarget) {
+								targetX = adventurer.getCombatX();
+								targetY = adventurer.getCombatY();
+								distanceToTarget = distanceToAdventurer;
+							}
 						}
 					}
 				}

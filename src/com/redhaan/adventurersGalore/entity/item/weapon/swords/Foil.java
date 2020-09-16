@@ -3,6 +3,7 @@ package com.redhaan.adventurersGalore.entity.item.weapon.swords;
 import java.io.Serializable;
 import java.util.Random;
 
+import com.redhaan.adventurersGalore.entity.item.weapon.ItemID;
 import com.redhaan.adventurersGalore.entity.item.weapon.Rune;
 import com.redhaan.adventurersGalore.entity.item.weapon.Soul;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
@@ -27,7 +28,7 @@ public class Foil extends Weapon implements Serializable {
 		xTile = 4;
 		yTile = 0;
 		
-		ID = 4;
+		ID = ItemID.Weapon;
 		
 		rollRuneSlots(1);
 		

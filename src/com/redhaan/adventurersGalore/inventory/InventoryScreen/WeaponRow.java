@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.GameState;
+import com.redhaan.adventurersGalore.entity.item.armour.Armour;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
 import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.GemStone;
 import com.redhaan.adventurersGalore.inventory.Inventory;
@@ -14,7 +15,7 @@ import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 import gameEngine.ecclesiastes.gfx.ImageTile;
 
-public class EquipRow extends GameObject {
+public class WeaponRow extends GameObject {
 
 	private static final long serialVersionUID = 1L;
 	private int number;
@@ -25,11 +26,8 @@ public class EquipRow extends GameObject {
 	
 	private boolean lineHover;
 	private boolean dustbinHover;
-	
-	private boolean debounce;
-	private int timer;
 
-	public EquipRow(Weapon weapon, int number) {
+	public WeaponRow(Weapon weapon, int number) {
 		
 		this.number = number;
 		this.weapon = weapon;
@@ -37,23 +35,17 @@ public class EquipRow extends GameObject {
 		detailColour = 0xff354223;
 		deleteColour = 0xffF2BFAB;
 		
-		timer = 0;
-		
 	}
 
 	@Override
 	public void update(GameContainer gameContainer, float deltaTime) {
-		
-		if(debounce) { timer++; }
-		if(timer > 20) { timer = 0; debounce = false; }
 		
 		if (gameContainer.getInput().getMouseX() > 535 && gameContainer.getInput().getMouseX() < 577) {
 			if (gameContainer.getInput().getMouseY() > 48 + 45 * number && gameContainer.getInput().getMouseY() < 48 + 45 * number + 38) {
 				dustbinHover = true;
 				
 				if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
-					if (weapon != GameManager.adventurers.allAdventurers.get(PartyScreen.member).weapon && timer == 0) {
-						debounce = true;
+					if (weapon != GameManager.adventurers.allAdventurers.get(PartyScreen.member).weapon) {
 						Inventory.weapons.remove(weapon);
 						InventoryScreen.weaponWidget.updated = false;
 					}
@@ -139,13 +131,12 @@ public class EquipRow extends GameObject {
 		case DAGGER: 
 			renderer.drawText("Daggers: " + translate(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.dagger.value), 436, 63 + 45 * number, InventoryScreen.passiveColour); 
 			break;
-		default: System.out.println("error at equipRow");
+		default: System.out.println("error at weaponRow");
 		}
 		
-		renderer.drawRectOpaque(536, 48 + 45 * number, 40, 32, deleteColour);
-		if(dustbinHover) { renderer.drawRect(536, 48 + 45 * number, 40, 32, 0xffFF5533); }
-		else { renderer.drawRect(536, 48 + 45 * number, 40, 32, 0xff995533); }
-		renderer.drawImageTile(icon, 540, 48 + 45 * number, 0, 2);
+		renderer.drawRectOpaque(536, 48 + 45 * number, 32, 32, InventoryScreen.highlightColour);
+		if(dustbinHover) { renderer.drawRect(536, 48 + 45 * number, 32, 32, deleteColour); }
+		renderer.drawImageTile(icon, 536, 48 + 45 * number, 1, 2);
 		
 			
 	}

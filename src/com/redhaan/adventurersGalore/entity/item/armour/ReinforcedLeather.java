@@ -1,8 +1,6 @@
 package com.redhaan.adventurersGalore.entity.item.armour;
 
-import com.redhaan.adventurersGalore.GameManager;
-
-import gameEngine.ecclesiastes.gfx.ImageTile;
+import com.redhaan.adventurersGalore.entity.item.weapon.ItemID;
 
 public class ReinforcedLeather extends Armour {
 
@@ -11,14 +9,15 @@ public class ReinforcedLeather extends Armour {
 	public ReinforcedLeather() {
 		
 		super();
+		
+		name = "Reinforced Leather";
 		weight = 8;
 		defence = 7;
 		
-		icon = new ImageTile("/armour.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
 		xTile = 2;
 		yTile = 1;
 		
-		ID = 3;
+		ID = ItemID.Armour;
 		
 		
 	}

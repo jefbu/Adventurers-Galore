@@ -20,8 +20,9 @@ public class Player extends Adventurer {
 		icon = job.icon;
 		inParty = true;
 		currentStats.move = 8;
-		currentStats.PHY = 100;
-		maxStats.PHY = 100;
+		maxStats.move = 13;
+		currentStats.PHY = 12;
+		maxStats.PHY = 12;
 		weapon = new IronSword();
 		armour = new ReinforcedLeather();
 		calculateSecondaryStats();
@@ -40,6 +41,7 @@ public class Player extends Adventurer {
 		personality.traits.add(PersonalityTrait.Pedantic);
 		titbit.strings.add("This is you, we don't pretend to know you that well");
 
+		calculateSecondaryStats();
 		
 	}
 

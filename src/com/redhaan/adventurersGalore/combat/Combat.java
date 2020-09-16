@@ -71,43 +71,61 @@ public class Combat extends GameObject {
 							}
 						}
 					}
-					if(!continuePlayerTurn) { 
+					if(!continuePlayerTurn) {
 						for (Monster enemy: enemies) {
 							enemy.turnPassed = false;
 						}
 						Combat.combatState = CombatState.EnemyTurn;			
-						}
-					
-					boolean endCombat = true;
-					for (Monster enemy: enemies) {
-						if(!enemy.isDead() ) { endCombat = false; }
 					}
 					
-					if(endCombat) { 
+					boolean endCombatVictorious = true;
+					for (Monster enemy: enemies) {
+						if(!enemy.isDead() ) { endCombatVictorious = false; }
+					}
+					
+					if(endCombatVictorious) {
 						combatConclusion.playerVictorious = true;
 						Combat.combatPhase = CombatPhase.Conclusion; }
 					
 				break;
 				
 				case EnemyTurn:
-					
 					if(activeEnemy >= enemies.size()) { 
 						for(Adventurer adventurer: GameManager.adventurers.allAdventurers) {
-							if(adventurer.inParty) {
-								adventurer.turnPassed = false;
-								adventurer.moving = false;
-								adventurer.leftClickSituation = PlayerTurnLeftClickSituations.NothingToDo;
+							if(!adventurer.isDead()) {
+								if(adventurer.inParty) {
+									adventurer.turnPassed = false;
+									adventurer.selected = false;
+									adventurer.hasMoved = false;
+									adventurer.hasActed = false;
+									//adventurer.moveRange.clear();
+									//adventurer.leftClickSituation = PlayerTurnLeftClickSituations.NothingToDo;
+								}
 							}
 						}
-					activeEnemy = 0;
-					Combat.combatState = CombatState.PlayerTurn; 
+						activeEnemy = 0;
+						Combat.combatState = CombatState.PlayerTurn; 
 					}
 					else {		
 						enemies.get(activeEnemy).update(gameContainer, deltaTime);
 						if(enemies.get(activeEnemy).turnPassed) {
+							enemies.get(activeEnemy).turnPassed = false;
 							activeEnemy++;
 						}
 					}
+					
+					boolean endCombatDefeated = true;
+					for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {
+						if(adventurer.inParty) {
+							if(!adventurer.isDead() ) { endCombatDefeated = false; }
+						}
+					}
+					
+					if(endCombatDefeated) {
+						combatConclusion.playerVictorious = false;
+						Combat.combatPhase = CombatPhase.Conclusion; }
+					
+					
 				break;
 				
 				}

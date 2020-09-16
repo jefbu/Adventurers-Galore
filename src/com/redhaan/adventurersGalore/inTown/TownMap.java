@@ -6,6 +6,7 @@ import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.GameState;
 import com.redhaan.adventurersGalore.entity.town.Town;
+import com.redhaan.adventurersGalore.entity.town.TownSubState;
 import com.redhaan.adventurersGalore.entity.town.building.Building;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -21,10 +22,12 @@ public class TownMap extends GameObject {
 	
 	private boolean hover;
 	private int hoverOption;
+	public static TownSubState subState;
 	
 	public TownMap() {		
 		town = new Image("/town/NewTown7.png");		
 		hover = false;
+		subState = TownSubState.General;
 	}
 
 	@Override
@@ -34,10 +37,15 @@ public class TownMap extends GameObject {
 		
 		case InTown:
 			
+				for(Building building: activeTown.buildings) {
+					building.update(gameContainer, deltaTime);
+				}
+
 			if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON3)) {
 				GameManager.gameState = GameState.WorldMap;
 			}
 			
+		/*
 			if (gameContainer.getInput().getMouseX() > 258 && gameContainer.getInput().getMouseX() < 283 &&
 					gameContainer.getInput().getMouseY() > 170 && gameContainer.getInput().getMouseY() < 203) {
 				hover = true;
@@ -47,14 +55,7 @@ public class TownMap extends GameObject {
 				}
 			}
 			
-			else if (gameContainer.getInput().getMouseX() > 378 && gameContainer.getInput().getMouseX() < 403 &&
-					gameContainer.getInput().getMouseY() > 280 && gameContainer.getInput().getMouseY() < 313) {
-				hover = true;
-				hoverOption = 2;
-				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
-					System.out.println("clicked");
-				}
-			}
+
 			
 			else if (gameContainer.getInput().getMouseX() > 100 && gameContainer.getInput().getMouseX() < 125 &&
 					gameContainer.getInput().getMouseY() > 115 && gameContainer.getInput().getMouseY() < 143) {
@@ -86,9 +87,12 @@ public class TownMap extends GameObject {
 			
 			
 			else { hover = false; }
+				
 						
-			break;
+			*/			
 		
+			break;
+			
 		case Titlescreen: break;
 		case WorldMap: break;
 		case Combat: break;
@@ -108,26 +112,28 @@ public class TownMap extends GameObject {
 		switch(GameManager.gameState) {
 		
 		case InTown: 
-
+			
 			renderer.drawImage(town, 0, 0);
-
-			if(hover) {
-				
-				switch(hoverOption) {
-				case 1: renderer.drawRect(259, 175, 23, 23, 0xffCCBB66); break;
-				case 2: renderer.drawRect(380, 285, 23, 23, 0xffCCBB66); break;
-				case 3: renderer.drawRect(101, 120, 23, 23, 0xffCCBB66); break;
-				case 4: renderer.drawRect(245, 65, 23, 23, 0xffCCBB66); break;
-				case 5: renderer.drawRect(420, 145, 23, 23, 0xffCCBB66); break;
-				}
-				
-			}
 			
 			for (Building building: activeTown.buildings) {
 				building.render(gameContainer, renderer);
-			}
-			
+			}				
+
 			break;
+		
+			/*
+				if(hover) {
+					
+					switch(hoverOption) {
+					case 1: renderer.drawRect(259, 175, 23, 23, 0xffCCBB66); break;
+					case 2: renderer.drawRect(380, 285, 23, 23, 0xffCCBB66); break;
+					case 3: renderer.drawRect(101, 120, 23, 23, 0xffCCBB66); break;
+					case 4: renderer.drawRect(245, 65, 23, 23, 0xffCCBB66); break;
+					case 5: renderer.drawRect(420, 145, 23, 23, 0xffCCBB66); break;
+					}
+					
+				}*/		
+			
 		case Titlescreen: break;
 		case WorldMap: break;
 		case Combat: break;

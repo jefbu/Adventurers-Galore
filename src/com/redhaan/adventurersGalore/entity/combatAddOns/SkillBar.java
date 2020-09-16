@@ -21,7 +21,6 @@ public class SkillBar extends GameObject {
 	private int yStartPoint;
 	private int skillNumber;
 	private int selectedNumber;
-	private boolean selected;
 	private int counter;
 	private int animationNumber;
 	
@@ -33,12 +32,11 @@ public class SkillBar extends GameObject {
 	public SkillBar(Monster monster) {
 		
 		hover = false;
-		selected = false;
 		skillBarSize = 160;
 		xStartPoint = 240;
 		yStartPoint = 5;
 		skillNumber = 0;
-		selectedNumber = 0;
+		selectedNumber = 1;
 		counter = 0;
 		this.monster = monster;
 		
@@ -78,16 +76,15 @@ public class SkillBar extends GameObject {
 		}
 		
 				
-		if (selected) { 
-			if (deltaTime * counter * 5 < 1) { counter++; }
-			else { animationNumber++; counter = 0; }
-			if (animationNumber > 3) { animationNumber = 1; }
-		}
+		if (deltaTime * counter * 5 < 1) { counter++; }
+		else { animationNumber++; counter = 0; }
+		if (animationNumber > 3) { animationNumber = 1; }
+
 		
-		if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD1)) { selected = true; selectedNumber = 1; }
-		else if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD2)) { selected = true; selectedNumber = 2; }
-		else if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD3)) { selected = true; selectedNumber = 3; }
-		else if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD4)) { selected = true; selectedNumber = 4; }
+		if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD1)) { selectedNumber = 1; }
+		else if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD2)) { selectedNumber = 2; }
+		else if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD3)) { selectedNumber = 3; }
+		else if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD4)) { selectedNumber = 4; }
 
 		
 		if (gameContainer.getInput().getMouseX() > xStartPoint && gameContainer.getInput().getMouseX() < xStartPoint + skillBarSize + 1 &&
@@ -97,19 +94,19 @@ public class SkillBar extends GameObject {
 			
 			if (gameContainer.getInput().getMouseX() < xStartPoint + 3 + GameManager.GAMETILESIZE) { 
 				skillNumber = 1; 
-				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { selected = true; selectedNumber = 1; }
+				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { selectedNumber = 1; }
 			}
 			else if (gameContainer.getInput().getMouseX() < xStartPoint + GameManager.GAMETILESIZE * 2) { 
 				skillNumber = 2; 
-				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { selected = true; selectedNumber = 2; }
+				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { selectedNumber = 2; }
 			}
 			else if (gameContainer.getInput().getMouseX() < xStartPoint + GameManager.GAMETILESIZE * 3) { 
 				skillNumber = 3; 
-				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { selected = true; selectedNumber = 3; }
+				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { selectedNumber = 3; }
 			}
 			else if (gameContainer.getInput().getMouseX() < xStartPoint + GameManager.GAMETILESIZE * 4) { 
 				skillNumber = 4; 
-				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { selected = true; selectedNumber = 4; }
+				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { selectedNumber = 4; }
 			}
 			else { hover = false; skillNumber = 0; }
 			
@@ -138,32 +135,27 @@ public class SkillBar extends GameObject {
 			renderer.drawRect(xStartPoint + 1 + GameManager.GAMETILESIZE * (skillNumber - 1), yStartPoint + 1, GameManager.GAMETILESIZE, GameManager.GAMETILESIZE, 0xffDDDDDD);
 		}
 		
-		if (selected) {
-			switch (selectedNumber) {
-			case 1:
-				renderer.drawImageTile(icons, xStartPoint + 1, yStartPoint + 1, animationNumber, 0);
-				renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, 1);
-				renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, 0, jobSkillRow);				
-				break;
-			case 2:
-				renderer.drawImageTile(icons, xStartPoint + 1, yStartPoint + 1, 0, 0);
-				renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, animationNumber, 1);
-				renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, 0, jobSkillRow);	
-				break;
-			case 3:
-				renderer.drawImageTile(icons, xStartPoint + 1, yStartPoint + 1, 0, 0);
-				renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, 1);
-				renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, animationNumber, jobSkillRow);
-				break;
-			case 4:
-				break;
-			
-			default: break;
-			
-			}
-		} else {
+		switch (selectedNumber) {
+		case 1:
+			renderer.drawImageTile(icons, xStartPoint + 1, yStartPoint + 1, animationNumber, 0);
 			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, 1);
+			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, 0, jobSkillRow);				
+			break;
+		case 2:
 			renderer.drawImageTile(icons, xStartPoint + 1, yStartPoint + 1, 0, 0);
+			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, animationNumber, 1);
+			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, 0, jobSkillRow);	
+			break;
+		case 3:
+			renderer.drawImageTile(icons, xStartPoint + 1, yStartPoint + 1, 0, 0);
+			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, 1);
+			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, animationNumber, jobSkillRow);
+			break;
+		case 4:
+			break;
+		
+		default: break;
+			
 		}
 		
 		renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, 0, jobSkillRow);

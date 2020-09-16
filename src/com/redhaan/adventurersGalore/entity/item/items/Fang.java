@@ -1,5 +1,7 @@
 package com.redhaan.adventurersGalore.entity.item.items;
 
+import com.redhaan.adventurersGalore.entity.item.weapon.ItemID;
+
 public class Fang extends CraftItems {
 
 	private static final long serialVersionUID = 1L;
@@ -10,7 +12,7 @@ public class Fang extends CraftItems {
 		xTile = 0;
 		yTile = 1;
 		
-		ID = 11;
+		ID = ItemID.Fang;
 		
 	}
 

@@ -20,7 +20,7 @@ public class InventoryScreen extends GameObject {
 	protected static CraftWidget craftWidget;
 	protected static AlchemyWidget alchemyWidget;
 	protected static WeaponInventory weaponWidget;
-	protected static ArmourWidget armourWidget;
+	protected static ArmourInventory armourWidget;
 	protected static GemWidget gemWidget;
 	
 	protected static int activeColour = 0xff273741;
@@ -33,7 +33,7 @@ public class InventoryScreen extends GameObject {
 		craftWidget = new CraftWidget();
 		alchemyWidget = new AlchemyWidget();
 		weaponWidget = new WeaponInventory();
-		armourWidget = new ArmourWidget();
+		armourWidget = new ArmourInventory();
 		gemWidget = new GemWidget();
 		
 	}
@@ -44,9 +44,7 @@ public class InventoryScreen extends GameObject {
 		switch(GameManager.gameState) {
 
 		case Inventory:
-			
 			menuBar.update(gameContainer, deltaTime);
-			
 			switch(MenuBar.selectedTab) {
 			
 			case 1: craftWidget.update(gameContainer, deltaTime); break;
@@ -78,7 +76,7 @@ public class InventoryScreen extends GameObject {
 
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
-		
+				
 		switch(GameManager.gameState) {
 
 		case Inventory:

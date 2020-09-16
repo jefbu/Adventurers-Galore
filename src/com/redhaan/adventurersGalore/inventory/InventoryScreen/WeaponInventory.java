@@ -17,14 +17,14 @@ public class WeaponInventory extends GameObject {
 
 	
 	protected boolean updated;
-	private ArrayList<EquipRow> equipRows;
+	private ArrayList<WeaponRow> weaponRows;
 	private int modifier;
 	
 	
 	public WeaponInventory() {
 		
 		updated = false;
-		equipRows = new ArrayList<EquipRow>();
+		weaponRows = new ArrayList<WeaponRow>();
 		modifier = 0;
 		
 	}
@@ -34,17 +34,17 @@ public class WeaponInventory extends GameObject {
 		
 		if (!updated) {
 			
-			equipRows.clear();
+			weaponRows.clear();
 			
 			if(Inventory.weaponChange) { 
-				equipRows.add(new EquipRow((Weapon) GameManager.adventurers.allAdventurers.get(PartyScreen.member).weapon, 0));
+				weaponRows.add(new WeaponRow((Weapon) GameManager.adventurers.allAdventurers.get(PartyScreen.member).weapon, 0));
 				modifier = 1;
 				}
 			else { modifier = 0; }
 			
 			for (int i = 0; i < Inventory.weapons.size(); i++) {
 
-				equipRows.add(new EquipRow((Weapon) Inventory.weapons.get(i), i + modifier));
+				weaponRows.add(new WeaponRow((Weapon) Inventory.weapons.get(i), i + modifier));
 				
 			}
 			
@@ -52,8 +52,8 @@ public class WeaponInventory extends GameObject {
 			
 		}
 
-		for (int i = 0; i < equipRows.size(); i++) {
-			equipRows.get(i).update(gameContainer, deltaTime);
+		for (int i = 0; i < weaponRows.size(); i++) {
+			weaponRows.get(i).update(gameContainer, deltaTime);
 		}
 		
 		
@@ -63,8 +63,8 @@ public class WeaponInventory extends GameObject {
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
 		
-		for (int i = 0; i < equipRows.size(); i++) {
-			equipRows.get(i).render(gameContainer, renderer);
+		for (int i = 0; i < weaponRows.size(); i++) {
+			weaponRows.get(i).render(gameContainer, renderer);
 		}
 		
 	}

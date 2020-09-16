@@ -12,28 +12,56 @@ import com.redhaan.adventurersGalore.worldMap.WorldMap;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
+import gameEngine.ecclesiastes.gfx.Image;
 
 public class TravelerEvent extends GameObject {
 
 	private static final long serialVersionUID = 1L;
+	
 	public static TravelerEvent currentEvent;
-	public static int optionsOffX;
-	public static int optionsWidth;
-	public static int optionsHeight;
-	public static int optionAOffY;
-	public static int optionBOffY;
-	public static int optionCOffY;
-	public static int optionDOffY;
 	
-	public static boolean optionA;
-	public static boolean optionB;
-	public static boolean optionC;
-	public static boolean optionD;
+	public Image eventImage;
 	
-	public static String optionAText;
-	public static String optionBText;
-	public static String optionCText;
-	public static String optionDText;
+	public int optionsOffX;
+	public int optionsWidth;
+	public int optionsHeight;
+	public int optionAOffY;
+	public int optionBOffY;
+	public int optionCOffY;
+	public int optionDOffY;
+	
+	public boolean optionA;
+	public boolean optionB;
+	public boolean optionC;
+	public boolean optionD;
+	
+	public ArrayList<String> introTexts;
+	public ArrayList<String> outcomeTexts;
+	
+	public String optionAText;
+	public String optionBText;
+	public String optionCText;
+	public String optionDText;
+	
+	public boolean introText;
+	public boolean outcomeText;
+	public boolean textFinished;
+	public boolean textAlmostFinished;
+	public boolean paragraphFinished;
+	
+	public String stringToDraw;
+	public String stringToDrawFrom;
+	public int paragraphNumber;
+	public int timer;
+	
+	private String firstLine;
+	private String secondLine;
+	private String thirdLine;
+	private String fourthLine;
+	
+	private int hoverOption;
+	
+	
 	
 	public TravelerEvent() {
 		
@@ -55,6 +83,25 @@ public class TravelerEvent extends GameObject {
 		optionBText = "";
 		optionCText = "";
 		optionDText = "";
+		
+		introTexts = new ArrayList<String>();
+		outcomeTexts = new ArrayList<String>();
+		
+		introText = true;
+		outcomeText = false;
+		textFinished = false;
+		paragraphFinished = false;
+		stringToDraw = "";
+		stringToDrawFrom = "";
+		paragraphNumber = 0;
+		timer = 0;
+		
+		firstLine = "";
+		secondLine = "";
+		thirdLine = "";
+		fourthLine = "";
+		
+		hoverOption = 0;
 		
 	}
 		
@@ -116,48 +163,204 @@ public class TravelerEvent extends GameObject {
 
 	@Override
 	public void update(GameContainer gameContainer, float deltaTime) {	
+		
+		currentEvent.update(gameContainer, deltaTime);
 
-		if (gameContainer.getInput().getMouseX() > optionsOffX && gameContainer.getInput().getMouseX() < optionsOffX + optionsWidth) {
-			if (gameContainer.getInput().getMouseY() > optionAOffY && gameContainer.getInput().getMouseY() < optionAOffY + optionsHeight) {
-				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { optionA = true; }
+		if(textFinished && introText) {
+			
+			if (gameContainer.getInput().getMouseX() > optionsOffX && gameContainer.getInput().getMouseX() < optionsOffX + optionsWidth) {
+				if (gameContainer.getInput().getMouseY() > optionAOffY && gameContainer.getInput().getMouseY() < optionAOffY + optionsHeight) {
+					hoverOption = 1;
+					if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { 
+						if (introText) { 
+							currentEvent.optionA = true; 
+							introText = false; 
+							outcomeText = true; 
+							currentEvent.writeOutcomeText(); 
+							textFinished = false; 
+							paragraphNumber = 0;
+							}
+					}
+				}
 			}
+			
+			if (gameContainer.getInput().getMouseX() > optionsOffX && gameContainer.getInput().getMouseX() < optionsOffX + optionsWidth) {
+				if (gameContainer.getInput().getMouseY() > optionBOffY && gameContainer.getInput().getMouseY() < optionBOffY + optionsHeight) {
+					hoverOption = 2;
+					if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { 
+						if (introText) { 
+							currentEvent.optionB = true; 
+							introText = false; 
+							outcomeText = true; 
+							currentEvent.writeOutcomeText(); 
+							textFinished = false;
+							paragraphNumber = 0;
+							}
+					}
+				}
+			}
+			
+			if (gameContainer.getInput().getMouseX() > optionsOffX && gameContainer.getInput().getMouseX() < optionsOffX + optionsWidth) {
+				if (gameContainer.getInput().getMouseY() > optionCOffY && gameContainer.getInput().getMouseY() < optionCOffY + optionsHeight) {
+					hoverOption = 3;
+					if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { 
+						if (introText) { 
+							currentEvent.optionC = true; 
+							introText = false; 
+							outcomeText = true; 
+							currentEvent.writeOutcomeText(); 
+							textFinished = false;
+							paragraphNumber = 0;
+							}
+					}
+				}
+			}
+			
+			if (gameContainer.getInput().getMouseX() > optionsOffX && gameContainer.getInput().getMouseX() < optionsOffX + optionsWidth) {
+				if (gameContainer.getInput().getMouseY() > optionDOffY && gameContainer.getInput().getMouseY() < optionDOffY + optionsHeight) {
+					hoverOption = 4;
+					if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+						if (introText) { 
+							currentEvent.optionD = true; 
+							introText = false; 
+							outcomeText = true; 
+							currentEvent.writeOutcomeText(); 
+							textFinished = false;
+							paragraphNumber = 0;
+							}
+					}
+				}
+			}
+			
+			else { hoverOption = 0; }
+			
+		}
+
+		
+	
+		if (gameContainer.getInput().getMouseX() > 450 && gameContainer.getInput().getMouseX() < 500) {
+			if (gameContainer.getInput().getMouseY() > 350 && gameContainer.getInput().getMouseY() < 370) {
+				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { 
+					if(!textFinished) {
+						paragraphNumber++;
+						firstLine = "";
+						secondLine = "";
+						thirdLine = "";
+						fourthLine = "";
+						paragraphFinished = false;
+						timer = 0;
+						stringToDraw = "";
+						stringToDrawFrom = "";
+					}
+					else if (outcomeText) {
+						outcomeText = false; 
+						currentEvent.calculateOutcome();
+					}
+				}
+			}			
+		}
+
+		
+		if(introText) { if (paragraphNumber >= currentEvent.introTexts.size()) { textFinished = true; } }
+		else if (outcomeText) { if (paragraphNumber >= currentEvent.outcomeTexts.size()) { textFinished = true; } 
+								else if (paragraphNumber + 1 >= currentEvent.outcomeTexts.size()) { textAlmostFinished = true; }
+		}
+
+		
+		if(!textFinished) {
+						
+			if(stringToDrawFrom.length() == 0) {
+				if (introText) { stringToDrawFrom = currentEvent.introTexts.get(paragraphNumber); }
+				else if (outcomeText) { stringToDrawFrom = currentEvent.outcomeTexts.get(paragraphNumber); }
+			}
+			
+			if(stringToDraw.length() < stringToDrawFrom.length()) {
+				stringToDraw = stringToDraw + stringToDrawFrom.substring(timer, timer + 1);
+				if(timer != stringToDrawFrom.length() - 1) { timer++; }
+			} 
+			else {
+				paragraphFinished = true;
+			}
+						
 		}
 		
-		if (gameContainer.getInput().getMouseX() > optionsOffX && gameContainer.getInput().getMouseX() < optionsOffX + optionsWidth) {
-			if (gameContainer.getInput().getMouseY() > optionBOffY && gameContainer.getInput().getMouseY() < optionBOffY + optionsHeight) {
-				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { optionB = true; }
-			}
-		}
+
 		
-		if (gameContainer.getInput().getMouseX() > optionsOffX && gameContainer.getInput().getMouseX() < optionsOffX + optionsWidth) {
-			if (gameContainer.getInput().getMouseY() > optionCOffY && gameContainer.getInput().getMouseY() < optionCOffY + optionsHeight) {
-				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { optionC = true; }
-			}
-		}
 		
-		if (gameContainer.getInput().getMouseX() > optionsOffX && gameContainer.getInput().getMouseX() < optionsOffX + optionsWidth) {
-			if (gameContainer.getInput().getMouseY() > optionDOffY && gameContainer.getInput().getMouseY() < optionDOffY + optionsHeight) {
-				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { optionD = true; }
-			}
-		}
+		
+		
+		
 		
 	}
 
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
 		
-		renderer.drawRectOpaque(GameManager.GAMEWIDTH / 2 - 200, GameManager.GAMEHEIGHT / 2 - 150, 400, 300, 0x99000000);
-		renderer.drawRect(GameManager.GAMEWIDTH / 2 - 195, GameManager.GAMEHEIGHT / 2 - 145, 310, 210, 0xff996644);
-		renderer.drawRect(GameManager.GAMEWIDTH / 2 + 120, GameManager.GAMEHEIGHT / 2 - 145, 75, 210, 0xff996644);
-		renderer.drawRect(GameManager.GAMEWIDTH / 2 - 195, GameManager.GAMEHEIGHT / 2 + 70, 390, 75, 0xff996644);
+		currentEvent.render(gameContainer, renderer);
 		
-		renderer.drawRectOpaque(GameManager.GAMEWIDTH / 2 + 125, GameManager.GAMEHEIGHT / 2 - 140, optionsWidth, optionsHeight, 0xdd775533);
-		renderer.drawRectOpaque(GameManager.GAMEWIDTH / 2 + 125, GameManager.GAMEHEIGHT / 2 - 90, optionsWidth, optionsHeight, 0xdd774422);
-		renderer.drawRectOpaque(GameManager.GAMEWIDTH / 2 + 125, GameManager.GAMEHEIGHT / 2 - 40, optionsWidth, optionsHeight, 0xdd775522);
-		renderer.drawRectOpaque(GameManager.GAMEWIDTH / 2 + 125, GameManager.GAMEHEIGHT / 2 + 10, optionsWidth, optionsHeight, 0xdd774433);
+		renderer.drawRectOpaque(120, 90, 400, 300, 0x99000000);
+		renderer.drawRect(125, 95, 310, 210, 0xff996644);
+		renderer.drawRect(440, 95, 75, 210, 0xff996644);
+		renderer.drawRect(125, 310, 390, 75, 0xff996644);
+		
+		renderer.drawImage(currentEvent.eventImage, 126, 96);
+		
+		if(textFinished && introText) renderer.drawRectOpaque(445, 100, optionsWidth, optionsHeight, 0xdd775533);
+		if(textFinished && introText) renderer.drawRectOpaque(445, 150, optionsWidth, optionsHeight, 0xdd774422);
+		if(textFinished && introText) renderer.drawRectOpaque(445, 200, optionsWidth, optionsHeight, 0xdd775522);
+		if(textFinished && introText) renderer.drawRectOpaque(445, 250, optionsWidth, optionsHeight, 0xdd774433);
+		
+		if(textFinished && introText && hoverOption == 1) renderer.drawRect(444, 99, optionsWidth + 2, optionsHeight + 2, 0xffFFCC88);
+		if(textFinished && introText && hoverOption == 2) renderer.drawRect(444, 149, optionsWidth + 2, optionsHeight + 2, 0xffFFCC88);
+		if(textFinished && introText && hoverOption == 3) renderer.drawRect(444, 199, optionsWidth + 2, optionsHeight + 2, 0xffFFCC88);
+		if(textFinished && introText && hoverOption == 4) renderer.drawRect(444, 249, optionsWidth + 2, optionsHeight + 2, 0xffFFCC88);
+
+		
+		if(textFinished && introText) renderer.drawText(currentEvent.optionAText, GameManager.GAMEWIDTH / 2 + 130, GameManager.GAMEHEIGHT / 2 - 120, 0xff451205);
+		if(textFinished && introText) renderer.drawText(currentEvent.optionBText, GameManager.GAMEWIDTH / 2 + 130, GameManager.GAMEHEIGHT / 2 - 70, 0xff451205);
+		if(textFinished && introText) renderer.drawText(currentEvent.optionCText, GameManager.GAMEWIDTH / 2 + 130, GameManager.GAMEHEIGHT / 2 - 20, 0xff451205);
+		if(textFinished && introText) renderer.drawText(currentEvent.optionDText, GameManager.GAMEWIDTH / 2 + 130, GameManager.GAMEHEIGHT / 2 + 30, 0xff451205);
+		
+		if(!textFinished) renderer.drawRectOpaque(450, 350, 50, 20, 0xffAA9933);
+		if(textFinished && outcomeText) { renderer.drawRectOpaque(450, 350, 50, 20, 0xffAA9933); }
+
+		if(paragraphFinished && !textFinished) { renderer.drawText("Next", 460, 355, 0xff443012); }
+		else if (textAlmostFinished) { renderer.drawText("Finish", 460, 355, 0xff443012); }
+		else if (!textFinished) { renderer.drawText("Skip", 460, 355, 0xff443012); }		
+				
+		if(stringToDraw.length() > 0) {
+			
+				if (firstLine.length() > 60 && firstLine.charAt(firstLine.length() - 1) == 32) { }
+				else { firstLine = stringToDraw; }
+				
+				if(stringToDraw.length() > firstLine.length()) {
+					if (secondLine.length() > 60 && secondLine.charAt(secondLine.length() - 1) == 32) { }
+					else { secondLine = stringToDraw.substring(firstLine.length()); }
+				}
+
+				if(stringToDraw.length() > firstLine.length() + secondLine.length()) {
+					if (thirdLine.length() > 60 && thirdLine.charAt(thirdLine.length() - 1) == 32) { }
+					else { thirdLine = stringToDraw.substring(firstLine.length() + secondLine.length()); }
+				}
+
+				if(stringToDraw.length() > firstLine.length() + secondLine.length() + thirdLine.length()) {
+					fourthLine = stringToDraw.substring(firstLine.length() + secondLine.length() + thirdLine.length());
+				}
+
+		}
+			
+		if(firstLine.length() > 0) { renderer.drawText(firstLine, 140, 320, 0xffFFFFFF); }
+		if (secondLine.length() > 0) { renderer.drawText(secondLine, 140, 335, 0xffFFFFFF); }
+		if (thirdLine.length() > 0) { renderer.drawText(thirdLine, 140, 350, 0xffFFFFFF); }
+		if (fourthLine.length() > 0) { renderer.drawText(fourthLine, 140, 365, 0xffFFFFFF); }
+
+		
 
 		
 	}
+	
+	
+	
 	
 	public void writeOptionTexts(String a, String b, String c, String d, Renderer renderer) {
 		
@@ -198,6 +401,14 @@ public class TravelerEvent extends GameObject {
 			
 		return strings;
 				
+	}
+	
+	public void writeOutcomeText() {
+		
+	}
+	
+	public void calculateOutcome() {
+		
 	}
 	
 	

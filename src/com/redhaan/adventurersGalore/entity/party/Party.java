@@ -26,6 +26,8 @@ public class Party extends GameObject {
 	private int day;
 	private PartyCohesionChecker partyCohesionChecker;
 	
+	public static int intimidation;
+	
 	public static Inventory inventory;
 		
 	public Party() {
@@ -35,6 +37,7 @@ public class Party extends GameObject {
 		blinkColour = 0xff559977;
 		blinkTemp = 0;
 		icon = new ImageTile("/Knight.png", 32, 32);
+		intimidation = 0;
 		
 		traveling = false;
 		MH = 5000;
@@ -184,6 +187,18 @@ public class Party extends GameObject {
 
 	public static void setTraveling(boolean traveling) {
 		Party.traveling = traveling;
+	}
+	
+	public static int getIntimidation() {
+		
+		intimidation = 0;
+		for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {
+			if (adventurer.inParty) {
+				System.out.println("intimidation is: " + intimidation);
+				intimidation += adventurer.maxStats.PHY - 10;
+			}
+		}
+		return intimidation;
 	}
 	
 	

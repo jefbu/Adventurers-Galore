@@ -2,6 +2,7 @@ package com.redhaan.adventurersGalore.entity.item.weapon.daggers;
 
 import java.util.Random;
 
+import com.redhaan.adventurersGalore.entity.item.weapon.ItemID;
 import com.redhaan.adventurersGalore.entity.item.weapon.Rune;
 import com.redhaan.adventurersGalore.entity.item.weapon.Soul;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
@@ -26,7 +27,7 @@ public class Cinqueada extends Weapon {
 		xTile = 3;
 		yTile = 1;
 		
-		ID = 4;
+		ID = ItemID.Weapon;
 		
 		rollRuneSlots(4);
 		

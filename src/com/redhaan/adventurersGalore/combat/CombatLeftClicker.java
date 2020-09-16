@@ -5,8 +5,8 @@ import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 
 public abstract class CombatLeftClicker {
 
-	public static PlayerTurnLeftClickSituations decidePlayerLeftClickSituation(Adventurer adventurer, int x, int y) {
-
+	public static PlayerTurnLeftClickSituation decidePlayerLeftClickSituation(Adventurer adventurer, int x, int y) {
+		/*
 		adventurer.moveRange = MoveRangeFiller.fillMoveRange(adventurer.getCombatX(), adventurer.getCombatY(),
 				adventurer.currentStats.move);
 		int[] clickedLocation = new int[] { x / GameManager.GAMETILESIZE, y / GameManager.GAMETILESIZE };
@@ -14,39 +14,39 @@ public abstract class CombatLeftClicker {
 		// Clicked on Party Adventurer
 		if (clickedLocation[0] == adventurer.getCombatX() && clickedLocation[1] == adventurer.getCombatY()) {
 
-			if (adventurer.leftClickSituation == PlayerTurnLeftClickSituations.Unit_Active_Moved_EnemyINRANGE) {
-				return PlayerTurnLeftClickSituations.Unit_Inactive_TurnPassed;
+			if (adventurer.leftClickSituation == PlayerTurnLeftClickSituation.Unit_Active_Moved_EnemyINRANGE) {
+				return PlayerTurnLeftClickSituation.Unit_Inactive_TurnPassed;
 			}
 
-			if (!adventurer.moving && !adventurer.turnPassed) {
-				return PlayerTurnLeftClickSituations.Unit_Active_NOTMoved;
+			if (!adventurer.selected && !adventurer.turnPassed) {
+				return PlayerTurnLeftClickSituation.Unit_Active_NOTMoved;
 			}
 
-			else if (adventurer.moving && !adventurer.turnPassed) {
-				return PlayerTurnLeftClickSituations.Unit_Inactive_TurnPassed;
+			else if (adventurer.selected && !adventurer.turnPassed) {
+				return PlayerTurnLeftClickSituation.Unit_Inactive_TurnPassed;
 			} else {
-				return PlayerTurnLeftClickSituations.NothingToDo;
+				return PlayerTurnLeftClickSituation.NothingToDo;
 			}
 		}
 
 		// Clicked in MoveRange
-		if (adventurer.moving) {
+		if (adventurer.selected) {
 			for (int i = 0; i < adventurer.moveRange.size(); i++) {
 				if (clickedLocation[0] == adventurer.moveRange.get(i)[0]
 						&& clickedLocation[1] == adventurer.moveRange.get(i)[1]) {
 
-					if (adventurer.leftClickSituation == PlayerTurnLeftClickSituations.Unit_Active_Moved_EnemyINRANGE) {
-						return PlayerTurnLeftClickSituations.Unit_Inactive_TurnPassed;
+					if (adventurer.leftClickSituation == PlayerTurnLeftClickSituation.Unit_Active_Moved_EnemyINRANGE) {
+						return PlayerTurnLeftClickSituation.Unit_Inactive_TurnPassed;
 					}
 
-					if (adventurer.moving && !adventurer.turnPassed) {
+					if (adventurer.selected && !adventurer.turnPassed) {
 						if (checkIfAnyEnemyInWeaponRange(clickedLocation[0], clickedLocation[1])) {
-							return PlayerTurnLeftClickSituations.Unit_Active_Moved_EnemyINRANGE;
+							return PlayerTurnLeftClickSituation.Unit_Active_Moved_EnemyINRANGE;
 						} else {
-							return PlayerTurnLeftClickSituations.Unit_Active_Moved_EnemyNOTINRANGE;
+							return PlayerTurnLeftClickSituation.Unit_Active_Moved_EnemyNOTINRANGE;
 						}
 					} else {
-						return PlayerTurnLeftClickSituations.NothingToDo;
+						return PlayerTurnLeftClickSituation.NothingToDo;
 					}
 				}
 			}
@@ -59,27 +59,27 @@ public abstract class CombatLeftClicker {
 					&& clickedLocation[1] == Combat.enemies.get(i).getCombatY()) {
 
 				if (checkIfEnemyInWeaponRange(adventurer, clickedLocation)) {
-					if (adventurer.leftClickSituation == PlayerTurnLeftClickSituations.Unit_Active_Moved_EnemyINRANGE
-							|| adventurer.leftClickSituation == PlayerTurnLeftClickSituations.Unit_Active_NOTMoved) {
-						return PlayerTurnLeftClickSituations.Active_Enemy_INRange;
+					if (adventurer.leftClickSituation == PlayerTurnLeftClickSituation.Unit_Active_Moved_EnemyINRANGE
+							|| adventurer.leftClickSituation == PlayerTurnLeftClickSituation.Unit_Active_NOTMoved) {
+						return PlayerTurnLeftClickSituation.Active_Enemy_INRange;
 					}
 				}
 
 				else {
-					if (adventurer.leftClickSituation == PlayerTurnLeftClickSituations.Unit_Active_Moved_EnemyINRANGE) {
-						return PlayerTurnLeftClickSituations.Unit_Inactive_TurnPassed;
+					if (adventurer.leftClickSituation == PlayerTurnLeftClickSituation.Unit_Active_Moved_EnemyINRANGE) {
+						return PlayerTurnLeftClickSituation.Unit_Inactive_TurnPassed;
 					} else {
-						return PlayerTurnLeftClickSituations.Enemy_NOTINRange;
+						return PlayerTurnLeftClickSituation.Enemy_NOTINRange;
 					}
 				}
 			}
 		}
 
 		// Clicked anywhere else
-		if (adventurer.leftClickSituation == PlayerTurnLeftClickSituations.Unit_Active_Moved_EnemyINRANGE) {
-			return PlayerTurnLeftClickSituations.Unit_Inactive_TurnPassed;
+		if (adventurer.leftClickSituation == PlayerTurnLeftClickSituation.Unit_Active_Moved_EnemyINRANGE) {
+			return PlayerTurnLeftClickSituation.Unit_Inactive_TurnPassed;
 		}
-		return PlayerTurnLeftClickSituations.NothingToDo;
+		return PlayerTurnLeftClickSituation.NothingToDo;
 
 	}
 
@@ -115,6 +115,8 @@ public abstract class CombatLeftClicker {
 		}
 
 		return false;
+		*/
+		return null;
 	}
-
+	
 }

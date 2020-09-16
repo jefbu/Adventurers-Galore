@@ -1,6 +1,6 @@
 package com.redhaan.adventurersGalore.combat;
 
-public enum PlayerTurnLeftClickSituations {
+public enum PlayerTurnLeftClickSituation {
 	
 	Unit_Active_NOTMoved, 
 	Unit_Inactive_TurnPassed, 

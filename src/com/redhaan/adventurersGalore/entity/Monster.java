@@ -159,6 +159,20 @@ public class Monster extends NPC {
 		this.dead = isDead;
 	}
 	
+	public void refreshStats() {
+		
+		currentStats.HP = maxStats.HP;
+		currentStats.MP = maxStats.MP;
+		currentStats.PHY = maxStats.PHY;
+		currentStats.AGI = maxStats.AGI;
+		currentStats.MAG = maxStats.MAG;
+		currentStats.DEX = maxStats.DEX;
+		currentStats.INT = maxStats.INT;
+		currentStats.PRC = maxStats.PRC;
+		currentStats.move = maxStats.move;
+		
+	}
+	
 	
 
 }

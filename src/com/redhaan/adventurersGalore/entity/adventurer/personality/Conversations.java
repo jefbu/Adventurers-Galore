@@ -47,12 +47,9 @@ public class Conversations extends GameObject {
 
 		case WorldMap:
 
-
-				if(random.nextInt(6000000) == 0) { 
-
 			if (!active) {
 
-				if (random.nextInt(60) == 0) {
+				if (random.nextInt(600) == 0) {
 					ArrayList<Adventurer> candidates = new ArrayList<Adventurer>();
 					for (Adventurer adventurer : GameManager.adventurers.allAdventurers) {
 						if (adventurer.inParty) {
@@ -106,7 +103,6 @@ public class Conversations extends GameObject {
 						active = false;
 					}
 				}							
-			}
 			}
 
 			break;

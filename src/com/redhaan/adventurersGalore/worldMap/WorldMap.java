@@ -195,7 +195,6 @@ public class WorldMap extends GameObject {
 				break;
 			case TravelerEvent:
 				baseEvent.update(gameContainer, deltaTime);
-				TravelerEvent.currentEvent.update(gameContainer, deltaTime);
 				break;
 			}
 
@@ -246,8 +245,6 @@ public class WorldMap extends GameObject {
 					break;
 				}
 				baseEvent.render(gameContainer, renderer);
-				TravelerEvent.currentEvent.render(gameContainer, renderer);
-
 			}
 		}
 
