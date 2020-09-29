@@ -3,7 +3,7 @@ package com.redhaan.adventurersGalore.entity.item.weapon.swords;
 import java.io.Serializable;
 import java.util.Random;
 
-import com.redhaan.adventurersGalore.entity.item.weapon.ItemID;
+import com.redhaan.adventurersGalore.entity.item.ItemID;
 import com.redhaan.adventurersGalore.entity.item.weapon.Rune;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
 import com.redhaan.adventurersGalore.entity.item.weapon.WeaponType;

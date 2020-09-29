@@ -3,6 +3,8 @@ package com.redhaan.adventurersGalore.entity.town.building;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.BlackSmith;
+
 public abstract class BuildingFactory {
 	
 	public static ArrayList<Building> createTownBuildings(int townSize) {
@@ -35,7 +37,7 @@ public abstract class BuildingFactory {
 		switch (townSize) {
 		case 1: if (roll > 80) { list.add(new BlackSmith()); } break;
 		case 2: if (roll > 50) { list.add(new BlackSmith()); } break;
-		case 3: if (roll > 20) { list.add(new BlackSmith()); } break;
+		case 3: if (roll > 0) { list.add(new BlackSmith()); } break;
 		case 4: list.add(new BlackSmith()); break;
 		default: System.out.println("error in switch blacksmith"); break;
 		}

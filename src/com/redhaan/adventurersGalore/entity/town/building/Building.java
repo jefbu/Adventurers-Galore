@@ -10,8 +10,8 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 public class Building extends GameObject {
 
 	private static final long serialVersionUID = 1L;
-	ImageTile icon;
-	int x, y;
+	public ImageTile icon;
+	public int x, y;
 
 	public Building() {
 		icon = new ImageTile("/spriteSheets/buildingIcons.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);

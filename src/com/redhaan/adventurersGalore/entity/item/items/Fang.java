@@ -1,6 +1,6 @@
 package com.redhaan.adventurersGalore.entity.item.items;
 
-import com.redhaan.adventurersGalore.entity.item.weapon.ItemID;
+import com.redhaan.adventurersGalore.entity.item.ItemID;
 
 public class Fang extends CraftItems {
 

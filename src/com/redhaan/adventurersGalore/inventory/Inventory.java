@@ -20,6 +20,18 @@ public class Inventory {
 	public static int pelt = 0;
 	public static int silver = 0;
 	public static int tusk = 0;
+	public static int wing = 0;
+	public static int evilSpirit = 0;
+	public static int violentSpirit = 0;
+	public static int spiritOfMischief = 0;
+	public static int vagrantSpirit = 0;
+	public static int nobleSpirit = 0;
+	public static int heartSpirit = 0;
+	public static int liquidInnocence = 0;
+	public static int stolenMoonlight = 0;
+	public static int rationalThought = 0;
+	public static int luckyClover = 0;
+	public static int reforgedPlough = 0;
 
 	public static ArrayList<Item> armours;
 	public static ArrayList<Item> weapons;

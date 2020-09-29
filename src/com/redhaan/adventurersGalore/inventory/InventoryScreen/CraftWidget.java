@@ -22,6 +22,20 @@ public class CraftWidget extends GameObject {
 	ItemContainer coral;	
 	ItemContainer pelt;
 	ItemContainer hide;
+	
+	ItemContainer evilSpirit;
+	ItemContainer violentSpirit;
+	ItemContainer vagrantSpirit;
+	ItemContainer spiritOfMischief;
+	ItemContainer nobleSpirit;
+	ItemContainer heartSpirit;
+	
+	ItemContainer stolenMoonlight;
+	ItemContainer liquidInnocence;
+	ItemContainer luckyClover;
+	ItemContainer rationalThought;
+	ItemContainer reforgedPlough;
+	
 	protected boolean updated;
 
 	public CraftWidget() {
@@ -39,6 +53,23 @@ public class CraftWidget extends GameObject {
 		
 		pelt = new ItemContainer("pelt", 20, 280, 1, 0);
 		hide = new ItemContainer("hide", 20, 302, 1, 1);
+		
+		
+		evilSpirit = new ItemContainer("evil spirit", 260, 60, 9, 0);
+		violentSpirit = new ItemContainer("violent spirit", 260, 82, 9, 1);
+		spiritOfMischief = new ItemContainer("spirit of mischief", 260, 104, 9, 2);
+		vagrantSpirit = new ItemContainer("vagrant spirit", 260, 126, 9, 3);
+		nobleSpirit = new ItemContainer("noble spirit", 260, 148, 9, 4);
+		heartSpirit = new ItemContainer("heart sirit", 260, 170, 9, 5);
+		
+		
+		stolenMoonlight = new ItemContainer("stolen moonlight", 460, 60, 8, 0);
+		liquidInnocence = new ItemContainer("liquid innocence", 460, 82, 8, 1);
+		luckyClover = new ItemContainer("lucky clover", 460, 104, 8, 2);
+		rationalThought = new ItemContainer("rational thought", 460, 126, 8, 3);
+		reforgedPlough = new ItemContainer("reforged plough", 460, 148, 8, 4);
+		
+		
 				
 		updated = false;
 		
@@ -62,6 +93,19 @@ public class CraftWidget extends GameObject {
 			
 			pelt.quantity = Inventory.pelt;
 			hide.quantity = Inventory.hide;
+			
+			evilSpirit.quantity = Inventory.evilSpirit;
+			violentSpirit.quantity = Inventory.violentSpirit;
+			spiritOfMischief.quantity = Inventory.spiritOfMischief;
+			vagrantSpirit.quantity = Inventory.vagrantSpirit;
+			nobleSpirit.quantity = Inventory.nobleSpirit;
+			heartSpirit.quantity = Inventory.heartSpirit;
+			
+			stolenMoonlight.quantity = Inventory.stolenMoonlight;
+			liquidInnocence.quantity = Inventory.liquidInnocence;
+			luckyClover.quantity = Inventory.luckyClover;
+			rationalThought.quantity = Inventory.rationalThought;
+			reforgedPlough.quantity = Inventory.reforgedPlough;			
 					
 			updated = true;
 			
@@ -85,6 +129,19 @@ public class CraftWidget extends GameObject {
 
 		pelt.render(gameContainer, renderer);
 		hide.render(gameContainer, renderer);
+		
+		evilSpirit.render(gameContainer, renderer);
+		violentSpirit.render(gameContainer, renderer);
+		spiritOfMischief.render(gameContainer, renderer);
+		vagrantSpirit.render(gameContainer, renderer);
+		nobleSpirit.render(gameContainer, renderer);
+		heartSpirit.render(gameContainer, renderer);
+		
+		stolenMoonlight.render(gameContainer, renderer);
+		liquidInnocence.render(gameContainer, renderer);
+		luckyClover.render(gameContainer, renderer);
+		rationalThought.render(gameContainer, renderer);
+		reforgedPlough.render(gameContainer, renderer);
 		
 	}
 	

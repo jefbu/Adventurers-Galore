@@ -41,13 +41,13 @@ public class ItemContainer extends GameObject {
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
 
-		renderer.drawRectOpaque(offX, offY, 100, 22, InventoryScreen.passiveColour);
+		renderer.drawRectOpaque(offX, offY, 150, 22, InventoryScreen.passiveColour);
 		renderer.drawRectOpaque(offX + 3, offY + 2, 18, 18, InventoryScreen.highlightColour);
-		renderer.drawRectOpaque(offX + 24, offY + 2, 54, 18, InventoryScreen.highlightColour);
-		renderer.drawRectOpaque(offX + 81, offY + 2, 16, 18, InventoryScreen.highlightColour);
-		renderer.drawImageTile(icon, offX + 3, offY + 3, tileX, tileY);
+		renderer.drawRectOpaque(offX + 24, offY + 2, 104, 18, InventoryScreen.highlightColour);
+		renderer.drawRectOpaque(offX + 131, offY + 2, 16, 18, InventoryScreen.highlightColour);
+		renderer.drawImageTile(icon, offX + 4, offY + 3, tileX, tileY);
 		renderer.drawText(text, offX + 27, offY + 6, 0xff221731);
-		renderer.drawText(Integer.toString(quantity), offX + 85, offY + 6, 0xff221731);
+		renderer.drawText(Integer.toString(quantity), offX + 135, offY + 6, 0xff221731);
 		
 	}
 
