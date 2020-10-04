@@ -1,4 +1,4 @@
-package com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.daggerSubscreen;
+package com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.staffSubscreen;
 
 import java.awt.event.MouseEvent;
 
@@ -7,26 +7,26 @@ import com.redhaan.adventurersGalore.GameObject;
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
-public class DaggerSubScreen extends GameObject {
+public class StaffSubScreen extends GameObject {
 	
 	private static final long serialVersionUID = 1L;
 	
 	private int tierNr;
 	private boolean tierHover;
 	
-	private DaggerTier1 tier1;
-	private DaggerTier2 tier2;
-	private DaggerTier3 tier3;
-	private DaggerTier4 tier4;
+	private StaffTier1 tier1;
+	private StaffTier2 tier2;
+	private StaffTier3 tier3;
+	private StaffTier4 tier4;
 	
-	public DaggerSubScreen() {
+	public StaffSubScreen() {
 		
 		tierNr = 1;
 		
-		tier1 = new DaggerTier1();
-		tier2 = new DaggerTier2();
-		tier3 = new DaggerTier3();
-		tier4 = new DaggerTier4();
+		tier1 = new StaffTier1();
+		tier2 = new StaffTier2();
+		tier3 = new StaffTier3();
+		tier4 = new StaffTier4();
 		
 	}
 

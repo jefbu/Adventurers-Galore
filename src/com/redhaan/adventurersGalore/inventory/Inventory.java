@@ -32,6 +32,7 @@ public class Inventory {
 	public static int rationalThought = 0;
 	public static int luckyClover = 0;
 	public static int reforgedPlough = 0;
+	public static int ivory = 0;
 
 	public static ArrayList<Item> armours;
 	public static ArrayList<Item> weapons;

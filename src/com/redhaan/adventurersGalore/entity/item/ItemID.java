@@ -19,6 +19,7 @@ public enum ItemID {
 	BeastBlood,
 	Lesses,
 	Wing,
+	Ivory,
 	EvilSpirit,
 	ViolentSpirit,
 	SpiritOfMischief,
