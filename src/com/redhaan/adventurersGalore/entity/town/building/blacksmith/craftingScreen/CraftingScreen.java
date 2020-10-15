@@ -2,6 +2,7 @@ package com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingSc
 
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.town.building.blacksmith.BlackSmith;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.armourSubscreen.ArmourSubscreen;
 import com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.daggerSubscreen.DaggerSubScreen;
 import com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.staffSubscreen.StaffSubScreen;
 import com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.swordSubscreen.SwordsSubScreen;
@@ -18,6 +19,7 @@ public class CraftingScreen extends GameObject {
 	private SwordsSubScreen swordsSubScreen;
 	private DaggerSubScreen daggerSubScreen;
 	private StaffSubScreen staffSubScreen;
+	private ArmourSubscreen	armourSubscreen;
 	
 	public CraftingScreen() {
 		
@@ -26,6 +28,7 @@ public class CraftingScreen extends GameObject {
 		swordsSubScreen = new SwordsSubScreen();
 		daggerSubScreen = new DaggerSubScreen();
 		staffSubScreen = new StaffSubScreen();
+		armourSubscreen = new ArmourSubscreen();
 		
 	}
 		
@@ -38,7 +41,7 @@ public class CraftingScreen extends GameObject {
 			case 0: swordsSubScreen.update(gameContainer, deltaTime); break;
 			case 1: daggerSubScreen.update(gameContainer, deltaTime); break;
 			case 2: staffSubScreen.update(gameContainer, deltaTime); break;
-			case 3: System.out.println("armour"); break;
+			case 3: armourSubscreen.update(gameContainer, deltaTime); break;
 						
 			}
 			
@@ -54,7 +57,7 @@ public class CraftingScreen extends GameObject {
 		case 0: swordsSubScreen.render(gameContainer, renderer); break;
 		case 1: daggerSubScreen.render(gameContainer, renderer); break;
 		case 2: staffSubScreen.render(gameContainer, renderer); break;
-		case 3: System.out.println("armour"); break;
+		case 3: armourSubscreen.render(gameContainer, renderer); break;
 		
 		}		
 		

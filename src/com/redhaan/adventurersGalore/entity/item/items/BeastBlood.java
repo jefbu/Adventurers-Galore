@@ -9,7 +9,7 @@ public class BeastBlood extends CraftItems {
 	public BeastBlood() {
 		
 		name = "Beast Blood";
-		xTile = 0;
+		xTile = 2;
 		yTile = 0;
 		
 		ID = ItemID.BeastBlood;

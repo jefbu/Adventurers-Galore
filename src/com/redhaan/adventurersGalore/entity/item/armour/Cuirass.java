@@ -2,20 +2,21 @@ package com.redhaan.adventurersGalore.entity.item.armour;
 
 import com.redhaan.adventurersGalore.entity.item.ItemID;
 
-public class ReinforcedLeather extends Armour {
+public class Cuirass extends Armour {
 
 	private static final long serialVersionUID = 1L;
 
-	public ReinforcedLeather() {
+	public Cuirass() {
+		
 		
 		super();
 		
-		name = "Reinforced Leather";
-		weight = 11;
-		defence = 9;
+		name = "Cuirass";
+		weight = 14;
+		defence = 8;
 		
-		xTile = 2;
-		yTile = 1;
+		xTile = 0;
+		yTile = 3;
 		
 		ID = ItemID.Armour;
 		

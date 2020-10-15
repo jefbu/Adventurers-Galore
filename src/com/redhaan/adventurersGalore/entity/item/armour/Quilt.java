@@ -2,22 +2,22 @@ package com.redhaan.adventurersGalore.entity.item.armour;
 
 import com.redhaan.adventurersGalore.entity.item.ItemID;
 
-public class BasicLeather extends Armour {
+public class Quilt extends Armour {
 	
-	private static final long serialVersionUID = 1L;
-
-	public BasicLeather() {
+	
+	public Quilt() {
 		
 		super();
 		
-		name = "Basic Leather";
+		name = "Quilt";
 		weight = 6;
-		defence = 7;
+		defence = 6;
 		
-		xTile = 0;
-		yTile = 1;
+		xTile = 1;
+		yTile = 0;
 		
 		ID = ItemID.Armour;
+		
 		
 	}
 

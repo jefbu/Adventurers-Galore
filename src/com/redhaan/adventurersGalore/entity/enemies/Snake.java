@@ -1,6 +1,6 @@
 package com.redhaan.adventurersGalore.entity.enemies;
 
-import com.redhaan.adventurersGalore.entity.item.armour.BasicLeather;
+import com.redhaan.adventurersGalore.entity.item.armour.Leather;
 import com.redhaan.adventurersGalore.entity.item.items.BeastBlood;
 import com.redhaan.adventurersGalore.entity.item.items.Fang;
 import com.redhaan.adventurersGalore.entity.item.items.Hide;
@@ -51,7 +51,7 @@ public class Snake extends Enemy {
 		
 		int gemStoneLevel = rollGemStoneLevel(60, 30, 9, 1);
 		
-		dropTable.itemDrops.add(new BasicLeather());
+		dropTable.itemDrops.add(new Leather());
 		dropTable.itemDrops.add(new Fang());
 		dropTable.itemDrops.add(new BeastBlood());
 		dropTable.itemDrops.add(new Hide());

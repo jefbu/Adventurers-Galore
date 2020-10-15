@@ -9,8 +9,8 @@ public class Pelt extends CraftItems {
 	public Pelt() {
 		
 		name = "Pelt";
-		xTile = 0;
-		yTile = 4;
+		xTile = 1;
+		yTile = 1;
 		
 		ID = ItemID.Pelt;
 		
