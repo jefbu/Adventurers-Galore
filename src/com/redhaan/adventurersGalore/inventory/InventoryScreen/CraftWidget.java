@@ -35,6 +35,10 @@ public class CraftWidget extends GameObject {
 	ItemContainer luckyClover;
 	ItemContainer rationalThought;
 	ItemContainer reforgedPlough;
+	ItemContainer springBreeze;
+	ItemContainer morningSunlight;
+	ItemContainer pentupAnger;
+	ItemContainer gloriousMoment;
 	
 	protected boolean updated;
 
@@ -68,6 +72,10 @@ public class CraftWidget extends GameObject {
 		luckyClover = new ItemContainer("lucky clover", 460, 104, 8, 2);
 		rationalThought = new ItemContainer("rational thought", 460, 126, 8, 3);
 		reforgedPlough = new ItemContainer("reforged plough", 460, 148, 8, 4);
+		springBreeze = new ItemContainer("spring breeze", 460, 170, 8, 5);
+		morningSunlight = new ItemContainer("morning sunlight", 460, 192, 8, 6);
+		pentupAnger = new ItemContainer("pent-up anger", 460, 214, 8, 7);
+		gloriousMoment = new ItemContainer("glorious moment", 460, 236, 8, 8);
 		
 		
 				
@@ -105,7 +113,11 @@ public class CraftWidget extends GameObject {
 			liquidInnocence.quantity = Inventory.liquidInnocence;
 			luckyClover.quantity = Inventory.luckyClover;
 			rationalThought.quantity = Inventory.rationalThought;
-			reforgedPlough.quantity = Inventory.reforgedPlough;			
+			reforgedPlough.quantity = Inventory.reforgedPlough;	
+			springBreeze.quantity = Inventory.springBreeze;
+			morningSunlight.quantity = Inventory.morningSunlight;
+			pentupAnger.quantity = Inventory.pentupAnger;
+			gloriousMoment.quantity = Inventory.gloriousMoment;
 					
 			updated = true;
 			
@@ -142,6 +154,10 @@ public class CraftWidget extends GameObject {
 		luckyClover.render(gameContainer, renderer);
 		rationalThought.render(gameContainer, renderer);
 		reforgedPlough.render(gameContainer, renderer);
+		springBreeze.render(gameContainer, renderer);
+		morningSunlight.render(gameContainer, renderer);
+		pentupAnger.render(gameContainer, renderer);
+		gloriousMoment.render(gameContainer, renderer);
 		
 	}
 	

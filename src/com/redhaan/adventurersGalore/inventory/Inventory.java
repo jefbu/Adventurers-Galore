@@ -33,6 +33,10 @@ public class Inventory {
 	public static int luckyClover = 0;
 	public static int reforgedPlough = 0;
 	public static int ivory = 0;
+	public static int springBreeze = 0;
+	public static int morningSunlight = 0;
+	public static int pentupAnger = 0;
+	public static int gloriousMoment = 0;
 
 	public static ArrayList<Item> armours;
 	public static ArrayList<Item> weapons;
@@ -78,7 +82,7 @@ public class Inventory {
 			case Silver: silver++; break;
 			case Tusk: tusk++; break;
 
-			default: break;
+			default: System.out.println("error adding stuff to the loot");break;
 							
 			}
 						

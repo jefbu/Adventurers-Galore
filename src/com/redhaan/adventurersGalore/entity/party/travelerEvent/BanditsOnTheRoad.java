@@ -10,7 +10,9 @@ import com.redhaan.adventurersGalore.combat.CombatMapRoller;
 import com.redhaan.adventurersGalore.combat.CombatPhase;
 import com.redhaan.adventurersGalore.combat.combatAI.HighLevelPlan;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
+import com.redhaan.adventurersGalore.entity.enemies.Goblin;
 import com.redhaan.adventurersGalore.entity.enemies.Pirate;
+import com.redhaan.adventurersGalore.entity.enemies.Wolf;
 import com.redhaan.adventurersGalore.entity.party.Party;
 import com.redhaan.adventurersGalore.worldMap.WorldMap;
 import com.redhaan.adventurersGalore.worldMap.WorldMapTiles;
@@ -143,9 +145,9 @@ public class BanditsOnTheRoad extends TravelerEvent {
 			Combat.combatMap = CombatMapRoller.rollCombatMap(WorldMapTiles.GRASS);
 			WorldMap.subState = WorldMap.previousSubState;
 			
+			Combat.enemies.add(new Wolf());
 			Combat.enemies.add(new Pirate());
-			Combat.enemies.add(new Pirate());
-			Combat.enemies.add(new Pirate());
+			Combat.enemies.add(new Goblin());
 			
 			Combat.highLevelPlan = HighLevelPlan.Attack;
 			Combat.combatPhase = CombatPhase.Setup;

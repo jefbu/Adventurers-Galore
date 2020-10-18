@@ -30,6 +30,10 @@ public enum ItemID {
 	LiquidInnocence,
 	LuckyClover,
 	RationalThought,
-	ReforgedPlough
+	ReforgedPlough,
+	SpringBreeze,
+	MorningSunlight,
+	PentUpAnger,
+	GloriousMoment
 
 }

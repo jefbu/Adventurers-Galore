@@ -135,6 +135,22 @@ public class ArmourTier1 extends GameObject {
 			if(Inventory.iron >= 5) { renderer.drawText("(" + Inventory.iron + ")", 192, 261, 0xff447722); }
 			else { renderer.drawText("(" + Inventory.iron + ")", 192, 261, 0xff774422); }	
 			
+		renderer.drawRectOpaque(30, 290, 570, 40, 0xff181205);
+			renderer.drawImageTile(cuirass.icon, 35, 295, cuirass.xTile, cuirass.yTile);
+			renderer.drawRectOpaque(70, 295, 80, 30, 0xff231911);
+			renderer.drawText(cuirass.name, 75, 305, 0xff685245);
+			
+			renderer.drawRectOpaque(155, 295, 70, 30, 0xff231911);
+			renderer.drawImageTile(iron.icon, 162, 302, iron.xTile, iron.yTile);
+			renderer.drawText("3", 185, 306, 0xff886622);
+			if(Inventory.iron >= 3) { renderer.drawText("(" + Inventory.iron + ")", 192, 306, 0xff447722); }
+			else { renderer.drawText("(" + Inventory.iron + ")", 192, 306, 0xff774422); }
+	
+			renderer.drawRectOpaque(230, 295, 70, 30, 0xff231911);
+			renderer.drawImageTile(silver.icon, 237, 302, silver.xTile, silver.yTile);
+			renderer.drawText("3", 260, 306, 0xff886622);
+			if(Inventory.silver >= 3) { renderer.drawText("(" + Inventory.silver + ")", 267, 306, 0xff447722); }
+			else { renderer.drawText("(" + Inventory.silver + ")", 267, 306, 0xff774422); }
 			
 			
 			
@@ -150,12 +166,12 @@ public class ArmourTier1 extends GameObject {
 			else { renderer.drawRect(30, 200, 570, 40, 0xffBB6622); }
 			break;		
 		case 3:
-			if (Inventory.iron >= 2 && Inventory.claw >= 5 && Inventory.fang >= 5) { renderer.drawRect(30, 200, 570, 40, 0xff88AA55); }
-			else { renderer.drawRect(30, 200, 570, 40, 0xffBB6622); }
+			if (Inventory.iron >= 2 && Inventory.claw >= 5 && Inventory.fang >= 5) { renderer.drawRect(30, 245, 570, 40, 0xff88AA55); }
+			else { renderer.drawRect(30, 245, 570, 40, 0xffBB6622); }
 			break;	
 		case 4:
-			if (Inventory.iron >= 2 && Inventory.claw >= 5 && Inventory.fang >= 5) { renderer.drawRect(30, 200, 570, 40, 0xff88AA55); }
-			else { renderer.drawRect(30, 200, 570, 40, 0xffBB6622); }
+			if (Inventory.iron >= 2 && Inventory.claw >= 5 && Inventory.fang >= 5) { renderer.drawRect(30, 290, 570, 40, 0xff88AA55); }
+			else { renderer.drawRect(30, 290, 570, 40, 0xffBB6622); }
 			break;	
 		
 		}

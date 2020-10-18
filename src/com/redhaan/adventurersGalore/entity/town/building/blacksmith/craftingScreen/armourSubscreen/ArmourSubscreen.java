@@ -54,9 +54,9 @@ public class ArmourSubscreen extends GameObject {
 		switch(tierNr) {
 		
 		case 1: tier1.update(gameContainer, deltaTime); break;
-		//case 2: tier2.update(gameContainer, deltaTime); break;
-		//case 3: tier3.update(gameContainer, deltaTime); break;
-		//case 4: tier4.update(gameContainer, deltaTime); break;
+		case 2: tier2.update(gameContainer, deltaTime); break;
+		case 3: tier3.update(gameContainer, deltaTime); break;
+		case 4: tier4.update(gameContainer, deltaTime); break;
 		
 		}
 		
@@ -69,9 +69,9 @@ public class ArmourSubscreen extends GameObject {
 		switch(tierNr) {
 		
 		case 1: tier1.render(gameContainer, renderer); break;
-		//case 2: tier2.render(gameContainer, renderer); break;
-		//case 3: tier3.render(gameContainer, renderer); break;
-		//case 4: tier4.render(gameContainer, renderer); break;
+		case 2: tier2.render(gameContainer, renderer); break;
+		case 3: tier3.render(gameContainer, renderer); break;
+		case 4: tier4.render(gameContainer, renderer); break;
 		
 		}		
 		
