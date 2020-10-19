@@ -189,19 +189,19 @@ public class ArmourTier2 extends GameObject {
 		
 		case 0: break;
 		case 1:
-			if (Inventory.iron >= 3 && Inventory.fang >= 8) { renderer.drawRect(30, 155, 570, 40, 0xff88AA55); }
+			if (Inventory.pelt >= 8 && Inventory.ivory >= 3 && Inventory.bone >= 1) { renderer.drawRect(30, 155, 570, 40, 0xff88AA55); }
 			else { renderer.drawRect(30, 155, 570, 40, 0xffBB6622); }
 			break;
 		case 2:
-			if (Inventory.iron >= 2 && Inventory.claw >= 5 && Inventory.fang >= 5) { renderer.drawRect(30, 200, 570, 40, 0xff88AA55); }
+			if (Inventory.hide >= 8 && Inventory.ivory >= 3 && Inventory.coral >= 1) { renderer.drawRect(30, 200, 570, 40, 0xff88AA55); }
 			else { renderer.drawRect(30, 200, 570, 40, 0xffBB6622); }
 			break;		
 		case 3:
-			if (Inventory.iron >= 2 && Inventory.claw >= 5 && Inventory.fang >= 5) { renderer.drawRect(30, 245, 570, 40, 0xff88AA55); }
+			if (Inventory.iron >= 5 && Inventory.coral >= 3) { renderer.drawRect(30, 245, 570, 40, 0xff88AA55); }
 			else { renderer.drawRect(30, 245, 570, 40, 0xffBB6622); }
 			break;	
 		case 4:
-			if (Inventory.iron >= 2 && Inventory.claw >= 5 && Inventory.fang >= 5) { renderer.drawRect(30, 290, 570, 40, 0xff88AA55); }
+			if (Inventory.iron >= 3 && Inventory.silver >= 3 && Inventory.antlers >= 5) { renderer.drawRect(30, 290, 570, 40, 0xff88AA55); }
 			else { renderer.drawRect(30, 290, 570, 40, 0xffBB6622); }
 			break;	
 		
