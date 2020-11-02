@@ -1,10 +1,13 @@
 package com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.daggerSubscreen;
 
+import java.awt.event.MouseEvent;
+
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.item.items.Fang;
 import com.redhaan.adventurersGalore.entity.item.items.Iron;
 import com.redhaan.adventurersGalore.entity.item.items.Tusk;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Dirk;
+import com.redhaan.adventurersGalore.entity.item.weapon.swords.BroadSword;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -43,6 +46,15 @@ public class DaggerTier2 extends GameObject {
 			
 			hoverOption = 1;
 			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.iron >= 3 && Inventory.fang >= 8 && Inventory.tusk >= 8) { 
+					Inventory.weapons.add(new Dirk());
+					Inventory.iron -= 3;
+					Inventory.fang -= 8;
+					Inventory.tusk -= 8;
+				}
+			}
+			
 		}
 		
 		
@@ -68,14 +80,14 @@ public class DaggerTier2 extends GameObject {
 			renderer.drawRectOpaque(230, 160, 70, 30, 0xff231911);
 			renderer.drawImageTile(fang.icon, 237, 167, fang.xTile, fang.yTile);
 			renderer.drawText("8", 260, 171, 0xff886622);
-			if(Inventory.claw >= 8) { renderer.drawText("(" + Inventory.fang + ")", 267, 171, 0xff447722); }
+			if(Inventory.fang >= 8) { renderer.drawText("(" + Inventory.fang + ")", 267, 171, 0xff447722); }
 			else { renderer.drawText("(" + Inventory.fang + ")", 267, 171, 0xff774422); }
 		
 			
 			renderer.drawRectOpaque(305, 160, 70, 30, 0xff231911);
 			renderer.drawImageTile(tusk.icon, 312, 167, tusk.xTile, tusk.yTile);
 			renderer.drawText("8", 335, 171, 0xff886622);
-			if(Inventory.liquidInnocence >= 8) { renderer.drawText("(" + Inventory.tusk + ")", 342, 171, 0xff447722); }
+			if(Inventory.tusk >= 8) { renderer.drawText("(" + Inventory.tusk + ")", 342, 171, 0xff447722); }
 			else { renderer.drawText("(" + Inventory.tusk + ")", 342, 171, 0xff774422); }
 			
 			
@@ -83,7 +95,7 @@ public class DaggerTier2 extends GameObject {
 		
 		case 0: break;
 		case 1:
-			if (Inventory.iron >= 3 && Inventory.fang >= 8) { renderer.drawRect(30, 155, 570, 40, 0xff88AA55); }
+			if (Inventory.iron >= 3 && Inventory.fang >= 8 && Inventory.tusk >= 8) { renderer.drawRect(30, 155, 570, 40, 0xff88AA55); }
 			else { renderer.drawRect(30, 155, 570, 40, 0xffBB6622); }
 			break;		
 		

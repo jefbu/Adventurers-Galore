@@ -1,11 +1,14 @@
 package com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.staffSubscreen;
 
+import java.awt.event.MouseEvent;
+
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.item.items.Antlers;
 import com.redhaan.adventurersGalore.entity.item.items.Ivory;
 import com.redhaan.adventurersGalore.entity.item.items.OakWood;
 import com.redhaan.adventurersGalore.entity.item.weapon.staves.Baton;
 import com.redhaan.adventurersGalore.entity.item.weapon.staves.Bo;
+import com.redhaan.adventurersGalore.entity.item.weapon.swords.BroadSword;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -42,12 +45,30 @@ public class StaffTier2 extends GameObject {
 			
 			hoverOption = 1;
 			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.oakwood >= 8 && Inventory.antlers >= 3 && Inventory.ivory >= 1) { 
+					Inventory.weapons.add(new Bo());
+					Inventory.oakwood -= 8;
+					Inventory.antlers -= 3;
+					Inventory.ivory -= 1;
+				}
+			}
+			
 		}
 		
 		else if (gameContainer.getInput().getMouseX() > 30 && gameContainer.getInput().getMouseX() < 600 &&
 				gameContainer.getInput().getMouseY() > 200 && gameContainer.getInput().getMouseY() < 240) {
 			
 			hoverOption = 2;
+			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.oakwood >= 5 && Inventory.antlers >= 3 && Inventory.ivory >= 2) { 
+					Inventory.weapons.add(new Baton());
+					Inventory.oakwood -= 5;
+					Inventory.antlers -= 3;
+					Inventory.ivory -= 2;
+				}
+			}
 			
 		}
 		

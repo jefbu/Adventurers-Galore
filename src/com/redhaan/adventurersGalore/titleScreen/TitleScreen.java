@@ -6,6 +6,7 @@ import com.redhaan.adventurersGalore.titleScreen.titleMenu.TitleMenu;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
+import gameEngine.ecclesiastes.audio.SoundClip;
 import gameEngine.ecclesiastes.gfx.Image;
 
 public class TitleScreen extends GameObject {
@@ -20,6 +21,9 @@ public class TitleScreen extends GameObject {
 	TitleAdventurer knight2;
 	TitlePrincess princess;
 	TitleMenu titleMenu;
+	
+	SoundClip titleSoundClip;
+	private boolean soundStarted;
 
 	public TitleScreen() {
 
@@ -33,6 +37,9 @@ public class TitleScreen extends GameObject {
 		princess = new TitlePrincess(13, 3);
 		
 		titleMenu = new TitleMenu();
+		
+		titleSoundClip = new SoundClip("/titlescreen.wav");
+		soundStarted = false;
 
 	}
 
@@ -51,9 +58,12 @@ public class TitleScreen extends GameObject {
 			princess.update(gameContainer, deltaTime);
 			
 			titleMenu.update(gameContainer, deltaTime);
+			
+			if(!soundStarted) { titleSoundClip.loop(); soundStarted = true; }
+			
 			break;
 		
-		case WorldMap: break;
+		case WorldMap: if (soundStarted) { titleSoundClip.stop(); titleSoundClip.close(); } break; 
 		case InTown: break;
 		case Combat: break;
 		case PartyScreen: break;

@@ -7,6 +7,8 @@ import java.util.Random;
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.calendar.Calendar;
+import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
+import com.redhaan.adventurersGalore.entity.enemies.Enemy;
 import com.redhaan.adventurersGalore.worldMap.SubState;
 import com.redhaan.adventurersGalore.worldMap.WorldMap;
 
@@ -61,6 +63,10 @@ public class TravelerEvent extends GameObject {
 	
 	private int hoverOption;
 	
+	protected int speakerOption;
+	protected Adventurer speaker1;
+	protected Enemy speaker2;
+	
 	
 	
 	public TravelerEvent() {
@@ -102,6 +108,9 @@ public class TravelerEvent extends GameObject {
 		fourthLine = "";
 		
 		hoverOption = 0;
+		speakerOption = 0;
+		speaker1 = null;
+		speaker2 = null;
 		
 	}
 		
@@ -302,6 +311,7 @@ public class TravelerEvent extends GameObject {
 		renderer.drawRect(125, 95, 310, 210, 0xff996644);
 		renderer.drawRect(440, 95, 75, 210, 0xff996644);
 		renderer.drawRect(125, 310, 390, 75, 0xff996644);
+		renderer.drawRectOpaque(80, 310, 55, 75, 0x99000000);
 		
 		renderer.drawImage(currentEvent.eventImage, 126, 96);
 		
@@ -354,7 +364,19 @@ public class TravelerEvent extends GameObject {
 		if (thirdLine.length() > 0) { renderer.drawText(thirdLine, 140, 350, 0xffFFFFFF); }
 		if (fourthLine.length() > 0) { renderer.drawText(fourthLine, 140, 365, 0xffFFFFFF); }
 
+		switch(currentEvent.speakerOption) {
 		
+		case 0: break;
+		case 1: 
+			renderer.drawImageTile(currentEvent.speaker1.icon, 85, 325, 0, 0); 
+			renderer.drawText(currentEvent.speaker1.name, 82, 365, 0xffDDDDBB);
+			break;
+		case 2: 
+			renderer.drawImageTile(currentEvent.speaker2.icon, 85, 325, 0, 0); 
+			renderer.drawText(currentEvent.speaker2.name, 82, 365, 0xffDDDDBB);
+			break;
+		
+		}
 
 		
 	}

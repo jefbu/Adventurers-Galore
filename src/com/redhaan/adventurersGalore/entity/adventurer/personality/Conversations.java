@@ -6,6 +6,8 @@ import java.util.Random;
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
+import com.redhaan.adventurersGalore.worldMap.SubState;
+import com.redhaan.adventurersGalore.worldMap.WorldMap;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
@@ -46,7 +48,7 @@ public class Conversations extends GameObject {
 		switch (GameManager.gameState) {
 
 		case WorldMap:
-
+			
 			if (!active) {
 
 				if (random.nextInt(600) == 0) {
@@ -57,7 +59,7 @@ public class Conversations extends GameObject {
 						}
 					}
 					if (candidates.size() > 2) {
-						active = true;
+						if (WorldMap.subState != SubState.TravelerEvent) { active = true; }
 						Random random = new Random();
 						offX = random.nextInt(240);
 						offY = random.nextInt(380);
@@ -104,6 +106,7 @@ public class Conversations extends GameObject {
 					}
 				}							
 			}
+
 
 			break;
 

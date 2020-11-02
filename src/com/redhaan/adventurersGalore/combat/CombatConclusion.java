@@ -16,6 +16,7 @@ import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
+import gameEngine.ecclesiastes.audio.SoundClip;
 import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class CombatConclusion extends GameObject {
@@ -29,6 +30,9 @@ public class CombatConclusion extends GameObject {
 	private ArrayList<String> strings;
 	private ArrayList<Item> loot;
 	
+	private SoundClip victorySound;
+	private SoundClip lossSound;
+	
 	public CombatConclusion() {
 		random = new Random();
 		playerVictorious = false;
@@ -36,6 +40,9 @@ public class CombatConclusion extends GameObject {
 		strings = new ArrayList<String>();
 		icons = new ArrayList<ImageTile>();
 		loot = new ArrayList<Item>();
+		
+		victorySound = new SoundClip("/victory.wav");
+		lossSound = new SoundClip("/loss.wav");
 	}
 	
 
@@ -43,6 +50,9 @@ public class CombatConclusion extends GameObject {
 	public void update(GameContainer gameContainer, float deltaTime) {
 
 		if(!conclusionStarted) {
+			
+			Combat.soundClip.stop();
+			Combat.soundStarted = false;
 			
 			for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {			
 				if(adventurer.inParty) {
@@ -57,6 +67,8 @@ public class CombatConclusion extends GameObject {
 					adventurer.refreshStats();
 
 				if(playerVictorious) {
+					
+					victorySound.play();
 					
 					int currentLevel = adventurer.getLevel();
 					Stats currentStats = new Stats();
@@ -84,7 +96,9 @@ public class CombatConclusion extends GameObject {
 						if(adventurer.maxStats.move > currentStats.move) { strings.add("move increased"); }
 						strings.add("############");
 					}
-				}	
+				}
+				
+				else { lossSound.play(); }
 					
 			}
 			

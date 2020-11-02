@@ -54,6 +54,10 @@ public class BanditsOnTheRoad extends TravelerEvent {
 		introTexts.add("And should not have, for bandits seek their shadowy marks, and were upon us in a jiffy!");
 		introTexts.add(warner + ": Awake, To arms! To arms! The enemy hast arrived!");
 		introTexts.add("Bandit Chief: Stand and deliver, give us thy money and you shallst go free.");
+		
+		speaker1 = GameManager.adventurers.allAdventurers.get(1);
+		speaker2 = new Pirate();
+		speakerOption = 2;
 	
 	}
 	

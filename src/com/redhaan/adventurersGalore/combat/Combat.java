@@ -12,6 +12,7 @@ import com.redhaan.adventurersGalore.worldMap.LevelDrawer;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
+import gameEngine.ecclesiastes.audio.SoundClip;
 import gameEngine.ecclesiastes.gfx.Image;
 
 public class Combat extends GameObject {
@@ -30,6 +31,9 @@ public class Combat extends GameObject {
 	
 	private int activeEnemy;
 	
+	public static SoundClip soundClip;
+	public static boolean soundStarted;
+	
 	public Combat() {
 		
 		levelDrawer = new LevelDrawer();
@@ -43,6 +47,9 @@ public class Combat extends GameObject {
 		activeEnemy = 0;
 		
 		combatConclusion = new CombatConclusion();
+		
+		soundClip = new SoundClip("/battle.wav");
+		soundStarted = false;
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.swordSubscreen;
 
+import java.awt.event.MouseEvent;
+
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.item.items.Coral;
 import com.redhaan.adventurersGalore.entity.item.items.Gold;
@@ -10,6 +12,7 @@ import com.redhaan.adventurersGalore.entity.item.items.ReforgedPlough;
 import com.redhaan.adventurersGalore.entity.item.items.Silver;
 import com.redhaan.adventurersGalore.entity.item.items.SpiritOfMischief;
 import com.redhaan.adventurersGalore.entity.item.items.StolenMoonlight;
+import com.redhaan.adventurersGalore.entity.item.weapon.swords.BroadSword;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.Epee;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.Falchion;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.SilverSword;
@@ -65,6 +68,15 @@ public class Tier4 extends GameObject {
 			
 			hoverOption = 1;
 			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.silver >= 5 && Inventory.nobleSpirit >= 1 && Inventory.liquidInnocence >= 1) { 
+					Inventory.weapons.add(new SilverSword());
+					Inventory.silver -= 5;
+					Inventory.nobleSpirit -= 1;
+					Inventory.liquidInnocence -= 1;
+				}
+			}
+			
 		}
 		
 		else if (gameContainer.getInput().getMouseX() > 30 && gameContainer.getInput().getMouseX() < 600 &&
@@ -72,12 +84,30 @@ public class Tier4 extends GameObject {
 			
 			hoverOption = 2;
 			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.coral >= 2 && Inventory.heartSpirit >= 1 && Inventory.stolenMoonlight >= 1) { 
+					Inventory.weapons.add(new Epee());
+					Inventory.coral -= 2;
+					Inventory.heartSpirit -= 1;
+					Inventory.stolenMoonlight -= 1;
+				}
+			}
+			
 		}
 		
 		else if (gameContainer.getInput().getMouseX() > 30 && gameContainer.getInput().getMouseX() < 600 &&
 				gameContainer.getInput().getMouseY() > 245 && gameContainer.getInput().getMouseY() < 285) {
 			
 			hoverOption = 3;
+			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.gold >= 5 && Inventory.spiritOfMischief >= 1 && Inventory.reforgedPlough >= 1) { 
+					Inventory.weapons.add(new Falchion());
+					Inventory.gold -= 5;
+					Inventory.spiritOfMischief -= 1;
+					Inventory.reforgedPlough -= 1;
+				}
+			}
 			
 		}	
 		

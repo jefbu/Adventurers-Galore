@@ -1,10 +1,13 @@
 package com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.staffSubscreen;
 
+import java.awt.event.MouseEvent;
+
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.item.items.Bone;
 import com.redhaan.adventurersGalore.entity.item.items.Ivory;
 import com.redhaan.adventurersGalore.entity.item.items.SpiritOfMischief;
 import com.redhaan.adventurersGalore.entity.item.weapon.staves.Cudgel;
+import com.redhaan.adventurersGalore.entity.item.weapon.swords.BroadSword;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -41,6 +44,15 @@ public class StaffTier3 extends GameObject {
 				gameContainer.getInput().getMouseY() > 155 && gameContainer.getInput().getMouseY() < 195) {
 			
 			hoverOption = 1;
+			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.bone >= 3 && Inventory.ivory >= 3 && Inventory.spiritOfMischief >= 1) { 
+					Inventory.weapons.add(new Cudgel());
+					Inventory.bone -= 3;
+					Inventory.ivory -= 3;
+					Inventory.spiritOfMischief -= 1;
+				}
+			}
 			
 		}
 		

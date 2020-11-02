@@ -1,11 +1,14 @@
 package com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.swordSubscreen;
 
+import java.awt.event.MouseEvent;
+
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.item.items.Claw;
 import com.redhaan.adventurersGalore.entity.item.items.Iron;
 import com.redhaan.adventurersGalore.entity.item.items.Tusk;
 import com.redhaan.adventurersGalore.entity.item.items.Wing;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.BastardSword;
+import com.redhaan.adventurersGalore.entity.item.weapon.swords.BroadSword;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.Sabre;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
@@ -47,12 +50,30 @@ public class Tier2 extends GameObject {
 			
 			hoverOption = 1;
 			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.iron >= 3 && Inventory.claw >= 5 && Inventory.tusk >= 3) { 
+					Inventory.weapons.add(new BastardSword());
+					Inventory.iron -= 3;
+					Inventory.claw -= 5;
+					Inventory.tusk -= 3;
+				}
+			}
+			
 		}
 		
 		else if (gameContainer.getInput().getMouseX() > 30 && gameContainer.getInput().getMouseX() < 600 &&
 				gameContainer.getInput().getMouseY() > 200 && gameContainer.getInput().getMouseY() < 240) {
 			
 			hoverOption = 2;
+			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.iron >= 5 && Inventory.claw >= 3 && Inventory.wing >= 1) { 
+					Inventory.weapons.add(new Sabre());
+					Inventory.iron -= 5;
+					Inventory.claw -= 3;
+					Inventory.wing -= 1;
+				}
+			}
 			
 		}
 		

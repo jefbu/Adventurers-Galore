@@ -1,5 +1,7 @@
 package com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.swordSubscreen;
 
+import java.awt.event.MouseEvent;
+
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.item.items.EvilSpirit;
 import com.redhaan.adventurersGalore.entity.item.items.Gold;
@@ -7,6 +9,7 @@ import com.redhaan.adventurersGalore.entity.item.items.HeartSpirit;
 import com.redhaan.adventurersGalore.entity.item.items.Iron;
 import com.redhaan.adventurersGalore.entity.item.items.Silver;
 import com.redhaan.adventurersGalore.entity.item.items.ViolentSpirit;
+import com.redhaan.adventurersGalore.entity.item.weapon.swords.BroadSword;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.Foil;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.Katana;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.Scimitar;
@@ -57,6 +60,14 @@ public class Tier3 extends GameObject {
 			
 			hoverOption = 1;
 			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.iron >= 5 && Inventory.violentSpirit >= 1) { 
+					Inventory.weapons.add(new Scimitar());
+					Inventory.iron -= 5;
+					Inventory.violentSpirit -= 1;
+				}
+			}
+			
 		}
 		
 		else if (gameContainer.getInput().getMouseX() > 30 && gameContainer.getInput().getMouseX() < 600 &&
@@ -64,12 +75,30 @@ public class Tier3 extends GameObject {
 			
 			hoverOption = 2;
 			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.iron >= 3 && Inventory.gold >= 2 && Inventory.evilSpirit >= 1) { 
+					Inventory.weapons.add(new Katana());
+					Inventory.iron -= 3;
+					Inventory.gold -= 2;
+					Inventory.evilSpirit -= 1;
+				}
+			}
+			
 		}
 		
 		else if (gameContainer.getInput().getMouseX() > 30 && gameContainer.getInput().getMouseX() < 600 &&
 				gameContainer.getInput().getMouseY() > 245 && gameContainer.getInput().getMouseY() < 285) {
 			
 			hoverOption = 3;
+			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.iron >= 3 && Inventory.silver >= 2 && Inventory.heartSpirit >= 1) { 
+					Inventory.weapons.add(new Foil());
+					Inventory.iron -= 3;
+					Inventory.silver -= 2;
+					Inventory.heartSpirit -= 1;
+				}
+			}
 			
 		}	
 		

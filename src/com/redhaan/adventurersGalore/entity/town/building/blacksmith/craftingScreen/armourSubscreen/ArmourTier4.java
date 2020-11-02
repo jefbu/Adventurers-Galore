@@ -1,10 +1,13 @@
 package com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.armourSubscreen;
 
+import java.awt.event.MouseEvent;
+
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.item.armour.Brigandine;
 import com.redhaan.adventurersGalore.entity.item.armour.Hauberk;
 import com.redhaan.adventurersGalore.entity.item.armour.Jousting;
 import com.redhaan.adventurersGalore.entity.item.armour.Lamellar;
+import com.redhaan.adventurersGalore.entity.item.armour.Quilt;
 import com.redhaan.adventurersGalore.entity.item.items.Coral;
 import com.redhaan.adventurersGalore.entity.item.items.EvilSpirit;
 import com.redhaan.adventurersGalore.entity.item.items.GloriousMoment;
@@ -84,12 +87,30 @@ public class ArmourTier4 extends GameObject {
 			
 			hoverOption = 1;
 			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.pelt >= 8 && Inventory.nobleSpirit >= 1 && Inventory.springBreeze >= 1) { 
+					Inventory.armours.add(new Brigandine());
+					Inventory.pelt -= 8;
+					Inventory.nobleSpirit -= 1;
+					Inventory.springBreeze -= 1;
+				}
+			}
+			
 		}
 		
 		else if (gameContainer.getInput().getMouseX() > 30 && gameContainer.getInput().getMouseX() < 600 &&
 				gameContainer.getInput().getMouseY() > 200 && gameContainer.getInput().getMouseY() < 240) {
 			
 			hoverOption = 2;
+			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.hide >= 8 && Inventory.evilSpirit >= 1 && Inventory.morningSunlight >= 1) { 
+					Inventory.armours.add(new Lamellar());
+					Inventory.hide -= 8;
+					Inventory.evilSpirit -= 1;
+					Inventory.morningSunlight -= 1;
+				}
+			}
 			
 		}
 		
@@ -98,12 +119,30 @@ public class ArmourTier4 extends GameObject {
 			
 			hoverOption = 3;
 			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.iron >= 5 && Inventory.vagrantSpirit >= 1 && Inventory.pentupAnger >= 1) { 
+					Inventory.armours.add(new Hauberk());
+					Inventory.iron -= 5;
+					Inventory.vagrantSpirit -= 1;
+					Inventory.pentupAnger -= 1;
+				}
+			}
+			
 		}
 		
 		else if (gameContainer.getInput().getMouseX() > 30 && gameContainer.getInput().getMouseX() < 600 &&
 				gameContainer.getInput().getMouseY() > 290 && gameContainer.getInput().getMouseY() < 330) {
 			
 			hoverOption = 4;
+			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.silver >= 5 && Inventory.nobleSpirit >= 1 && Inventory.gloriousMoment >= 1) { 
+					Inventory.armours.add(new Jousting());
+					Inventory.silver -= 5;
+					Inventory.nobleSpirit -= 1;
+					Inventory.gloriousMoment -= 1;
+				}
+			}
 			
 		}
 		

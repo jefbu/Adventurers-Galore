@@ -1,5 +1,7 @@
 package com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.daggerSubscreen;
 
+import java.awt.event.MouseEvent;
+
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.item.items.EvilSpirit;
 import com.redhaan.adventurersGalore.entity.item.items.Fang;
@@ -9,6 +11,7 @@ import com.redhaan.adventurersGalore.entity.item.items.ViolentSpirit;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Cinqueada;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Dirk;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Machete;
+import com.redhaan.adventurersGalore.entity.item.weapon.swords.BroadSword;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -47,12 +50,29 @@ public class DaggerTier3 extends GameObject {
 			
 			hoverOption = 1;
 			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.iron >= 5 && Inventory.violentSpirit >= 1) { 
+					Inventory.weapons.add(new Machete());
+					Inventory.iron -= 5;
+					Inventory.violentSpirit -= 1;
+				}
+			}
+			
 		}
 		
 		else if (gameContainer.getInput().getMouseX() > 30 && gameContainer.getInput().getMouseX() < 600 &&
 				gameContainer.getInput().getMouseY() > 200 && gameContainer.getInput().getMouseY() < 240) {
 			
 			hoverOption = 2;
+			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.iron >= 3 && Inventory.fang >= 8 && Inventory.evilSpirit >= 1) { 
+					Inventory.weapons.add(new Cinqueada());
+					Inventory.iron -= 3;
+					Inventory.fang -= 8;
+					Inventory.evilSpirit -= 1;
+				}
+			}
 			
 		}
 		
@@ -79,7 +99,7 @@ public class DaggerTier3 extends GameObject {
 			renderer.drawRectOpaque(230, 160, 70, 30, 0xff231911);
 			renderer.drawImageTile(violentSpirit.icon, 237, 167, violentSpirit.xTile, violentSpirit.yTile);
 			renderer.drawText("1", 260, 171, 0xff886622);
-			if(Inventory.claw >= 1) { renderer.drawText("(" + Inventory.violentSpirit + ")", 267, 171, 0xff447722); }
+			if(Inventory.violentSpirit >= 1) { renderer.drawText("(" + Inventory.violentSpirit + ")", 267, 171, 0xff447722); }
 			else { renderer.drawText("(" + Inventory.violentSpirit + ")", 267, 171, 0xff774422); }
 		
 		renderer.drawRectOpaque(30, 200, 570, 40, 0xff181205);

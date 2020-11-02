@@ -1,7 +1,10 @@
 package com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.armourSubscreen;
 
+import java.awt.event.MouseEvent;
+
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.item.armour.BoiledLeather;
+import com.redhaan.adventurersGalore.entity.item.armour.Coat;
 import com.redhaan.adventurersGalore.entity.item.armour.Plate;
 import com.redhaan.adventurersGalore.entity.item.armour.Quilt;
 import com.redhaan.adventurersGalore.entity.item.armour.Riveted;
@@ -66,12 +69,30 @@ public class ArmourTier2 extends GameObject {
 			
 			hoverOption = 1;
 			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.pelt >= 8 && Inventory.ivory >= 3 && Inventory.bone >= 1) { 
+					Inventory.armours.add(new Quilt());
+					Inventory.pelt -= 8;
+					Inventory.ivory -= 3;
+					Inventory.bone -= 1;
+				}
+			}
+			
 		}
 		
 		else if (gameContainer.getInput().getMouseX() > 30 && gameContainer.getInput().getMouseX() < 600 &&
 				gameContainer.getInput().getMouseY() > 200 && gameContainer.getInput().getMouseY() < 240) {
 			
 			hoverOption = 2;
+			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.hide >= 8 && Inventory.ivory >= 3 && Inventory.coral >= 1) { 
+					Inventory.armours.add(new BoiledLeather());
+					Inventory.hide -= 8;
+					Inventory.ivory -= 3;
+					Inventory.coral -= 1;
+				}
+			}
 			
 		}
 		
@@ -80,12 +101,29 @@ public class ArmourTier2 extends GameObject {
 			
 			hoverOption = 3;
 			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.iron >= 5 && Inventory.coral >= 3) { 
+					Inventory.armours.add(new Riveted());
+					Inventory.iron -= 5;
+					Inventory.coral -= 3;
+				}
+			}
+			
 		}
 		
 		else if (gameContainer.getInput().getMouseX() > 30 && gameContainer.getInput().getMouseX() < 600 &&
 				gameContainer.getInput().getMouseY() > 290 && gameContainer.getInput().getMouseY() < 330) {
 			
 			hoverOption = 4;
+			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.iron >= 3 && Inventory.silver >= 3 && Inventory.antlers >= 5) { 
+					Inventory.armours.add(new Quilt());
+					Inventory.iron -= 3;
+					Inventory.silver -= 3;
+					Inventory.antlers -= 5;
+				}
+			}
 			
 		}
 		

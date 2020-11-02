@@ -11,6 +11,7 @@ import com.redhaan.adventurersGalore.entity.party.travelerEvent.TravelerEvent;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
+import gameEngine.ecclesiastes.audio.SoundClip;
 import gameEngine.ecclesiastes.gfx.Image;
 import gameEngine.ecclesiastes.gfx.ImageTile;
 
@@ -35,6 +36,9 @@ public class WorldMap extends GameObject {
 	private Image clouds;
 	private int cloudsX, cloudsY;
 	private int cloudsCounter;
+	
+	public static SoundClip soundClip;
+	public static boolean soundStarted;
 
 	Random random;
 
@@ -64,6 +68,9 @@ public class WorldMap extends GameObject {
 		scrollSpeedControlY = 0;
 
 		baseEvent = new TravelerEvent();
+		
+		soundClip = new SoundClip("/worldmap.wav");
+		soundStarted = false;
 
 	}
 
@@ -81,6 +88,8 @@ public class WorldMap extends GameObject {
 		case PartyCohesionCheckerUI: break;
 
 		case WorldMap:
+			
+			if(!soundStarted) { soundClip.loop(); soundStarted = true; }
 			
 			switch (subState) {
 			case DetailMap:

@@ -1,8 +1,11 @@
 package com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.armourSubscreen;
 
+import java.awt.event.MouseEvent;
+
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.item.armour.Gambeson;
 import com.redhaan.adventurersGalore.entity.item.armour.Gothic;
+import com.redhaan.adventurersGalore.entity.item.armour.Quilt;
 import com.redhaan.adventurersGalore.entity.item.armour.ReinforcedLeather;
 import com.redhaan.adventurersGalore.entity.item.armour.Scale;
 import com.redhaan.adventurersGalore.entity.item.items.Coral;
@@ -70,12 +73,30 @@ public class ArmourTier3 extends GameObject {
 			
 			hoverOption = 1;
 			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.pelt >= 8 && Inventory.ivory >= 5 && Inventory.heartSpirit >= 1) { 
+					Inventory.armours.add(new Gambeson());
+					Inventory.pelt -= 8;
+					Inventory.ivory -= 5;
+					Inventory.heartSpirit -= 1;
+				}
+			}
+			
 		}
 		
 		else if (gameContainer.getInput().getMouseX() > 30 && gameContainer.getInput().getMouseX() < 600 &&
 				gameContainer.getInput().getMouseY() > 200 && gameContainer.getInput().getMouseY() < 240) {
 			
 			hoverOption = 2;
+			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.hide >= 8 && Inventory.ivory >= 5 && Inventory.violentSpirit >= 1) { 
+					Inventory.armours.add(new ReinforcedLeather());
+					Inventory.hide -= 8;
+					Inventory.ivory -= 5;
+					Inventory.violentSpirit -= 1;
+				}
+			}
 			
 		}
 		
@@ -84,12 +105,30 @@ public class ArmourTier3 extends GameObject {
 			
 			hoverOption = 3;
 			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.iron >= 5 && Inventory.coral >= 5 && Inventory.spiritOfMischief>= 1) { 
+					Inventory.armours.add(new Scale());
+					Inventory.iron -= 5;
+					Inventory.coral -= 5;
+					Inventory.spiritOfMischief -= 1;
+				}
+			}
+			
 		}
 		
 		else if (gameContainer.getInput().getMouseX() > 30 && gameContainer.getInput().getMouseX() < 600 &&
 				gameContainer.getInput().getMouseY() > 290 && gameContainer.getInput().getMouseY() < 330) {
 			
 			hoverOption = 4;
+			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.iron >= 3 && Inventory.silver >= 5 && Inventory.heartSpirit >= 1) { 
+					Inventory.armours.add(new Gothic());
+					Inventory.iron -= 3;
+					Inventory.silver -= 5;
+					Inventory.heartSpirit -= 1;
+				}
+			}
 			
 		}
 		

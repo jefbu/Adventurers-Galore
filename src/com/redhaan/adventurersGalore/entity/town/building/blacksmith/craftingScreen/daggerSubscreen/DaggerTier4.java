@@ -1,5 +1,7 @@
 package com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.daggerSubscreen;
 
+import java.awt.event.MouseEvent;
+
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.item.items.EvilSpirit;
 import com.redhaan.adventurersGalore.entity.item.items.Fang;
@@ -7,6 +9,7 @@ import com.redhaan.adventurersGalore.entity.item.items.Iron;
 import com.redhaan.adventurersGalore.entity.item.items.LuckyClover;
 import com.redhaan.adventurersGalore.entity.item.items.ViolentSpirit;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Katar;
+import com.redhaan.adventurersGalore.entity.item.weapon.swords.BroadSword;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -41,6 +44,15 @@ public class DaggerTier4 extends GameObject {
 				gameContainer.getInput().getMouseY() > 155 && gameContainer.getInput().getMouseY() < 195) {
 			
 			hoverOption = 1;
+			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(Inventory.iron >= 5 && Inventory.evilSpirit >= 1 && Inventory.luckyClover >= 1) { 
+					Inventory.weapons.add(new Katar());
+					Inventory.iron -= 5;
+					Inventory.evilSpirit -= 1;
+					Inventory.luckyClover -= 1;
+				}
+			}
 			
 		}
 				
@@ -80,12 +92,8 @@ public class DaggerTier4 extends GameObject {
 		
 		case 0: break;
 		case 1:
-			if (Inventory.iron >= 5 && Inventory.violentSpirit >= 1) { renderer.drawRect(30, 155, 570, 40, 0xff88AA55); }
+			if (Inventory.iron >= 5 && Inventory.evilSpirit >= 1 && Inventory.luckyClover >= 1) { renderer.drawRect(30, 155, 570, 40, 0xff88AA55); }
 			else { renderer.drawRect(30, 155, 570, 40, 0xffBB6622); }
-			break;
-		case 2:
-			if (Inventory.iron >= 3 && Inventory.fang >= 8 && Inventory.evilSpirit >= 1) { renderer.drawRect(30, 200, 570, 40, 0xff88AA55); }
-			else { renderer.drawRect(30, 200, 570, 40, 0xffBB6622); }
 			break;
 		
 		}
