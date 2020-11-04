@@ -48,7 +48,6 @@ public class TravelerEvent extends GameObject {
 	public boolean introText;
 	public boolean outcomeText;
 	public boolean textFinished;
-	public boolean textAlmostFinished;
 	public boolean paragraphFinished;
 	
 	public String stringToDraw;
@@ -260,20 +259,49 @@ public class TravelerEvent extends GameObject {
 						timer = 0;
 						stringToDraw = "";
 						stringToDrawFrom = "";
-					}
-					else if (outcomeText) {
-						outcomeText = false; 
-						currentEvent.calculateOutcome();
+						if(introText) { if (paragraphNumber >= currentEvent.introTexts.size()) { textFinished = true; } }
+						else if (outcomeText) { if (paragraphNumber >= currentEvent.outcomeTexts.size()) { 
+							outcomeText = false;
+							paragraphFinished = false;
+							paragraphNumber = 0;
+							timer = 0;
+							stringToDraw = "";
+							stringToDrawFrom = "";
+							firstLine = "";
+							secondLine = "";
+							thirdLine = "";
+							optionA = false;
+							optionB = false;
+							optionC = false;
+							optionD = false;
+							
+							optionAText = "";
+							optionBText = "";
+							optionCText = "";
+							optionDText = "";						
+							introText = true;
+							textFinished = false;
+							
+							firstLine = "";
+							secondLine = "";
+							thirdLine = "";
+							fourthLine = "";
+							
+							hoverOption = 0;
+							speakerOption = 0;
+							speaker1 = null;
+							speaker2 = null;
+							currentEvent.calculateOutcome();
+						}
+						}
 					}
 				}
 			}			
 		}
 
 		
-		if(introText) { if (paragraphNumber >= currentEvent.introTexts.size()) { textFinished = true; } }
-		else if (outcomeText) { if (paragraphNumber >= currentEvent.outcomeTexts.size()) { textFinished = true; } 
-								else if (paragraphNumber + 1 >= currentEvent.outcomeTexts.size()) { textAlmostFinished = true; }
-		}
+		//if(introText) { if (paragraphNumber >= currentEvent.introTexts.size()) { textFinished = true; } }
+		//else if (outcomeText) { System.out.println(paragraphNumber); if (paragraphNumber >= currentEvent.outcomeTexts.size()) { textFinished = true; } }
 
 		
 		if(!textFinished) {
@@ -334,8 +362,8 @@ public class TravelerEvent extends GameObject {
 		if(!textFinished) renderer.drawRectOpaque(450, 350, 50, 20, 0xffAA9933);
 		if(textFinished && outcomeText) { renderer.drawRectOpaque(450, 350, 50, 20, 0xffAA9933); }
 
-		if(paragraphFinished && !textFinished) { renderer.drawText("Next", 460, 355, 0xff443012); }
-		else if (textAlmostFinished) { renderer.drawText("Finish", 460, 355, 0xff443012); }
+		if (outcomeText && paragraphNumber + 1 >= currentEvent.outcomeTexts.size()) { renderer.drawText("Finish", 460, 355, 0xff443012); }
+		else if(paragraphFinished && !textFinished) { renderer.drawText("Next", 460, 355, 0xff443012); }
 		else if (!textFinished) { renderer.drawText("Skip", 460, 355, 0xff443012); }		
 				
 		if(stringToDraw.length() > 0) {
