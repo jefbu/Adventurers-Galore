@@ -144,7 +144,7 @@ public class BanditsOnTheRoad extends TravelerEvent {
 
 		}
 		
-		if(optionC) { System.out.println("option C");
+		if(optionC) {
 			optionC = false;
 			Combat.combatMap = CombatMapRoller.rollCombatMap(WorldMapTiles.GRASS);
 			WorldMap.subState = WorldMap.previousSubState;

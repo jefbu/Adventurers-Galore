@@ -339,7 +339,7 @@ public class TravelerEvent extends GameObject {
 		renderer.drawRect(125, 95, 310, 210, 0xff996644);
 		renderer.drawRect(440, 95, 75, 210, 0xff996644);
 		renderer.drawRect(125, 310, 390, 75, 0xff996644);
-		renderer.drawRectOpaque(80, 310, 55, 75, 0x99000000);
+		renderer.drawRectOpaque(65, 310, 55, 75, 0x99000000);
 		
 		renderer.drawImage(currentEvent.eventImage, 126, 96);
 		
@@ -396,12 +396,12 @@ public class TravelerEvent extends GameObject {
 		
 		case 0: break;
 		case 1: 
-			renderer.drawImageTile(currentEvent.speaker1.icon, 85, 325, 0, 0); 
-			renderer.drawText(currentEvent.speaker1.name, 82, 365, 0xffDDDDBB);
+			renderer.drawImageTile(currentEvent.speaker1.icon, 80, 325, 0, 0); 
+			renderer.drawText(currentEvent.speaker1.name, 80, 365, 0xffDDDDBB);
 			break;
 		case 2: 
-			renderer.drawImageTile(currentEvent.speaker2.icon, 85, 325, 0, 0); 
-			renderer.drawText(currentEvent.speaker2.name, 82, 365, 0xffDDDDBB);
+			renderer.drawImageTile(currentEvent.speaker2.icon, 80, 325, 0, 0); 
+			renderer.drawText(currentEvent.speaker2.name, 80, 365, 0xffDDDDBB);
 			break;
 		
 		}
