@@ -26,34 +26,38 @@ public class BanditsOnTheRoad extends TravelerEvent {
 	private static final long serialVersionUID = 1L;
 	String optionAConclusion;
 	
-	ArrayList<String> warners;
 	Random random;
+	Pirate pirate;
+	Adventurer adventurer;
+	private int xTile;
 	
 	public BanditsOnTheRoad() {
 		
 		eventImage = new Image("/banditsOnTheRoad.png");
 		
-		warners = new ArrayList<String>();
+		ArrayList<Adventurer> adventurers = new ArrayList<Adventurer>();
 		
 		for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {
-			if (adventurer.inParty) { warners.add(adventurer.name); }
+			if (adventurer.inParty) { adventurers.add(adventurer); }
 		}
 		
 		random = new Random();
-		String warner = warners.get(random.nextInt(warners.size()));
+		adventurer = adventurers.get(random.nextInt(adventurers.size()));
+		if(adventurer.gender == "Female") { xTile = 4; } else { xTile = 0; }
+		pirate = new Pirate();
 		
 		optionAText = "Give in";
 		optionBText = "Compromise";
 		optionCText = "Refuse";
 		optionDText = "Trickery!";
 		
-		introTexts.add("The wolfmaker hung low in heaven. "
+		introTexts.add(new DialogueText("The wolfmaker hung low in heaven. "
 				+ "Fat, lethargic, pocked, demurely covered in a cloudy dress. "
 				+ "The camp fire sputtered with a few defiant sparks, then died. "
-				+ "We fell asleep ...");
-		introTexts.add("And should not have, for bandits seek their shadowy marks, and were upon us in a jiffy!");
-		introTexts.add(warner + ": Awake, To arms! To arms! The enemy hast arrived!");
-		introTexts.add("Bandit Chief: Stand and deliver, give us thy money and you shallst go free.");
+				+ "We fell asleep ...", null, null, 0, 0));
+		introTexts.add(new DialogueText("And should not have, for bandits seek their shadowy marks, and were upon us in a jiffy!", null, null, 0, 0));
+		introTexts.add(new DialogueText("Awake, To arms! To arms! The enemy hast arrived!", adventurer.icon, adventurer.name, xTile, 0));
+		introTexts.add(new DialogueText("Stand and deliver, give us thy money and you shallst go free.", pirate.icon, pirate.name, 0, 7));
 		
 		speaker1 = GameManager.adventurers.allAdventurers.get(1);
 		speaker2 = new Pirate();
@@ -74,15 +78,15 @@ public class BanditsOnTheRoad extends TravelerEvent {
 			}
 			String pleader = pleaders.get(random.nextInt(pleaders.size())).name;
 			
-			outcomeTexts.add(pleader + ": Take it! Take it all! Take all but leave our dignity!");
+			outcomeTexts.add(new DialogueText("Take it! Take it all! Take all but leave our dignity!", adventurer.icon, adventurer.name, xTile, 0));
 			
 			String willFight = "";
 			if(willFight(10)) { willFight = " In fact, thine blubbered cowardry, makest us abandon all mercy. "
 					+ "Let's fight it out here, you and me!"; }
 			else { willFight = " but easy pickings do please me, we'll leavest thee in thine blubbery."; }
 			
-			outcomeTexts.add("Bandit chief: That chance seems rather lost to thee."
-					+ willFight);
+			outcomeTexts.add(new DialogueText("That chance seems rather lost to thee."
+					+ willFight, pirate.icon, pirate.name, 0, 7));
 	
 		}
 		
@@ -97,32 +101,32 @@ public class BanditsOnTheRoad extends TravelerEvent {
 				}
 			}
 				
-			outcomeTexts.add(negotiator.name + ": For the moment, thous hast us at advantage's edge."
-					+ "But the clock carries you no favour. "
-					+ "As we recuperate from initial shock, perhaps thy boldness turns unlocked.");
-			outcomeTexts.add(negotiator.name + ": What sayest thee, we shall pay you a smidgen of what you hoped, "
-					+ "but without bloodshed you'll elope. "
-					+ "... Or we'll fight and see if thee comest out unsoured");
-			
-			if(willFight(negotiator.currentStats.INT)) {
-				outcomeTexts.add("Bandit chief: Pah, thine spineless discours moves me not, "
-						+ "perhaps it'd work on politician's lot, "
-						+ "my men, attack, leave their corpses here to rot!");
-			} else {
-				outcomeTexts.add("Bandit chief: we'll take that deal, thou speakest well, "
-						+ "thine wordy zeal couldst anything sell. "
-						+ "thou slippery eel, fare thee well. ");
-			}
+		//	outcomeTexts.add(negotiator.name + ": For the moment, thous hast us at advantage's edge."
+		//			+ "But the clock carries you no favour. "
+		//			+ "As we recuperate from initial shock, perhaps thy boldness turns unlocked.");
+		//	outcomeTexts.add(negotiator.name + ": What sayest thee, we shall pay you a smidgen of what you hoped, "
+		//			+ "but without bloodshed you'll elope. "
+		//			+ "... Or we'll fight and see if thee comest out unsoured");
+		//	
+		//	if(willFight(negotiator.currentStats.INT)) {
+		//		outcomeTexts.add("Bandit chief: Pah, thine spineless discours moves me not, "
+		//				+ "perhaps it'd work on politician's lot, "
+		//				+ "my men, attack, leave their corpses here to rot!");
+		//	} else {
+		//		outcomeTexts.add("Bandit chief: we'll take that deal, thou speakest well, "
+		//				+ "thine wordy zeal couldst anything sell. "
+		//				+ "thou slippery eel, fare thee well. ");
+		//	}
 			
 		}
 		
 		else if (optionC) {
-			outcomeTexts.add("Outcome C");
-			outcomeTexts.add("Outcome C once again");
+			outcomeTexts.add(new DialogueText("Outcome C", adventurer.icon, adventurer.name, xTile, 0));
+			outcomeTexts.add(new DialogueText("Outcome C once again", pirate.icon, pirate.name, 0, 7));
 		}
 		
 		else if (optionD) {
-			outcomeTexts.add("Outcome D");
+			//outcomeTexts.add("Outcome D");
 		}
 		
 	}
