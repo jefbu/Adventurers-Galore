@@ -57,6 +57,24 @@ public class OptionsWidget extends GameObject {
 		
 		case PartyScreen:
 			
+			if(gameContainer.getInput().isKeyUp(KeyEvent.VK_RIGHT)) { calculatePartyScreenNumber(true); CommentWidget.timer = 0; }
+			else if (gameContainer.getInput().isKeyUp(KeyEvent.VK_LEFT)) { calculatePartyScreenNumber(false); CommentWidget.timer = 0; }
+			else if (gameContainer.getInput().isKeyUp(KeyEvent.VK_Q)) {
+				CommentWidget.timer = 0;
+				Transition.nextGameState = GameState.QuestScreen;
+				GameManager.gameState = GameState.Transition;
+			}
+			else if (gameContainer.getInput().isKeyUp(KeyEvent.VK_I)) {
+				CommentWidget.timer = 0;
+				Transition.nextGameState = GameState.Inventory;
+				GameManager.gameState = GameState.Transition;
+			}
+			else if (gameContainer.getInput().isKeyUp(KeyEvent.VK_E)) {
+				Transition.nextGameState = GameState.WorldMap;
+				GameManager.gameState = GameState.Transition; 
+				PartyScreen.member = 0;
+			}
+			
 			if (checkHover(offX + 5, offX + width - 10, offY + 10, offY + 10 + height / 6, gameContainer)) { 
 				hover = true; 
 				activeOption = 1;
@@ -69,11 +87,21 @@ public class OptionsWidget extends GameObject {
 			
 			else if (checkHover(offX + 5, offX + width - 10, offY + 20 + 2 * height / 6, offY + 20 + 3 * height / 6, gameContainer)) { 
 				hover = true; 
-				activeOption = 3; }
+				activeOption = 3; 
+				if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { 
+					CommentWidget.timer = 0;
+					Transition.nextGameState = GameState.Inventory;
+					GameManager.gameState = GameState.Transition;
+					} }
 			
 			else if (checkHover(offX + 5, offX + width - 10, offY + 25 + 3 * height / 6, offY + 25 + 4 * height / 6, gameContainer)) { 
 				hover = true; 
-				activeOption = 4; }
+				activeOption = 4; 
+				if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { 
+					CommentWidget.timer = 0;
+					Transition.nextGameState = GameState.QuestScreen; 
+					GameManager.gameState = GameState.Transition;
+				} }
 			
 			else if (checkHover(offX + 5, offX + width - 10, offY + 30 + 4 * height / 6, offY + 30 + 5 * height / 6, gameContainer)) { 
 				hover = true; 
@@ -99,7 +127,6 @@ public class OptionsWidget extends GameObject {
 				
 				case 1: calculatePartyScreenNumber(true);
 						CommentWidget.timer = 0;
-						System.out.println(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.skillSlots + " skill slots");
 						/*Adventurer hero = GameManager.adventurers.allAdventurers.get(PartyScreen.member);
 						System.out.println("Adventurer: " + hero.name);
 						System.out.println("HP Rate: " + hero.levelupPercentages.HP + ", " + "MP Rate: " + hero.levelupPercentages.MP);
