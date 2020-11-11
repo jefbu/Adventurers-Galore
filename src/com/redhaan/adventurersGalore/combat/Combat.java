@@ -29,7 +29,7 @@ public class Combat extends GameObject {
 	
 	private CombatConclusion combatConclusion;
 	
-	private int activeEnemy;
+	public static int activeEnemy;
 	
 	public static SoundClip soundClip;
 	public static boolean soundStarted;
@@ -79,14 +79,14 @@ public class Combat extends GameObject {
 						}
 					}
 					if(!continuePlayerTurn) {
-						for (Monster enemy: enemies) {
+						for (Enemy enemy: enemies) {
 							enemy.turnPassed = false;
 						}
 						Combat.combatState = CombatState.EnemyTurn;			
 					}
 					
 					boolean endCombatVictorious = true;
-					for (Monster enemy: enemies) {
+					for (Enemy enemy: enemies) {
 						if(!enemy.isDead() ) { endCombatVictorious = false; }
 					}
 					
@@ -97,6 +97,7 @@ public class Combat extends GameObject {
 				break;
 				
 				case EnemyTurn:
+					
 					if(activeEnemy >= enemies.size()) { 
 						for(Adventurer adventurer: GameManager.adventurers.allAdventurers) {
 							if(!adventurer.isDead()) {

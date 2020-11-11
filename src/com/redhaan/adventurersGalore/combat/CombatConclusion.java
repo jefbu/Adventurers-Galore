@@ -115,6 +115,8 @@ public class CombatConclusion extends GameObject {
 			
 			CombatInitialiser.deployment = false;
 			Combat.enemies.clear();
+			Combat.activeEnemy = 0;
+			Combat.combatState = CombatState.PlayerTurn;
 
 			conclusionStarted = true;
 			

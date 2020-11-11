@@ -49,6 +49,9 @@ public class Enemy extends Monster {
 			
 			case EnemyTurn:
 				
+				if(dead) { turnPassed = true; }
+				
+				else {
 					idleTimer += (deltaTime * idleAnimationSpeed);
 					if(idleTimer > 4 ) {
 						idleTimer = 0;
@@ -80,8 +83,8 @@ public class Enemy extends Monster {
 						AttackDecision.decideAttackDecision(this, getCombatX(), getCombatY());
 						moveRange.clear();
 						turnPassed = true;
-						}
-					
+					}
+				}	
 			break;
 			}
 			
