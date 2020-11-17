@@ -16,7 +16,7 @@ public class Player extends Adventurer {
 	public Player() {
 		
 		super();
-		job = Job.thief;
+		job = Job.catBurglar;
 		icon = job.icon;
 		inParty = true;
 		currentStats.move = 8;

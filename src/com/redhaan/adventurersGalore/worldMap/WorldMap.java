@@ -141,6 +141,10 @@ public class WorldMap extends GameObject {
 					Party.setyDestinationTile(offY + (gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE));
 					TravelerEngine.traveling = true;
 				}
+				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+					System.out.println(offX + gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE);
+					System.out.println(offY + gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE);
+				}
 
 
 				break;

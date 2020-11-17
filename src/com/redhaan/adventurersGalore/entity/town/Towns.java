@@ -28,6 +28,22 @@ public class Towns extends GameObject {
 		allTowns.add(Town.ymvernu);
 		allTowns.add(Town.nuage);
 		allTowns.add(Town.oakheart);
+		allTowns.add(Town.yarimon);
+		allTowns.add(Town.crystalCapital);
+		allTowns.add(Town.portSplendid);
+		allTowns.add(Town.coldHarbour);
+		allTowns.add(Town.fingertip);
+		allTowns.add(Town.tradersPassage);
+		allTowns.add(Town.outpost);
+		allTowns.add(Town.dorei);
+		allTowns.add(Town.bastion);
+		allTowns.add(Town.midori);
+		allTowns.add(Town.adrielruin);
+		allTowns.add(Town.lothrain);
+		allTowns.add(Town.prucupad);
+		allTowns.add(Town.smabarn);
+
+
 		
 	}
 

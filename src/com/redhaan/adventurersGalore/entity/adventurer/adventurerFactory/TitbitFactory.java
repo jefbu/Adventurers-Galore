@@ -63,13 +63,13 @@ public class TitbitFactory implements Serializable {
 				String sport = "";
 				switch (roll2) {
 				case 0:
-					sport = "Competitive gymnastics";
+					sport = "Gymnastics, particularly the Horizontal Bar";
 					break;
 				case 1:
 					sport = "Ragby";
 					break;
 				case 2:
-					sport = "Tournament fencing";
+					sport = "Competition fencing";
 					break;
 				}
 				titbit.strings.add("likes: " + sport);
