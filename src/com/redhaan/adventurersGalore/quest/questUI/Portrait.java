@@ -33,8 +33,8 @@ public class Portrait extends GameObject {
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
 				
-		try { renderer.drawImageTile(icon, 60, 210, QuestUI.quest.requester.genderInt, 0); } catch (Exception e) { }
-		try { renderer.drawText(name, 70, 260, 0xff996644); } catch (Exception e) { }
+		try { renderer.drawImageTile(icon, 97, 225, QuestUI.quest.requester.genderInt, 0); } catch (Exception e) { }
+		try { renderer.drawText(name, 95, 270, 0xff996644); } catch (Exception e) { }
 
 		
 	}
