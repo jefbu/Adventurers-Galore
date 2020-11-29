@@ -25,6 +25,7 @@ public class Weapon extends Item implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	public int damage, hit, crit;
+	public int minRange, maxRange;
 	public int upgrades;
 	public WeaponType type;
 	
@@ -46,6 +47,8 @@ public class Weapon extends Item implements Serializable {
 		runes = new ArrayList<Rune>();
 		icon = new ImageTile("/weapons.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
 		isLegendary = false;
+		minRange = 1;
+		maxRange = 1;
 		
 	}
 	

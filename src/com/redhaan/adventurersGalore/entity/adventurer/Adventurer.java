@@ -133,7 +133,7 @@ public class Adventurer extends Monster {
 						
 						boolean keepGoing = true; 
 						
-						enemiesInRange = checkEnemiesInWeaponRange(combatX, combatY);
+						enemiesInRange = checkEnemiesInWeaponRange(combatX, combatY, weapon.minRange, weapon.maxRange);
 						if(enemiesInRange.size() > 0) { 
 					
 								Enemy enemy = checkSelectedEnemy(
@@ -181,7 +181,7 @@ public class Adventurer extends Monster {
 					
 					skillBar.update(gameContainer, deltaTime);
 					
-					enemiesInRange = checkEnemiesInWeaponRange(combatX, combatY);
+					enemiesInRange = checkEnemiesInWeaponRange(combatX, combatY, weapon.minRange, weapon.maxRange);
 					if(enemiesInRange.size() > 0) {
 						
 						if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
@@ -217,85 +217,6 @@ public class Adventurer extends Monster {
 				default: break;
 				
 				}
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				/*
-				if(moving) { skillBar.update(gameContainer, deltaTime); }
-
-				idleTimer += (deltaTime * idleAnimationSpeed);
-				if (idleTimer > 4) {
-					idleTimer = 0;
-				}
-
-				if (attackAnimation) {
-					attackTimer += (deltaTime * attackAnimationSpeed);
-					if (attackTimer > 4) {
-						attackTimer = 0;
-						attackAnimation = false;
-						leftClickSituation = PlayerTurnLeftClickSituations.NothingToDo;
-						turnPassed = true;
-					}
-				}
-
-				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
-
-					leftClickSituation = CombatLeftClicker.decidePlayerLeftClickSituation(this,
-							gameContainer.getInput().getMouseX(), gameContainer.getInput().getMouseY());
-
-					switch (leftClickSituation) {
-
-					case Active_Enemy_INRange:
-						attackAnimation = true;
-						for (Monster enemy : Combat.enemies) {
-							if (enemy.getCombatX() == gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE
-									&& enemy.getCombatY() == gameContainer.getInput().getMouseY()
-											/ GameManager.GAMETILESIZE) {
-								Attack.attack(this, enemy);
-							}
-						}
-						leftClickSituation = PlayerTurnLeftClickSituations.NothingToDo;
-						break;
-					case Enemy_NOTINRange:
-						break;
-					case NothingToDo:
-						moving = false;
-						break;
-					case Unit_Active_Moved_EnemyINRANGE:
-						combatX = gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE;
-						combatY = gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE;
-						moving = false;
-						leftClickSituation = PlayerTurnLeftClickSituations.NothingToDo;
-						break;
-					case Unit_Active_Moved_EnemyNOTINRANGE:
-						combatX = gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE;
-						combatY = gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE;
-						moving = false;
-						turnPassed = true;
-						break;
-					case Unit_Active_NOTMoved:
-						moving = true;
-						break;
-					case Unit_Inactive_TurnPassed:
-						moving = false;
-						turnPassed = true;
-						break;
-					}
-
-				}
-				break;
-				*/
 			}
 			
 			break;
@@ -380,14 +301,23 @@ public class Adventurer extends Monster {
 	}
 	
 	
-	private ArrayList<Enemy> checkEnemiesInWeaponRange(int x, int y) {
+	private ArrayList<Enemy> checkEnemiesInWeaponRange(int x, int y, int minRange, int maxRange) {
 
 		ArrayList<Enemy> enemiesInRange = new ArrayList<Enemy>();
 		for (int i = 0; i < Combat.enemies.size(); i++) {
+			
+			int xDistance = Math.abs(Combat.enemies.get(i).getCombatX()) - Math.abs(x);
+			int yDistance = Math.abs(Combat.enemies.get(i).getCombatY()) - Math.abs(y);
+			int totalDistance = Math.abs(xDistance) + Math.abs(yDistance);
+			if (totalDistance >= weapon.minRange && totalDistance <= weapon.maxRange) {
+				enemiesInRange.add(Combat.enemies.get(i));
+			}
+			/*
 			if (x - 1 == Combat.enemies.get(i).getCombatX() && y == Combat.enemies.get(i).getCombatY()) { enemiesInRange.add(Combat.enemies.get(i)); } 
 			else if (x + 1 == Combat.enemies.get(i).getCombatX() && y == Combat.enemies.get(i).getCombatY()) { enemiesInRange.add(Combat.enemies.get(i)); } 
 			else if (x == Combat.enemies.get(i).getCombatX() && y - 1 == Combat.enemies.get(i).getCombatY()) { enemiesInRange.add(Combat.enemies.get(i)); } 
 			else if (x == Combat.enemies.get(i).getCombatX() && y + 1 == Combat.enemies.get(i).getCombatY()) { enemiesInRange.add(Combat.enemies.get(i)); }
+			*/
 		}
 		return enemiesInRange;
 	}

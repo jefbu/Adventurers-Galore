@@ -114,7 +114,7 @@ public class TravelerEvent extends GameObject {
 	public static void rollTravelerEvent() {
 
 		Random random = new Random();
-		int roll = random.nextInt(10) + 1;
+		int roll = random.nextInt(100) + 1;
 
 		switch (Calendar.calendarSpeed) {
 
