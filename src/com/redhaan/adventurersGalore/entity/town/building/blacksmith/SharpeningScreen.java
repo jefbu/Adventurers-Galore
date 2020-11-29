@@ -6,8 +6,9 @@ import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
 public class SharpeningScreen extends GameObject {
-	
-	
+
+	private static final long serialVersionUID = 1L;
+
 	public SharpeningScreen() {
 		
 	}

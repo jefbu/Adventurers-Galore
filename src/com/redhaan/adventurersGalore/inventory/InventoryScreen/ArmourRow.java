@@ -6,22 +6,19 @@ import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.GameState;
 import com.redhaan.adventurersGalore.entity.item.armour.Armour;
-import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 import com.redhaan.adventurersGalore.partyScreen.PartyScreen;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
-import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class ArmourRow extends GameObject {
 	
 	private static final long serialVersionUID = 1L;
 	private int number;
 	private Armour armour;
-	private ImageTile icon = new ImageTile("/generic_icons.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
 	
-	private int detailColour, deleteColour;
+	private int detailColour;
 	
 	private boolean lineHover;
 	private boolean dustbinHover;
@@ -32,7 +29,6 @@ public class ArmourRow extends GameObject {
 		this.armour = armour;
 		
 		detailColour = 0xff354223;
-		deleteColour = 0xffF2BFAB;
 		
 	}
 

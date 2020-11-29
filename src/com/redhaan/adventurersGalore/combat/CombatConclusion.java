@@ -17,7 +17,6 @@ import com.redhaan.adventurersGalore.inventory.Inventory;
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 import gameEngine.ecclesiastes.audio.SoundClip;
-import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class CombatConclusion extends GameObject {
 
@@ -26,7 +25,6 @@ public class CombatConclusion extends GameObject {
 	public boolean playerVictorious;
 	private boolean conclusionStarted;
 	
-	private ArrayList<ImageTile> icons;
 	private ArrayList<String> strings;
 	private ArrayList<Item> loot;
 	
@@ -38,7 +36,6 @@ public class CombatConclusion extends GameObject {
 		playerVictorious = false;
 		conclusionStarted = false;
 		strings = new ArrayList<String>();
-		icons = new ArrayList<ImageTile>();
 		loot = new ArrayList<Item>();
 		
 		victorySound = new SoundClip("/victory.wav");

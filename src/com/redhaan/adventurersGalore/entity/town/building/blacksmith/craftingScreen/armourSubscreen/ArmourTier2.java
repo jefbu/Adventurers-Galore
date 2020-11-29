@@ -4,7 +4,6 @@ import java.awt.event.MouseEvent;
 
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.item.armour.BoiledLeather;
-import com.redhaan.adventurersGalore.entity.item.armour.Coat;
 import com.redhaan.adventurersGalore.entity.item.armour.Plate;
 import com.redhaan.adventurersGalore.entity.item.armour.Quilt;
 import com.redhaan.adventurersGalore.entity.item.armour.Riveted;

@@ -6,7 +6,6 @@ import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.item.items.Antlers;
 import com.redhaan.adventurersGalore.entity.item.items.OakWood;
 import com.redhaan.adventurersGalore.entity.item.weapon.staves.Quarterstaff;
-import com.redhaan.adventurersGalore.entity.item.weapon.swords.BroadSword;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;

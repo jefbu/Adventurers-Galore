@@ -71,6 +71,7 @@ public class TitleScreen extends GameObject {
 		case Transition: break;
 		case QuestScreen: break;
 		case PartyCohesionCheckerUI: break;
+		case Inventory: break;
 			
 		}
 
@@ -102,6 +103,7 @@ public class TitleScreen extends GameObject {
 		case Transition: break;
 		case QuestScreen: break;
 		case PartyCohesionCheckerUI: break;
+		case Inventory: break;
 
 		}
 	}

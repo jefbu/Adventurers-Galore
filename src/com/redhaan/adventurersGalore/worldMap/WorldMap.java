@@ -86,6 +86,7 @@ public class WorldMap extends GameObject {
 		case Transition: break;
 		case QuestScreen: break;
 		case PartyCohesionCheckerUI: break;
+		case Inventory: break;
 
 		case WorldMap:
 			
@@ -228,6 +229,7 @@ public class WorldMap extends GameObject {
 		case Transition: break;
 		case QuestScreen: break;
 		case PartyCohesionCheckerUI: break;
+		case Inventory: break;
 
 		case WorldMap:
 

@@ -3,10 +3,6 @@ package com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingSc
 import java.awt.event.MouseEvent;
 
 import com.redhaan.adventurersGalore.GameObject;
-import com.redhaan.adventurersGalore.entity.item.weapon.swords.BastardSword;
-import com.redhaan.adventurersGalore.entity.item.weapon.swords.BroadSword;
-import com.redhaan.adventurersGalore.entity.item.weapon.swords.IronSword;
-import com.redhaan.adventurersGalore.entity.item.weapon.swords.Sabre;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;

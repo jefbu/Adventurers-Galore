@@ -5,7 +5,6 @@ import java.awt.event.MouseEvent;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.item.armour.Gambeson;
 import com.redhaan.adventurersGalore.entity.item.armour.Gothic;
-import com.redhaan.adventurersGalore.entity.item.armour.Quilt;
 import com.redhaan.adventurersGalore.entity.item.armour.ReinforcedLeather;
 import com.redhaan.adventurersGalore.entity.item.armour.Scale;
 import com.redhaan.adventurersGalore.entity.item.items.Coral;

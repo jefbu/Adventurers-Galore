@@ -12,7 +12,6 @@ import com.redhaan.adventurersGalore.entity.item.items.Iron;
 import com.redhaan.adventurersGalore.entity.item.items.Ivory;
 import com.redhaan.adventurersGalore.entity.item.items.Pelt;
 import com.redhaan.adventurersGalore.entity.item.items.Silver;
-import com.redhaan.adventurersGalore.entity.item.weapon.swords.BroadSword;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;

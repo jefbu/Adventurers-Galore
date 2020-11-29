@@ -3,10 +3,6 @@ package com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingSc
 import java.awt.event.MouseEvent;
 
 import com.redhaan.adventurersGalore.GameObject;
-import com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.daggerSubscreen.DaggerTier1;
-import com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.daggerSubscreen.DaggerTier2;
-import com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.daggerSubscreen.DaggerTier3;
-import com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.daggerSubscreen.DaggerTier4;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;

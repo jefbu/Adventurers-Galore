@@ -20,12 +20,16 @@ public class Quest extends GameObject {
 	public ArrayList<Adventurer> questParty;
 	public boolean playerQuest;
 	public String title;
+	public int requesterGenderXOffset;
+	public int requesterGenderYOffset;
 	
 	public Quest() {
 		
 		questSteps = new ArrayList<QuestStep>();
 		adventurerFactory = new AdventurerFactory();
 		requester = adventurerFactory.createTieredAdventurer(0);
+		if (requester.gender == "male") { requesterGenderXOffset = 0; requesterGenderYOffset = 0; }
+		else { requesterGenderXOffset = 4; requesterGenderYOffset = 4; }
 		questStepNumber = 0;
 		questParty = new ArrayList<Adventurer>();
 		playerQuest = false;

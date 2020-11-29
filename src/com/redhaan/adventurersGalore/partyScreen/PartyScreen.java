@@ -80,6 +80,7 @@ public class PartyScreen extends GameObject {
 		case Transition: break;
 		case QuestScreen: break;
 		case PartyCohesionCheckerUI: break;
+		case Inventory: break;
 		
 		case PartyScreen:
 			
@@ -151,6 +152,7 @@ public class PartyScreen extends GameObject {
 		case Transition: break;
 		case QuestScreen: break;
 		case PartyCohesionCheckerUI: break;
+		case Inventory: break;
 		
 		case PartyScreen:
 			renderer.drawRectOpaque(10, 10, 620, 460, bgColour);

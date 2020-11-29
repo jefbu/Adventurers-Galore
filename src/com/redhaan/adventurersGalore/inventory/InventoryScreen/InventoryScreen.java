@@ -7,7 +7,6 @@ import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.GameState;
 import com.redhaan.adventurersGalore.Transition;
 import com.redhaan.adventurersGalore.inventory.Inventory;
-import com.redhaan.adventurersGalore.partyScreen.WeaponWidget;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;

@@ -49,6 +49,7 @@ public class Town extends GameObject {
 		case Transition: break;
 		case QuestScreen: break;
 		case PartyCohesionCheckerUI: break;
+		case Inventory: break;
 
 		case WorldMap:
 			switch (WorldMap.getSubState()) {
@@ -120,6 +121,7 @@ public class Town extends GameObject {
 		case PartyCohesionCheckerUI: break;
 		case Titlescreen: break;
 		case Combat: break;
+		case Inventory: break;
 		
 		}
 

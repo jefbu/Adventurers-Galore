@@ -8,6 +8,7 @@ import com.redhaan.adventurersGalore.combat.Combat;
 import com.redhaan.adventurersGalore.combat.CombatPhase;
 import com.redhaan.adventurersGalore.combat.combatAI.HighLevelPlan;
 import com.redhaan.adventurersGalore.entity.enemies.Wolf;
+import com.redhaan.adventurersGalore.entity.party.travelerEvent.DialogueText;
 import com.redhaan.adventurersGalore.entity.town.Town;
 import com.redhaan.adventurersGalore.quest.Quest;
 import com.redhaan.adventurersGalore.quest.QuestStep;
@@ -24,15 +25,13 @@ public class ItIsNotHere extends QuestStep {
 		questStepLocation.questLocationTown = town;
 		questStepLocation.nextLocationTown = rollForQuestStepLocationTown();
 
-		playerGetsEmptyQuestInTown.add("Empty in town It Is Not Here");
-		playerGetsEmptyQuestInTown.add("Second Line");	
+		playerGetsEmptyQuestInTown.add(new DialogueText("Empty in town It Is Not Here", null, null, 0, 0));
 		
-		playerGetsTakenQuestInTown.add("Taken in town It Is Not Here");
+		playerGetsTakenQuestInTown.add(new DialogueText("Taken in town It Is Not Here", null, null, 0, 0));
 		
-		playerGetsEmptyQuestInWorldMap.add("Empty It is not here step found in the worldmap");
-		playerGetsEmptyQuestInWorldMap.add("Second page");
+		playerGetsEmptyQuestInWorldMap.add(new DialogueText("Empty It is not here step found in the worldmap", null, null, 0, 0));
 		
-		playerGetsTakenQuestInWorldMap.add("Already taken It is not here found on the map!");
+		playerGetsTakenQuestInWorldMap.add(new DialogueText("Already taken It is not here found on the map!", null, null, 0, 0));
 		
 	}
 	

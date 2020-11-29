@@ -7,7 +7,6 @@ import com.redhaan.adventurersGalore.entity.item.items.Fang;
 import com.redhaan.adventurersGalore.entity.item.items.Iron;
 import com.redhaan.adventurersGalore.entity.item.items.Tusk;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Dirk;
-import com.redhaan.adventurersGalore.entity.item.weapon.swords.BroadSword;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;

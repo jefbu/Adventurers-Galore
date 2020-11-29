@@ -3,8 +3,9 @@ package com.redhaan.adventurersGalore.entity.item.items;
 import com.redhaan.adventurersGalore.entity.item.ItemID;
 
 public class LiquidInnocence extends CraftItems {
-	
-	
+
+	private static final long serialVersionUID = 1L;
+
 	public LiquidInnocence() {
 		
 		name = "Liquid Innocence";

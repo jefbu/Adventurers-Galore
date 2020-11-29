@@ -8,7 +8,6 @@ import com.redhaan.adventurersGalore.entity.item.items.Fang;
 import com.redhaan.adventurersGalore.entity.item.items.Iron;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Dagger;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Knife;
-import com.redhaan.adventurersGalore.entity.item.weapon.swords.BroadSword;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;

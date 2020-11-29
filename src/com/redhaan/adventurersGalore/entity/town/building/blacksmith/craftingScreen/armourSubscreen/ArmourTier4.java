@@ -7,23 +7,17 @@ import com.redhaan.adventurersGalore.entity.item.armour.Brigandine;
 import com.redhaan.adventurersGalore.entity.item.armour.Hauberk;
 import com.redhaan.adventurersGalore.entity.item.armour.Jousting;
 import com.redhaan.adventurersGalore.entity.item.armour.Lamellar;
-import com.redhaan.adventurersGalore.entity.item.armour.Quilt;
-import com.redhaan.adventurersGalore.entity.item.items.Coral;
 import com.redhaan.adventurersGalore.entity.item.items.EvilSpirit;
 import com.redhaan.adventurersGalore.entity.item.items.GloriousMoment;
-import com.redhaan.adventurersGalore.entity.item.items.HeartSpirit;
 import com.redhaan.adventurersGalore.entity.item.items.Hide;
 import com.redhaan.adventurersGalore.entity.item.items.Iron;
-import com.redhaan.adventurersGalore.entity.item.items.Ivory;
 import com.redhaan.adventurersGalore.entity.item.items.MorningSunlight;
 import com.redhaan.adventurersGalore.entity.item.items.NobleSpirit;
 import com.redhaan.adventurersGalore.entity.item.items.Pelt;
 import com.redhaan.adventurersGalore.entity.item.items.PentUpAnger;
 import com.redhaan.adventurersGalore.entity.item.items.Silver;
-import com.redhaan.adventurersGalore.entity.item.items.SpiritOfMischief;
 import com.redhaan.adventurersGalore.entity.item.items.SpringBreeze;
 import com.redhaan.adventurersGalore.entity.item.items.VagrantSpirit;
-import com.redhaan.adventurersGalore.entity.item.items.ViolentSpirit;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -41,7 +35,6 @@ public class ArmourTier4 extends GameObject {
 	
 	private Hide hide;
 	private Pelt pelt;
-	private Ivory ivory;
 	private NobleSpirit nobleSpirit;
 	private EvilSpirit evilSpirit;
 	private VagrantSpirit vagrantSpirit;
@@ -62,7 +55,6 @@ public class ArmourTier4 extends GameObject {
 		jousting = new Jousting();
 		hide = new Hide();
 		pelt = new Pelt();
-		ivory = new Ivory();
 		silver = new Silver();
 		iron = new Iron();
 		nobleSpirit = new NobleSpirit();

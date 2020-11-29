@@ -4,7 +4,9 @@ import com.redhaan.adventurersGalore.entity.item.ItemID;
 
 public class Riveted extends Armour {
 	
-	
+
+	private static final long serialVersionUID = 1L;
+
 	public Riveted() {
 		
 		

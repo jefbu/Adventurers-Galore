@@ -8,7 +8,6 @@ import com.redhaan.adventurersGalore.entity.item.items.Iron;
 import com.redhaan.adventurersGalore.entity.item.items.Tusk;
 import com.redhaan.adventurersGalore.entity.item.items.Wing;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.BastardSword;
-import com.redhaan.adventurersGalore.entity.item.weapon.swords.BroadSword;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.Sabre;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 

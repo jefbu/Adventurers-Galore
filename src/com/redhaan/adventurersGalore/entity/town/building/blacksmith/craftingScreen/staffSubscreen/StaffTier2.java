@@ -8,13 +8,14 @@ import com.redhaan.adventurersGalore.entity.item.items.Ivory;
 import com.redhaan.adventurersGalore.entity.item.items.OakWood;
 import com.redhaan.adventurersGalore.entity.item.weapon.staves.Baton;
 import com.redhaan.adventurersGalore.entity.item.weapon.staves.Bo;
-import com.redhaan.adventurersGalore.entity.item.weapon.swords.BroadSword;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
 public class StaffTier2 extends GameObject {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private Bo bo;
 	private Baton baton;

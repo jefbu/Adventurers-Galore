@@ -7,8 +7,6 @@ import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.GameState;
 import com.redhaan.adventurersGalore.Transition;
-import com.redhaan.adventurersGalore.inventory.Inventory;
-import com.redhaan.adventurersGalore.inventory.InventoryScreen.InventoryScreen;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
@@ -54,6 +52,7 @@ public class OptionsWidget extends GameObject {
 		case Transition: break;
 		case QuestScreen: break;
 		case PartyCohesionCheckerUI: break;
+		case Inventory: break;
 		
 		case PartyScreen:
 			

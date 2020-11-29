@@ -1,6 +1,7 @@
 package com.redhaan.adventurersGalore.quest.quests.fetchQuest;
 
 import com.redhaan.adventurersGalore.GameManager;
+import com.redhaan.adventurersGalore.entity.party.travelerEvent.DialogueText;
 import com.redhaan.adventurersGalore.entity.town.Town;
 import com.redhaan.adventurersGalore.quest.Quest;
 import com.redhaan.adventurersGalore.quest.QuestStep;
@@ -16,15 +17,13 @@ public class YouFoundIt extends QuestStep {
 		maxDays = 50;
 		questStepLocation.questLocationTown = town;
 
-		playerGetsEmptyQuestInTown.add("Empty in town You Found It");
-		playerGetsEmptyQuestInTown.add("Second Line");	
+		playerGetsEmptyQuestInTown.add(new DialogueText("Empty in town You Found It", null, null, 0, 0));
 		
-		playerGetsTakenQuestInTown.add("Taken in town You Found It");
+		playerGetsTakenQuestInTown.add(new DialogueText("Taken in town You Found It", null, null, 0, 0));
 		
-		playerGetsEmptyQuestInWorldMap.add("Empty You Found It step found in the worldmap");
-		playerGetsEmptyQuestInWorldMap.add("Second page");
+		playerGetsEmptyQuestInWorldMap.add(new DialogueText("Empty You Found It step found in the worldmap", null, null, 0, 0));
 		
-		playerGetsTakenQuestInWorldMap.add("Already taken You Found It found on the map!");
+		playerGetsTakenQuestInWorldMap.add(new DialogueText("Already taken You Found It found on the map!", null, null, 0, 0));
 		
 	}
 	

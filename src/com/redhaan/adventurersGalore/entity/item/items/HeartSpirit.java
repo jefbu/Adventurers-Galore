@@ -4,6 +4,8 @@ import com.redhaan.adventurersGalore.entity.item.ItemID;
 
 public class HeartSpirit extends CraftItems {
 	
+	private static final long serialVersionUID = 1L;
+
 	public HeartSpirit() {
 		
 		name = "Heart Spirit";

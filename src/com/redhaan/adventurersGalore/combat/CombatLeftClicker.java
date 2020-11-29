@@ -1,6 +1,5 @@
 package com.redhaan.adventurersGalore.combat;
 
-import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 
 public abstract class CombatLeftClicker {

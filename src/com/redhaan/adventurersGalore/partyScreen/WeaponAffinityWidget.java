@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
-import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.GemStone;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;

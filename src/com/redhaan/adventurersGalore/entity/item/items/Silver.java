@@ -4,7 +4,8 @@ import com.redhaan.adventurersGalore.entity.item.ItemID;
 
 public class Silver extends CraftItems {
 	
-	
+	private static final long serialVersionUID = 1L;
+
 	public Silver() {
 		
 		name = "Silver";

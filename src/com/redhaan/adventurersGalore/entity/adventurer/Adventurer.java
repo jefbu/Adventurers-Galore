@@ -9,7 +9,6 @@ import com.redhaan.adventurersGalore.combat.Combat;
 import com.redhaan.adventurersGalore.combat.MoveAreaDrawer;
 import com.redhaan.adventurersGalore.combat.MoveRangeFiller;
 import com.redhaan.adventurersGalore.combat.PlayerCombatSituation;
-import com.redhaan.adventurersGalore.combat.PlayerTurnLeftClickSituation;
 import com.redhaan.adventurersGalore.entity.Monster;
 import com.redhaan.adventurersGalore.entity.adventurer.personality.Personality;
 import com.redhaan.adventurersGalore.entity.adventurer.skills.Skills;
@@ -26,7 +25,7 @@ public class Adventurer extends Monster {
 
 	public Race race;
 	public String gender;
-	private int genderInt;
+	public int genderInt;
 	public int age;
 	
 	public int mapX, mapY;
@@ -68,7 +67,6 @@ public class Adventurer extends Monster {
 		//leftClickSituation = PlayerTurnLeftClickSituation.NothingToDo;
 		battlesPassed = 0;
 		sigils = new ArrayList<Sigil>();
-		genderInt = 0;
 		personality = new Personality();
 		titbit = new Titbit();
 		skills = new Skills();
@@ -82,8 +80,6 @@ public class Adventurer extends Monster {
 		switch (GameManager.gameState) {
 
 		case Combat:
-
-			if (gender.equals("Female")) { genderInt = 4; } else { genderInt = 0; }
 			
 			if (attackAnimation) {
 				attackTimer += (deltaTime * attackAnimationSpeed);
@@ -218,8 +214,7 @@ public class Adventurer extends Monster {
 				break;
 				
 				
-				default:
-					break;
+				default: break;
 				
 				}
 				
@@ -313,6 +308,8 @@ public class Adventurer extends Monster {
 		case Transition: break;
 		case QuestScreen: break;
 		case PartyCohesionCheckerUI: break;
+		case Inventory: break;
+		
 
 		}
 
@@ -364,6 +361,7 @@ public class Adventurer extends Monster {
 		case Transition: break;
 		case QuestScreen: break;
 		case PartyCohesionCheckerUI: break;
+		case Inventory: break;
 
 		}
 

@@ -97,6 +97,7 @@ public class Enemy extends Monster {
 		case Transition: break;
 		case QuestScreen: break;
 		case PartyCohesionCheckerUI: break;
+		case Inventory: break;
 		
 		}
 		
@@ -126,6 +127,7 @@ public class Enemy extends Monster {
 		case Transition: break;
 		case QuestScreen: break;
 		case PartyCohesionCheckerUI: break;
+		case Inventory: break;
 	
 		}
 				

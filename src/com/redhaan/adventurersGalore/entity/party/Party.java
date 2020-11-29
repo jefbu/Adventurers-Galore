@@ -91,6 +91,7 @@ public class Party extends GameObject {
 		case Transition: break;
 		case QuestScreen: break;
 		case PartyCohesionCheckerUI: break;
+		case Inventory: break;
 
 		}
 		
@@ -130,6 +131,7 @@ public class Party extends GameObject {
 		case Transition: break;
 		case QuestScreen: break;
 		case PartyCohesionCheckerUI: break;
+		case Inventory: break;
 
 		}
 		

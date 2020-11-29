@@ -76,7 +76,6 @@ public class BanditsOnTheRoad extends TravelerEvent {
 					pleaders.add(adventurer);
 				}
 			}
-			String pleader = pleaders.get(random.nextInt(pleaders.size())).name;
 			
 			outcomeTexts.add(new DialogueText("Take it! Take it all! Take all but leave our dignity!", adventurer.icon, adventurer.name, xTile, 0));
 			

@@ -8,7 +8,6 @@ import com.redhaan.adventurersGalore.GameState;
 import com.redhaan.adventurersGalore.Transition;
 import com.redhaan.adventurersGalore.combat.Combat;
 import com.redhaan.adventurersGalore.combat.CombatMapRoller;
-import com.redhaan.adventurersGalore.entity.Monster;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.entity.enemies.Enemy;
 import com.redhaan.adventurersGalore.entity.party.PartyCohesionChecker;
@@ -27,6 +26,7 @@ public class QuestUI extends GameObject {
 	private Requester requester;
 	private QuestParty party;
 	private TextBlock text;
+	private Portrait portrait;
 	public static Quest quest;
 	public static boolean questAccepted;
 	public static boolean questRefused;
@@ -41,6 +41,8 @@ public class QuestUI extends GameObject {
 		requester = new Requester();
 		party = new QuestParty();
 		text = new TextBlock();
+		portrait = new Portrait();
+		quest = new Quest();
 		nextGameState = GameState.InTown;
 		questAccepted = false;
 		questRefused = false;
@@ -58,6 +60,7 @@ public class QuestUI extends GameObject {
 		case QuestUI:
 
 			text.update(gameContainer, deltaTime);
+			portrait.update(gameContainer, deltaTime);
 			
 			if (questAccepted) {
 				partyCohesionChecker.checkNewQuestPartyCohesion(gameContainer, nextGameState);
@@ -86,18 +89,16 @@ public class QuestUI extends GameObject {
 			}
 			break;
 
-		case Combat:
-			break;
-		case InTown:
-			break;
-		case PartyScreen:
-			break;
-		case Titlescreen:
-			break;
-		case WorldMap:
-			break;
-		default:
-			break;
+		case Combat: break;
+		case InTown: break;
+		case PartyScreen: break;
+		case Titlescreen: break;
+		case WorldMap: break;
+		case Inventory: break;
+		case PartyCohesionCheckerUI: break;
+		case QuestScreen: break;
+		case Transition: break;
+
 
 		}
 	}
@@ -119,23 +120,22 @@ public class QuestUI extends GameObject {
 
 			requester.render(gameContainer, renderer);
 			party.render(gameContainer, renderer);
-
 			text.render(gameContainer, renderer);
+			portrait.render(gameContainer, renderer);
+
 
 			break;
 
-		case Combat:
-			break;
-		case InTown:
-			break;
-		case PartyScreen:
-			break;
-		case Titlescreen:
-			break;
-		case WorldMap:
-			break;
-		default:
-			break;
+		case Combat: break;
+		case InTown: break;
+		case PartyScreen: break;
+		case Titlescreen: break;
+		case WorldMap: break;
+		case Inventory: break;
+		case PartyCohesionCheckerUI: break;
+		case QuestScreen: break;
+		case Transition: break;
+
 
 		}
 

@@ -5,6 +5,7 @@ import java.util.Random;
 
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
+import com.redhaan.adventurersGalore.entity.party.travelerEvent.DialogueText;
 import com.redhaan.adventurersGalore.entity.town.Town;
 import com.redhaan.adventurersGalore.entity.town.Towns;
 
@@ -15,22 +16,27 @@ public class QuestStep  {
 	public QuestStepLocation questStepLocation;
 	public int maxDays;
 	public int daysPassed;
-	public ArrayList<String> playerGetsEmptyQuestInTown;
-	public ArrayList<String> playerGetsEmptyQuestInWorldMap;
-	public ArrayList<String> playerGetsTakenQuestInTown;
-	public ArrayList<String> playerGetsTakenQuestInWorldMap;
+	public ArrayList<DialogueText> playerGetsEmptyQuestInTown;
+	public ArrayList<DialogueText> playerGetsEmptyQuestInWorldMap;
+	public ArrayList<DialogueText> playerGetsTakenQuestInTown;
+	public ArrayList<DialogueText> playerGetsTakenQuestInWorldMap;
 	protected boolean waitingAtLocation;
+	public int adventurerGenderXOffset;
+	public int adventurerGenderYOffset;
+
 
 
 	public QuestStep() {
 		
 		questStepLocation = new QuestStepLocation();
-		playerGetsEmptyQuestInTown = new ArrayList<String>();
-		playerGetsEmptyQuestInWorldMap = new ArrayList<String>();
-		playerGetsTakenQuestInTown = new ArrayList<String>();
-		playerGetsTakenQuestInWorldMap = new ArrayList<String>();
+		playerGetsEmptyQuestInTown = new ArrayList<DialogueText>();
+		playerGetsEmptyQuestInWorldMap = new ArrayList<DialogueText>();
+		playerGetsTakenQuestInTown = new ArrayList<DialogueText>();
+		playerGetsTakenQuestInWorldMap = new ArrayList<DialogueText>();
 		waitingAtLocation = false;
-
+		adventurerGenderXOffset = 0;
+		adventurerGenderYOffset = 0;
+		
 	}
 
 	

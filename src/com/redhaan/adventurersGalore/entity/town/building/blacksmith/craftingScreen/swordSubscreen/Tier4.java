@@ -12,7 +12,6 @@ import com.redhaan.adventurersGalore.entity.item.items.ReforgedPlough;
 import com.redhaan.adventurersGalore.entity.item.items.Silver;
 import com.redhaan.adventurersGalore.entity.item.items.SpiritOfMischief;
 import com.redhaan.adventurersGalore.entity.item.items.StolenMoonlight;
-import com.redhaan.adventurersGalore.entity.item.weapon.swords.BroadSword;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.Epee;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.Falchion;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.SilverSword;

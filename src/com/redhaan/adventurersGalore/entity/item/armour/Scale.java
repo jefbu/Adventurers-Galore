@@ -4,7 +4,8 @@ import com.redhaan.adventurersGalore.entity.item.ItemID;
 
 public class Scale extends Armour {
 	
-	
+	private static final long serialVersionUID = 1L;
+
 	public Scale() {
 		
 		super();

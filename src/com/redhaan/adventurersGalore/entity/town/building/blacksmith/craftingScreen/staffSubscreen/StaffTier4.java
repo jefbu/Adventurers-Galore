@@ -7,7 +7,6 @@ import com.redhaan.adventurersGalore.entity.item.items.Antlers;
 import com.redhaan.adventurersGalore.entity.item.items.RationalThought;
 import com.redhaan.adventurersGalore.entity.item.items.VagrantSpirit;
 import com.redhaan.adventurersGalore.entity.item.weapon.staves.Waddy;
-import com.redhaan.adventurersGalore.entity.item.weapon.swords.BroadSword;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;

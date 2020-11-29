@@ -14,7 +14,6 @@ public class CraftingScreen extends GameObject {
 
 	private static final long serialVersionUID = 1L;
 	
-	private int tierNr;
 	
 	private SwordsSubScreen swordsSubScreen;
 	private DaggerSubScreen daggerSubScreen;
@@ -22,9 +21,7 @@ public class CraftingScreen extends GameObject {
 	private ArmourSubscreen	armourSubscreen;
 	
 	public CraftingScreen() {
-		
-		tierNr = 1;
-		
+				
 		swordsSubScreen = new SwordsSubScreen();
 		daggerSubScreen = new DaggerSubScreen();
 		staffSubScreen = new StaffSubScreen();

@@ -9,7 +9,6 @@ import com.redhaan.adventurersGalore.entity.item.items.HeartSpirit;
 import com.redhaan.adventurersGalore.entity.item.items.Iron;
 import com.redhaan.adventurersGalore.entity.item.items.Silver;
 import com.redhaan.adventurersGalore.entity.item.items.ViolentSpirit;
-import com.redhaan.adventurersGalore.entity.item.weapon.swords.BroadSword;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.Foil;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.Katana;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.Scimitar;

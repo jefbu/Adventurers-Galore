@@ -4,19 +4,17 @@ import java.awt.event.MouseEvent;
 
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.item.items.EvilSpirit;
-import com.redhaan.adventurersGalore.entity.item.items.Fang;
 import com.redhaan.adventurersGalore.entity.item.items.Iron;
 import com.redhaan.adventurersGalore.entity.item.items.LuckyClover;
-import com.redhaan.adventurersGalore.entity.item.items.ViolentSpirit;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Katar;
-import com.redhaan.adventurersGalore.entity.item.weapon.swords.BroadSword;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
 public class DaggerTier4 extends GameObject {
-	
+
+	private static final long serialVersionUID = 1L;
 	
 	private Katar katar;
 	private Iron iron;

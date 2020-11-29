@@ -4,7 +4,8 @@ import com.redhaan.adventurersGalore.entity.item.ItemID;
 
 public class Jousting extends Armour {
 	
-	
+	private static final long serialVersionUID = 1L;
+
 	public Jousting() {
 		
 		super();

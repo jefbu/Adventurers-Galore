@@ -54,6 +54,8 @@ public class AdventurerFactory implements Serializable {
 		if (random.nextBoolean()) {
 			adventurer.gender = "Female";
 		}
+		if (adventurer.gender.equals("Female")) { adventurer.genderInt = 4; } else { adventurer.genderInt = 0; }
+		
 		adventurer.name = nameFactory.rollName(adventurer.race, adventurer.gender);
 		adventurer.age = rollAge();
 

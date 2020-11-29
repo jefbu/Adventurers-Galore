@@ -7,7 +7,8 @@ import gameEngine.ecclesiastes.Renderer;
 
 public class ScrappingScreen extends GameObject {
 	
-	
+	private static final long serialVersionUID = 1L;
+
 	public ScrappingScreen() {
 		
 	}

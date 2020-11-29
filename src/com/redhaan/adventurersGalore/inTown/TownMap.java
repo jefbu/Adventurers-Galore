@@ -20,13 +20,10 @@ public class TownMap extends GameObject {
 	
 	public static Town activeTown;
 	
-	private boolean hover;
-	private int hoverOption;
 	public static TownSubState subState;
 	
 	public TownMap() {		
 		town = new Image("/town/NewTown7.png");		
-		hover = false;
 		subState = TownSubState.General;
 	}
 
@@ -101,6 +98,7 @@ public class TownMap extends GameObject {
 		case Transition: break;
 		case QuestScreen: break;
 		case PartyCohesionCheckerUI: break;
+		case Inventory: break;
 
 		}
 		
@@ -142,6 +140,7 @@ public class TownMap extends GameObject {
 		case Transition: break;
 		case QuestScreen: break;
 		case PartyCohesionCheckerUI: break;
+		case Inventory: break;
 		
 		}
 		

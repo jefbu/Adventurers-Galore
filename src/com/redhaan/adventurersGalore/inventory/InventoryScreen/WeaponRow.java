@@ -5,7 +5,6 @@ import java.awt.event.MouseEvent;
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.GameState;
-import com.redhaan.adventurersGalore.entity.item.armour.Armour;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
 import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.GemStone;
 import com.redhaan.adventurersGalore.inventory.Inventory;

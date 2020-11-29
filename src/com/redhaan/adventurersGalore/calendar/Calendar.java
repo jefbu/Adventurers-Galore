@@ -48,6 +48,7 @@ public class Calendar extends GameObject {
 		case Transition: break;
 		case QuestScreen: break;
 		case PartyCohesionCheckerUI: break;
+		case Inventory: break;
 		
 		case WorldMap:
 			
@@ -106,6 +107,7 @@ public class Calendar extends GameObject {
 		case Transition: break;
 		case QuestScreen: break;
 		case PartyCohesionCheckerUI: break;
+		case Inventory: break;
 		
 		case WorldMap:
 		if(hover) { renderer.drawRect(499, 19, 122, 22, 0x88FFFFFF); }

@@ -4,6 +4,8 @@ import com.redhaan.adventurersGalore.entity.item.ItemID;
 
 public class SpiritOfMischief extends CraftItems {
 
+	private static final long serialVersionUID = 1L;
+
 	public SpiritOfMischief() {
 		
 		name = "Spirit of Mischief";

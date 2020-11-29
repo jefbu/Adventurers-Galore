@@ -40,26 +40,29 @@ public class GameManager extends AbstractGame {
 	protected static ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 	
 	public GameManager() {
-
+		
 		gameObjects.add(new WorldMap());
 		gameObjects.add(new TownMap());
-		gameObjects.add(new Calendar());
+		gameObjects.add(new Calendar());		
 		gameObjects.add(new TitleScreen());
 		gameObjects.add(new Combat());
 		gameObjects.add(new Towns());
+		
+		adventurers = new Adventurers();
+		
 		gameObjects.add(new Party());
 		gameObjects.add(new PartyScreen());
 		gameObjects.add(new InventoryScreen());
-		gameObjects.add(new Quests());
+		gameObjects.add(new QuestScreen());
 		gameObjects.add(new QuestUI());
+		gameObjects.add(new Quests());
 		gameObjects.add(new Transition());
 		gameObjects.add(new Conversations());
 		gameObjects.add(new PartyCohesionCheckerUI());
-		gameObjects.add(new QuestScreen());
 		gameObjects.add(new SavePopup());		
 		gameObjects.add(new TravelerEngine());		
 		
-		adventurers = new Adventurers();
+
 		//gameObjects.add(adventurers);
 
 		

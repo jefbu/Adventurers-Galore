@@ -104,11 +104,15 @@ public class TextBlock extends GameObject {
 		case InTown:			
 			if(stringToBeDrawnFrom.length() == 0) { 
 				if (QuestUI.quest.questParty.size() > 0) {
-					stringToBeDrawnFrom = QuestUI.quest.questSteps.get(0).playerGetsTakenQuestInTown.get(stringNumber);
+					stringToBeDrawnFrom = QuestUI.quest.questSteps.get(0).playerGetsTakenQuestInTown.get(stringNumber).text;
+					Portrait.icon = QuestUI.quest.questSteps.get(0).playerGetsTakenQuestInTown.get(stringNumber).speakerIcon;
+					Portrait.name = QuestUI.quest.questSteps.get(0).playerGetsTakenQuestInTown.get(stringNumber).name;
 					if(stringNumber == QuestUI.quest.questSteps.get(0).playerGetsTakenQuestInTown.size() - 1) { textFinished = true; }
 				}
 				else {
-					stringToBeDrawnFrom = QuestUI.quest.questSteps.get(0).playerGetsEmptyQuestInTown.get(stringNumber); 
+					stringToBeDrawnFrom = QuestUI.quest.questSteps.get(0).playerGetsEmptyQuestInTown.get(stringNumber).text; 
+					Portrait.icon = QuestUI.quest.questSteps.get(0).playerGetsEmptyQuestInTown.get(stringNumber).speakerIcon;
+					Portrait.name = QuestUI.quest.questSteps.get(0).playerGetsEmptyQuestInTown.get(stringNumber).name;
 					if(stringNumber == QuestUI.quest.questSteps.get(0).playerGetsEmptyQuestInTown.size() - 1) { textFinished = true; }
 				}	
 			}		
@@ -117,11 +121,15 @@ public class TextBlock extends GameObject {
 		case WorldMap:  
 			if(stringToBeDrawnFrom.length() == 0) {
 				if (QuestUI.quest.questParty.size() > 0) {
-					stringToBeDrawnFrom = QuestUI.quest.questSteps.get(0).playerGetsTakenQuestInWorldMap.get(stringNumber);
+					stringToBeDrawnFrom = QuestUI.quest.questSteps.get(0).playerGetsTakenQuestInWorldMap.get(stringNumber).text;
+					Portrait.icon = QuestUI.quest.questSteps.get(0).playerGetsTakenQuestInWorldMap.get(stringNumber).speakerIcon;
+					Portrait.name = QuestUI.quest.questSteps.get(0).playerGetsTakenQuestInWorldMap.get(stringNumber).name;
 					if(stringNumber == QuestUI.quest.questSteps.get(0).playerGetsTakenQuestInWorldMap.size() - 1) { textFinished = true; }
 				}
 				else {
-					stringToBeDrawnFrom = QuestUI.quest.questSteps.get(0).playerGetsEmptyQuestInWorldMap.get(stringNumber);
+					stringToBeDrawnFrom = QuestUI.quest.questSteps.get(0).playerGetsEmptyQuestInWorldMap.get(stringNumber).text;
+					Portrait.icon = QuestUI.quest.questSteps.get(0).playerGetsEmptyQuestInWorldMap.get(stringNumber).speakerIcon;
+					Portrait.name = QuestUI.quest.questSteps.get(0).playerGetsEmptyQuestInWorldMap.get(stringNumber).name;
 					if(stringNumber == QuestUI.quest.questSteps.get(0).playerGetsEmptyQuestInWorldMap.size() - 1) { textFinished = true; }
 				}	
 			}	

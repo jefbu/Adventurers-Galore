@@ -147,6 +147,8 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 				break;
 				
 			
+			case Alchemist: break;
+			case Inn: break;
 			
 			}
 			
@@ -244,6 +246,10 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 				
 				
 				break;
+				
+			case Alchemist: break;
+			case Inn: break;
+
 					
 			}
 			
