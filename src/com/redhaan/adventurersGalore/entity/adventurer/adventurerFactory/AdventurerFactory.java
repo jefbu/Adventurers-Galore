@@ -1,10 +1,12 @@
 package com.redhaan.adventurersGalore.entity.adventurer.adventurerFactory;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
+import com.redhaan.adventurersGalore.entity.adventurer.CombatMove;
 import com.redhaan.adventurersGalore.entity.adventurer.personality.PersonalityTrait;
 import com.redhaan.adventurersGalore.entity.item.armour.ReinforcedLeather;
 import com.redhaan.adventurersGalore.entity.town.Towns;
@@ -80,6 +82,8 @@ public class AdventurerFactory implements Serializable {
 		adventurer.affinities = affinityFactory.rollAffinities(adventurer.tier, adventurer.race, adventurer.job);
 		adventurer.titbit = titbitFactory.createTitBit(adventurer);
 		adventurer.skills = skillFactory.rollSkills(adventurer);
+		
+		adventurer.combatMoves = defineCombatMoves(adventurer);
 		
 
 	}
@@ -232,5 +236,51 @@ public class AdventurerFactory implements Serializable {
 		
 		
 	}
+	
+	private ArrayList<CombatMove> defineCombatMoves(Adventurer adventurer) {
+		
+		ArrayList<CombatMove> moves = new ArrayList<CombatMove>();
+		
+		moves.add(CombatMove.fight);
+		moves.add(CombatMove.magic);
+		
+		switch(adventurer.job.jobEnum) {
+		
+		case Squire: moves.add(CombatMove.shieldsUp); break;
+		case Knight: moves.add(CombatMove.shieldsUp); break;
+		case Paladin: moves.add(CombatMove.shieldsUp); break;
+		
+		case Mage: moves.add(CombatMove.meditate); break;
+		case Magus: moves.add(CombatMove.meditate); break;
+		case ArchMage: moves.add(CombatMove.meditate); break;
+
+		case Thief: moves.add(CombatMove.backstab); break;
+		case Knave: moves.add(CombatMove.backstab); break;
+		case CatBurglar: moves.add(CombatMove.backstab); break;
+
+		case Archer: moves.add(CombatMove.aim); break;
+		case Hunter: moves.add(CombatMove.aim); break;
+		case Sniper: moves.add(CombatMove.aim); break;
+
+		case Barbarian: moves.add(CombatMove.mowDown); break;
+		case Berserker: moves.add(CombatMove.mowDown); break;
+		case RedMist: moves.add(CombatMove.mowDown); break;
+	
+		}
+		
+		if (adventurer.tattoo != null) {
+			if(adventurer.tattoo.name.equals("Kestrel")) { moves.add(CombatMove.aim); }
+			else if(adventurer.tattoo.name.equals("Bull")) { moves.add(CombatMove.mowDown); }
+			else if(adventurer.tattoo.name.equals("Fox")) { moves.add(CombatMove.backstab); }
+			else if(adventurer.tattoo.name.equals("Butterfly")) { moves.add(CombatMove.meditate); }
+			else { }
+		}
+		
+		
+		return moves;
+		
+	}
+	
+	
 
 }

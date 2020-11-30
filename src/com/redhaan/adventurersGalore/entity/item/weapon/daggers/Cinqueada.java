@@ -18,7 +18,7 @@ public class Cinqueada extends Weapon {
 		hit = 80;
 		damage = 6;
 		crit = 35;
-		weight = 5;
+		weight = 7;
 		
 		type = WeaponType.DAGGER;
 		

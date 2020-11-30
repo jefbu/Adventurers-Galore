@@ -19,7 +19,7 @@ public class BroadSword extends Weapon implements Serializable {
 		hit = 60;
 		damage = 8;
 		crit = 10;
-		weight = 10;
+		weight = 11;
 
 		type = WeaponType.SWORD;
 

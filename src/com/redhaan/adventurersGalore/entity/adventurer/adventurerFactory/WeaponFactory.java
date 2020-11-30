@@ -187,14 +187,14 @@ public class WeaponFactory implements Serializable {
 		case 1:
 			switch (weaponType) {
 			case DAGGER:
-				if (rollWeapon > 50 && PHY >= 40) { weapon = new Dagger(); }
+				if (rollWeapon > 50 && PHY >= 6) { weapon = new Dagger(); }
 				else { weapon = new Knife(); }
 				break;
 			case STAFF:
 				weapon = new Quarterstaff();
 				break;
 			case SWORD:
-				if (rollWeapon > 50  && PHY >= 55) { weapon = new BroadSword(); }
+				if (rollWeapon > 50  && PHY >= 11) { weapon = new BroadSword(); }
 				else { weapon = new IronSword(); }
 				break;
 			default: break;			
@@ -210,7 +210,7 @@ public class WeaponFactory implements Serializable {
 				weapon = new Bo();
 				break;
 			case SWORD:
-				if (rollWeapon > 50 && PHY >= 70) { weapon = new BastardSword(); }
+				if (rollWeapon > 50 && PHY >= 15) { weapon = new BastardSword(); }
 				else { weapon = new Sabre(); }
 				break;
 			}
@@ -219,16 +219,16 @@ public class WeaponFactory implements Serializable {
 		case 3:
 			switch(weaponType) {
 			case DAGGER:
-				if (rollWeapon > 50 && PHY >= 60) { weapon = new Machete(); }
+				if (rollWeapon > 50 && PHY >= 8) { weapon = new Machete(); }
 				else { weapon = new Cinqueada(); }
 				break;
 			case STAFF:
-				if (rollWeapon > 50 && PHY >= 50) { weapon = new Baton(); }
-				else { weapon = new Cudgel(); }
+				if (rollWeapon > 50 && PHY >= 8) { weapon = new Cudgel(); }
+				else { weapon = new Baton(); }
 				break;
 			case SWORD:				
-				if (rollWeapon > 66 && PHY >= 75) { weapon = new Scimitar(); }
-				else if (rollWeapon > 33 && PHY >= 70) { weapon = new Katana(); }
+				if (rollWeapon > 66 && PHY >= 14) { weapon = new Scimitar(); }
+				else if (rollWeapon > 33 && PHY >= 13) { weapon = new Katana(); }
 				else { weapon = new Foil(); }
 				break;				
 			}
@@ -243,8 +243,8 @@ public class WeaponFactory implements Serializable {
 				weapon = new Waddy();
 				break;
 			case SWORD:
-				if (rollWeapon > 66 && PHY >= 80) { weapon = new Falchion(); }
-				else if (rollWeapon > 33 && PHY >= 75) { weapon = new SilverSword(); }
+				if (rollWeapon > 66 && PHY >= 18) { weapon = new Falchion(); }
+				else if (rollWeapon > 33 && PHY >= 16) { weapon = new SilverSword(); }
 				else { weapon = new Epee(); }
 				break;
 			}
@@ -259,7 +259,7 @@ public class WeaponFactory implements Serializable {
 				weapon = new DoubleLily();
 				break;
 			case SWORD:
-				if (rollWeapon > 50 && PHY >= 90) { weapon = new Excalibur(); }
+				if (rollWeapon > 50 && PHY >= 20) { weapon = new Excalibur(); }
 				else { weapon = new VorpalSword(); }
 				break;
 			}

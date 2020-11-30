@@ -18,7 +18,7 @@ public class Cudgel extends Weapon {
 		hit = 110;
 		damage = 6;
 		crit = 5;
-		weight = 5;
+		weight = 8;
 		
 		type = WeaponType.STAFF;
 		

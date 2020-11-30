@@ -18,7 +18,7 @@ public class Knife extends Weapon {
 		hit = 75;
 		damage = 5;
 		crit = 30;
-		weight = 3;
+		weight = 5;
 		
 		type = WeaponType.DAGGER;
 

@@ -18,7 +18,7 @@ public class Machete extends Weapon {
 		hit = 85;
 		damage = 6;
 		crit = 30;
-		weight = 6;
+		weight = 8;
 
 		type = WeaponType.DAGGER;
 		

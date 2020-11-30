@@ -18,7 +18,7 @@ public class Waddy extends Weapon {
 		hit = 110;
 		damage = 6;
 		crit = 10;
-		weight = 6;
+		weight = 8;
 
 		type = WeaponType.STAFF;
 

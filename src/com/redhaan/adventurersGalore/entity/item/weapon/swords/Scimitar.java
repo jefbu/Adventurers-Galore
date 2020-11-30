@@ -19,7 +19,7 @@ public class Scimitar extends Weapon implements Serializable {
 		hit = 70;
 		damage = 8;
 		crit = 20;
-		weight = 8;
+		weight = 14;
 
 		type = WeaponType.SWORD;
 

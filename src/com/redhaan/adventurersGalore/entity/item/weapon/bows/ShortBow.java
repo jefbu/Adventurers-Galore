@@ -21,7 +21,7 @@ public class ShortBow extends Weapon {
 		crit = 25;
 		weight = 4;
 		minRange = 2;
-		maxRange = 2;
+		maxRange = 4;
 		
 		type = WeaponType.BOW;
 		

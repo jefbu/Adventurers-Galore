@@ -5,13 +5,13 @@ import java.awt.event.MouseEvent;
 
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
-import com.redhaan.adventurersGalore.entity.Monster;
+import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 import gameEngine.ecclesiastes.gfx.ImageTile;
 
-public class SkillBar extends GameObject {
+public class CombatMovesBar extends GameObject {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -20,16 +20,15 @@ public class SkillBar extends GameObject {
 	private int xStartPoint;
 	private int yStartPoint;
 	private int skillNumber;
-	private int selectedNumber;
+	public static int selectedNumber;
 	private int counter;
 	private int animationNumber;
 	
 	private ImageTile icons;
-	private int jobSkillRow;
 	
-	Monster monster;
+	Adventurer adventurer;
 	
-	public SkillBar(Monster monster) {
+	public CombatMovesBar(Adventurer adventurer) {
 		
 		hover = false;
 		skillBarSize = 160;
@@ -38,7 +37,7 @@ public class SkillBar extends GameObject {
 		skillNumber = 0;
 		selectedNumber = 1;
 		counter = 0;
-		this.monster = monster;
+		this.adventurer = adventurer;
 		
 		icons = new ImageTile("/skillBarIcons.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
 		
@@ -49,33 +48,6 @@ public class SkillBar extends GameObject {
 	public void update(GameContainer gameContainer, float deltaTime) {
 		
 		
-		switch(monster.job.jobEnum) {
-		
-		case Squire: jobSkillRow = 2; break;
-		case Knight: jobSkillRow = 2; break;
-		case Paladin: jobSkillRow = 2; break;
-		
-		case Mage: jobSkillRow = 3; break;
-		case Magus: jobSkillRow = 3; break;
-		case ArchMage: jobSkillRow = 3; break;
-		
-		case Thief: jobSkillRow = 4; break;
-		case Knave: jobSkillRow = 4; break;
-		case CatBurglar: jobSkillRow = 4; break;
-		
-		case Archer: jobSkillRow = 5; break;
-		case Hunter: jobSkillRow = 5; break;
-		case Sniper: jobSkillRow = 5; break;
-		
-		case Barbarian: jobSkillRow = 6; break;
-		case Berserker: jobSkillRow = 6; break;
-		case RedMist: jobSkillRow = 6; break;
-		
-		default: break;
-		
-		}
-		
-				
 		if (deltaTime * counter * 5 < 1) { counter++; }
 		else { animationNumber++; counter = 0; }
 		if (animationNumber > 3) { animationNumber = 1; }
@@ -137,28 +109,43 @@ public class SkillBar extends GameObject {
 		
 		switch (selectedNumber) {
 		case 1:
-			renderer.drawImageTile(icons, xStartPoint + 1, yStartPoint + 1, animationNumber, 0);
-			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, 1);
-			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, 0, jobSkillRow);				
+			renderer.drawImageTile(icons, xStartPoint + 1, yStartPoint + 1, animationNumber, adventurer.combatMoves.get(0).row);
+			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, adventurer.combatMoves.get(1).row);
+			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, 0, adventurer.combatMoves.get(2).row);
+			if(adventurer.combatMoves.size() > 3) {
+				renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 3, yStartPoint + 1, 0, adventurer.combatMoves.get(3).row);
+			}
 			break;
 		case 2:
-			renderer.drawImageTile(icons, xStartPoint + 1, yStartPoint + 1, 0, 0);
-			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, animationNumber, 1);
-			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, 0, jobSkillRow);	
+			renderer.drawImageTile(icons, xStartPoint + 1, yStartPoint + 1, 0, adventurer.combatMoves.get(0).row);
+			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, animationNumber, adventurer.combatMoves.get(1).row);
+			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, 0, adventurer.combatMoves.get(2).row);	
+			if(adventurer.combatMoves.size() > 3) {
+				renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 3, yStartPoint + 1, 0, adventurer.combatMoves.get(3).row);
+			}
 			break;
 		case 3:
-			renderer.drawImageTile(icons, xStartPoint + 1, yStartPoint + 1, 0, 0);
-			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, 1);
-			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, animationNumber, jobSkillRow);
+			renderer.drawImageTile(icons, xStartPoint + 1, yStartPoint + 1, 0, adventurer.combatMoves.get(0).row);
+			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, adventurer.combatMoves.get(1).row);
+			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, animationNumber, adventurer.combatMoves.get(2).row);
+			if(adventurer.combatMoves.size() > 3) {
+				renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 3, yStartPoint + 1, 0, adventurer.combatMoves.get(3).row);
+			}
 			break;
 		case 4:
+			renderer.drawImageTile(icons, xStartPoint + 1, yStartPoint + 1, 0, adventurer.combatMoves.get(0).row);
+			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, adventurer.combatMoves.get(1).row);
+			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, 0, adventurer.combatMoves.get(2).row);
+			if(adventurer.combatMoves.size() > 3) {
+				renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 3, yStartPoint + 1, animationNumber, adventurer.combatMoves.get(3).row);
+			}
 			break;
 		
 		default: break;
 			
 		}
 		
-		renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, 0, jobSkillRow);
+		//renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, 0, jobSkillRow);
 		
 	
 	}

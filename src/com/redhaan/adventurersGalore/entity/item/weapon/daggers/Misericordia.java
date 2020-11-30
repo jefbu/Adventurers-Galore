@@ -19,7 +19,7 @@ public class Misericordia extends Weapon {
 		hit = 95;
 		damage = 8;
 		crit = 35;
-		weight = 6;
+		weight = 9;
 
 		type = WeaponType.DAGGER;
 

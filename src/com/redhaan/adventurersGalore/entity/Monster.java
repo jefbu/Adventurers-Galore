@@ -7,7 +7,7 @@ import com.redhaan.adventurersGalore.entity.adventurer.Affinities;
 import com.redhaan.adventurersGalore.entity.adventurer.Job;
 import com.redhaan.adventurersGalore.entity.adventurer.Race;
 import com.redhaan.adventurersGalore.entity.adventurer.Stats;
-import com.redhaan.adventurersGalore.entity.combatAddOns.SkillBar;
+import com.redhaan.adventurersGalore.entity.combatAddOns.CombatMovesBar;
 import com.redhaan.adventurersGalore.entity.item.armour.Armour;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
 
@@ -43,7 +43,7 @@ public class Monster extends NPC {
 	
 	private Random random;
 	
-	public SkillBar skillBar;
+	public CombatMovesBar combatMovesBar;
 	
 	public Weapon weapon;
 	public Armour armour;
@@ -72,9 +72,7 @@ public class Monster extends NPC {
 		combatX = 6 + random.nextInt(3);
 		combatY = 10 - random.nextInt(3);
 		moveRange = new ArrayList<int[]>();
-		
-		skillBar = new SkillBar(this);
-		
+				
 		moveRangeCounter = 0;
 		moveRangeFlareUp = false;
 		attackAnimation = false;

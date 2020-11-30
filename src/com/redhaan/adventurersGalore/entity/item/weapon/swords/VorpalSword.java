@@ -20,7 +20,7 @@ public class VorpalSword extends Weapon implements Serializable {
 		hit = 100;
 		damage = 12;
 		crit = 20;
-		weight = 14;
+		weight = 18;
 
 		type = WeaponType.SWORD;
 

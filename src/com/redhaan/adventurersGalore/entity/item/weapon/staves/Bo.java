@@ -18,7 +18,7 @@ public class Bo extends Weapon {
 		hit = 105;
 		damage = 5;
 		crit = 5;
-		weight = 7;
+		weight = 8;
 
 		type = WeaponType.STAFF;
 

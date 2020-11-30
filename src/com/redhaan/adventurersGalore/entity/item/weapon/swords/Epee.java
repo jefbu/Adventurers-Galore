@@ -19,7 +19,7 @@ public class Epee extends Weapon implements Serializable {
 		hit = 90;
 		damage = 8;
 		crit = 30;
-		weight = 7;
+		weight = 10;
 
 		type = WeaponType.SWORD;
 

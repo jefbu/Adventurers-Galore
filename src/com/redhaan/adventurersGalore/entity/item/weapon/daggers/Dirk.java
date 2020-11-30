@@ -18,7 +18,7 @@ public class Dirk extends Weapon {
 		hit = 75;
 		damage = 6;
 		crit = 30;
-		weight = 4;
+		weight = 6;
 		
 		type = WeaponType.DAGGER;
 		

@@ -18,7 +18,7 @@ public class Quarterstaff extends Weapon {
 		hit = 100;
 		damage = 4;
 		crit = 0;
-		weight = 6;
+		weight = 8;
 
 		type = WeaponType.STAFF;
 

@@ -19,7 +19,7 @@ public class Foil extends Weapon implements Serializable {
 		hit = 85;
 		damage = 7;
 		crit = 25;
-		weight = 6;
+		weight = 9;
 
 		type = WeaponType.SWORD;
 

@@ -19,7 +19,7 @@ public class SilverSword extends Weapon implements Serializable {
 		hit = 80;
 		damage = 11;
 		crit = 20;
-		weight = 10;
+		weight = 16;
 
 		type = WeaponType.SWORD;
 

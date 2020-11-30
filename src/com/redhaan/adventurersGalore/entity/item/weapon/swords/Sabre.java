@@ -19,7 +19,7 @@ public class Sabre extends Weapon implements Serializable {
 		hit = 80;
 		damage = 8;
 		crit = 15;
-		weight = 7;
+		weight = 9;
 
 		type = WeaponType.SWORD;
 

@@ -18,7 +18,7 @@ public class Katar extends Weapon {
 		hit = 70;
 		damage = 7;
 		crit = 40;
-		weight = 6;
+		weight = 9;
 		
 		type = WeaponType.DAGGER;
 		

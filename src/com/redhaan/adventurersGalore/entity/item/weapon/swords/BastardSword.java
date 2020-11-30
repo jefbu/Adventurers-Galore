@@ -19,7 +19,7 @@ public class BastardSword extends Weapon implements Serializable {
 		hit = 65;
 		damage = 8;
 		crit = 15;
-		weight = 12;
+		weight = 15;
 
 		type = WeaponType.SWORD;
 		

@@ -19,7 +19,7 @@ public class Katana extends Weapon implements Serializable {
 		hit = 85;
 		damage = 9;
 		crit = 15;
-		weight = 10;
+		weight = 13;
 
 		type = WeaponType.SWORD;
 

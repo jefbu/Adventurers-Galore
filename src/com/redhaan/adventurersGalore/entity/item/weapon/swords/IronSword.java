@@ -19,7 +19,7 @@ public class IronSword extends Weapon implements Serializable {
 		hit = 80;
 		damage = 7;
 		crit = 10;
-		weight = 6;
+		weight = 8;
 
 		type = WeaponType.SWORD;
 

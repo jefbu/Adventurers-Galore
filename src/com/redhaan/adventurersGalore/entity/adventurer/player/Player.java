@@ -2,6 +2,7 @@ package com.redhaan.adventurersGalore.entity.adventurer.player;
 
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.entity.adventurer.Affinities;
+import com.redhaan.adventurersGalore.entity.adventurer.CombatMove;
 import com.redhaan.adventurersGalore.entity.adventurer.Job;
 import com.redhaan.adventurersGalore.entity.adventurer.personality.Personality;
 import com.redhaan.adventurersGalore.entity.adventurer.personality.PersonalityTrait;
@@ -21,8 +22,8 @@ public class Player extends Adventurer {
 		inParty = true;
 		currentStats.move = 8;
 		maxStats.move = 13;
-		currentStats.PHY = 12;
-		maxStats.PHY = 12;
+		currentStats.PHY = 15;
+		maxStats.PHY = 15;
 		weapon = new ShortBow();
 		armour = new ReinforcedLeather();
 		calculateSecondaryStats();
@@ -42,6 +43,10 @@ public class Player extends Adventurer {
 		titbit.strings.add("This is you, we don't pretend to know you that well");
 
 		calculateSecondaryStats();
+		combatMoves.add(CombatMove.fight);
+		combatMoves.add(CombatMove.magic);
+		combatMoves.add(CombatMove.aim);
+		combatMoves.add(CombatMove.meditate);
 		
 	}
 
