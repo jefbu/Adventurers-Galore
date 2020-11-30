@@ -190,12 +190,27 @@ public class Adventurer extends Monster {
 						// 'MAGIC' COMBATMOVE ACTIVATED
 
 						// 'SHIELDS UP!' COMBATMOVE ACTIVATED
+						boolean goOn = true;
+						for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {
+							if (adventurer.inParty && !adventurer.isDead() && goOn) {
+								if (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE == adventurer.combatX
+										&& gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == adventurer.combatY) {
+									adventurer.currentStats.defence += 5;
+									selected = false;
+									hasMoved = true;
+									hasActed = true;
+									goOn = false;
+								}
+							}
+						}
+						if (goOn) { selected = false; }
+						
+						
 
 						// 'MEDITATE' COMBATMOVE ACTIVATED
 						if (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE == combatX
 								&& gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == combatY) {
-							System.out.println("MAG Increased");
-							currentStats.MAG = currentStats.MAG + 5;
+							currentStats.MAG += 5;
 							selected = false;
 							hasMoved = true;
 							hasActed = true;

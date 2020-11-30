@@ -46,7 +46,7 @@ public class Player extends Adventurer {
 		combatMoves.add(CombatMove.fight);
 		combatMoves.add(CombatMove.magic);
 		combatMoves.add(CombatMove.aim);
-		combatMoves.add(CombatMove.meditate);
+		combatMoves.add(CombatMove.shieldsUp);
 		
 	}
 
