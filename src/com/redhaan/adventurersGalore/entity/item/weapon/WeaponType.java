@@ -5,6 +5,7 @@ public enum WeaponType {
 	SWORD,
 	DAGGER,
 	STAFF,
-	BOW
+	BOW,
+	SPEAR
 
 }

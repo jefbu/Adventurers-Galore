@@ -1,4 +1,3 @@
-
 package com.redhaan.adventurersGalore.entity.item.weapon.bows;
 
 import java.util.Random;
@@ -8,20 +7,21 @@ import com.redhaan.adventurersGalore.entity.item.weapon.Rune;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
 import com.redhaan.adventurersGalore.entity.item.weapon.WeaponType;
 
-public class ShortBow extends Weapon {
-
-	private static final long serialVersionUID = 1L;
-	public static final int TIER = 1;
+public class CompositeBow extends Weapon {
 	
-	public ShortBow() {
+	private static final long serialVersionUID = 1L;
+	public static final int TIER = 2;
+
+	public CompositeBow() {
 		
-		name = "Short Bow";
-		hit = 60;
-		damage = 6;
+
+		name = "Composite";
+		hit = 70;
+		damage = 7;
 		crit = 25;
 		weight = 4;
 		minRange = 2;
-		maxRange = 2;
+		maxRange = 3;
 		
 		type = WeaponType.BOW;
 		
@@ -30,7 +30,7 @@ public class ShortBow extends Weapon {
 		
 		ID = ItemID.Weapon;
 		
-		rollRuneSlots(1);
+		rollRuneSlots(2);
 		
 		Random random = new Random();
 		for (int i = 0; i < runeSlots; i++) {
@@ -44,15 +44,13 @@ public class ShortBow extends Weapon {
 		
 		soul = rollSoul();
 		
-		gemStone = rollGemStone(1);
+		gemStone = rollGemStone(2);
 		
-		if (rollBonusUpgrades(70)) { hit++; }
-		if (rollBonusUpgrades(90)) { damage++; }
-		if (rollBonusUpgrades(85)) { crit++; }
+		if (rollBonusUpgrades(60)) { hit++; }
+		if (rollBonusUpgrades(80)) { damage++; }
+		if (rollBonusUpgrades(80)) { crit++; }
 		
 	}
 	
 
 }
-
-

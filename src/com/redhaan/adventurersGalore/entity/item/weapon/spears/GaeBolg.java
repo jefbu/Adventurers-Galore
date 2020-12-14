@@ -1,5 +1,4 @@
-
-package com.redhaan.adventurersGalore.entity.item.weapon.bows;
+package com.redhaan.adventurersGalore.entity.item.weapon.spears;
 
 import java.util.Random;
 
@@ -8,22 +7,23 @@ import com.redhaan.adventurersGalore.entity.item.weapon.Rune;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
 import com.redhaan.adventurersGalore.entity.item.weapon.WeaponType;
 
-public class ShortBow extends Weapon {
-
-	private static final long serialVersionUID = 1L;
-	public static final int TIER = 1;
+public class GaeBolg extends Weapon {
 	
-	public ShortBow() {
+	
+	public static final int TIER = 5;
+	
+	public GaeBolg() {
 		
-		name = "Short Bow";
-		hit = 60;
-		damage = 6;
+
+		name = "Gae Bolg";
+		hit = 90;
+		damage = 10;
 		crit = 25;
 		weight = 4;
-		minRange = 2;
+		minRange = 1;
 		maxRange = 2;
 		
-		type = WeaponType.BOW;
+		type = WeaponType.SPEAR;
 		
 		xTile = 0;
 		yTile = 3;
@@ -44,15 +44,12 @@ public class ShortBow extends Weapon {
 		
 		soul = rollSoul();
 		
-		gemStone = rollGemStone(1);
+		gemStone = rollGemStone(2);
 		
-		if (rollBonusUpgrades(70)) { hit++; }
-		if (rollBonusUpgrades(90)) { damage++; }
-		if (rollBonusUpgrades(85)) { crit++; }
+		if (rollBonusUpgrades(60)) { hit++; }
+		if (rollBonusUpgrades(80)) { damage++; }
+		if (rollBonusUpgrades(80)) { crit++; }
 		
 	}
-	
 
 }
-
-
