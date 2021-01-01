@@ -12,7 +12,7 @@ public class RaceFactory implements Serializable {
 	public RaceFactory() { }
 	
 	
-	protected Race setRace(int tier) {
+	public Race setRace(int tier) {
 		
 		Race race = null;
 		int rarity = rollRaceRarity(tier);

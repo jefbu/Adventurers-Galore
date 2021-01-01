@@ -6,6 +6,12 @@ import java.util.Random;
 import com.redhaan.adventurersGalore.entity.adventurer.Job;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
 import com.redhaan.adventurersGalore.entity.item.weapon.WeaponType;
+import com.redhaan.adventurersGalore.entity.item.weapon.bows.CompositeBow;
+import com.redhaan.adventurersGalore.entity.item.weapon.bows.HandBow;
+import com.redhaan.adventurersGalore.entity.item.weapon.bows.LongBow;
+import com.redhaan.adventurersGalore.entity.item.weapon.bows.RecurveBow;
+import com.redhaan.adventurersGalore.entity.item.weapon.bows.ShortBow;
+import com.redhaan.adventurersGalore.entity.item.weapon.bows.Yoichi;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Cinqueada;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Dagger;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Dirk;
@@ -13,6 +19,15 @@ import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Katar;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Knife;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Machete;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Misericordia;
+import com.redhaan.adventurersGalore.entity.item.weapon.spears.GaeBolg;
+import com.redhaan.adventurersGalore.entity.item.weapon.spears.Gungnir;
+import com.redhaan.adventurersGalore.entity.item.weapon.spears.Lance;
+import com.redhaan.adventurersGalore.entity.item.weapon.spears.Longinus;
+import com.redhaan.adventurersGalore.entity.item.weapon.spears.Naginata;
+import com.redhaan.adventurersGalore.entity.item.weapon.spears.Pike;
+import com.redhaan.adventurersGalore.entity.item.weapon.spears.Spear;
+import com.redhaan.adventurersGalore.entity.item.weapon.spears.Trident;
+import com.redhaan.adventurersGalore.entity.item.weapon.spears.Yari;
 import com.redhaan.adventurersGalore.entity.item.weapon.staves.Baton;
 import com.redhaan.adventurersGalore.entity.item.weapon.staves.Bo;
 import com.redhaan.adventurersGalore.entity.item.weapon.staves.Cudgel;
@@ -96,83 +111,113 @@ public class WeaponFactory implements Serializable {
 		switch(job.jobEnum) {
 		
 		case Squire:
-			if (rollType > 20) { weaponType = WeaponType.SWORD; }
+			if(rollType > 50) { weaponType = WeaponType.SWORD; }
+			else if (rollType > 30) { weaponType = WeaponType.SPEAR; }
+			else if (rollType > 20) { weaponType = WeaponType.BOW; }
 			else if (rollType > 10) { weaponType = WeaponType.DAGGER; }
 			else { weaponType = WeaponType.STAFF; }
 			break;
 		case Knight:
-			if (rollType > 20) { weaponType = WeaponType.SWORD; }
+			if(rollType > 50) { weaponType = WeaponType.SWORD; }
+			else if (rollType > 30) { weaponType = WeaponType.SPEAR; }
+			else if (rollType > 20) { weaponType = WeaponType.BOW; }
 			else if (rollType > 10) { weaponType = WeaponType.DAGGER; }
 			else { weaponType = WeaponType.STAFF; }
 			break;
 		case Paladin:
-			if (rollType > 20) { weaponType = WeaponType.SWORD; }
-			else if (rollType > 15) { weaponType = WeaponType.DAGGER; }
+			if(rollType > 50) { weaponType = WeaponType.SWORD; }
+			else if (rollType > 30) { weaponType = WeaponType.SPEAR; }
+			else if (rollType > 20) { weaponType = WeaponType.BOW; }
+			else if (rollType > 10) { weaponType = WeaponType.DAGGER; }
 			else { weaponType = WeaponType.STAFF; }
 			break;
 			
 		case Mage:
-			if (rollType > 30) { weaponType = WeaponType.STAFF; }
-			else if (rollType > 10) { weaponType = WeaponType.DAGGER; }
-			else { weaponType = WeaponType.SWORD; }
+			if (rollType > 40) { weaponType = WeaponType.STAFF; }
+			else if (rollType > 20) { weaponType = WeaponType.DAGGER; }
+			else if (rollType > 10) { weaponType = WeaponType.SWORD; }
+			else if (rollType > 5) { weaponType = WeaponType.BOW; }
+			else { weaponType = WeaponType.SPEAR; }
 			break;
 		case Magus:
-			if (rollType > 30) { weaponType = WeaponType.STAFF; }
-			else if (rollType > 15) { weaponType = WeaponType.DAGGER; }
-			else { weaponType = WeaponType.SWORD; }
+			if (rollType > 40) { weaponType = WeaponType.STAFF; }
+			else if (rollType > 20) { weaponType = WeaponType.DAGGER; }
+			else if (rollType > 10) { weaponType = WeaponType.SWORD; }
+			else if (rollType > 5) { weaponType = WeaponType.BOW; }
+			else { weaponType = WeaponType.SPEAR; }
 			break;
 		case ArchMage:
 			if (rollType > 40) { weaponType = WeaponType.STAFF; }
+			else if (rollType > 20) { weaponType = WeaponType.DAGGER; }
 			else if (rollType > 10) { weaponType = WeaponType.SWORD; }
-			else { weaponType = WeaponType.DAGGER; }
+			else if (rollType > 5) { weaponType = WeaponType.BOW; }
+			else { weaponType = WeaponType.SPEAR; }
 			break;
 			
 		case Thief:
-			if (rollType > 20) { weaponType = WeaponType.DAGGER; }
-			else if (rollType > 10) { weaponType = WeaponType.SWORD; }
+			if (rollType > 30) { weaponType = WeaponType.DAGGER; }
+			else if (rollType > 15) { weaponType = WeaponType.SWORD; }
+			else if (rollType > 10) { weaponType = WeaponType.BOW; }
+			else if (rollType > 5) { weaponType = WeaponType.SPEAR; }
 			else { weaponType = WeaponType.STAFF; }
 			break;
 		case Knave:
-			if (rollType > 20) { weaponType = WeaponType.DAGGER; }
-			else if (rollType > 10) { weaponType = WeaponType.SWORD; }
+			if (rollType > 30) { weaponType = WeaponType.DAGGER; }
+			else if (rollType > 15) { weaponType = WeaponType.SWORD; }
+			else if (rollType > 10) { weaponType = WeaponType.BOW; }
+			else if (rollType > 5) { weaponType = WeaponType.SPEAR; }
 			else { weaponType = WeaponType.STAFF; }
 			break;
 		case CatBurglar:
-			if (rollType > 20) { weaponType = WeaponType.DAGGER; }
-			else if (rollType > 10) { weaponType = WeaponType.SWORD; }
+			if (rollType > 30) { weaponType = WeaponType.DAGGER; }
+			else if (rollType > 15) { weaponType = WeaponType.SWORD; }
+			else if (rollType > 10) { weaponType = WeaponType.BOW; }
+			else if (rollType > 5) { weaponType = WeaponType.SPEAR; }
 			else { weaponType = WeaponType.STAFF; }
 			break;
 			
 		case Archer:
-			if (rollType > 30) { weaponType = WeaponType.SWORD; }
+			if (rollType > 20) { weaponType = WeaponType.BOW; }
 			else if (rollType > 15) { weaponType = WeaponType.DAGGER; }
+			else if (rollType > 10) { weaponType = WeaponType.SWORD; }
+			else if (rollType > 5) { weaponType = WeaponType.SPEAR; }
 			else { weaponType = WeaponType.STAFF; }
 			break;
 		case Hunter:
-			if (rollType > 30) { weaponType = WeaponType.SWORD; }
+			if (rollType > 20) { weaponType = WeaponType.BOW; }
 			else if (rollType > 15) { weaponType = WeaponType.DAGGER; }
+			else if (rollType > 10) { weaponType = WeaponType.SWORD; }
+			else if (rollType > 5) { weaponType = WeaponType.SPEAR; }
 			else { weaponType = WeaponType.STAFF; }
 			break;
 		case Sniper:
-			if (rollType > 30) { weaponType = WeaponType.SWORD; }
+			if (rollType > 20) { weaponType = WeaponType.BOW; }
 			else if (rollType > 15) { weaponType = WeaponType.DAGGER; }
+			else if (rollType > 10) { weaponType = WeaponType.SWORD; }
+			else if (rollType > 5) { weaponType = WeaponType.SPEAR; }
 			else { weaponType = WeaponType.STAFF; }
 			break;
 			
 		case Barbarian:
-			if (rollType > 30) { weaponType = WeaponType.SWORD; }
-			else if (rollType > 15) { weaponType = WeaponType.DAGGER; }
-			else { weaponType = WeaponType.STAFF; }
+			if (rollType > 70) { weaponType = WeaponType.SWORD; }
+			else if (rollType > 40) { weaponType = WeaponType.SPEAR; }
+			else if (rollType > 20) { weaponType = WeaponType.BOW; }
+			else if (rollType > 5) { weaponType = WeaponType.STAFF; }
+			else { weaponType = WeaponType.DAGGER; }
 			break;
 		case Berserker:
-			if (rollType > 30) { weaponType = WeaponType.SWORD; }
-			else if (rollType > 15) { weaponType = WeaponType.DAGGER; }
-			else { weaponType = WeaponType.STAFF; }
+			if (rollType > 70) { weaponType = WeaponType.SWORD; }
+			else if (rollType > 40) { weaponType = WeaponType.SPEAR; }
+			else if (rollType > 20) { weaponType = WeaponType.BOW; }
+			else if (rollType > 5) { weaponType = WeaponType.STAFF; }
+			else { weaponType = WeaponType.DAGGER; }
 			break;
 		case RedMist:
-			if (rollType > 30) { weaponType = WeaponType.SWORD; }
-			else if (rollType > 15) { weaponType = WeaponType.DAGGER; }
-			else { weaponType = WeaponType.STAFF; }
+			if (rollType > 70) { weaponType = WeaponType.SWORD; }
+			else if (rollType > 40) { weaponType = WeaponType.SPEAR; }
+			else if (rollType > 20) { weaponType = WeaponType.BOW; }
+			else if (rollType > 5) { weaponType = WeaponType.STAFF; }
+			else { weaponType = WeaponType.DAGGER; }
 			break;
 		
 		default: System.out.println("Error at Weapon Type Roll"); break;
@@ -197,7 +242,12 @@ public class WeaponFactory implements Serializable {
 				if (rollWeapon > 50  && PHY >= 11) { weapon = new BroadSword(); }
 				else { weapon = new IronSword(); }
 				break;
-			default: break;			
+			case SPEAR:
+				weapon = new Spear();
+				break;
+			case BOW:
+				weapon = new ShortBow();
+				break;
 			}
 		break;	
 			
@@ -207,11 +257,20 @@ public class WeaponFactory implements Serializable {
 				weapon = new Dirk();
 				break;
 			case STAFF:
-				weapon = new Bo();
+				if (rollWeapon > 50 && PHY >= 9) { weapon = new Baton(); }
+				else { weapon = new Bo(); }
 				break;
 			case SWORD:
 				if (rollWeapon > 50 && PHY >= 15) { weapon = new BastardSword(); }
 				else { weapon = new Sabre(); }
+				break;
+			case SPEAR:
+				if (rollWeapon > 50  && PHY >= 12) { weapon = new Pike(); }
+				else { weapon = new Lance(); }
+				break;
+			case BOW:
+				if (rollWeapon > 50  && PHY >= 9) { weapon = new CompositeBow(); }
+				else { weapon = new HandBow(); }
 				break;
 			}
 		break;
@@ -223,14 +282,20 @@ public class WeaponFactory implements Serializable {
 				else { weapon = new Cinqueada(); }
 				break;
 			case STAFF:
-				if (rollWeapon > 50 && PHY >= 8) { weapon = new Cudgel(); }
-				else { weapon = new Baton(); }
+				weapon = new Cudgel();
 				break;
 			case SWORD:				
 				if (rollWeapon > 66 && PHY >= 14) { weapon = new Scimitar(); }
 				else if (rollWeapon > 33 && PHY >= 13) { weapon = new Katana(); }
 				else { weapon = new Foil(); }
-				break;				
+				break;	
+			case SPEAR:
+				if (rollWeapon > 50 && PHY >= 14) { weapon = new Trident(); }
+				else { weapon = new Yari(); }
+				break;	
+			case BOW:
+				weapon = new RecurveBow();
+				break;
 			}
 		break;
 
@@ -243,10 +308,14 @@ public class WeaponFactory implements Serializable {
 				weapon = new Waddy();
 				break;
 			case SWORD:
-				if (rollWeapon > 66 && PHY >= 18) { weapon = new Falchion(); }
-				else if (rollWeapon > 33 && PHY >= 16) { weapon = new SilverSword(); }
+				if (rollWeapon > 66 && PHY >= 17) { weapon = new Falchion(); }
+				else if (rollWeapon > 33 && PHY >= 15) { weapon = new SilverSword(); }
 				else { weapon = new Epee(); }
 				break;
+			case SPEAR:
+				weapon = new Naginata();
+			case BOW:
+				weapon = new LongBow();
 			}
 		break;
 			
@@ -261,6 +330,14 @@ public class WeaponFactory implements Serializable {
 			case SWORD:
 				if (rollWeapon > 50 && PHY >= 20) { weapon = new Excalibur(); }
 				else { weapon = new VorpalSword(); }
+				break;
+			case SPEAR:
+				if (rollWeapon > 66 && PHY >= 20) { weapon = new Gungnir(); }
+				else if (rollWeapon > 33) { weapon = new GaeBolg(); }
+				else { weapon = new Longinus(); }
+				break;
+			case BOW:
+				weapon = new Yoichi();
 				break;
 			}
 		break;

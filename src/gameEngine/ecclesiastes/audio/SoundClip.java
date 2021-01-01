@@ -48,14 +48,14 @@ public class SoundClip {
 	
 	
 	public void play() {
-		
+		/*
 		if(clip == null) { return; }
 		stop();
 		clip.setFramePosition(0);
 		while(!clip.isRunning()) {
 			clip.start();
 		}
-		
+		*/
 	}
 	
 	public void stop() {
@@ -69,7 +69,7 @@ public class SoundClip {
 	}
 	
 	public void loop() {
-		clip.loop(Clip.LOOP_CONTINUOUSLY);
+		//clip.loop(Clip.LOOP_CONTINUOUSLY);
 		play();
 	}
 	

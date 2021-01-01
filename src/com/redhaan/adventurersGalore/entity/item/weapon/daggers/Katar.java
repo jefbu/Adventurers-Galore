@@ -15,10 +15,10 @@ public class Katar extends Weapon {
 	public Katar() {
 		
 		name = "Katar";
-		hit = 70;
-		damage = 7;
+		hit = 85;
+		damage = 8;
 		crit = 40;
-		weight = 9;
+		weight = 10;
 		
 		type = WeaponType.DAGGER;
 		

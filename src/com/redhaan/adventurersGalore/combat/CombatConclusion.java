@@ -54,7 +54,7 @@ public class CombatConclusion extends GameObject {
 			for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {			
 				if(adventurer.inParty) {
 					adventurer.battlesPassed++;
-					adventurer.attackAnimation = false;
+					adventurer.actingAnimation = false;
 					adventurer.turnPassed = false;
 					adventurer.selected = false;
 					adventurer.hasMoved = false;

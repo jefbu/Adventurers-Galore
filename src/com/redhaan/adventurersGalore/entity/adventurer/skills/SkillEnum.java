@@ -6,6 +6,7 @@ public enum SkillEnum {
 	Axe,
 	Dagger,
 	Staff,
+	Spear,
 	Bow,
 	
 	Trapping,

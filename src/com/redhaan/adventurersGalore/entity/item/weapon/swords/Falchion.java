@@ -19,7 +19,7 @@ public class Falchion extends Weapon implements Serializable {
 		hit = 85;
 		damage = 10;
 		crit = 20;
-		weight = 18;
+		weight = 17;
 
 		type = WeaponType.SWORD;
 

@@ -34,6 +34,8 @@ public enum ItemID {
 	SpringBreeze,
 	MorningSunlight,
 	PentUpAnger,
-	GloriousMoment
+	GloriousMoment,
+	ElysianFlower,
+	Wanderlust
 
 }

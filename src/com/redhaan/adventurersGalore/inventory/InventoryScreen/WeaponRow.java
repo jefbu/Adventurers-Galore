@@ -130,6 +130,12 @@ public class WeaponRow extends GameObject {
 		case DAGGER: 
 			renderer.drawText("Daggers: " + translate(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.dagger.value), 436, 63 + 45 * number, InventoryScreen.passiveColour); 
 			break;
+		case SPEAR:
+			renderer.drawText("Spears: " + translate(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.spear.value), 436, 63 + 45 * number, InventoryScreen.passiveColour); 
+			break;
+		case BOW:
+			renderer.drawText("Bows: " + translate(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.bow.value), 436, 63 + 45 * number, InventoryScreen.passiveColour); 
+			break;
 		default: System.out.println("error at weaponRow");
 		}
 		

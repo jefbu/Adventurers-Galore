@@ -16,10 +16,10 @@ public class Misericordia extends Weapon {
 	public Misericordia() {
 		
 		name = "Misericordia";
-		hit = 95;
-		damage = 8;
-		crit = 35;
-		weight = 9;
+		hit = 90;
+		damage = 10;
+		crit = 50;
+		weight = 13;
 
 		type = WeaponType.DAGGER;
 

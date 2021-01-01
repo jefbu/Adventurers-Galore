@@ -16,7 +16,7 @@ public class Machete extends Weapon {
 		
 		name = "Machete";
 		hit = 85;
-		damage = 6;
+		damage = 7;
 		crit = 30;
 		weight = 8;
 

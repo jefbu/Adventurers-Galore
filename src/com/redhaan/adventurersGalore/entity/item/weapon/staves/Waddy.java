@@ -16,9 +16,9 @@ public class Waddy extends Weapon {
 		
 		name = "Waddy";
 		hit = 110;
-		damage = 6;
+		damage = 8;
 		crit = 10;
-		weight = 8;
+		weight = 11;
 
 		type = WeaponType.STAFF;
 

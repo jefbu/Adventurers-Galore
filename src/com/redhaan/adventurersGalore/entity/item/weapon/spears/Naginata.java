@@ -16,17 +16,17 @@ public class Naginata extends Weapon {
 		
 
 		name = "Naginata";
-		hit = 65;
-		damage = 6;
-		crit = 25;
-		weight = 4;
+		hit = 75;
+		damage = 10;
+		crit = 10;
+		weight = 16;
 		minRange = 1;
 		maxRange = 2;
 		
 		type = WeaponType.SPEAR;
 		
-		xTile = 0;
-		yTile = 3;
+		xTile = 5;
+		yTile = 4;
 		
 		ID = ItemID.Weapon;
 		

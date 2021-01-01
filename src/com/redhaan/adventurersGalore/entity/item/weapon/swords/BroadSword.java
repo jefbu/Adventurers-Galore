@@ -16,7 +16,7 @@ public class BroadSword extends Weapon implements Serializable {
 	public BroadSword() {
 		
 		name = "Broadsword";
-		hit = 60;
+		hit = 65;
 		damage = 8;
 		crit = 10;
 		weight = 11;

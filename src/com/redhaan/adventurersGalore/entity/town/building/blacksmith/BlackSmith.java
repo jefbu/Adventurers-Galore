@@ -140,6 +140,16 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 					equipTypeHover = 4;
 					if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { equipTypeOption = 3; }
 				} 
+				else if(gameContainer.getInput().getMouseX() > 250 && gameContainer.getInput().getMouseX() < 300 &&
+						gameContainer.getInput().getMouseY() > 130 && gameContainer.getInput().getMouseY() < 150) {
+					equipTypeHover = 5;
+					if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { equipTypeOption = 4; }
+				} 
+				else if(gameContainer.getInput().getMouseX() > 305 && gameContainer.getInput().getMouseX() < 355 &&
+						gameContainer.getInput().getMouseY() > 130 && gameContainer.getInput().getMouseY() < 150) {
+					equipTypeHover = 6;
+					if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { equipTypeOption = 5; }
+				} 
 				
 				else { equipTypeHover = 0; }
 				
@@ -209,7 +219,17 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 				if (equipTypeOption == 3) { 
 					renderer.drawRectOpaque(195, 130, 50, 20, activeColour); }
 				else { renderer.drawRectOpaque(195, 130, 50, 20, passiveColour); }
-					renderer.drawText("Armour", 200, 135, 0xff685245);
+					renderer.drawText("Spears", 200, 135, 0xff685245);
+					
+				if (equipTypeOption == 4) { 
+					renderer.drawRectOpaque(250, 130, 50, 20, activeColour); }
+				else { renderer.drawRectOpaque(250, 130, 50, 20, passiveColour); }
+					renderer.drawText("Bows", 255, 135, 0xff685245);
+						
+				if (equipTypeOption == 5) { 
+					renderer.drawRectOpaque(305, 130, 50, 20, activeColour); }
+				else { renderer.drawRectOpaque(305, 130, 50, 20, passiveColour); }
+					renderer.drawText("Armour", 310, 135, 0xff685245);
 					
 				renderer.drawRectOpaque(25, 150, 580, 265, activeColour);
 				
@@ -233,6 +253,8 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 				case 2: renderer.drawRect(85, 130, 50, 20, 0xff685245); break;
 				case 3: renderer.drawRect(140, 130, 50, 20, 0xff685245); break;
 				case 4: renderer.drawRect(195, 130, 50, 20, 0xff685245); break;
+				case 5: renderer.drawRect(250, 130, 50, 20, 0xff685245); break;
+				case 6: renderer.drawRect(305, 130, 50, 20, 0xff685245); break;
 				}
 				
 				switch(substate) {	

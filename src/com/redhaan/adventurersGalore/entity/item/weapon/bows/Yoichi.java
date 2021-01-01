@@ -15,16 +15,16 @@ public class Yoichi extends Weapon {
 	public Yoichi() {
 		
 		name = "Yoichi Bow";
-		hit = 70;
-		damage = 10;
-		crit = 30;
-		weight = 4;
-		minRange = 1;
-		maxRange = 2;
+		hit = 75;
+		damage = 11;
+		crit = 25;
+		weight = 16;
+		minRange = 2;
+		maxRange = 3;
 		
 		type = WeaponType.BOW;
 		
-		xTile = 0;
+		xTile = 5;
 		yTile = 3;
 		
 		ID = ItemID.Weapon;

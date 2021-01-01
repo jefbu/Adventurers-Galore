@@ -57,11 +57,11 @@ public class Enemy extends Monster {
 						idleTimer = 0;
 					}
 					
-					if(attackAnimation) {
+					if(actingAnimation) {
 						attackTimer +=(deltaTime * attackAnimationSpeed);
 						if(attackTimer > 4) {
 							attackTimer = 0;
-							attackAnimation = false;
+							actingAnimation = false;
 							turnPassed = true;
 						}
 					}

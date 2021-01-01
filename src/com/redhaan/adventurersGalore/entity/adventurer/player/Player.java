@@ -7,7 +7,7 @@ import com.redhaan.adventurersGalore.entity.adventurer.Job;
 import com.redhaan.adventurersGalore.entity.adventurer.personality.Personality;
 import com.redhaan.adventurersGalore.entity.adventurer.personality.PersonalityTrait;
 import com.redhaan.adventurersGalore.entity.item.armour.ReinforcedLeather;
-import com.redhaan.adventurersGalore.entity.item.weapon.bows.ShortBow;
+import com.redhaan.adventurersGalore.entity.item.weapon.spears.Lance;
 import com.redhaan.adventurersGalore.entity.town.Town;
 
 public class Player extends Adventurer {
@@ -17,14 +17,14 @@ public class Player extends Adventurer {
 	public Player() {
 		
 		super();
-		job = Job.archer;
+		job = Job.knight;
 		icon = job.icon;
 		inParty = true;
 		currentStats.move = 8;
 		maxStats.move = 13;
 		currentStats.PHY = 15;
 		maxStats.PHY = 15;
-		weapon = new ShortBow();
+		weapon = new Lance();
 		armour = new ReinforcedLeather();
 		calculateSecondaryStats();
 		name = "Moltke";

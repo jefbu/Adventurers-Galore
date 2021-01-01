@@ -46,7 +46,7 @@ public class WorldMap extends GameObject {
 		subState = SubState.GlobalMap;
 		levelDrawer = new LevelDrawer();
 		globalMap = new Image("/worldMap/WorldMap.png");
-		detailMap = new Image("/worldMap/DetailMap.png");
+		detailMap = new Image("/worldMap/DetailMap2.png");
 
 		random = new Random();
 		birds = new ImageTile("/worldMap/birds.png", GameManager.GAMETILESIZE * 2, GameManager.GAMETILESIZE * 2);

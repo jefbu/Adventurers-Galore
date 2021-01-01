@@ -35,7 +35,7 @@ public class CombatMovesBar extends GameObject {
 		xStartPoint = 240;
 		yStartPoint = 5;
 		skillNumber = 0;
-		selectedNumber = 1;
+		selectedNumber = 0;
 		counter = 0;
 		this.adventurer = adventurer;
 		
@@ -46,13 +46,6 @@ public class CombatMovesBar extends GameObject {
 
 	@Override
 	public void update(GameContainer gameContainer, float deltaTime) {
-		
-		
-		if (deltaTime * counter * 5 < 1) { counter++; }
-		else { animationNumber++; counter = 0; }
-		if (animationNumber > 3) { animationNumber = 1; }
-
-		
 		if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD1)) { selectedNumber = 1; }
 		else if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD2)) { selectedNumber = 2; }
 		else if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD3)) { selectedNumber = 3; }
@@ -93,6 +86,10 @@ public class CombatMovesBar extends GameObject {
 
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
+		if (counter < 20) { counter++; }
+		else { animationNumber++; counter = 0; }
+		if (animationNumber > 3) { animationNumber = 1; }
+		
 		
 		renderer.drawRect(xStartPoint, yStartPoint, skillBarSize, GameManager.GAMETILESIZE + 2, 0xff000000);
 		
@@ -108,6 +105,14 @@ public class CombatMovesBar extends GameObject {
 		}
 		
 		switch (selectedNumber) {
+		case 0:
+			renderer.drawImageTile(icons, xStartPoint + 1, yStartPoint + 1, 0, adventurer.combatMoves.get(0).row);
+			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, adventurer.combatMoves.get(1).row);
+			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, 0, adventurer.combatMoves.get(2).row);
+			if(adventurer.combatMoves.size() > 3) {
+				renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 3, yStartPoint + 1, 0, adventurer.combatMoves.get(3).row);
+			}
+			break;		
 		case 1:
 			renderer.drawImageTile(icons, xStartPoint + 1, yStartPoint + 1, animationNumber, adventurer.combatMoves.get(0).row);
 			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, adventurer.combatMoves.get(1).row);

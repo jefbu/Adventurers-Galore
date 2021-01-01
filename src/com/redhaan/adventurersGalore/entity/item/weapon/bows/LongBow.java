@@ -16,16 +16,16 @@ public class LongBow extends Weapon {
 		
 
 		name = "Longbow";
-		hit = 65;
-		damage = 9;
-		crit = 25;
-		weight = 4;
+		hit = 60;
+		damage = 8;
+		crit = 10;
+		weight = 15;
 		minRange = 2;
 		maxRange = 4;
 		
 		type = WeaponType.BOW;
 		
-		xTile = 0;
+		xTile = 4;
 		yTile = 3;
 		
 		ID = ItemID.Weapon;

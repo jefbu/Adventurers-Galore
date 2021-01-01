@@ -19,7 +19,7 @@ public class Excalibur extends Weapon implements Serializable {
 		name = "Excalibur";
 		hit = 75;
 		damage = 14;
-		crit = 10;
+		crit = 15;
 		weight = 20;
 
 		type = WeaponType.SWORD;

@@ -149,7 +149,6 @@ public class BanditsOnTheRoad extends TravelerEvent {
 		
 		if(optionC) {
 			optionC = false;
-			Combat.combatMap = CombatMapRoller.rollCombatMap(WorldMapTiles.GRASS);
 			WorldMap.subState = WorldMap.previousSubState;
 			
 			Combat.enemies.add(new Wolf());
@@ -159,6 +158,7 @@ public class BanditsOnTheRoad extends TravelerEvent {
 			Combat.highLevelPlan = HighLevelPlan.Attack;
 			Combat.combatPhase = CombatPhase.Setup;
 			GameManager.gameState = GameState.Combat;
+			
 		}
 	
 	}

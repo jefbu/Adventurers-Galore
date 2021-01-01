@@ -16,7 +16,7 @@ public class Bo extends Weapon {
 		
 		name = "Bo";
 		hit = 105;
-		damage = 5;
+		damage = 6;
 		crit = 5;
 		weight = 8;
 

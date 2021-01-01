@@ -18,14 +18,14 @@ public class HandBow extends Weapon {
 	name = "Hand Bow";
 	hit = 65;
 	damage = 6;
-	crit = 25;
-	weight = 4;
+	crit = 20;
+	weight = 7;
 	minRange = 1;
 	maxRange = 2;
 	
 	type = WeaponType.BOW;
 	
-	xTile = 0;
+	xTile = 2;
 	yTile = 3;
 	
 	ID = ItemID.Weapon;

@@ -12,6 +12,7 @@ public class Skills implements Serializable {
 	public Skill axe;
 	public Skill dagger;
 	public Skill staff;
+	public Skill spear;
 	public Skill bow;
 	
 	public Skill trapping;
@@ -41,6 +42,7 @@ public class Skills implements Serializable {
 		axe = new Skill("Axe", 0);
 		dagger = new Skill("Dagger", 0);
 		staff = new Skill("Staff", 0);
+		spear = new Skill("Spear", 0);
 		bow = new Skill("Bow", 0);
 		trapping = new Skill("Trapping", 0);
 		fishing = new Skill("Fishing", 0);

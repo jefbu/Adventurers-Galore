@@ -65,6 +65,7 @@ public class SkillChangeScreen extends GameObject {
 		else if (checkHovering(offX + 265, offX + 390, offY + 165, offY + 185, 127, gameContainer)) { hover = true; }
 		else if (checkHovering(offX + 5, offX + 130, offY + 190, offY + 210, 127, gameContainer)) { hover = true; }
 		else if (checkHovering(offX + 135, offX + 260, offY + 190, offY + 210, 127, gameContainer)) { hover = true; }
+		else if (checkHovering(offX + 265, offX + 390, offY + 190, offY + 210, 127, gameContainer)) { hover = true; }
 		else if (checkHovering(offX + 310, offX + 390, offY + 257, offY + 277, 82, gameContainer)) { hover = true; }
 		else { hover = false; }
 		
@@ -83,52 +84,55 @@ public class SkillChangeScreen extends GameObject {
 			else if(clickedOnSkill(gameContainer, offX + 5, offX + 130, offY + 65, offY + 85, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.staff)) {
 				changeSkill(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.staff); }
 			
-			else if(clickedOnSkill(gameContainer, offX + 135, offX + 260, offY + 65, offY + 85, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.bow)) {
+			else if(clickedOnSkill(gameContainer, offX + 135, offX + 260, offY + 65, offY + 85, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.spear)) {
+				changeSkill(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.spear); }
+			
+			else if(clickedOnSkill(gameContainer, offX + 265, offX + 390, offY + 65, offY + 85, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.bow)) {
 				changeSkill(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.bow); }
 			
-			else if(clickedOnSkill(gameContainer, offX + 265, offX + 390, offY + 65, offY + 85, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.trapping)) {
+			else if(clickedOnSkill(gameContainer, offX + 5, offX + 130, offY + 90, offY + 110, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.trapping)) {
 				changeSkill(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.trapping); }
 			
-			else if(clickedOnSkill(gameContainer, offX + 5, offX + 130, offY + 90, offY + 110, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.fishing)) {
+			else if(clickedOnSkill(gameContainer, offX + 135, offX + 260, offY + 90, offY + 110, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.fishing)) {
 				changeSkill(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.fishing); }
 			
-			else if(clickedOnSkill(gameContainer, offX + 135, offX + 260, offY + 90, offY + 110, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.foraging)) {
+			else if(clickedOnSkill(gameContainer, offX + 265, offX + 390, offY + 90, offY + 110, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.foraging)) {
 				changeSkill(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.foraging); }
 			
-			else if(clickedOnSkill(gameContainer, offX + 265, offX + 390, offY + 90, offY + 110, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.camping)) {
+			else if(clickedOnSkill(gameContainer, offX + 5, offX + 130, offY + 115, offY + 135, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.camping)) {
 				changeSkill(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.camping); }
 			
-			else if(clickedOnSkill(gameContainer, offX + 5, offX + 130, offY + 115, offY + 135, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.cooking)) {
+			else if(clickedOnSkill(gameContainer, offX + 135, offX + 260, offY + 115, offY + 135, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.cooking)) {
 				changeSkill(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.cooking); }
 			
-			else if(clickedOnSkill(gameContainer, offX + 135, offX + 260, offY + 115, offY + 135, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.lockpick)) {
+			else if(clickedOnSkill(gameContainer, offX + 265, offX + 390, offY + 115, offY + 135, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.lockpick)) {
 				changeSkill(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.lockpick); }
-			
-			else if(clickedOnSkill(gameContainer, offX + 265, offX + 390, offY + 115, offY + 135, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.pickpocket)) {
-				changeSkill(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.pickpocket); }
 
-			else if(clickedOnSkill(gameContainer, offX + 5, offX + 130, offY + 140, offY + 160, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.stealth)) {
+			else if(clickedOnSkill(gameContainer, offX + 5, offX + 130, offY + 140, offY + 160, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.pickpocket)) {
+				changeSkill(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.pickpocket); }
+			
+			else if(clickedOnSkill(gameContainer, offX + 135, offX + 260, offY + 140, offY + 160, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.stealth)) {
 				changeSkill(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.stealth); }
 			
-			else if(clickedOnSkill(gameContainer, offX + 135, offX + 260, offY + 140, offY + 160, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.entertaining)) {
+			else if(clickedOnSkill(gameContainer, offX + 265, offX + 390, offY + 140, offY + 160, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.entertaining)) {
 				changeSkill(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.entertaining); }
 			
-			else if(clickedOnSkill(gameContainer, offX + 265, offX + 390, offY + 140, offY + 160, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.haggling)) {
+			else if(clickedOnSkill(gameContainer, offX + 5, offX + 130, offY + 165, offY + 185, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.haggling)) {
 				changeSkill(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.haggling); }
 			
-			else if(clickedOnSkill(gameContainer, offX + 5, offX + 130, offY + 165, offY + 185, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.decorum)) {
+			else if(clickedOnSkill(gameContainer, offX + 135, offX + 260, offY + 165, offY + 185, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.decorum)) {
 				changeSkill(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.decorum); }
 			
-			else if(clickedOnSkill(gameContainer, offX + 135, offX + 260, offY + 165, offY + 185, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.crafting)) {
+			else if(clickedOnSkill(gameContainer, offX + 265, offX + 390, offY + 165, offY + 185, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.crafting)) {
 				changeSkill(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.crafting); }
 			
-			else if(clickedOnSkill(gameContainer, offX + 265, offX + 390, offY + 165, offY + 185, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.alchemy)) {
+			else if(clickedOnSkill(gameContainer, offX + 5, offX + 130, offY + 190, offY + 210, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.alchemy)) {
 				changeSkill(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.alchemy); }
 			
-			else if(clickedOnSkill(gameContainer, offX + 5, offX + 130, offY + 190, offY + 210, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.medicine)) {
+			else if(clickedOnSkill(gameContainer, offX + 135, offX + 260, offY + 190, offY + 210, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.medicine)) {
 				changeSkill(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.medicine); }
 			
-			else if(clickedOnSkill(gameContainer, offX + 135, offX + 260, offY + 190, offY + 210, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.weaponSmith)) {
+			else if(clickedOnSkill(gameContainer, offX + 265, offX + 390, offY + 190, offY + 210, GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.weaponSmith)) {
 				changeSkill(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.weaponSmith); }
 				
 			
@@ -157,22 +161,24 @@ public class SkillChangeScreen extends GameObject {
 		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.axe, offX + 135, offY + 40, renderer);
 		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.dagger, offX + 265, offY + 40, renderer);
 		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.staff, offX + 5, offY + 65, renderer);
-		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.bow, offX + 135, offY + 65, renderer);
-		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.trapping, offX + 265, offY + 65, renderer);
-		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.fishing, offX + 5, offY + 90, renderer);
-		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.foraging, offX + 135, offY + 90, renderer);
-		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.camping, offX + 265, offY + 90, renderer);
-		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.cooking, offX + 5, offY + 115, renderer);
-		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.lockpick, offX + 135, offY + 115, renderer);
-		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.pickpocket, offX + 265, offY + 115, renderer);
-		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.stealth, offX + 5, offY + 140, renderer);
-		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.entertaining, offX + 135, offY + 140, renderer);
-		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.haggling, offX + 265, offY + 140, renderer);
-		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.decorum, offX + 5, offY + 165, renderer);
-		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.crafting, offX + 135, offY + 165, renderer);
-		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.alchemy, offX + 265, offY + 165, renderer);
-		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.medicine, offX + 5, offY + 190, renderer);
-		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.weaponSmith, offX + 135, offY + 190, renderer);			
+		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.spear, offX + 135, offY + 65, renderer);
+		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.bow, offX + 265, offY + 65, renderer);
+		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.trapping, offX + 5, offY + 90, renderer);
+		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.fishing, offX + 135, offY + 90, renderer);
+		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.foraging, offX + 265, offY + 90, renderer);
+		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.camping, offX + 5, offY + 115, renderer);
+		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.cooking, offX + 135, offY + 115, renderer);
+		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.lockpick, offX + 265, offY + 115, renderer);
+		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.pickpocket, offX + 5, offY + 140, renderer);
+		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.stealth, offX + 135, offY + 140, renderer);
+		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.entertaining, offX + 265, offY + 140, renderer);
+		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.haggling, offX + 5, offY + 165, renderer);
+		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.decorum, offX + 135, offY + 165, renderer);
+		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.crafting, offX + 265, offY + 165, renderer);
+		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.alchemy, offX + 5, offY + 190, renderer);
+		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.medicine, offX + 135, offY + 190, renderer);			
+		drawSkillBox(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.weaponSmith, offX + 265, offY + 190, renderer);			
+
 			
 		if(hover) { renderer.drawRect(hoverX, hoverY, hoverWidth, 22, 0xff999999); }
 		
@@ -226,6 +232,9 @@ public class SkillChangeScreen extends GameObject {
 		}
 		if(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.staff.activeSkill) { 
 			if (order == numbersFound) { return GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.staff; } else { numbersFound++; }
+		}
+		if(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.spear.activeSkill) { 
+			if (order == numbersFound) { return GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.spear; } else { numbersFound++; }
 		}
 		if(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.bow.activeSkill) { 
 			if (order == numbersFound) { return GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.bow; } else { numbersFound++; }

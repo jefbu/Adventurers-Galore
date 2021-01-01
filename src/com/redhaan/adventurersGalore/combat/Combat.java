@@ -13,12 +13,11 @@ import com.redhaan.adventurersGalore.worldMap.LevelDrawer;
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 import gameEngine.ecclesiastes.audio.SoundClip;
-import gameEngine.ecclesiastes.gfx.Image;
 
 public class Combat extends GameObject {
 
 	private static final long serialVersionUID = 1L;
-	public static Image combatMap;
+	public static CombatMap combatMap;
 	public static ArrayList<Enemy> enemies;
 	
 	private LevelDrawer levelDrawer;
@@ -164,7 +163,7 @@ public class Combat extends GameObject {
 			switch(combatPhase) {
 			
 			case Combat:
-				levelDrawer.drawLevel(renderer, combatMap, 0, 0, true);
+				levelDrawer.drawLevel(renderer, combatMap.image, 0, 0, true);
 				
 				for(Adventurer adventurer: GameManager.adventurers.allAdventurers) {
 					if(adventurer.inParty) {
@@ -179,7 +178,7 @@ public class Combat extends GameObject {
 					enemy.render(gameContainer, renderer);
 					}
 				}
-				break;
+			break;
 				
 			case Conclusion: combatConclusion.render(gameContainer, renderer); break;
 			case Setup: break;			

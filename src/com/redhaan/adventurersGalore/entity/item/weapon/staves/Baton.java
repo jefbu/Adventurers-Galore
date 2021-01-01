@@ -17,9 +17,9 @@ public class Baton extends Weapon implements Serializable {
 		
 		name = "Baton";
 		hit = 95;
-		damage = 5;
+		damage = 7;
 		crit = 10;
-		weight = 7;
+		weight = 9;
 
 		type = WeaponType.STAFF;
 

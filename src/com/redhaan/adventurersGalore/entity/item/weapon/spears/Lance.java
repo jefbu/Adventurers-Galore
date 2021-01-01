@@ -17,17 +17,17 @@ public class Lance extends Weapon {
 		
 
 		name = "Lance";
-		hit = 65;
-		damage = 6;
-		crit = 25;
-		weight = 4;
+		hit = 75;
+		damage = 8;
+		crit = 10;
+		weight = 11;
 		minRange = 1;
 		maxRange = 2;
 		
 		type = WeaponType.SPEAR;
 		
-		xTile = 0;
-		yTile = 3;
+		xTile = 1;
+		yTile = 4;
 		
 		ID = ItemID.Weapon;
 		

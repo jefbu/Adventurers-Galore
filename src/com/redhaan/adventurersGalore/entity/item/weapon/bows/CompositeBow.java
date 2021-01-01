@@ -25,7 +25,7 @@ public class CompositeBow extends Weapon {
 		
 		type = WeaponType.BOW;
 		
-		xTile = 0;
+		xTile = 1;
 		yTile = 3;
 		
 		ID = ItemID.Weapon;

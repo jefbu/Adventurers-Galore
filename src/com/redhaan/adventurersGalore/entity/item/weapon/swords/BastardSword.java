@@ -17,7 +17,7 @@ public class BastardSword extends Weapon implements Serializable {
 		
 		name = "Bastard Sword";
 		hit = 65;
-		damage = 8;
+		damage = 9;
 		crit = 15;
 		weight = 15;
 

@@ -170,6 +170,9 @@ public class SkillWidget extends GameObject {
 			if(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.staff.activeSkill) { 
 				if (order == numbersFound) { return GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.staff; } else { numbersFound++; }
 			}
+			if(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.spear.activeSkill) { 
+				if (order == numbersFound) { return GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.spear; } else { numbersFound++; }
+			}
 			if(GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.bow.activeSkill) { 
 				if (order == numbersFound) { return GameManager.adventurers.allAdventurers.get(PartyScreen.member).skills.bow; } else { numbersFound++; }
 			}

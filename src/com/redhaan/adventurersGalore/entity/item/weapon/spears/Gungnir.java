@@ -16,17 +16,17 @@ public class Gungnir extends Weapon {
 		
 
 		name = "Gungnir";
-		hit = 80;
-		damage = 11;
-		crit = 25;
-		weight = 4;
+		hit = 75;
+		damage = 13;
+		crit = 10;
+		weight = 20;
 		minRange = 1;
 		maxRange = 2;
 		
 		type = WeaponType.SPEAR;
 		
-		xTile = 0;
-		yTile = 3;
+		xTile = 7;
+		yTile = 4;
 		
 		ID = ItemID.Weapon;
 		

@@ -15,7 +15,7 @@ public class Dirk extends Weapon {
 	public Dirk() {
 		
 		name = "Dirk";
-		hit = 75;
+		hit = 80;
 		damage = 6;
 		crit = 30;
 		weight = 6;

@@ -73,7 +73,6 @@ public class QuestUI extends GameObject {
 					for (Enemy enemy: enemies) {
 						Combat.enemies.add(enemy);
 					}
-					Combat.combatMap = CombatMapRoller.rollCombatMap(WorldMapTiles.GRASS);
 					Transition.nextGameState = GameState.Combat;
 					GameManager.gameState = GameState.Transition;	
 				} else {

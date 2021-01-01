@@ -16,17 +16,17 @@ public class GaeBolg extends Weapon {
 		
 
 		name = "Gae Bolg";
-		hit = 90;
-		damage = 10;
-		crit = 25;
-		weight = 4;
+		hit = 130;
+		damage = 11;
+		crit = 20;
+		weight = 18;
 		minRange = 1;
 		maxRange = 2;
 		
 		type = WeaponType.SPEAR;
 		
-		xTile = 0;
-		yTile = 3;
+		xTile = 6;
+		yTile = 4;
 		
 		ID = ItemID.Weapon;
 		

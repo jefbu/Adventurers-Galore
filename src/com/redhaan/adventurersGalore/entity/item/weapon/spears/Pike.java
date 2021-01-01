@@ -16,17 +16,17 @@ public class Pike extends Weapon {
 		
 
 		name = "Pike";
-		hit = 65;
-		damage = 6;
-		crit = 25;
-		weight = 4;
+		hit = 60;
+		damage = 7;
+		crit = 5;
+		weight = 12;
 		minRange = 1;
 		maxRange = 3;
 		
 		type = WeaponType.SPEAR;
 		
-		xTile = 0;
-		yTile = 3;
+		xTile = 2;
+		yTile = 4;
 		
 		ID = ItemID.Weapon;
 		

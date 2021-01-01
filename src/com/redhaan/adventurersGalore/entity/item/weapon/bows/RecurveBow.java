@@ -16,16 +16,16 @@ public class RecurveBow extends Weapon {
 		
 
 		name = "Recurve";
-		hit = 75;
-		damage = 7;
-		crit = 30;
-		weight = 4;
+		hit = 70;
+		damage = 8;
+		crit = 20;
+		weight = 10;
 		minRange = 2;
 		maxRange = 3;
 		
 		type = WeaponType.BOW;
 		
-		xTile = 0;
+		xTile = 3;
 		yTile = 3;
 		
 		ID = ItemID.Weapon;

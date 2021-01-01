@@ -16,7 +16,7 @@ public class Cudgel extends Weapon {
 		
 		name = "Cudgel";
 		hit = 110;
-		damage = 6;
+		damage = 7;
 		crit = 5;
 		weight = 8;
 		

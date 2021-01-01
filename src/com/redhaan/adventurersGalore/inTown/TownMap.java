@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.GameState;
+import com.redhaan.adventurersGalore.entity.town.NPC;
 import com.redhaan.adventurersGalore.entity.town.Town;
 import com.redhaan.adventurersGalore.entity.town.TownSubState;
 import com.redhaan.adventurersGalore.entity.town.building.Building;
@@ -37,9 +38,18 @@ public class TownMap extends GameObject {
 				for(Building building: activeTown.buildings) {
 					building.update(gameContainer, deltaTime);
 				}
+				
+				for(NPC npc: activeTown.npcs) {
+					npc.update(gameContainer, deltaTime);
+				}
 
 			if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON3)) {
 				GameManager.gameState = GameState.WorldMap;
+			}
+			
+			if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				System.out.println("x: " + gameContainer.getInput().getMouseX());
+				System.out.println("y: " + gameContainer.getInput().getMouseY());
 			}
 			
 		/*
@@ -115,7 +125,10 @@ public class TownMap extends GameObject {
 			
 			for (Building building: activeTown.buildings) {
 				building.render(gameContainer, renderer);
-			}				
+			}		
+			for (NPC npc: activeTown.npcs) {
+				npc.render(gameContainer, renderer);			
+			}
 
 			break;
 		

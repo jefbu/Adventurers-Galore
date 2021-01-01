@@ -16,17 +16,17 @@ public class Trident extends Weapon {
 		
 
 		name = "Trident";
-		hit = 65;
-		damage = 6;
-		crit = 25;
-		weight = 4;
+		hit = 75;
+		damage = 9;
+		crit = 10;
+		weight = 12;
 		minRange = 1;
 		maxRange = 2;
 		
 		type = WeaponType.SPEAR;
 		
-		xTile = 0;
-		yTile = 3;
+		xTile = 4;
+		yTile = 4;
 		
 		ID = ItemID.Weapon;
 		

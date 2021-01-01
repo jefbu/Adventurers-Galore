@@ -16,17 +16,17 @@ public class Spear extends Weapon {
 		
 
 		name = "Speaar";
-		hit = 65;
-		damage = 6;
-		crit = 25;
-		weight = 4;
+		hit = 75;
+		damage = 7;
+		crit = 0;
+		weight = 9;
 		minRange = 1;
 		maxRange = 2;
 		
 		type = WeaponType.SPEAR;
 		
 		xTile = 0;
-		yTile = 3;
+		yTile = 4;
 		
 		ID = ItemID.Weapon;
 		

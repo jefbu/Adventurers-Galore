@@ -1,9 +1,14 @@
 package com.redhaan.adventurersGalore.entity.adventurer;
 
+import com.redhaan.adventurersGalore.GameManager;
+
+import gameEngine.ecclesiastes.gfx.ImageTile;
+
 public class CombatMove {
 	
 	public String name;
 	public int row;
+	public static ImageTile icon = new ImageTile("/skillBarIcons.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
 	
 	
 	public CombatMove(String name, int row) {

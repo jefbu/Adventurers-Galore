@@ -16,17 +16,17 @@ public class Longinus extends Weapon {
 		
 
 		name = "Longinus";
-		hit = 100;
-		damage = 10;
-		crit = 25;
-		weight = 4;
+		hit = 80;
+		damage = 12;
+		crit = 30;
+		weight = 18;
 		minRange = 1;
 		maxRange = 2;
 		
 		type = WeaponType.SPEAR;
 		
-		xTile = 0;
-		yTile = 3;
+		xTile = 8;
+		yTile = 4;
 		
 		ID = ItemID.Weapon;
 		

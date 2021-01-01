@@ -16,13 +16,16 @@ public class DoubleLily extends Weapon {
 	public DoubleLily() {
 		
 		name = "Double Lily";
-		hit = 120;
-		damage = 7;
-		crit = 25;
-		weight = 7;
+		hit = 80;
+		damage = 9;
+		crit = 20;
+		weight = 14;
 		
 		xTile = 5;
 		yTile = 2;
+		
+		minRange = 1;
+		maxRange = 2;
 
 		type = WeaponType.STAFF;
 

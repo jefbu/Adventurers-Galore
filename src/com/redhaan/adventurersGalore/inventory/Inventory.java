@@ -37,6 +37,8 @@ public class Inventory {
 	public static int morningSunlight = 5;
 	public static int pentupAnger = 3;
 	public static int gloriousMoment = 2;
+	public static int elysianFlower = 3;
+	public static int wanderlust = 6;
 
 	public static ArrayList<Item> armours;
 	public static ArrayList<Item> weapons;

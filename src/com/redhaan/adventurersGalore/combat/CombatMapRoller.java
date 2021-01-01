@@ -1,16 +1,19 @@
 package com.redhaan.adventurersGalore.combat;
 
+import java.util.Random;
+
 import com.redhaan.adventurersGalore.worldMap.WorldMapTiles;
 
 import gameEngine.ecclesiastes.gfx.Image;
 
 public abstract class CombatMapRoller {
 	
-	public static Image rollCombatMap(WorldMapTiles terrainType) {
+	public static CombatMap rollCombatMap(WorldMapTiles terrainType) {
 		
 		Image image = null;
-		//Random random = new Random();
-		//int roll = random.nextInt(100) + 1;
+		int deploySituation = 0;
+		Random random = new Random();
+		int roll = random.nextInt(100) + 1;
 		
 		switch (terrainType) {
 		
@@ -22,6 +25,8 @@ public abstract class CombatMapRoller {
 			break;
 		case GRASS:
 			image = new Image("/combatMaps/combatMapGrass1.png");
+			if (roll > 50) { deploySituation = 1; }
+			else { deploySituation = 2; }
 			break;
 		case ICE:
 			image = new Image("/combatMaps/combatMapGrass1.png");
@@ -44,7 +49,7 @@ public abstract class CombatMapRoller {
 		
 		
 		
-		return image;
+		return new CombatMap(image, deploySituation);
 		
 	}
 

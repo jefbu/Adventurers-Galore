@@ -28,6 +28,7 @@ public class SkillFactory implements Serializable {
 		skills.axe.value = rollSkillValue(adventurer.job, SkillEnum.Axe, adventurer.tier);
 		skills.dagger.value = rollSkillValue(adventurer.job, SkillEnum.Dagger, adventurer.tier);
 		skills.staff.value = rollSkillValue(adventurer.job, SkillEnum.Staff, adventurer.tier);
+		skills.spear.value = rollSkillValue(adventurer.job, SkillEnum.Spear, adventurer.tier);
 		skills.bow.value = rollSkillValue(adventurer.job, SkillEnum.Bow, adventurer.tier);
 		skills.trapping.value = rollSkillValue(adventurer.job, SkillEnum.Trapping, adventurer.tier);
 		skills.fishing.value = rollSkillValue(adventurer.job, SkillEnum.Fishing, adventurer.tier);
@@ -99,9 +100,9 @@ public class SkillFactory implements Serializable {
 		case Hunter: if(skillName == SkillEnum.Bow) { value++; } break;
 		case Sniper: if(skillName == SkillEnum.Bow) { value++; } else if (skillName == SkillEnum.Camping) { value++; } break;
 
-		case Barbarian: if(skillName == SkillEnum.Axe) { value++; } break;
-		case Berserker: if(skillName == SkillEnum.Axe) { value++; } break;
-		case RedMist: if(skillName == SkillEnum.Axe) { value++; } else if (skillName == SkillEnum.Trapping) { value++; } break;
+		case Barbarian: if(skillName == SkillEnum.Spear) { value++; } break;
+		case Berserker: if(skillName == SkillEnum.Spear) { value++; } break;
+		case RedMist: if(skillName == SkillEnum.Spear) { value++; } else if (skillName == SkillEnum.Trapping) { value++; } break;
 			
 		default: break;
 		

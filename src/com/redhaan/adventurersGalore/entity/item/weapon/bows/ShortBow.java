@@ -16,10 +16,10 @@ public class ShortBow extends Weapon {
 	public ShortBow() {
 		
 		name = "Short Bow";
-		hit = 60;
+		hit = 65;
 		damage = 6;
-		crit = 25;
-		weight = 4;
+		crit = 20;
+		weight = 7;
 		minRange = 2;
 		maxRange = 2;
 		

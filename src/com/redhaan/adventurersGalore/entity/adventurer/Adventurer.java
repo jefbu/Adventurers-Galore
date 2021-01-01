@@ -41,7 +41,7 @@ public class Adventurer extends Monster {
 	public boolean selected;
 	public boolean hasMoved;
 	public boolean hasActed;
-	ArrayList<Enemy> enemiesInRange;
+	ArrayList<Monster> targetsInRange;
 	// public PlayerTurnLeftClickSituation leftClickSituation;
 	public int battlesPassed;
 
@@ -56,6 +56,10 @@ public class Adventurer extends Monster {
 	public Titbit titbit;
 
 	public ArrayList<CombatMove> combatMoves;
+	private int combatAnimationTypeNumber;
+	
+	Monster opponent;
+	Monster selectedAlly;
 
 	public Adventurer() {
 
@@ -73,9 +77,10 @@ public class Adventurer extends Monster {
 		personality = new Personality();
 		titbit = new Titbit();
 		skills = new Skills();
-		enemiesInRange = new ArrayList<Enemy>();
+		targetsInRange = new ArrayList<Monster>();
 		combatMoves = new ArrayList<CombatMove>();
 		combatMovesBar = new CombatMovesBar(this);
+		combatAnimationTypeNumber = 1;
 
 	}
 
@@ -86,30 +91,32 @@ public class Adventurer extends Monster {
 
 		case Combat:
 
-			if (attackAnimation) {
-				attackTimer += (deltaTime * attackAnimationSpeed);
-				if (attackTimer > 4) {
-					attackTimer = 0;
-					attackAnimation = false;
-					selected = false;
-					hasMoved = true;
-					hasActed = true;
-				}
-			}
-
 			switch (Combat.combatState) {
-
+			
 			case EnemyTurn:
-				break;
-
+				break;				
 			case PlayerTurn:
 
+				if (actingAnimation) {
+					attackTimer += (deltaTime * attackAnimationSpeed);
+					if (attackTimer > 4) {
+						attackTimer = 0;
+						actingAnimation = false;
+						selected = false;
+						hasMoved = true;
+						hasActed = true;
+						combatAnimationTypeNumber = 1;
+						CombatMovesBar.selectedNumber = 0;
+						idleTimer = 0;
+					}
+				}
+				
 				combatSituation = decidePlayerCombatSituation();
-
+				
 				switch (combatSituation) {
-
+			
 				case notSelected_turnAvailable:
-
+										
 					idleTimer += (deltaTime * idleAnimationSpeed);
 					if (idleTimer > 4) {
 						idleTimer = 0;
@@ -124,112 +131,157 @@ public class Adventurer extends Monster {
 
 					break;
 
-				case selected_notMoved_notActed:
-
+				case selected_notMoved_noCombatMoveChosen_notActed:
+					
 					idleTimer += (deltaTime * idleAnimationSpeed);
 					if (idleTimer > 4) {
 						idleTimer = 0;
 					}
 
-					combatMovesBar.update(gameContainer, deltaTime);
 					moveRange = MoveRangeFiller.fillMoveRange(getCombatX(), getCombatY(), currentStats.move);
 
-					if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+					if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { 
+						
+						if (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE == combatX
+								&& gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == combatY) {
+							hasMoved = true;
+						}
 
-						// 'FIGHT' or 'AIM' or 'BACKSTAB' COMBATMOVE ACTIVATED
-						if (combatMoves.get(CombatMovesBar.selectedNumber - 1).name.equals("Fight")
-								|| combatMoves.get(CombatMovesBar.selectedNumber - 1).name.equals("Aim!")
-								|| combatMoves.get(CombatMovesBar.selectedNumber - 1).name.contentEquals("Back Stab")) {
+						else {
+							boolean inMoveRange = false;
+							for (int i = 0; i < moveRange.size(); i++) {
+								if (moveRange.get(i)[0] == gameContainer.getInput().getMouseX()
+										/ GameManager.GAMETILESIZE
+										&& moveRange.get(i)[1] == gameContainer.getInput().getMouseY()
+												/ GameManager.GAMETILESIZE) {
+									combatX = gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE;
+									combatY = gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE;
+									hasMoved = true;
+									inMoveRange = true;
+								}
+							}
 
-							if (combatMoves.get(CombatMovesBar.selectedNumber - 1).name.equals("Aim!")) { Attack.aimedAttack = true; }
-							else if (combatMoves.get(CombatMovesBar.selectedNumber - 1).name.equals("Back Stab")) { Attack.backstab = true; }
-
-							boolean keepGoing = true;
-
-							enemiesInRange = checkEnemiesInWeaponRange(combatX, combatY, weapon.minRange,
-									weapon.maxRange);
-							if (enemiesInRange.size() > 0) {
-
-								Enemy enemy = checkSelectedEnemy(enemiesInRange,
+							if (!inMoveRange) { 
+								selected = false;
+							}
+						}
+						
+					}
+					
+					break;
+				
+				case selected_moved_noCombatMoveChosen_notActed:
+					idleTimer += (deltaTime * idleAnimationSpeed);
+					if (idleTimer > 4) {
+						idleTimer = 0;
+					}
+					combatMovesBar.update(gameContainer, deltaTime);
+					break;
+					
+										
+				case selected_moved_combatMoveChosen_notActed:
+										
+					idleTimer += (deltaTime * idleAnimationSpeed);
+					if (idleTimer > 4) {
+						idleTimer = 0; 
+					}
+					
+					// 'FIGHT' or 'AIM' or 'BACKSTAB' COMBATMOVE ACTIVATED					
+					if (combatMoves.get(CombatMovesBar.selectedNumber - 1).name == "Fight" 
+							|| combatMoves.get(CombatMovesBar.selectedNumber - 1).name == "Aim!"
+							|| combatMoves.get(CombatMovesBar.selectedNumber - 1).name == "Back Stab") {
+					
+						if (combatMoves.get(CombatMovesBar.selectedNumber - 1).name == "Aim!") { Attack.aimedAttack = true; }
+						else if (combatMoves.get(CombatMovesBar.selectedNumber - 1).name == "Back Stab") { Attack.backstab = true; }
+					
+						targetsInRange = checkEnemiesInWeaponRange(getCombatX(), getCombatY(), 
+								weapon.minRange, weapon.maxRange);
+					
+						if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+		
+							if (targetsInRange.size() > 0) {
+								opponent = checkSelectedEnemy(targetsInRange,
 										gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE,
 										gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE);
 
-								if (enemy != null) {
-									keepGoing = false;
-									attackAnimation = true;
-									Attack.attack(this, enemy);
-								}
-							}
-
-							if (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE == combatX
-									&& gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == combatY) {
-								selected = false;
-								hasMoved = true;
-								hasActed = true;
-							}
-
-							if (keepGoing) {
-								boolean inMoveRange = false;
-								for (int i = 0; i < moveRange.size(); i++) {
-									if (moveRange.get(i)[0] == gameContainer.getInput().getMouseX()
-											/ GameManager.GAMETILESIZE
-											&& moveRange.get(i)[1] == gameContainer.getInput().getMouseY()
-													/ GameManager.GAMETILESIZE) {
-										combatX = gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE;
-										combatY = gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE;
-										hasMoved = true;
-										inMoveRange = true;
-									}
-								}
-								if (!inMoveRange) {
+								if (opponent != null) {
+									combatAnimationTypeNumber = 1;
+									actingAnimation = true;
+									Attack.attack(this, opponent);
+								} else {
 									selected = false;
+									hasActed = true;
+									CombatMovesBar.selectedNumber = 0;
 								}
+							} else {
+								selected = false;
+								hasActed = true;
+								CombatMovesBar.selectedNumber = 0;
 							}
 						}
+					}
 
 						// 'MAGIC' COMBATMOVE ACTIVATED
 
 						// 'SHIELDS UP!' COMBATMOVE ACTIVATED
-						boolean goOn = true;
-						for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {
-							if (adventurer.inParty && !adventurer.isDead() && goOn) {
-								if (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE == adventurer.combatX
-										&& gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == adventurer.combatY) {
+					else if (combatMoves.get(CombatMovesBar.selectedNumber - 1).name == "Shields Up!") {
+							
+						targetsInRange = checkEligibleAdventurers(getCombatX(), getCombatY(), 5);
+						
+						if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+							
+							for (Monster adventurer: targetsInRange) {
+								if (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE  == adventurer.getCombatX() &&
+										gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == adventurer.getCombatY()) {
+									System.out.println("clicked on" + adventurer.name);
+									combatAnimationTypeNumber = 2;
+									actingAnimation = true;
+									selectedAlly = adventurer;
 									adventurer.currentStats.defence += 5;
-									selected = false;
-									hasMoved = true;
-									hasActed = true;
-									goOn = false;
 								}
 							}
+							
 						}
-						if (goOn) { selected = false; }
-						
+
+					}					
 						
 
 						// 'MEDITATE' COMBATMOVE ACTIVATED
-						if (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE == combatX
-								&& gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == combatY) {
-							currentStats.MAG += 5;
-							selected = false;
-							hasMoved = true;
-							hasActed = true;
-						} else { selected = false; }
-
+					else if (combatMoves.get(CombatMovesBar.selectedNumber - 1).name == "Meditate") {
+						
+						targetsInRange = new ArrayList<Monster>();
+						targetsInRange.add(this);
+						
+						if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+							if (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE == getCombatX() && gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == getCombatY()) {
+								currentStats.MAG += 5;
+								combatAnimationTypeNumber = 3;
+								actingAnimation = true;
+								selected = false;
+								//hasMoved = true;
+								hasActed = true;
+							}
+							else {
+								selected = false;
+								hasActed = true;
+							}							
+						}
+					} 
+						
 						// 'MOW DOWN!' COMBATMOVE ACTIVATED
-
+						
+						
+					else { 
+							selected = false; 
+							//hasMoved = true;
+							hasActed = true;
+							CombatMovesBar.selectedNumber = 0;
 					}
 
-					break;
 
-				case selected_moved_notActed:
 
-					idleTimer += (deltaTime * idleAnimationSpeed);
-					if (idleTimer > 4) {
-						idleTimer = 0;
-					}
 
-					combatMovesBar.update(gameContainer, deltaTime);
+					/*combatMovesBar.update(gameContainer, deltaTime);
 
 					enemiesInRange = checkEnemiesInWeaponRange(combatX, combatY, weapon.minRange, weapon.maxRange);
 					if (enemiesInRange.size() > 0) {
@@ -244,7 +296,7 @@ public class Adventurer extends Monster {
 								selected = false;
 								hasActed = true;
 							} else {
-								attackAnimation = true;
+								actingAnimation = true;
 								Attack.attack(this, enemy);
 							}
 						}
@@ -254,7 +306,7 @@ public class Adventurer extends Monster {
 					else {
 						hasActed = true;
 						selected = false;
-					}
+					}*/
 
 					break;
 
@@ -301,6 +353,7 @@ public class Adventurer extends Monster {
 		case Combat:
 
 			switch (Combat.combatState) {
+			
 			case EnemyTurn:
 
 				renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
@@ -308,26 +361,68 @@ public class Adventurer extends Monster {
 				break;
 
 			case PlayerTurn:
-
-				if (selected) {
-					if (!hasMoved) {
+				
+				if(!actingAnimation) {
+					
+					switch(combatSituation) {
+					
+					case notSelected_turnAvailable:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
+								(int) idleTimer + genderInt, 0);
+						break;
+						
+					case selected_notMoved_noCombatMoveChosen_notActed:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
+								(int) idleTimer + genderInt, 0);
 						MoveAreaDrawer.drawMoveArea(moveRange, renderer);
+						break;
+					
+					case selected_moved_noCombatMoveChosen_notActed:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
+								(int) idleTimer + genderInt, 0);
+						combatMovesBar.render(gameContainer, renderer);
+						break;
+						
+					case selected_moved_combatMoveChosen_notActed:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
+								(int) idleTimer + genderInt, 0);
+						combatMovesBar.render(gameContainer, renderer);
+						for (Monster monster: targetsInRange) {
+							renderer.drawRectOpaque(
+									monster.getCombatX() * GameManager.GAMETILESIZE, monster.getCombatY() * GameManager.GAMETILESIZE, GameManager.GAMETILESIZE, GameManager.GAMETILESIZE, 0x44ffffff);
+						}
+						break;
+						
+					case notSelected_turnFinished:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, 0 + genderInt, 0);
+						break;
+					
 					}
-					combatMovesBar.render(gameContainer, renderer);
-				}
-
-				if (!attackAnimation && !turnPassed) {
-					renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
-							(int) idleTimer + genderInt, 0);
-				} else if (attackAnimation && !turnPassed) {
-					renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
-							(int) attackTimer + genderInt, 1);
+					
 				} else {
-					renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
-							0 + genderInt, 0);
-				}
+					
+					switch(combatAnimationTypeNumber) {
+					
+					case 1:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
+								(int) attackTimer + genderInt, 1);						
+						break;
+					case 2:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
+								(int) attackTimer + genderInt, 1);	
+						renderer.drawImageTile(CombatMove.icon, selectedAlly.getCombatX() * GameManager.GAMETILESIZE, selectedAlly.getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 5, 2);
+						break;	
+					case 3:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
+								0 + genderInt, 1);	
+						renderer.drawImageTile(CombatMove.icon, getCombatX() * GameManager.GAMETILESIZE, getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 5, 3);
+						break;						
+						
+					}
+				
 
-				break;
+				}
+							
 			}
 
 			HealthBar.drawHealthBar(this, renderer);
@@ -359,9 +454,10 @@ public class Adventurer extends Monster {
 	private PlayerCombatSituation decidePlayerCombatSituation() {
 		if (selected) {
 			if (hasMoved) {
-				return PlayerCombatSituation.selected_moved_notActed;
+				if(CombatMovesBar.selectedNumber == 0) { return PlayerCombatSituation.selected_moved_noCombatMoveChosen_notActed; }
+				else { return PlayerCombatSituation.selected_moved_combatMoveChosen_notActed; }
 			} else {
-				return PlayerCombatSituation.selected_notMoved_notActed;
+				return PlayerCombatSituation.selected_notMoved_noCombatMoveChosen_notActed;
 			}
 		} else {
 			if (hasMoved) {
@@ -373,36 +469,25 @@ public class Adventurer extends Monster {
 
 	}
 
-	private ArrayList<Enemy> checkEnemiesInWeaponRange(int x, int y, int minRange, int maxRange) {
+	private ArrayList<Monster> checkEnemiesInWeaponRange(int x, int y, int minimumRange, int maximumRange) {
 
-		ArrayList<Enemy> enemiesInRange = new ArrayList<Enemy>();
+		ArrayList<Monster> enemiesInRange = new ArrayList<Monster>();
 		for (int i = 0; i < Combat.enemies.size(); i++) {
 
-			int xDistance = Math.abs(Combat.enemies.get(i).getCombatX()) - Math.abs(x);
-			int yDistance = Math.abs(Combat.enemies.get(i).getCombatY()) - Math.abs(y);
-			int totalDistance = Math.abs(xDistance) + Math.abs(yDistance);
-			if (totalDistance >= weapon.minRange && totalDistance <= weapon.maxRange) {
-				enemiesInRange.add(Combat.enemies.get(i));
+			if(!Combat.enemies.get(i).isDead()) {
+				int xDistance = Math.abs(Combat.enemies.get(i).getCombatX()) - Math.abs(x);
+				int yDistance = Math.abs(Combat.enemies.get(i).getCombatY()) - Math.abs(y);
+				int totalDistance = Math.abs(xDistance) + Math.abs(yDistance);
+				if (totalDistance >= minimumRange && totalDistance <= maximumRange) {
+					enemiesInRange.add(Combat.enemies.get(i));
+				}
 			}
-			/*
-			 * if (x - 1 == Combat.enemies.get(i).getCombatX() && y ==
-			 * Combat.enemies.get(i).getCombatY()) {
-			 * enemiesInRange.add(Combat.enemies.get(i)); } else if (x + 1 ==
-			 * Combat.enemies.get(i).getCombatX() && y ==
-			 * Combat.enemies.get(i).getCombatY()) {
-			 * enemiesInRange.add(Combat.enemies.get(i)); } else if (x ==
-			 * Combat.enemies.get(i).getCombatX() && y - 1 ==
-			 * Combat.enemies.get(i).getCombatY()) {
-			 * enemiesInRange.add(Combat.enemies.get(i)); } else if (x ==
-			 * Combat.enemies.get(i).getCombatX() && y + 1 ==
-			 * Combat.enemies.get(i).getCombatY()) {
-			 * enemiesInRange.add(Combat.enemies.get(i)); }
-			 */
+
 		}
 		return enemiesInRange;
 	}
 
-	private Enemy checkSelectedEnemy(ArrayList<Enemy> enemiesInRange, int x, int y) {
+	private Monster checkSelectedEnemy(ArrayList<Monster> enemiesInRange, int x, int y) {
 
 		for (int i = 0; i < enemiesInRange.size(); i++) {
 			if (x == enemiesInRange.get(i).getCombatX() && y == enemiesInRange.get(i).getCombatY()) {
@@ -411,6 +496,27 @@ public class Adventurer extends Monster {
 		}
 		return null;
 	}
+	
+	
+	private ArrayList<Monster> checkEligibleAdventurers(int x, int y, int range) {
+		
+		ArrayList<Monster> adventurersInRange = new ArrayList<Monster>();
+		
+		for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {
+			if (adventurer.inParty && !adventurer.isDead()) {
+				int xDistance = Math.abs(adventurer.getCombatX()) - Math.abs(x);
+				int yDistance = Math.abs(adventurer.getCombatY()) - Math.abs(y);
+				int totalDistance = Math.abs(xDistance) + Math.abs(yDistance);
+				if (totalDistance <= range) { adventurersInRange.add(adventurer); }
+			}
+		}
+		
+		return adventurersInRange;
+		
+	}
+	
+	
+	
 
 	public void levelUp() {
 		LevelUpRoller.levelUp(this);

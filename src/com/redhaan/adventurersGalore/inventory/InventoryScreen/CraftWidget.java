@@ -39,6 +39,8 @@ public class CraftWidget extends GameObject {
 	ItemContainer morningSunlight;
 	ItemContainer pentupAnger;
 	ItemContainer gloriousMoment;
+	ItemContainer elysianFlower;
+	ItemContainer wanderlust;
 	
 	protected boolean updated;
 
@@ -59,12 +61,12 @@ public class CraftWidget extends GameObject {
 		hide = new ItemContainer("hide", 20, 302, 1, 1);
 		
 		
-		evilSpirit = new ItemContainer("evil spirit", 260, 60, 9, 0);
-		violentSpirit = new ItemContainer("violent spirit", 260, 82, 9, 1);
-		spiritOfMischief = new ItemContainer("spirit of mischief", 260, 104, 9, 2);
-		vagrantSpirit = new ItemContainer("vagrant spirit", 260, 126, 9, 3);
-		nobleSpirit = new ItemContainer("noble spirit", 260, 148, 9, 4);
-		heartSpirit = new ItemContainer("heart sirit", 260, 170, 9, 5);
+		evilSpirit = new ItemContainer("evil spirit", 280, 60, 9, 0);
+		violentSpirit = new ItemContainer("violent spirit", 280, 82, 9, 1);
+		spiritOfMischief = new ItemContainer("spirit of mischief", 280, 104, 9, 2);
+		vagrantSpirit = new ItemContainer("vagrant spirit", 280, 126, 9, 3);
+		nobleSpirit = new ItemContainer("noble spirit", 280, 148, 9, 4);
+		heartSpirit = new ItemContainer("heart sirit", 280, 170, 9, 5);
 		
 		
 		stolenMoonlight = new ItemContainer("stolen moonlight", 460, 60, 8, 0);
@@ -76,6 +78,8 @@ public class CraftWidget extends GameObject {
 		morningSunlight = new ItemContainer("morning sunlight", 460, 192, 8, 6);
 		pentupAnger = new ItemContainer("pent-up anger", 460, 214, 8, 7);
 		gloriousMoment = new ItemContainer("glorious moment", 460, 236, 8, 8);
+		elysianFlower = new ItemContainer("Elysian flower", 460, 258, 8, 9);
+		wanderlust = new ItemContainer("Wanderlust", 460, 280, 7, 0);
 		
 		
 				
@@ -118,6 +122,8 @@ public class CraftWidget extends GameObject {
 			morningSunlight.quantity = Inventory.morningSunlight;
 			pentupAnger.quantity = Inventory.pentupAnger;
 			gloriousMoment.quantity = Inventory.gloriousMoment;
+			elysianFlower.quantity = Inventory.elysianFlower;
+			wanderlust.quantity = Inventory.wanderlust;
 					
 			updated = true;
 			
@@ -158,6 +164,8 @@ public class CraftWidget extends GameObject {
 		morningSunlight.render(gameContainer, renderer);
 		pentupAnger.render(gameContainer, renderer);
 		gloriousMoment.render(gameContainer, renderer);
+		elysianFlower.render(gameContainer, renderer);
+		wanderlust.render(gameContainer, renderer);
 		
 	}
 	

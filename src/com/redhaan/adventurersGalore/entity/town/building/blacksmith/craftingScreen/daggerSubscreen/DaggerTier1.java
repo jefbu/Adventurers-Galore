@@ -94,7 +94,7 @@ public class DaggerTier1 extends GameObject {
 			renderer.drawRectOpaque(230, 160, 70, 30, 0xff231911);
 			renderer.drawImageTile(fang.icon, 237, 167, fang.xTile, fang.yTile);
 			renderer.drawText("8", 260, 171, 0xff886622);
-			if(Inventory.claw >= 8) { renderer.drawText("(" + Inventory.fang + ")", 267, 171, 0xff447722); }
+			if(Inventory.fang >= 8) { renderer.drawText("(" + Inventory.fang + ")", 267, 171, 0xff447722); }
 			else { renderer.drawText("(" + Inventory.fang + ")", 267, 171, 0xff774422); }
 		
 		renderer.drawRectOpaque(30, 200, 570, 40, 0xff181205);

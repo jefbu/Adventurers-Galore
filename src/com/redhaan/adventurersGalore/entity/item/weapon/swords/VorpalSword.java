@@ -18,7 +18,7 @@ public class VorpalSword extends Weapon implements Serializable {
 		
 		name = "Vorpal Sword";
 		hit = 100;
-		damage = 12;
+		damage = 13;
 		crit = 20;
 		weight = 18;
 
