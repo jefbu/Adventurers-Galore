@@ -60,7 +60,7 @@ public class Routine {
 		
 		ArrayList<ScheduleStep> schedule = new ArrayList<ScheduleStep>();
 		
-		schedule.add(new ScheduleStep(npc.xHome, npc.yHome, 1500 + random.nextInt(1500)));
+		schedule.add(new ScheduleStep(npc.xHome, npc.yHome, 100 + random.nextInt(500)));
 		
 		boolean goOn = true;
 		

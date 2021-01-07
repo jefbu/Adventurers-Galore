@@ -47,10 +47,6 @@ public class TownMap extends GameObject {
 				GameManager.gameState = GameState.WorldMap;
 			}
 			
-			if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
-				System.out.println("x: " + gameContainer.getInput().getMouseX());
-				System.out.println("y: " + gameContainer.getInput().getMouseY());
-			}
 			
 		/*
 			if (gameContainer.getInput().getMouseX() > 258 && gameContainer.getInput().getMouseX() < 283 &&

@@ -265,12 +265,12 @@ public class ScheduleStep {
 		
 		switch(scheduleStepID) {
 		
-		case 1: waitTime = 450 + random.nextInt(600); break;
-		case 3: waitTime = 450 + random.nextInt(450); break;
-		case 5: waitTime = 300 + random.nextInt(450); break;
-		case 6: waitTime = 150 + random.nextInt(450); break;
-		case 7: waitTime = 300 + random.nextInt(300); break;
-		case 11: waitTime = 300 + random.nextInt(300); break;
+		case 1: waitTime = 600 + random.nextInt(750); break;
+		case 3: waitTime = 600 + random.nextInt(600); break;
+		case 5: waitTime = 450 + random.nextInt(600); break;
+		case 6: waitTime = 300 + random.nextInt(600); break;
+		case 7: waitTime = 450 + random.nextInt(450); break;
+		case 11: waitTime = 450 + random.nextInt(450); break;
 		default: waitTime = 0; break;
 		
 		}

@@ -133,7 +133,7 @@ public class Town extends GameObject {
 
 	}
 
-	public static Town kaghak = new Town("Kaghak", new int[] { 14 }, new int[] { 11 }, 5);
+	public static Town kaghak = new Town("Kaghak", new int[] { 14 }, new int[] { 11 }, 8);
 	public static Town apastan = new Town("Apastan", new int[] { 18 }, new int[] { 25 }, 1);
 	public static Town ydatopto = new Town("Ydatopto", new int[] { 8, 9, 8 }, new int[] { 54, 54, 55 }, 1);
 	public static Town omichli= new Town("Omichli", new int[] { 17 }, new int[] { 59 }, 1);
