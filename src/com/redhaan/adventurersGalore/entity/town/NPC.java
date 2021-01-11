@@ -29,7 +29,7 @@ public class NPC extends GameObject {
 	public String name;
 	private NameFactory nameFactory;
 	
-	private boolean dialogueActive;
+	protected boolean dialogueActive;
 	private NPCDialogue npcDialogue;
 	
 	protected int xLocation, yLocation;
@@ -37,7 +37,7 @@ public class NPC extends GameObject {
 	protected int facing;
 	protected boolean visible;
 	
-	private int familiarity;	
+	protected int familiarity;	
 	
 	private Routine routine;
 	
@@ -98,7 +98,6 @@ public class NPC extends GameObject {
 				if (gameContainer.getInput().getMouseX() >= xLocation && gameContainer.getInput().getMouseX() <= xLocation + NPCTILESIZE &&
 						gameContainer.getInput().getMouseY() >= yLocation && gameContainer.getInput().getMouseY() <= yLocation + NPCTILESIZE) {
 					dialogueActive = true;
-					familiarity++;
 				}
 			}
 			

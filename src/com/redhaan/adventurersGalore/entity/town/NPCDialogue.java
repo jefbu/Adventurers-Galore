@@ -1,7 +1,11 @@
 package com.redhaan.adventurersGalore.entity.town;
 
+import java.awt.event.MouseEvent;
+import java.util.Random;
+
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
+import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
@@ -15,6 +19,7 @@ public class NPCDialogue extends GameObject {
 	private boolean textFinished;
 	private int timer;
 	private int animationTimer;
+	private boolean hover;
 	
 	protected ConversationLibrary conversationLibrary;
 	
@@ -31,6 +36,7 @@ public class NPCDialogue extends GameObject {
 		textFinished = false;
 		timer = 0;
 		animationTimer = 0;
+		hover = false;
 		
 	}
 
@@ -56,8 +62,22 @@ public class NPCDialogue extends GameObject {
 				textFinished = true;
 			}
 
-		}		
+		}
 		
+		
+		if(gameContainer.getInput().getMouseX() > npc.xLocation - 137 && gameContainer.getInput().getMouseX() < npc.xLocation - 87 &&
+				gameContainer.getInput().getMouseY() > npc.yLocation - 6 && gameContainer.getInput().getMouseY() < npc.yLocation + 14) {
+			
+			hover = true;
+			
+			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+				if(charmed(npc) && npc.familiarity < 3) { npc.familiarity++; }
+				npc.dialogueActive = false;
+			}
+		
+		} else {
+			hover = false;
+		}
 	}
 
 	@Override
@@ -75,6 +95,11 @@ public class NPCDialogue extends GameObject {
 		renderer.drawImageTile(NPC.portrait, npc.xLocation - 180, npc.yLocation - 52, npc.portraitHead, 13 + animationTimer / 25);
 
 		renderer.drawRectOpaque(npc.xLocation - 139, npc.yLocation - 57, 330, 44, 0x99131333);	
+		
+		renderer.drawRectOpaque(npc.xLocation - 137, npc.yLocation - 6, 50, 20, 0xff558877);
+		renderer.drawText("Ok", npc.xLocation - 130, npc.yLocation, 0xff225540);
+		
+		if(hover) { renderer.drawRect(npc.xLocation - 136, npc.yLocation - 5, 48, 18, 0xff114430); }
 				
 		
 		if (stringToDraw.length() > 0) {
@@ -111,12 +136,36 @@ public class NPCDialogue extends GameObject {
 		}
 		
 	
+	}	
+
+	private boolean charmed(NPC npc) {
+		
+		Random random = new Random();
+		for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {
+			if (adventurer.inParty) {
+				if (adventurer.skills.decorum.activeSkill) {
+					
+					int roll = random.nextInt(100) + 1;
+					switch(adventurer.skills.decorum.value) {
+					case 0: if (roll > 95) { return true; } break;
+					case 1: if (roll > 85) { return true; } break;
+					case 2: if (roll > 75) { return true; } break;
+					case 3: if (roll > 65) { return true; } break;
+					case 4: if (roll > 55) { return true; } break;
+					case 5: if (roll > 40) { return true; } break;					
+					}
+				
+				}
+			}
+		}
+		
+		return false;
+		
 	}
 	
 	
-
 	
-
+	
 }
 
 
