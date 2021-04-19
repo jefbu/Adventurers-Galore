@@ -32,8 +32,8 @@ public class TitleScreen extends GameObject {
 		castleFlag2 = new CastleFlag(11, 5);
 		castleFlag3 = new CastleFlag(11, 2);
 		castleFlag4 = new CastleFlag(13, 8);
-		knight = new TitleAdventurer(5, 12);
-		knight2 = new TitleAdventurer(16, 13);
+		knight = new TitleAdventurer(11, 14);
+		knight2 = new TitleAdventurer(16, 9);
 		princess = new TitlePrincess(13, 3);
 		
 		titleMenu = new TitleMenu();

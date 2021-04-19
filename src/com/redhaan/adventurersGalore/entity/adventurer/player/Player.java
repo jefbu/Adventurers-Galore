@@ -20,10 +20,10 @@ public class Player extends Adventurer {
 		job = Job.knight;
 		icon = job.icon;
 		inParty = true;
-		currentStats.move = 8;
-		maxStats.move = 13;
-		currentStats.PHY = 15;
-		maxStats.PHY = 15;
+		currentStats.move = 18;
+		maxStats.move = 18;
+		currentStats.PHY = 35;
+		maxStats.PHY = 35;
 		weapon = new Lance();
 		armour = new ReinforcedLeather();
 		calculateSecondaryStats();

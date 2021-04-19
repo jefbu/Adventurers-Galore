@@ -3,6 +3,7 @@ package com.redhaan.adventurersGalore.entity;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.entity.adventurer.Affinities;
 import com.redhaan.adventurersGalore.entity.adventurer.Job;
 import com.redhaan.adventurersGalore.entity.adventurer.Race;
@@ -87,6 +88,8 @@ public class Monster extends NPC {
 
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
+		
+		renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, 0, 0);
 		
 	}
 	

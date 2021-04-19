@@ -6,39 +6,39 @@ import com.redhaan.adventurersGalore.entity.item.Item;
 
 public class Inventory {
 	
-	public static int antlers = 30;
+	public static int antlers = 0;
 	public static int beastBlood = 0;
-	public static int bone = 6;
-	public static int claw = 11;
-	public static int coral = 8;	
-	public static int fang = 19;
-	public static int gold = 8;
-	public static int hide = 41;
-	public static int iron = 11;
+	public static int bone = 0;
+	public static int claw = 0;
+	public static int coral = 0;	
+	public static int fang = 0;
+	public static int gold = 0;
+	public static int hide = 0;
+	public static int iron = 0;
 	public static int lesses = 0;
-	public static int oakwood = 16;
-	public static int pelt = 32;
-	public static int silver = 9;
-	public static int tusk = 4;
-	public static int wing = 3;
-	public static int evilSpirit = 5;
-	public static int violentSpirit = 2;
-	public static int spiritOfMischief = 3;
-	public static int vagrantSpirit = 3;
-	public static int nobleSpirit = 6;
-	public static int heartSpirit = 2;
-	public static int liquidInnocence = 4;
-	public static int stolenMoonlight = 2;
-	public static int rationalThought = 1;
-	public static int luckyClover = 3;
-	public static int reforgedPlough = 2;
-	public static int ivory = 11;
-	public static int springBreeze = 4;
-	public static int morningSunlight = 5;
-	public static int pentupAnger = 3;
-	public static int gloriousMoment = 2;
-	public static int elysianFlower = 3;
-	public static int wanderlust = 6;
+	public static int oakwood = 0;
+	public static int pelt = 0;
+	public static int silver = 0;
+	public static int tusk = 0;
+	public static int wing = 0;
+	public static int evilSpirit = 0;
+	public static int violentSpirit = 0;
+	public static int spiritOfMischief = 0;
+	public static int vagrantSpirit = 0;
+	public static int nobleSpirit = 0;
+	public static int heartSpirit = 0;
+	public static int liquidInnocence = 0;
+	public static int stolenMoonlight = 0;
+	public static int rationalThought = 0;
+	public static int luckyClover = 0;
+	public static int reforgedPlough = 0;
+	public static int ivory = 0;
+	public static int springBreeze = 0;
+	public static int morningSunlight = 0;
+	public static int pentupAnger = 0;
+	public static int gloriousMoment = 0;
+	public static int elysianFlower = 0;
+	public static int wanderlust = 0;
 
 	public static ArrayList<Item> armours;
 	public static ArrayList<Item> weapons;
@@ -74,17 +74,33 @@ public class Inventory {
 			case Bone: bone++; break;
 			case Claw: claw++; break;
 			case Coral: coral++; break;
+			case ElysianFlower: elysianFlower++; break;
+			case EvilSpirit: evilSpirit++; break;
 			case Fang: fang++; break;
+			case GloriousMoment: gloriousMoment++; break;
 			case Gold: gold++; break;
+			case HeartSpirit: heartSpirit++; break;
 			case Hide: hide++; break;
 			case Iron: iron++; break;
 			case Lesses: lesses++; break;
+			case LiquidInnocence: liquidInnocence++; break;
+			case LuckyClover: luckyClover++; break;
+			case MorningSunlight: morningSunlight++; break;
+			case NobleSpirit: nobleSpirit++; break;
 			case OakWood: oakwood++; break;
 			case Pelt: pelt++; break; 
+			case PentUpAnger: pentupAnger++; break;
+			case RationalThought: rationalThought++; break;
 			case Silver: silver++; break;
+			case SpiritOfMischief: spiritOfMischief++; break;
+			case SpringBreeze: springBreeze++; break;
+			case StolenMoonlight: stolenMoonlight++; break;
 			case Tusk: tusk++; break;
-
-			default: System.out.println("error adding stuff to the loot");break;
+			case VagrantSpirit: vagrantSpirit++; break;
+			case ViolentSpirit: violentSpirit++; break;
+			case Wanderlust: wanderlust++; break;
+			
+			default: System.out.println("error adding stuff to the loot, " + loot.get(i).name);break;
 							
 			}
 						

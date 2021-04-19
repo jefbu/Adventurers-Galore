@@ -8,13 +8,17 @@ public class ConversationLibrary {
 	
 	public ArrayList<String> conversations;
 	private Random random;
+	protected int activeConversation;
+	public boolean[] importantLines;
 	
 	
 	public ConversationLibrary() {
 		
 		conversations = new ArrayList<String>();
+		importantLines = new boolean[7];
 		random = new Random();
 		createConversations();
+		activeConversation = 0;
 		
 	}
 	
@@ -23,7 +27,7 @@ public class ConversationLibrary {
 	
 	public String getActiveConversation() {
 		
-		return conversations.get(0); 
+		return conversations.get(activeConversation);
 		
 	}
 	
@@ -31,13 +35,31 @@ public class ConversationLibrary {
 	
 	private void createConversations() {
 		
-		conversations.add("this is the first conversation, extended to fit into more than one line of text, ideally it goes up to three lines to get a feeling of how many words this boils down to");
-		conversations.add("this is the second conversation");
+		int amount = 3 + random.nextInt(5);
+		for (int i = 0; i < amount; i++) {
+			
+			int roll = random.nextInt(10) + 1;
+			if (roll > 7) { createLine(true, i); }
+			else { createLine(false, i); }
+			
+		}		
+	}
+	
+	private void createLine(boolean important, int i) {
+		
+		if(important) {
+			importantLines[i] = true;
+			conversations.add("This is an important line." + " it is array item " + conversations.size());
+		}
+		else {
+			importantLines[i] = false;
+			conversations.add("This is not important" + " it is array item " + conversations.size());
+		}
 		
 	}
 	
 	
-	private String getEmptyConversation() {
+	public String getEmptyConversation() {
 		
 		int roll = random.nextInt(3);
 		

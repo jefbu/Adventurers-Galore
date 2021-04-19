@@ -15,7 +15,7 @@ public class Spear extends Weapon {
 	public Spear() {
 		
 
-		name = "Speaar";
+		name = "Spear";
 		hit = 75;
 		damage = 7;
 		crit = 0;

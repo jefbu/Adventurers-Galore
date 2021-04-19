@@ -7,6 +7,9 @@ import java.util.Random;
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.GameState;
+import com.redhaan.adventurersGalore.Toast;
+import com.redhaan.adventurersGalore.Transition;
+import com.redhaan.adventurersGalore.dungeon.DungeonConclusion;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.entity.adventurer.LevelUpRoller;
 import com.redhaan.adventurersGalore.entity.adventurer.Stats;
@@ -45,98 +48,106 @@ public class CombatConclusion extends GameObject {
 
 	@Override
 	public void update(GameContainer gameContainer, float deltaTime) {
-
-		if(!conclusionStarted) {
-			
-			Combat.soundClip.stop();
-			Combat.soundStarted = false;
-			
-			for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {			
-				if(adventurer.inParty) {
-					adventurer.battlesPassed++;
-					adventurer.actingAnimation = false;
-					adventurer.turnPassed = false;
-					adventurer.selected = false;
-					adventurer.hasMoved = false;
-					adventurer.hasActed = false;
-					adventurer.setDead(false);
-					//adventurer.leftClickSituation = PlayerTurnLeftClickSituation.NothingToDo;
-					adventurer.refreshStats();
-
-				if(playerVictorious) {
-					
-					victorySound.play();
-					
-					int currentLevel = adventurer.getLevel();
-					Stats currentStats = new Stats();
-					currentStats.HP = adventurer.maxStats.HP;
-					currentStats.MP = adventurer.maxStats.MP;
-					currentStats.PHY = adventurer.maxStats.PHY;
-					currentStats.AGI = adventurer.maxStats.AGI;
-					currentStats.MAG = adventurer.maxStats.MAG;
-					currentStats.DEX = adventurer.maxStats.DEX;
-					currentStats.INT = adventurer.maxStats.INT;
-					currentStats.PRC = adventurer.maxStats.PRC;
-					currentStats.move = adventurer.maxStats.move;
-
-					rollForLevelUp(adventurer);
-					if (adventurer.getLevel() > currentLevel) {
-						strings.add(adventurer.name + " has gained a level.");
-						if(adventurer.maxStats.HP > currentStats.HP) { strings.add("HP increased"); }
-						if(adventurer.maxStats.MP > currentStats.MP) { strings.add("MP increased"); }
-						if(adventurer.maxStats.PHY > currentStats.PHY) { strings.add("PHY increased"); }
-						if(adventurer.maxStats.AGI > currentStats.AGI) { strings.add("AGI increased"); }
-						if(adventurer.maxStats.MAG > currentStats.MAG) { strings.add("MAG increased"); } 
-						if(adventurer.maxStats.DEX > currentStats.DEX) { strings.add("DEX increased"); }
-						if(adventurer.maxStats.INT > currentStats.INT) { strings.add("INT increased"); }
-						if(adventurer.maxStats.PRC > currentStats.PRC) { strings.add("PRC increased"); }
-						if(adventurer.maxStats.move > currentStats.move) { strings.add("move increased"); }
-						strings.add("############");
+		
+		if(Combat.dungeon) { 
+			Transition.nextGameState = GameState.WorldMap;
+			GameManager.gameState = GameState.Transition;
+			Toast.activate(false, "Kicked from Dungeon!", 265, 20);
+		}
+		
+		else {
+				
+			if(!conclusionStarted) {
+				
+				Combat.soundClip.stop();
+				Combat.soundStarted = false;
+				
+				for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {			
+					if(adventurer.inParty) {
+						adventurer.battlesPassed++;
+						adventurer.actingAnimation = false;
+						adventurer.turnPassed = false;
+						adventurer.selected = false;
+						adventurer.hasMoved = false;
+						adventurer.hasActed = false;
+						adventurer.setDead(false);
+						//adventurer.leftClickSituation = PlayerTurnLeftClickSituation.NothingToDo;
+						adventurer.refreshStats();
+	
+					if(playerVictorious) {
+						
+						victorySound.play();
+						
+						int currentLevel = adventurer.getLevel();
+						Stats currentStats = new Stats();
+						currentStats.HP = adventurer.maxStats.HP;
+						currentStats.MP = adventurer.maxStats.MP;
+						currentStats.PHY = adventurer.maxStats.PHY;
+						currentStats.AGI = adventurer.maxStats.AGI;
+						currentStats.MAG = adventurer.maxStats.MAG;
+						currentStats.DEX = adventurer.maxStats.DEX;
+						currentStats.INT = adventurer.maxStats.INT;
+						currentStats.PRC = adventurer.maxStats.PRC;
+						currentStats.move = adventurer.maxStats.move;
+	
+						rollForLevelUp(adventurer);
+						if (adventurer.getLevel() > currentLevel) {
+							strings.add(adventurer.name + " has gained a level.");
+							if(adventurer.maxStats.HP > currentStats.HP) { strings.add("HP increased"); }
+							if(adventurer.maxStats.MP > currentStats.MP) { strings.add("MP increased"); }
+							if(adventurer.maxStats.PHY > currentStats.PHY) { strings.add("PHY increased"); }
+							if(adventurer.maxStats.AGI > currentStats.AGI) { strings.add("AGI increased"); }
+							if(adventurer.maxStats.MAG > currentStats.MAG) { strings.add("MAG increased"); } 
+							if(adventurer.maxStats.DEX > currentStats.DEX) { strings.add("DEX increased"); }
+							if(adventurer.maxStats.INT > currentStats.INT) { strings.add("INT increased"); }
+							if(adventurer.maxStats.PRC > currentStats.PRC) { strings.add("PRC increased"); }
+							if(adventurer.maxStats.move > currentStats.move) { strings.add("move increased"); }
+							strings.add("############");
+						}
 					}
-				}
-				
-				else { lossSound.play(); }
 					
-			}
-			
-		}
-			
-			if(playerVictorious) {
-				for (Enemy enemy: Combat.enemies) {
-					enemy.rollLoot(loot);
+					else { lossSound.play(); }
+						
 				}
 				
-				Inventory.update(loot);
 			}
-
+				
+				if(playerVictorious) {
+					for (Enemy enemy: Combat.enemies) {
+						enemy.rollLoot(loot);
+					}
+					
+					Inventory.update(loot);
+				}
+	
+				
+				CombatInitialiser.deployment = false;
+				Combat.enemies.clear();
+				Combat.activeEnemy = 0;
+				Combat.combatState = CombatState.PlayerTurn;
+	
+				conclusionStarted = true;
+				
+			}
 			
-			CombatInitialiser.deployment = false;
-			Combat.enemies.clear();
-			Combat.activeEnemy = 0;
-			Combat.combatState = CombatState.PlayerTurn;
-
-			conclusionStarted = true;
+			if (gameContainer.getInput().getMouseX() > 500 && gameContainer.getInput().getMouseX() < 551 && 
+					gameContainer.getInput().getMouseY() > 300 && gameContainer.getInput().getMouseY() < 321) {
+				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+					strings.clear();
+					loot.clear();
+					conclusionStarted = false;
+					GameManager.gameState = GameState.WorldMap;
+				}
+			}
 			
 		}
-		
-		if (gameContainer.getInput().getMouseX() > 500 && gameContainer.getInput().getMouseX() < 551 && 
-				gameContainer.getInput().getMouseY() > 300 && gameContainer.getInput().getMouseY() < 321) {
-			if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
-				strings.clear();
-				loot.clear();
-				conclusionStarted = false;
-				GameManager.gameState = GameState.WorldMap;
-			}
-		}
-
-		
 	}	
 	
 
 
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
-
+			
 		renderer.drawRectOpaque(10, 20, 600, 400, 0xff211814);
 		
 		renderer.drawRectOpaque(15, 25, 580, 120, 0xff141821);
@@ -153,12 +164,9 @@ public class CombatConclusion extends GameObject {
 			}
 		
 		}
-		
-		
-		
-		
+								
 		renderer.drawRectOpaque(530, 350, 50, 20, 0xff141824);
-	
+
 	}
 	
 	

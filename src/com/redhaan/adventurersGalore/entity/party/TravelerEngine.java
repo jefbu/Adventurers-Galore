@@ -51,7 +51,7 @@ public class TravelerEngine extends GameObject {
 				
 				if(timer * Calendar.calendarSpeed * deltaTime > 1) {
 					
-					TravelerEvent.rollTravelerEvent();
+					//TravelerEvent.rollTravelerEvent();
 					
 					int number = 0;
 					number = Party.getyTile() * 160 + Party.getxTile();

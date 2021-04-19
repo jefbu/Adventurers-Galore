@@ -56,7 +56,7 @@ public class LevelDrawer implements Serializable {
 				//FOREST
 				} else if (image.getPixels()[(y * image.getWidth()) + x] == 0xff33aa33) {
 					renderer.drawImageTile(tileSet, (x - offX) * GameManager.GAMETILESIZE,
-							(y - offY) * GameManager.GAMETILESIZE, xTile[(y - offY) * (y - offY) + (x - offX)], 2);
+							(y - offY) * GameManager.GAMETILESIZE, 0, 2);
 					if(combatMap) { MoveRangeFiller.passableTile[y * image.getWidth() + x] = true; }
 				} else if (image.getPixels()[(y * image.getWidth()) + x] == 0xff55aa33) {
 					renderer.drawImageTile(tileSet, (x - offX) * GameManager.GAMETILESIZE,
@@ -122,7 +122,7 @@ public class LevelDrawer implements Serializable {
 				//OCEAN
 				} else if (image.getPixels()[(y * image.getWidth()) + x] == 0xff0000ff) {
 					renderer.drawImageTile(tileSet, (x - offX) * GameManager.GAMETILESIZE,
-							(y - offY) * GameManager.GAMETILESIZE, xTile[(y - offY) * (y - offY) + (x - offX)], 14);
+							(y - offY) * GameManager.GAMETILESIZE, 0, 14);
 					if(combatMap) { MoveRangeFiller.passableTile[y * image.getWidth() + x] = false; }
 				} else if (image.getPixels()[(y * image.getWidth()) + x] == 0xff2200ff) {
 					renderer.drawImageTile(tileSet, (x - offX) * GameManager.GAMETILESIZE,
@@ -248,7 +248,7 @@ public class LevelDrawer implements Serializable {
 				//SHALLOWS
 				} else if (image.getPixels()[(y * image.getWidth()) + x] == 0xff8888ff) {
 					renderer.drawImageTile(tileSet, (x - offX) * GameManager.GAMETILESIZE,
-							(y - offY) * GameManager.GAMETILESIZE, xTile[(y - offY) * (y - offY) + (x - offX)], 8);
+							(y - offY) * GameManager.GAMETILESIZE, 0, 8);
 					if(combatMap) { MoveRangeFiller.passableTile[y * image.getWidth() + x] = true; }
 				} else if (image.getPixels()[(y * image.getWidth()) + x] == 0xffccccff) {
 					renderer.drawImageTile(tileSet, (x - offX) * GameManager.GAMETILESIZE,
@@ -314,7 +314,7 @@ public class LevelDrawer implements Serializable {
 				//SWAMP
 				} else if (image.getPixels()[(y * image.getWidth()) + x] == 0xff553377) {
 					renderer.drawImageTile(tileSet, (x - offX) * GameManager.GAMETILESIZE,
-							(y - offY) * GameManager.GAMETILESIZE, xTile[(y - offY) * (y - offY) + (x - offX)], 4);
+							(y - offY) * GameManager.GAMETILESIZE, 0, 4);
 					if(combatMap) { MoveRangeFiller.passableTile[y * image.getWidth() + x] = true; }
 				} else if (image.getPixels()[(y * image.getWidth()) + x] == 0xff663377) {
 					renderer.drawImageTile(tileSet, (x - offX) * GameManager.GAMETILESIZE,
@@ -380,7 +380,7 @@ public class LevelDrawer implements Serializable {
 				//ICE
 				} else if (image.getPixels()[(y * image.getWidth()) + x] == 0xffffffff) {
 					renderer.drawImageTile(tileSet, (x - offX) * GameManager.GAMETILESIZE,
-							(y - offY) * GameManager.GAMETILESIZE, xTile[(y - offY) * (y - offY) + (x - offX)], 6);
+							(y - offY) * GameManager.GAMETILESIZE, 0, 6);
 					if(combatMap) { MoveRangeFiller.passableTile[y * image.getWidth() + x] = true; }
 				} else if (image.getPixels()[(y * image.getWidth()) + x] == 0xffffeeee) {
 					renderer.drawImageTile(tileSet, (x - offX) * GameManager.GAMETILESIZE,
@@ -446,7 +446,7 @@ public class LevelDrawer implements Serializable {
 				//MOUNTAIN
 				} else if (image.getPixels()[(y * image.getWidth()) + x] == 0xff995500) {
 					renderer.drawImageTile(tileSet, (x - offX) * GameManager.GAMETILESIZE,
-							(y - offY) * GameManager.GAMETILESIZE, xTile[(y - offY) * (y - offY) + (x - offX)], 12);
+							(y - offY) * GameManager.GAMETILESIZE, 0, 12);
 					if(combatMap) { MoveRangeFiller.passableTile[y * image.getWidth() + x] = true; }
 				} else if (image.getPixels()[(y * image.getWidth()) + x] == 0xff994400) {
 					renderer.drawImageTile(tileSet, (x - offX) * GameManager.GAMETILESIZE,
@@ -512,7 +512,7 @@ public class LevelDrawer implements Serializable {
 				//DESERT
 				} else if (image.getPixels()[(y * image.getWidth()) + x] == 0xffff0000) {
 					renderer.drawImageTile(tileSet, (x - offX) * GameManager.GAMETILESIZE,
-							(y - offY) * GameManager.GAMETILESIZE, xTile[(y - offY) * (y - offY) + (x - offX)], 10);
+							(y - offY) * GameManager.GAMETILESIZE, 0, 10);
 					if(combatMap) { MoveRangeFiller.passableTile[y * image.getWidth() + x] = true; }
 				} else if (image.getPixels()[(y * image.getWidth()) + x] == 0xffff2200) {
 					renderer.drawImageTile(tileSet, (x - offX) * GameManager.GAMETILESIZE,
@@ -578,10 +578,16 @@ public class LevelDrawer implements Serializable {
 				//WALL
 				} else if (image.getPixels()[(y * image.getWidth()) + x] == 0xff505050) {
 						renderer.drawImageTile(tileSet, (x - offX) * GameManager.GAMETILESIZE,
-							(y - offY) * GameManager.GAMETILESIZE, 1, 7);
+							(y - offY) * GameManager.GAMETILESIZE, 0, 17);
 					if (combatMap) { MoveRangeFiller.passableTile[y * image.getWidth() + x] = false; }
-				}
-					
+				
+				//DUNGEON
+				} else if (image.getPixels()[(y * image.getWidth()) + x] == 0xff403020) {						
+					renderer.drawImageTile(tileSet, (x - offX) * GameManager.GAMETILESIZE,
+							(y - offY) * GameManager.GAMETILESIZE, xTile[(y - offY) * (y - offY) + (x - offX)], 18);
+					if(combatMap) { MoveRangeFiller.passableTile[y * image.getWidth() + x] = true; }
+				
+				}	
 				
 			}
 

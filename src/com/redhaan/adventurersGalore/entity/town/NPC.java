@@ -8,6 +8,7 @@ import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.adventurer.Race;
 import com.redhaan.adventurersGalore.entity.adventurer.adventurerFactory.NameFactory;
 import com.redhaan.adventurersGalore.entity.adventurer.adventurerFactory.RaceFactory;
+import com.redhaan.adventurersGalore.inTown.TownMap;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
@@ -82,66 +83,77 @@ public class NPC extends GameObject {
 	@Override
 	public void update(GameContainer gameContainer, float deltaTime) {
 		
+		switch(TownMap.subState) {
 		
-		if(dialogueActive) {
+		case General:
 			
-			npcDialogue.update(gameContainer, deltaTime);
+			if(dialogueActive) { npcDialogue.update(gameContainer, deltaTime); 	}
 			
-		}
-		
-		
-		else {
-			
-			routine.update(this);
-			
-			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
-				if (gameContainer.getInput().getMouseX() >= xLocation && gameContainer.getInput().getMouseX() <= xLocation + NPCTILESIZE &&
-						gameContainer.getInput().getMouseY() >= yLocation && gameContainer.getInput().getMouseY() <= yLocation + NPCTILESIZE) {
-					dialogueActive = true;
+			else {
+				
+				routine.update(this);
+				
+				if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+					if (gameContainer.getInput().getMouseX() >= xLocation && gameContainer.getInput().getMouseX() <= xLocation + NPCTILESIZE &&
+							gameContainer.getInput().getMouseY() >= yLocation && gameContainer.getInput().getMouseY() <= yLocation + NPCTILESIZE) {
+						dialogueActive = true;
+					}
 				}
+				
 			}
+			break;
 			
-		}
-
+		case Alchemist: break;
+		case Blacksmith: break;
+		case Inn: break;
+		default: break;		
 		
+		}		
 	}
 
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
 		
+		switch(TownMap.subState) {
 		
-		if (dialogueActive) {
+		case General: 
 			
-			npcDialogue.render(gameContainer, renderer);
-			
-		}
+			if (dialogueActive) { npcDialogue.render(gameContainer, renderer); }
 		
-		else {
+			else {
 			
-			if(visible) {
-				renderer.drawImageTile(icon, xLocation, yLocation, body, 5 + facing);
-				renderer.drawImageTile(icon, xLocation, yLocation, head, 13 + facing);
-				renderer.drawImageTile(icon, xLocation, yLocation, skin, 21 + facing);
-							
-				switch(familiarity) {
-				
-				case 0: break;
-				case 1:
-					renderer.drawRectOpaque(xLocation - 7, yLocation + 17, 30, 10, 0xff552121);
-					renderer.drawText(name, xLocation - 4, yLocation + 19, 0xffbb7777);
-					break;
-				case 2:
-					renderer.drawRectOpaque(xLocation - 7, yLocation + 17, 30, 10, 0xff212155);
-					renderer.drawText(name, xLocation - 4, yLocation + 19, 0xff7777bb);
-					break;
-				case 3:
-					renderer.drawRectOpaque(xLocation - 7, yLocation + 17, 30, 10, 0xff215521);
-					renderer.drawText(name, xLocation - 4, yLocation + 19, 0xff77bb77);
-					break;
-				default: break;
-				
+				if(visible) {
+					renderer.drawImageTile(icon, xLocation, yLocation, body, 5 + facing);
+					renderer.drawImageTile(icon, xLocation, yLocation, head, 13 + facing);
+					renderer.drawImageTile(icon, xLocation, yLocation, skin, 21 + facing);
+								
+					switch(familiarity) {
+					
+					case 0: break;
+					case 1:
+						renderer.drawRectOpaque(xLocation - 7, yLocation + 17, 30, 10, 0xff552121);
+						renderer.drawText(name, xLocation - 4, yLocation + 19, 0xffbb7777);
+						break;
+					case 2:
+						renderer.drawRectOpaque(xLocation - 7, yLocation + 17, 30, 10, 0xff212155);
+						renderer.drawText(name, xLocation - 4, yLocation + 19, 0xff7777bb);
+						break;
+					case 3:
+						renderer.drawRectOpaque(xLocation - 7, yLocation + 17, 30, 10, 0xff215521);
+						renderer.drawText(name, xLocation - 4, yLocation + 19, 0xff77bb77);
+						break;
+					default: break;
+					}
 				}
-			}
+				
+			}			
+			break;
+		
+		case Alchemist: break;
+		case Blacksmith: break;
+		case Inn: break;
+		default: break;	
+			
 		}
 		
 	}

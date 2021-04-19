@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.redhaan.adventurersGalore.calendar.Calendar;
 import com.redhaan.adventurersGalore.combat.Combat;
+import com.redhaan.adventurersGalore.dungeon.Dungeons;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurers;
 import com.redhaan.adventurersGalore.entity.adventurer.personality.Conversations;
 import com.redhaan.adventurersGalore.entity.party.Party;
@@ -47,6 +48,7 @@ public class GameManager extends AbstractGame {
 		gameObjects.add(new TitleScreen());
 		gameObjects.add(new Combat());
 		gameObjects.add(new Towns());
+		gameObjects.add(new Dungeons());
 		
 		adventurers = new Adventurers();
 		
@@ -60,8 +62,8 @@ public class GameManager extends AbstractGame {
 		gameObjects.add(new Conversations());
 		gameObjects.add(new PartyCohesionCheckerUI());
 		gameObjects.add(new SavePopup());		
-		gameObjects.add(new TravelerEngine());		
-		
+		gameObjects.add(new TravelerEngine());	
+		gameObjects.add(new Toast());
 
 		//gameObjects.add(adventurers);
 
@@ -105,6 +107,7 @@ public class GameManager extends AbstractGame {
 		gameContainer.setScale(scale);
 		int dpi = Toolkit.getDefaultToolkit().getScreenResolution();
 		
+		/*
 		System.out.println("Screen width: " + screenSize.getWidth());
 		System.out.println("Screen height: " + screenHeight);
 		System.out.println("Scale: " + scale);
@@ -113,6 +116,7 @@ public class GameManager extends AbstractGame {
 		System.out.println("Scaled width: " + GAMEWIDTH * scale);
 		System.out.println("Scaled height: " + GAMEHEIGHT * scale);
 		System.out.println("Dots per Inch (dpi): " + dpi);
+		*/
 		
 		gameContainer.start();
 		

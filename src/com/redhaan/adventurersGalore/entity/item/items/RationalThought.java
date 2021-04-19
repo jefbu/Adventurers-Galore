@@ -4,7 +4,6 @@ import com.redhaan.adventurersGalore.entity.item.ItemID;
 
 public class RationalThought extends CraftItems {
 	
-
 	private static final long serialVersionUID = 1L;
 
 	public RationalThought() {

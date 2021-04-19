@@ -22,7 +22,7 @@ public class Quests extends GameObject {
 
 		Random random = new Random();
 		allQuests = new ArrayList<Quest>();
-		for (int i = 0; i < 40; i++) {
+		for (int i = 0; i < 2; i++) {
 			int questRoll = random.nextInt(1);
 			Quest questToBeAdded = QuestTable.rollQuest(questRoll);
 			allQuests.add(questToBeAdded);

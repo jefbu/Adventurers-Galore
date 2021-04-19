@@ -5,6 +5,7 @@ import java.util.Random;
 
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
+import com.redhaan.adventurersGalore.dungeon.Dungeons;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -50,7 +51,15 @@ public class NPCDialogue extends GameObject {
 		if (!textFinished) {
 
 			if (stringToDrawFrom.length() == 0) {
-				stringToDrawFrom = conversationLibrary.getActiveConversation();
+				if(conversationLibrary.activeConversation >= conversationLibrary.conversations.size()) {
+					stringToDrawFrom = conversationLibrary.getEmptyConversation();
+				}
+				else { 
+					stringToDrawFrom = conversationLibrary.getActiveConversation();
+					if(conversationLibrary.importantLines[conversationLibrary.activeConversation]) {
+						Dungeons.allDungeons.get(0).discovered = true;
+					}
+					}
 			}
 
 			if (stringToDraw.length() < stringToDrawFrom.length()) {
@@ -58,9 +67,7 @@ public class NPCDialogue extends GameObject {
 				if (timer != stringToDrawFrom.length() - 1) {
 					timer++;
 				}
-			} else {
-				textFinished = true;
-			}
+			} else { textFinished = true; }
 
 		}
 		
@@ -73,6 +80,11 @@ public class NPCDialogue extends GameObject {
 			if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
 				if(charmed(npc) && npc.familiarity < 3) { npc.familiarity++; }
 				npc.dialogueActive = false;
+				stringToDraw = "";
+				stringToDrawFrom = "";
+				timer = 0;
+				conversationLibrary.activeConversation++;
+				textFinished = false;
 			}
 		
 		} else {

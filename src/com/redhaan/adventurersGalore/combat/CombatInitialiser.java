@@ -1,6 +1,7 @@
 package com.redhaan.adventurersGalore.combat;
 
 import com.redhaan.adventurersGalore.worldMap.WorldMap;
+import com.redhaan.adventurersGalore.worldMap.WorldMapTileInfo;
 import com.redhaan.adventurersGalore.worldMap.WorldMapTiles;
 
 public abstract class CombatInitialiser {
@@ -9,7 +10,8 @@ public abstract class CombatInitialiser {
 	
 	public static void CombatInitialise() {
 		
-		Combat.combatMap = CombatMapRoller.rollCombatMap(WorldMapTiles.GRASS);
+		WorldMapTiles terrain = WorldMapTileInfo.tiles[0];
+		if(!Combat.dungeon) { Combat.combatMap = CombatMapRoller.rollCombatMap(terrain); }
 		
 		
 		if(!deployment) {

@@ -4,7 +4,6 @@ import com.redhaan.adventurersGalore.entity.item.ItemID;
 
 public class Wanderlust extends CraftItems {
 	
-
 	private static final long serialVersionUID = 1L;
 
 	public Wanderlust() {
