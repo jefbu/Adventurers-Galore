@@ -11,6 +11,7 @@ public class FetchQuest extends Quest {
 
 	public FetchQuest() {
 		
+		super();
 		maxPartySize = 20;
 		questSteps.add(new GoGetMyTrinket(requester));
 		title = "Fetch";

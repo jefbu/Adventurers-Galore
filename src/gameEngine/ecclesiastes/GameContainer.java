@@ -12,8 +12,10 @@ public class GameContainer implements Runnable {
 	private final double UPDATE_CAP = 1.0 / 60.0;
 	private int width = 640; 
 	private int height = 480;
+	public static int fps = 0;
 	private float scale = 1;
 	private String title = "Ecclesiastes Engine v1.0";
+	
 	
 	public GameContainer(AbstractGame game) {
 		this.game = game;
@@ -45,7 +47,6 @@ public class GameContainer implements Runnable {
 		
 		double frameTime = 0;
 		int frames = 0;
-		int fps = 0;
 		
 		while (running) {
 			
@@ -79,6 +80,7 @@ public class GameContainer implements Runnable {
 				renderer.clear();
 				game.render(this, renderer);
 				renderer.drawText("FPS: " + fps, 0, 0, 0xff00DDBB);
+				
 				window.update();
 				frames++;
 				

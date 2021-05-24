@@ -64,6 +64,7 @@ public class GameManager extends AbstractGame {
 		gameObjects.add(new SavePopup());		
 		gameObjects.add(new TravelerEngine());	
 		gameObjects.add(new Toast());
+		gameObjects.add(new SpellAnimation());
 
 		//gameObjects.add(adventurers);
 

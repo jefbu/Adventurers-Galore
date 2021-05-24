@@ -46,6 +46,16 @@ public class Inventory {
 	public static boolean weaponChange;
 	public static boolean armourChange;
 	
+	public static int whitePotion = 7;
+	public static int goldPotion = 0;
+	public static int tealPotion = 3;
+	public static int redPotion = 0;
+	public static int greenPotion = 0;
+	public static int bluePotion = 0;
+	public static int brownPotion = 0;
+	public static int purplePotion = 0;
+	public static int blackPotion = 0;
+	
 	public Inventory() {
 		
 		armours = new ArrayList<Item>();

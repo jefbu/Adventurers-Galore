@@ -14,7 +14,7 @@ public class Quest extends GameObject {
 	private static final long serialVersionUID = 1L;
 	public ArrayList<QuestStep> questSteps;
 	public Adventurer requester;
-	private AdventurerFactory adventurerFactory;
+	private static AdventurerFactory adventurerFactory = new AdventurerFactory();
 	public int questStepNumber;
 	public int maxPartySize;
 	public ArrayList<Adventurer> questParty;
@@ -26,7 +26,6 @@ public class Quest extends GameObject {
 	public Quest() {
 		
 		questSteps = new ArrayList<QuestStep>();
-		adventurerFactory = new AdventurerFactory();
 		requester = adventurerFactory.createTieredAdventurer(0);
 		if (requester.gender == "male") { requesterGenderXOffset = 0; requesterGenderYOffset = 0; }
 		else { requesterGenderXOffset = 4; requesterGenderYOffset = 4; }

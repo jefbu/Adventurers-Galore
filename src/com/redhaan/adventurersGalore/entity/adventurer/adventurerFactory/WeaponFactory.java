@@ -104,7 +104,7 @@ public class WeaponFactory implements Serializable {
 			break;	
 		
 		}
-		
+				
 		int rollType = random.nextInt(100) + 1;
 		WeaponType weaponType = WeaponType.DAGGER;
 		
@@ -223,9 +223,7 @@ public class WeaponFactory implements Serializable {
 		default: System.out.println("Error at Weapon Type Roll"); break;
 		
 		}
-		
-		
-		
+				
 		int rollWeapon = random.nextInt(100) + 1;
 		switch (weaponTier) {
 		
@@ -348,10 +346,9 @@ public class WeaponFactory implements Serializable {
 			System.out.println("Error at weapon roll");
 			weapon = new Excalibur();
 		}
-				
+		
 		return weapon;		
-		
-		
+				
 	}
 	
 

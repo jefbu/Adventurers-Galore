@@ -17,6 +17,7 @@ public class Quests extends GameObject {
 	public static ArrayList<Quest> allQuests;
 	private int day;
 	public static boolean playerInteractedWithQuestRecently;
+	private int questsToBeAdded;
 
 	public Quests() {
 
@@ -29,6 +30,7 @@ public class Quests extends GameObject {
 		}
 		QuestUI.quest = allQuests.get(0);
 		day = 0;
+		questsToBeAdded = 0;
 		
 		playerInteractedWithQuestRecently = false;
 
@@ -36,6 +38,12 @@ public class Quests extends GameObject {
 
 	@Override
 	public void update(GameContainer gameContainer, float deltaTime) {
+		
+		if(questsToBeAdded > 0 && GameContainer.fps > 58) {
+			Quest questToBeAdded = QuestTable.rollQuest(0);
+			allQuests.add(questToBeAdded);
+			questsToBeAdded--;			
+		}
 
 		switch (GameManager.gameState) {
 
@@ -50,8 +58,7 @@ public class Quests extends GameObject {
 				for (int i = 0; i < allQuests.size(); i++) {
 					if (allQuests.get(i).questSteps.get(0).daysPassed > allQuests.get(i).questSteps.get(0).maxDays ) {
 						allQuests.remove(i);
-						Quest questToBeAdded = QuestTable.rollQuest(0);
-						allQuests.add(questToBeAdded);
+						questsToBeAdded++;
 						i--;
 					}
 					else {

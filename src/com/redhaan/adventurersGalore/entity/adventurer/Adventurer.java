@@ -12,9 +12,9 @@ import com.redhaan.adventurersGalore.combat.PlayerCombatSituation;
 import com.redhaan.adventurersGalore.entity.Monster;
 import com.redhaan.adventurersGalore.entity.adventurer.personality.Personality;
 import com.redhaan.adventurersGalore.entity.adventurer.skills.Skills;
+import com.redhaan.adventurersGalore.entity.adventurer.spells.Spell;
 import com.redhaan.adventurersGalore.entity.combatAddOns.CombatMovesBar;
 import com.redhaan.adventurersGalore.entity.combatAddOns.HealthBar;
-import com.redhaan.adventurersGalore.entity.enemies.Enemy;
 import com.redhaan.adventurersGalore.entity.town.Town;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -47,8 +47,8 @@ public class Adventurer extends Monster {
 
 	public int tier;
 
-	public int sigilSlots;
-	public ArrayList<Sigil> sigils;
+	public int spellSlots;
+	public ArrayList<Sigil> spells;
 	public Tattoo tattoo;
 	public Skills skills;
 
@@ -73,7 +73,7 @@ public class Adventurer extends Monster {
 		hasActed = false;
 		// leftClickSituation = PlayerTurnLeftClickSituation.NothingToDo;
 		battlesPassed = 0;
-		sigils = new ArrayList<Sigil>();
+		spells = new ArrayList<Sigil>();
 		personality = new Personality();
 		titbit = new Titbit();
 		skills = new Skills();

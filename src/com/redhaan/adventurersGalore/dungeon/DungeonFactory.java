@@ -7,11 +7,13 @@ import com.redhaan.adventurersGalore.worldMap.WorldMapTiles;
 
 public class DungeonFactory {
 	
-	Random random;
+	private Random random;
+	private int attempts;
 	
 	public DungeonFactory() {
 		
 		random = new Random(); 
+		attempts = 0;
 		
 	}
 	
@@ -35,16 +37,35 @@ public class DungeonFactory {
 			case GRASS: break;
 			case ICE: dungeon.tileRow = 6; goOn = false; break;
 			case MOUNTAIN: dungeon.tileRow = 12; goOn = false; break;
-			case OCEAN: dungeon.tileRow = 14; goOn = false; break;
-			case SHALLOW: dungeon.tileRow = 8; goOn = false; break;
+			case OCEAN:
+				if (attempts < 4) { 
+					attempts++; 
+					break; 
+					}
+				else { 
+					attempts = 0; 
+					dungeon.tileRow = 14; 
+					goOn = false; 
+					break; 
+					}				
+			case SHALLOW: 
+				if (attempts < 2) { 
+					attempts++; 
+					break; 
+					}
+				else { 
+					attempts = 0; 
+					dungeon.tileRow = 8; 
+					goOn = false; 
+					break; 
+					}
 			case SWAMP: dungeon.tileRow = 4; goOn = false; break;
 			}
 			
 		}
-
-		System.out.println("xLocation is: " + dungeon.xLocation);
-		System.out.println("yLocation is: " + dungeon.yLocation);
-		System.out.println("tile Row is: " + dungeon.tileRow);
+		
+		System.out.println("dungeon x Location: " + dungeon.xLocation);
+		System.out.println("dungeon y Location: " + dungeon.yLocation);
 		
 		return dungeon;		
 		

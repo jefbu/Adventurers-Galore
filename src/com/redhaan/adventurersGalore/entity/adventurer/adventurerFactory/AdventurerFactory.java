@@ -22,7 +22,7 @@ public class AdventurerFactory implements Serializable {
 	private RaceFactory raceFactory = new RaceFactory();
 	private NameFactory nameFactory = new NameFactory();
 	private WeaponFactory weaponFactory = new WeaponFactory();
-	private SigilFactory sigilFactory = new SigilFactory();
+	private SpellFactory spellFactory = new SpellFactory();
 	private AffinityFactory affinityFactory = new AffinityFactory();
 	private TattooFactory tattooFactory = new TattooFactory();
 	private TitbitFactory titbitFactory = new TitbitFactory();
@@ -76,14 +76,15 @@ public class AdventurerFactory implements Serializable {
 		rollPersonality();
 
 		
-		adventurer.sigilSlots = sigilFactory.rollSigilSlots(adventurer.tier, adventurer.sigilSlots);
-		adventurer.sigils = sigilFactory.rollSigils(adventurer.sigilSlots);
+		adventurer.spellSlots = spellFactory.rollSpellSlots(adventurer.tier, adventurer.job);
+		adventurer.spells = spellFactory.rollSigils(adventurer.spellSlots);
 		adventurer.tattoo = tattooFactory.rollTattoo(adventurer.tier);
 		adventurer.affinities = affinityFactory.rollAffinities(adventurer.tier, adventurer.race, adventurer.job);
 		adventurer.titbit = titbitFactory.createTitBit(adventurer);
 		adventurer.skills = skillFactory.rollSkills(adventurer);
 		
 		adventurer.combatMoves = defineCombatMoves(adventurer);
+		
 		
 
 	}

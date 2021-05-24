@@ -38,14 +38,14 @@ public class Weapon extends Item implements Serializable {
 	
 	public boolean isLegendary;
 	
+	public static ImageTile icon = new ImageTile("/weapons.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);;
+	
 	Random random;
 	
 	public Weapon() {
-		
 		random = new Random();
 		
 		runes = new ArrayList<Rune>();
-		icon = new ImageTile("/weapons.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
 		isLegendary = false;
 		minRange = 1;
 		maxRange = 1;

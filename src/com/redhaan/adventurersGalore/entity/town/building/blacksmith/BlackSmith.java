@@ -185,7 +185,11 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 				renderer.drawImageTile(blacksmith, 57, 57, animation, 0);
 				
 				renderer.drawRectOpaque(130, 25, 250, 100, 0xff121621);
-				renderer.drawText("What wisht from me, a humble blacksmith?", 140, 45, 0xff617191);
+				renderer.drawText("Welcome to my humble shack", 140, 45, 0xff617191);
+				renderer.drawText("Have you seen my well stocked rack?", 140, 60, 0xff617191);
+				renderer.drawText("Tell me what it is you lack", 140, 75, 0xff617191);
+				renderer.drawText("I smithe in black. But you'll pay in gold.", 140, 90, 0xff617191);
+
 				
 				renderer.drawRectOpaque(385, 25, 50, 100, 0xff201417);
 					renderer.drawImageTile(blacksmith, 395, 50, 0, 1);

@@ -45,7 +45,7 @@ public class CommentWidget extends GameObject {
 		}
 
 		timer++;	
-		if (timer > 180) { timer = 0; }
+		if (timer > 210) { timer = 0; }
 		
 	}
 

@@ -28,14 +28,14 @@ public class Dagger extends Weapon {
 		ID = ItemID.Weapon;
 		
 		rollRuneSlots(1);
-		
+				
 		Random random = new Random();
 		for (int i = 0; i < runeSlots; i++) {
 			int roll = random.nextInt(100) + 1;
 			if(roll > 60) { runes.add(Rune.Od); }
 			else if (roll > 30) { runes.add(Rune.Er); }			
 		}
-		
+				
 		upgrades = rollUpgrades(2);
 		if(upgrades > 0) { for (int i = 0; i < upgrades; i++) { upgrade(); } }
 		

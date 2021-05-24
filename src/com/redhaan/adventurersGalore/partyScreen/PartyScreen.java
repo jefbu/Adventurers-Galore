@@ -38,6 +38,7 @@ public class PartyScreen extends GameObject {
 	private TattooWidget tattooWidget;
 	
 	private SkillChangeScreen skillChangeScreen;
+	private SigilChangeScreen sigilChangeScreen;
 	
 	private ImageTile image;
 	
@@ -63,6 +64,7 @@ public class PartyScreen extends GameObject {
 		tattooWidget = new TattooWidget(460, 284, 165, 126 );
 		
 		skillChangeScreen = new SkillChangeScreen(120, 100, 400, 280);
+		sigilChangeScreen = new SigilChangeScreen(120, 100, 400, 280);
 		image = new ImageTile("/icons.png", GameManager.GAMETILESIZE / 2, GameManager.GAMETILESIZE / 2);
 		hover = false;
 		
@@ -110,6 +112,11 @@ public class PartyScreen extends GameObject {
 			case SkillChange:
 				
 				skillChangeScreen.update(gameContainer, deltaTime);
+				break;
+				
+			case SigilChange:
+				
+				sigilChangeScreen.update(gameContainer, deltaTime);
 				break;
 			
 			}
@@ -185,7 +192,12 @@ public class PartyScreen extends GameObject {
 		
 		case SkillChange:
 			skillChangeScreen.render(gameContainer, renderer);
-		
+			break;
+			
+		case SigilChange:
+			sigilChangeScreen.render(gameContainer, renderer);
+			break;
+			
 		}
 		
 	}

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Random;
 
 import com.redhaan.adventurersGalore.GameManager;
+import com.redhaan.adventurersGalore.combat.Combat;
 import com.redhaan.adventurersGalore.combat.MoveRangeFiller;
 
 import gameEngine.ecclesiastes.Renderer;
@@ -14,18 +15,24 @@ public class LevelDrawer implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private ImageTile tileSet;
+	private ImageTile worldTileSet;
+	private ImageTile dungeonTileSet;
 	private Random random;
 	private int timer;
 	private int roll;
 	private int[] xTile;
+	private boolean dungeonMap;
 	
 	public LevelDrawer() {
 
-		tileSet = new ImageTile("/spritesheets/mapTiles2.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
+		worldTileSet = new ImageTile("/spritesheets/mapTiles2.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
+		dungeonTileSet = new ImageTile("/spritesheets/mapTiles3.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
+		tileSet = worldTileSet;
 		random = new Random();
 		roll = 0;
 		xTile = new int[300];
 		timer = 0;
+		dungeonMap = false;
 		
 	}
 
@@ -44,6 +51,9 @@ public class LevelDrawer implements Serializable {
 		if (timer == 1800) { timer = 0; }
 
 
+		if (Combat.dungeon && !dungeonMap) { tileSet = dungeonTileSet; }
+		else if (!Combat.dungeon && dungeonMap) { tileSet = worldTileSet; }
+		
 		for (int y = 0 + offY; y < (GameManager.GAMEHEIGHT / GameManager.GAMETILESIZE) + offY; y++) {
 			for (int x = 0 + offX; x < (GameManager.GAMEWIDTH / GameManager.GAMETILESIZE) + offX; x++) {
 
