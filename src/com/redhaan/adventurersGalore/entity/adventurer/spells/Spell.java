@@ -20,7 +20,7 @@ public class Spell {
 	
 	
 	
-	public static Spell oasis = new Spell("Oasis of a Tranquil Heart", SpellType.WorldMap, 1, 5, 1);
+	public static Spell oasis = new Spell("Oasis of a Tranquil Heart", SpellType.SingleAlly, 1, 5, 1);
 	public static Spell city = new Spell("City full of Life", SpellType.SingleAlly, 1, 5, 2);
 	public static Spell fields = new Spell("Fields of Summer Rye", SpellType.AlliesInRange, 1, 5, 3);
 	public static Spell grove = new Spell("Grove of Age-old Broadleaves", SpellType.AllAllies, 1, 5, 4);

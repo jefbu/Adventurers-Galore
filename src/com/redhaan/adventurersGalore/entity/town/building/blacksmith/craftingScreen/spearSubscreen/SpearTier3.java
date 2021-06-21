@@ -12,6 +12,8 @@ import com.redhaan.adventurersGalore.entity.item.weapon.spears.Lance;
 import com.redhaan.adventurersGalore.entity.item.weapon.spears.Pike;
 import com.redhaan.adventurersGalore.entity.item.weapon.spears.Trident;
 import com.redhaan.adventurersGalore.entity.item.weapon.spears.Yari;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -61,6 +63,8 @@ public class SpearTier3 extends GameObject {
 					Inventory.iron -= 5;
 					Inventory.silver -= 1;
 					Inventory.evilSpirit -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			
@@ -77,6 +81,8 @@ public class SpearTier3 extends GameObject {
 					Inventory.iron -= 3;
 					Inventory.gold -= 2;
 					Inventory.heartSpirit -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			

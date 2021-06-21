@@ -73,7 +73,6 @@ public class SpellFactory implements Serializable {
 		}
 		
 		if(tattoos > 3) { tattoos = 3; }
-		System.out.println(job.name + " was created with " + tattoos + " spell slots");
 		return tattoos;
 		
 	}

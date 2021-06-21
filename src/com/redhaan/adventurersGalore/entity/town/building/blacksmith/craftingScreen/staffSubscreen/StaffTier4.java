@@ -7,6 +7,8 @@ import com.redhaan.adventurersGalore.entity.item.items.Antlers;
 import com.redhaan.adventurersGalore.entity.item.items.RationalThought;
 import com.redhaan.adventurersGalore.entity.item.items.VagrantSpirit;
 import com.redhaan.adventurersGalore.entity.item.weapon.staves.Waddy;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -51,6 +53,8 @@ public class StaffTier4 extends GameObject {
 					Inventory.antlers -= 8;
 					Inventory.vagrantSpirit -= 1;
 					Inventory.rationalThought -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			

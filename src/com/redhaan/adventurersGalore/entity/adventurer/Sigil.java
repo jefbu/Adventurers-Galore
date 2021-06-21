@@ -106,9 +106,9 @@ public class Sigil implements Serializable {
 			else if (roll1 > 15) { tempSpell = Spell.castle; }
 			else { tempSpell = Spell.taiga; }
 			
-			if(roll2 > 66) { tempSpellModifier = SpellModifier.alabaster; }
-			else if (roll2 > 33) { tempSpellModifier = SpellModifier.bone; }
-			else { tempSpellModifier = SpellModifier.ivory; }
+			if(roll2 > 66) { tempSpellModifier = SpellModifier.cerulean; }
+			else if (roll2 > 33) { tempSpellModifier = SpellModifier.azure; }
+			else { tempSpellModifier = SpellModifier.indigo; }
 			
 			break;
 			

@@ -7,6 +7,8 @@ import com.redhaan.adventurersGalore.entity.item.items.Iron;
 import com.redhaan.adventurersGalore.entity.item.items.OakWood;
 import com.redhaan.adventurersGalore.entity.item.weapon.bows.ShortBow;
 import com.redhaan.adventurersGalore.entity.item.weapon.spears.Spear;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -47,6 +49,8 @@ public class SpearTier1 extends GameObject {
 					Inventory.weapons.add(new Spear());
 					Inventory.iron -= 3;
 					Inventory.oakwood -= 5;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			

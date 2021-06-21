@@ -1,11 +1,14 @@
 package com.redhaan.adventurersGalore.entity.town.building.blacksmith;
 
 import java.awt.event.MouseEvent;
+import java.util.Random;
 
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.entity.town.TownSubState;
 import com.redhaan.adventurersGalore.entity.town.building.Building;
 import com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingScreen.CraftingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inTown.TownMap;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -34,6 +37,9 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 		private ScrappingScreen scrappingScreen;
 		private RuneforgingScreen runeforgingScreen;
 		
+		private int gender;
+		private Random random;
+		
 		public BlackSmith() {
 			
 			super();
@@ -56,6 +62,10 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 			sharpeningScreen = new SharpeningScreen();
 			scrappingScreen = new ScrappingScreen();
 			runeforgingScreen = new RuneforgingScreen();
+			
+			random = new Random();
+			if (random.nextInt(10) > 8) { gender = 2; }
+			else { gender = 0; }
 			
 		}
 		
@@ -117,7 +127,11 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 				if(gameContainer.getInput().getMouseX() > 525 && gameContainer.getInput().getMouseX() < 585 &&
 						gameContainer.getInput().getMouseY() > 385 && gameContainer.getInput().getMouseY() < 405) {
 					closeHover = true;
-					if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { TownMap.subState = TownSubState.General; }
+					if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {  
+						TownMap.subState = TownSubState.General; 
+						ScrappingScreen.initialised = false; 
+						SharpeningScreen.initialised = false;
+					}
 				}  else { closeHover = false; }
 
 				if(gameContainer.getInput().getMouseX() > 30 && gameContainer.getInput().getMouseX() < 80 &&
@@ -182,14 +196,22 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 				renderer.drawRectOpaque(20, 20, 600, 400, 0xbb222815);
 			
 				renderer.drawRectOpaque(25, 25, 100, 100, 0xff121621);
-				renderer.drawImageTile(blacksmith, 57, 57, animation, 0);
+				renderer.drawImageTile(blacksmith, 57, 57, animation, 0 + gender);
 				
 				renderer.drawRectOpaque(130, 25, 250, 100, 0xff121621);
-				renderer.drawText("Welcome to my humble shack", 140, 45, 0xff617191);
-				renderer.drawText("Have you seen my well stocked rack?", 140, 60, 0xff617191);
-				renderer.drawText("Tell me what it is you lack", 140, 75, 0xff617191);
-				renderer.drawText("I smithe in black. But you'll pay in gold.", 140, 90, 0xff617191);
-
+				
+				if (gender == 2) {
+					renderer.drawText("Welcome to my humble shack", 140, 45, 0xff617191);
+					renderer.drawText("Have you seen my well stocked rack.", 140, 60, 0xff617191);
+					renderer.drawText("Tell me what it is you lack", 140, 75, 0xff617191);
+					renderer.drawText("I smithe in black. But you'll pay in gold.", 140, 90, 0xff617191);
+				}
+				else {
+					renderer.drawText("Welcome to my humble shack", 140, 45, 0xff617191);
+					renderer.drawText("Hidden in this cul-de-sac.", 140, 60, 0xff617191);
+					renderer.drawText("Tell me what it is you lack", 140, 75, 0xff617191);
+					renderer.drawText("I smithe in black. But you'll pay in gold.", 140, 90, 0xff617191);					
+				}
 				
 				renderer.drawRectOpaque(385, 25, 50, 100, 0xff201417);
 					renderer.drawImageTile(blacksmith, 395, 50, 0, 1);

@@ -11,6 +11,7 @@ import com.redhaan.adventurersGalore.combat.Combat;
 import com.redhaan.adventurersGalore.dungeon.Dungeons;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurers;
 import com.redhaan.adventurersGalore.entity.adventurer.personality.Conversations;
+import com.redhaan.adventurersGalore.entity.adventurer.spells.TownList;
 import com.redhaan.adventurersGalore.entity.party.Party;
 import com.redhaan.adventurersGalore.entity.party.PartyCohesionCheckerUI;
 import com.redhaan.adventurersGalore.entity.party.TravelerEngine;
@@ -65,6 +66,8 @@ public class GameManager extends AbstractGame {
 		gameObjects.add(new TravelerEngine());	
 		gameObjects.add(new Toast());
 		gameObjects.add(new SpellAnimation());
+		gameObjects.add(new TownList());
+		gameObjects.add(new Tooltip());
 
 		//gameObjects.add(adventurers);
 

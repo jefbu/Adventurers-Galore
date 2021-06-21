@@ -18,6 +18,8 @@ import com.redhaan.adventurersGalore.entity.item.items.PentUpAnger;
 import com.redhaan.adventurersGalore.entity.item.items.Silver;
 import com.redhaan.adventurersGalore.entity.item.items.SpringBreeze;
 import com.redhaan.adventurersGalore.entity.item.items.VagrantSpirit;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -85,6 +87,8 @@ public class ArmourTier4 extends GameObject {
 					Inventory.pelt -= 8;
 					Inventory.nobleSpirit -= 1;
 					Inventory.springBreeze -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			
@@ -101,6 +105,8 @@ public class ArmourTier4 extends GameObject {
 					Inventory.hide -= 8;
 					Inventory.evilSpirit -= 1;
 					Inventory.morningSunlight -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			
@@ -117,6 +123,8 @@ public class ArmourTier4 extends GameObject {
 					Inventory.iron -= 5;
 					Inventory.vagrantSpirit -= 1;
 					Inventory.pentupAnger -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			
@@ -133,6 +141,8 @@ public class ArmourTier4 extends GameObject {
 					Inventory.silver -= 5;
 					Inventory.nobleSpirit -= 1;
 					Inventory.gloriousMoment -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			

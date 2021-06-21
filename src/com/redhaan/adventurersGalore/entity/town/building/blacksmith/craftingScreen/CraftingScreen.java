@@ -57,6 +57,8 @@ public class CraftingScreen extends GameObject {
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
 		
+		renderer.drawRect(385, 25, 50, 100, 0xff88AA22);
+		
 		switch(BlackSmith.equipTypeOption) {
 		
 		case 0: swordsSubScreen.render(gameContainer, renderer); break;

@@ -42,7 +42,7 @@ public class WeaponAffinityWidget implements Serializable {
 			switch(weapon.gemStone.gemStoneEnum) {
 			case amber: gemStoneInt = 7; break;
 			case amethyst: gemStoneInt = 6; break;
-			case emerald: gemStoneInt = 2; break;
+			case emerald: gemStoneInt = 1; break;
 			case onyx: gemStoneInt = 8; break;
 			case pearl: gemStoneInt = 5; break;
 			case ruby: gemStoneInt = 0; break;
@@ -53,7 +53,7 @@ public class WeaponAffinityWidget implements Serializable {
 			}
 					
 			if(!weapon.isLegendary) {
-				renderer.drawImageTile(jewelIcon, offX + 105, offY + 45, gemStoneInt, 1);
+				renderer.drawImageTile(icon, offX + 110, offY + 50, weapon.gemStone.level + 8, gemStoneInt);
 			}
 			
 		}

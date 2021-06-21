@@ -13,6 +13,7 @@ public class Toast extends GameObject {
 	private static String text;
 	private static int fillColour1, fillColour2, fillColour3, fillColour4, fillColour5, fillColour6, fillColour7, fillColour8, fillColour9;
 	private static int textColour1, textColour2, textColour3, textColour4, textColour5, textColour6, textColour7, textColour8, textColour9;
+	private static int width;
 	
 
 	public Toast() {
@@ -43,6 +44,8 @@ public class Toast extends GameObject {
 		textColour8 = 0xff000000;
 		textColour9 = 0xff000000;
 		
+		width = 100;
+		
 	}
 
 	@Override
@@ -66,48 +69,48 @@ public class Toast extends GameObject {
 		if(active) {
 			
 			if(timer > 30) {
-				renderer.drawRect(offX, offY, 110, 30, textColour9);
-				renderer.drawRectOpaque(offX + 1, offY + 1, 108, 28, fillColour9);
+				renderer.drawRect(offX, offY, width, 30, textColour9);
+				renderer.drawRectOpaque(offX + 1, offY + 1, width - 2, 28, fillColour9);
 				renderer.drawText(text, offX + 5, offY + 10, textColour9);
 			}
 			else if(timer > 25) {
-				renderer.drawRect(offX, offY, 110, 30, textColour8);
-				renderer.drawRectOpaque(offX + 1, offY + 1, 108, 28, fillColour8);
+				renderer.drawRect(offX, offY, width, 30, textColour8);
+				renderer.drawRectOpaque(offX + 1, offY + 1, width - 2, 28, fillColour8);
 				renderer.drawText(text, offX + 5, offY + 10, textColour8);
 			}
 			else if(timer > 20) {
-				renderer.drawRect(offX, offY, 110, 30, textColour7);
-				renderer.drawRectOpaque(offX + 1, offY + 1, 108, 28, fillColour7);
+				renderer.drawRect(offX, offY, width, 30, textColour7);
+				renderer.drawRectOpaque(offX + 1, offY + 1, width - 2, 28, fillColour7);
 				renderer.drawText(text, offX + 5, offY + 10, textColour7);
 			}
 			else if(timer > 16) {
-				renderer.drawRect(offX, offY, 110, 30, textColour6);
-				renderer.drawRectOpaque(offX + 1, offY + 1, 108, 28, fillColour6);
+				renderer.drawRect(offX, offY, width, 30, textColour6);
+				renderer.drawRectOpaque(offX + 1, offY + 1, width - 2, 28, fillColour6);
 				renderer.drawText(text, offX + 5, offY + 10, textColour6);
 			}
 			else if(timer > 12) {
-				renderer.drawRect(offX, offY, 110, 30, textColour5);
-				renderer.drawRectOpaque(offX + 1, offY + 1, 108, 28, fillColour5);
+				renderer.drawRect(offX, offY, width, 30, textColour5);
+				renderer.drawRectOpaque(offX + 1, offY + 1, width - 2, 28, fillColour5);
 				renderer.drawText(text, offX + 5, offY + 10, textColour5);
 			}
 			else if(timer > 9) {
-				renderer.drawRect(offX, offY, 110, 30, textColour4);
-				renderer.drawRectOpaque(offX + 1, offY + 1, 108, 28, fillColour4);
+				renderer.drawRect(offX, offY, width, 30, textColour4);
+				renderer.drawRectOpaque(offX + 1, offY + 1, width - 2, 28, fillColour4);
 				renderer.drawText(text, offX + 5, offY + 10, textColour4);
 			}
 			else if(timer > 6) {
-				renderer.drawRect(offX, offY, 110, 30, textColour3);
-				renderer.drawRectOpaque(offX + 1, offY + 1, 108, 28, fillColour3);
+				renderer.drawRect(offX, offY, width, 30, textColour3);
+				renderer.drawRectOpaque(offX + 1, offY + 1, width - 2, 28, fillColour3);
 				renderer.drawText(text, offX + 5, offY + 10, textColour3);
 			}
 			else if(timer > 3) {
-				renderer.drawRect(offX, offY, 110, 30, textColour2);
-				renderer.drawRectOpaque(offX + 1, offY + 1, 108, 28, fillColour2);
+				renderer.drawRect(offX, offY, width, 30, textColour2);
+				renderer.drawRectOpaque(offX + 1, offY + 1, width - 2, 28, fillColour2);
 				renderer.drawText(text, offX + 5, offY + 10, textColour2);
 			}
 			else if(timer > 0) {
-				renderer.drawRect(offX, offY, 110, 30, textColour1);
-				renderer.drawRectOpaque(offX + 1, offY + 1, 108, 28, fillColour1);
+				renderer.drawRect(offX, offY, width, 30, textColour1);
+				renderer.drawRectOpaque(offX + 1, offY + 1, width - 2, 28, fillColour1);
 				renderer.drawText(text, offX + 5, offY + 10, textColour1);
 			}
 
@@ -120,6 +123,11 @@ public class Toast extends GameObject {
 		Toast.text = text;
 		Toast.offX = offX;
 		Toast.offY = offY;
+		if (text.length() < 20) { width = 110; }
+		else if (text.length() < 40) { width = 160; }
+		else if (text.length() < 60) { width = 210; }
+		else { width = 260; }
+		
 		
 		if(goodText) { 
 			fillColour1 = 0x11448866;

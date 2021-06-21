@@ -8,6 +8,8 @@ import com.redhaan.adventurersGalore.entity.item.items.OakWood;
 import com.redhaan.adventurersGalore.entity.item.items.VagrantSpirit;
 import com.redhaan.adventurersGalore.entity.item.weapon.bows.RecurveBow;
 import com.redhaan.adventurersGalore.entity.item.weapon.bows.ShortBow;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -50,6 +52,8 @@ public class BowTier3 extends GameObject {
 					Inventory.oakwood -= 8;
 					Inventory.ivory -= 3;
 					Inventory.vagrantSpirit -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			

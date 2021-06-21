@@ -10,9 +10,7 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 public class Armour extends Item implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	public int defence;	
-	
-
+	public static ImageTile icon;
 	
 	public Armour() {
 		

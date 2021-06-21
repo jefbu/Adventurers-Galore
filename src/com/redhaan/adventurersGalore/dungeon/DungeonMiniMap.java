@@ -3,6 +3,7 @@ package com.redhaan.adventurersGalore.dungeon;
 import java.util.ArrayList;
 
 import com.redhaan.adventurersGalore.GameObject;
+import com.redhaan.adventurersGalore.combat.Combat;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
@@ -29,19 +30,24 @@ public class DungeonMiniMap extends GameObject {
 	@Override
 	public void update(GameContainer gameContainer, float deltaTime) {
 		
-		for (MiniMapTile miniMapTile: miniMapTiles) {
-			miniMapTile.update(gameContainer, deltaTime);
+		if(Combat.dungeon) {
+			for (MiniMapTile miniMapTile: miniMapTiles) {
+				miniMapTile.update(gameContainer, deltaTime);
+			}
 		}
+
 		
 	}
 
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
 	
-		renderer.drawRect(5, 20, 150, 200, 0xff005500);
-		
-		for (MiniMapTile miniMapTile: miniMapTiles) {
-			miniMapTile.render(gameContainer, renderer);			
+		if(Combat.dungeon) {
+			renderer.drawRect(5, 20, 150, 200, 0xff005500);
+			
+			for (MiniMapTile miniMapTile: miniMapTiles) {
+				miniMapTile.render(gameContainer, renderer);			
+			}
 		}
 		
 	}

@@ -25,6 +25,8 @@ public class Town extends GameObject {
 
 	public ArrayList<Building> buildings;
 	public ArrayList<NPC> npcs;
+	
+	public boolean discovered;
 		
 	public Town(String name, int[] xLocations, int[] yLocations, int npc) {
 
@@ -35,6 +37,7 @@ public class Town extends GameObject {
 		
 		buildings = BuildingFactory.createTownBuildings(xLocations.length);
 		npcs = new ArrayList<NPC>();
+		discovered = false;
 		
 		for (int i = 0; i < npc; i++) {
 			npcs.add(new NPC());
@@ -72,6 +75,7 @@ public class Town extends GameObject {
 						WorldMap.getOffX() + gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE == xLocations[i]
 						&& WorldMap.getOffY() + gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == yLocations[i]) {
 							TownMap.activeTown = this;
+							discovered = true;
 							GameManager.gameState = GameState.InTown;
 						}
 					}

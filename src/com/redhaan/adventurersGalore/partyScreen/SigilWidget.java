@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.SpellAnimation;
+import com.redhaan.adventurersGalore.entity.adventurer.spells.SpellEffect;
 import com.redhaan.adventurersGalore.entity.adventurer.spells.SpellType;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -38,7 +39,7 @@ public class SigilWidget extends GameObject {
 	@Override
 	public void update(GameContainer gameContainer, float deltaTime) {
 		
-		if (GameManager.adventurers.allAdventurers.get(PartyScreen.member).spellSlots > 0 && 
+		if (GameManager.adventurers.allAdventurers.get(PartyScreen.member).spells.size() > 0 && 
 				GameManager.adventurers.allAdventurers.get(PartyScreen.member).spells.get(0).spell.spellType == SpellType.WorldMap &&
 				checkHovering(offX + 5, offX + 5 + width - 35, offY + 5, offY + 5 + height / 4, gameContainer)) { 
 			
@@ -49,13 +50,18 @@ public class SigilWidget extends GameObject {
 			}
 		}
 		
-		else if (GameManager.adventurers.allAdventurers.get(PartyScreen.member).spellSlots > 1 && 
+		else if (GameManager.adventurers.allAdventurers.get(PartyScreen.member).spells.size() > 1 && 
 				GameManager.adventurers.allAdventurers.get(PartyScreen.member).spells.get(1).spell.spellType == SpellType.WorldMap &&
-				checkHovering(offX + 5, offX + 5 + width - 35, offY + 5 + (height / 4 + 5), offY + 5 + (height / 4 + 5) + height / 4, gameContainer)) { hover = true; }
-		else if (GameManager.adventurers.allAdventurers.get(PartyScreen.member).spellSlots > 2 && 
+				checkHovering(offX + 5, offX + 5 + width - 35, offY + 5 + (height / 4 + 5), offY + 5 + (height / 4 + 5) + height / 4, gameContainer)) { 
+			hover = true; 
+			
+		}
+		else if (GameManager.adventurers.allAdventurers.get(PartyScreen.member).spells.size() > 2 && 
 				GameManager.adventurers.allAdventurers.get(PartyScreen.member).spells.get(2).spell.spellType == SpellType.WorldMap &&
 				checkHovering(offX + 5, offX + 5 + width - 35, offY + 5 + 2 * (height / 4 + 5), offY + 5 +  2 * (height / 4 + 5) + height / 4, gameContainer)) { hover = true; }
 		else { hover = false; }
+		
+		
 		
 		if (GameManager.adventurers.allAdventurers.get(PartyScreen.member).spellSlots > 0 && 
 				checkHovering(offX + width - 25, offX + width, offY + 5, offY + 5 + height / 4, gameContainer)) { 

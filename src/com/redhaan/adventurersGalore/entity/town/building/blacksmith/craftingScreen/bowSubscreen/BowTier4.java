@@ -8,6 +8,8 @@ import com.redhaan.adventurersGalore.entity.item.items.Ivory;
 import com.redhaan.adventurersGalore.entity.item.items.SpiritOfMischief;
 import com.redhaan.adventurersGalore.entity.item.weapon.bows.LongBow;
 import com.redhaan.adventurersGalore.entity.item.weapon.bows.ShortBow;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -49,6 +51,8 @@ public class BowTier4 extends GameObject {
 					Inventory.ivory -= 5;
 					Inventory.spiritOfMischief -= 1;
 					Inventory.elysianFlower -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			

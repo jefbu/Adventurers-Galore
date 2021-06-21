@@ -9,6 +9,8 @@ import com.redhaan.adventurersGalore.entity.item.items.Tusk;
 import com.redhaan.adventurersGalore.entity.item.items.Wing;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.BastardSword;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.Sabre;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -55,6 +57,8 @@ public class Tier2 extends GameObject {
 					Inventory.iron -= 3;
 					Inventory.claw -= 5;
 					Inventory.tusk -= 3;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			
@@ -71,6 +75,8 @@ public class Tier2 extends GameObject {
 					Inventory.iron -= 5;
 					Inventory.claw -= 3;
 					Inventory.wing -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			

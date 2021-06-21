@@ -8,6 +8,8 @@ import com.redhaan.adventurersGalore.entity.item.items.Fang;
 import com.redhaan.adventurersGalore.entity.item.items.Iron;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Dagger;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Knife;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -51,6 +53,8 @@ public class DaggerTier1 extends GameObject {
 					Inventory.weapons.add(new Dagger());
 					Inventory.iron -= 3;
 					Inventory.fang -= 8;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			
@@ -67,6 +71,8 @@ public class DaggerTier1 extends GameObject {
 					Inventory.iron -= 2;
 					Inventory.claw -= 5;
 					Inventory.fang -= 5;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			

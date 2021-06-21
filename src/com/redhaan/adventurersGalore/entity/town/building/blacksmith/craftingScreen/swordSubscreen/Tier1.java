@@ -7,6 +7,8 @@ import com.redhaan.adventurersGalore.entity.item.items.Claw;
 import com.redhaan.adventurersGalore.entity.item.items.Iron;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.BroadSword;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.IronSword;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -47,6 +49,8 @@ public class Tier1 extends GameObject {
 				if(Inventory.iron >= 5) { 
 					Inventory.weapons.add(new IronSword());
 					Inventory.iron -= 5;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			
@@ -62,6 +66,8 @@ public class Tier1 extends GameObject {
 					Inventory.weapons.add(new BroadSword());
 					Inventory.iron -= 3;
 					Inventory.claw -= 5;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			

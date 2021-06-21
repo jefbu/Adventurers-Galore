@@ -12,6 +12,8 @@ import com.redhaan.adventurersGalore.entity.item.items.Iron;
 import com.redhaan.adventurersGalore.entity.item.items.Ivory;
 import com.redhaan.adventurersGalore.entity.item.items.Pelt;
 import com.redhaan.adventurersGalore.entity.item.items.Silver;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -66,6 +68,8 @@ public class ArmourTier1 extends GameObject {
 					Inventory.armours.add(new Coat());
 					Inventory.pelt -= 8;
 					Inventory.ivory -= 3;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			
@@ -81,6 +85,8 @@ public class ArmourTier1 extends GameObject {
 					Inventory.armours.add(new Leather());
 					Inventory.hide -= 8;
 					Inventory.ivory -= 3;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			
@@ -95,6 +101,8 @@ public class ArmourTier1 extends GameObject {
 				if(Inventory.iron >= 5) { 
 					Inventory.armours.add(new Chain());
 					Inventory.iron -= 5;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			
@@ -110,6 +118,8 @@ public class ArmourTier1 extends GameObject {
 					Inventory.armours.add(new Cuirass());
 					Inventory.iron -= 3;
 					Inventory.silver -= 3;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			

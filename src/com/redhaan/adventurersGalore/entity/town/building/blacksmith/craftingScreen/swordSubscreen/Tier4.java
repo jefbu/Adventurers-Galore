@@ -15,6 +15,8 @@ import com.redhaan.adventurersGalore.entity.item.items.StolenMoonlight;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.Epee;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.Falchion;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.SilverSword;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -73,6 +75,8 @@ public class Tier4 extends GameObject {
 					Inventory.silver -= 5;
 					Inventory.nobleSpirit -= 1;
 					Inventory.liquidInnocence -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			
@@ -89,6 +93,8 @@ public class Tier4 extends GameObject {
 					Inventory.coral -= 2;
 					Inventory.heartSpirit -= 1;
 					Inventory.stolenMoonlight -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			
@@ -105,6 +111,8 @@ public class Tier4 extends GameObject {
 					Inventory.gold -= 5;
 					Inventory.spiritOfMischief -= 1;
 					Inventory.reforgedPlough -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			

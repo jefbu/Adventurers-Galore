@@ -1,6 +1,7 @@
 package com.redhaan.adventurersGalore;
 
 import com.redhaan.adventurersGalore.entity.adventurer.spells.Spell;
+import com.redhaan.adventurersGalore.entity.adventurer.spells.SpellEffect;
 import com.redhaan.adventurersGalore.entity.adventurer.spells.SpellModifier;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -21,6 +22,7 @@ public class SpellAnimation extends GameObject {
 	private int spellAnimation;
 	private static int colour;
 	private static Spell spell;
+	private static SpellModifier spellModifier;
 	
 	public SpellAnimation() {
 		
@@ -34,9 +36,7 @@ public class SpellAnimation extends GameObject {
 		spellAnimation = 0;
 		spell = Spell.oasis;
 		colour = 0;
-		
-		activate(Spell.meadow, SpellModifier.olive);
-		
+				
 	}
 		
 	@Override
@@ -78,7 +78,8 @@ public class SpellAnimation extends GameObject {
 				timer = 0; 
 				verticalGrowth = 0;
 				acceleration = 0;
-				//active = false; 
+				active = false; 
+				SpellEffect.castSpell(spell, spellModifier);
 				}
 			
 		}
@@ -107,6 +108,7 @@ public class SpellAnimation extends GameObject {
 	public static void activate(Spell spell, SpellModifier spellModifier) {
 		
 		SpellAnimation.spell = spell;
+		SpellAnimation.spellModifier = spellModifier;
 				
 		switch(spellModifier.name) {
 		

@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.GameState;
+import com.redhaan.adventurersGalore.entity.item.weapon.Rune;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 import com.redhaan.adventurersGalore.inventory.InventoryScreen.MenuBar;
@@ -25,6 +26,8 @@ public class WeaponWidget extends GameObject {
 	
 	WeaponAffinityWidget weaponAffinityWidget;
 	
+	private int weaponColour;
+	
 	
 	public WeaponWidget(int offX, int offY, int width, int height) {
 		
@@ -39,6 +42,8 @@ public class WeaponWidget extends GameObject {
 		hover = false;
 		
 		weaponAffinityWidget = new WeaponAffinityWidget();
+		
+		weaponColour = 0;
 		
 	}
 
@@ -59,6 +64,8 @@ public class WeaponWidget extends GameObject {
 		}
 		else { hover = false; }
 		
+		weaponColour = GameManager.adventurers.allAdventurers.get(PartyScreen.member).affinities.highestAffinity();
+		
 	}
 
 	@Override
@@ -72,7 +79,7 @@ public class WeaponWidget extends GameObject {
 			}
 		else { renderer.drawRectOpaque(offX, offY, width, height, passiveColour); }
 		
-		renderer.drawImageTile(weapon.icon, offX + 5, offY + 5, weapon.xTile, weapon.yTile);
+		renderer.drawImageTile(Weapon.icon, offX + 5, offY + 5, weapon.xTile, weapon.yTile);
 		
 		String soulText = "Soulless";
 		if(weapon.soul != null) { soulText = weapon.soul.race.name + "slayer"; }
@@ -89,8 +96,14 @@ public class WeaponWidget extends GameObject {
 			for (int i = 0; i < weapon.runeSlots; i++) {
 				renderer.drawRectOpaque(offX + 5 + (i * 20), offY + 70, 15, 20, 0x55EEEEDD);
 			}
+			if (weapon.runes.size() > 0) {
+				for (int ii = 0; ii < weapon.runes.size(); ii++) {
+					renderer.drawImageTile(Rune.icon, offX + 5 + (ii * 20), offY + 70, weapon.runes.get(ii).xRow, weapon.runes.get(ii).yRow);
+				}
+			}
+
 			
-			if(weapon.gemStone != null) { renderer.drawImageTile(icon, offX + 80, offY + 65, weapon.gemStone.level, 1); }
+			renderer.drawImageTile(icon, offX + 80, offY + 65, weaponColour, 1);
 			if(weapon.upgrades > 0) { renderer.drawImageTile(icon, offX + 100, offY + 65, weapon.upgrades, 0); }			
 		}
 		

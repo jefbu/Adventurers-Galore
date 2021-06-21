@@ -6,7 +6,7 @@ public class Onyx extends GemStone {
 
 	public Onyx(int level) {
 		
-		super(0, 0, 0, 0, 0, 0, 0, 1, 0);
+		super(0, 0, 0, 0, 0, 0, 0, 0, 1);
 		name = "onyx";
 		this.level = level;
 		gemStoneEnum = GemStoneEnum.onyx;

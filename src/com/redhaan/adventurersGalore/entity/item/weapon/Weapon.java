@@ -24,13 +24,9 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 public class Weapon extends Item implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	public int damage, hit, crit;
 	public int minRange, maxRange;
-	public int upgrades;
-	public WeaponType type;
 	
 	public Soul soul;
-	public GemStone gemStone;
 	
 	public int runeTier;
 	public int runeSlots;
@@ -40,7 +36,7 @@ public class Weapon extends Item implements Serializable {
 	
 	public static ImageTile icon = new ImageTile("/weapons.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);;
 	
-	Random random;
+	protected Random random;
 	
 	public Weapon() {
 		random = new Random();
@@ -82,6 +78,31 @@ public class Weapon extends Item implements Serializable {
 			else if (roll > 5) { runeSlots = 1; }
 			else runeSlots = 0;
 			break;
+		}
+		
+	}
+	
+	public Rune rollRune() {
+		
+		int roll = random.nextInt(13);
+		
+		switch (roll) {
+		
+		case 0: return Rune.ay;
+		case 1: return Rune.bir;
+		case 2: return Rune.cit;
+		case 3: return Rune.dol;
+		case 4: return Rune.fu;
+		case 5: return Rune.ges;
+		case 6: return Rune.hom;
+		case 7: return Rune.il;
+		case 8: return Rune.kam;
+		case 9: return Rune.tiy;
+		case 10: return Rune.var;
+		case 11: return Rune.wos;
+		case 12: return Rune.yut;
+		default: return Rune.ay;
+		
 		}
 		
 	}
@@ -232,19 +253,6 @@ public class Weapon extends Item implements Serializable {
 		if (roll > barrier) { return true; } else { return false; }
 		
 	}
-	
-	
-	
-	
-	
-	
-	public void upgrade() {
-		
-		damage++;
-		hit = hit + 3;
-		crit = crit + 2;
-		
-	}
-			
+				
 
 }

@@ -6,7 +6,7 @@ public class Amber extends GemStone {
 
 	public Amber(int level) {
 		
-		super(0, 0, 0, 0, 0, 0, 0, 1, 0);
+		super(0, 0, 0, 0, 0, 0, 1, 0, 0);
 		name = "amber";
 		this.level = level;
 		gemStoneEnum = GemStoneEnum.amber;

@@ -12,6 +12,8 @@ import com.redhaan.adventurersGalore.entity.item.items.ViolentSpirit;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.Foil;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.Katana;
 import com.redhaan.adventurersGalore.entity.item.weapon.swords.Scimitar;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -64,6 +66,8 @@ public class Tier3 extends GameObject {
 					Inventory.weapons.add(new Scimitar());
 					Inventory.iron -= 5;
 					Inventory.violentSpirit -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			
@@ -80,6 +84,8 @@ public class Tier3 extends GameObject {
 					Inventory.iron -= 3;
 					Inventory.gold -= 2;
 					Inventory.evilSpirit -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			
@@ -96,6 +102,7 @@ public class Tier3 extends GameObject {
 					Inventory.iron -= 3;
 					Inventory.silver -= 2;
 					Inventory.heartSpirit -= 1;
+					ScrappingScreen.initialised = false;
 				}
 			}
 			

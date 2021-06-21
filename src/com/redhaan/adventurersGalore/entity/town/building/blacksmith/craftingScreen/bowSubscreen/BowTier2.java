@@ -10,6 +10,8 @@ import com.redhaan.adventurersGalore.entity.item.weapon.bows.CompositeBow;
 import com.redhaan.adventurersGalore.entity.item.weapon.bows.HandBow;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Dagger;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Knife;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -53,6 +55,8 @@ public class BowTier2 extends GameObject {
 					Inventory.hide -= 5;
 					Inventory.ivory -= 1;
 					Inventory.oakwood -= 8;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			
@@ -69,6 +73,8 @@ public class BowTier2 extends GameObject {
 					Inventory.hide -= 3;
 					Inventory.ivory -= 2;
 					Inventory.oakwood -= 5;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			

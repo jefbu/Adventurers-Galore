@@ -7,6 +7,8 @@ import com.redhaan.adventurersGalore.entity.item.items.Bone;
 import com.redhaan.adventurersGalore.entity.item.items.Ivory;
 import com.redhaan.adventurersGalore.entity.item.items.SpiritOfMischief;
 import com.redhaan.adventurersGalore.entity.item.weapon.staves.Cudgel;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -50,6 +52,8 @@ public class StaffTier3 extends GameObject {
 					Inventory.bone -= 3;
 					Inventory.ivory -= 3;
 					Inventory.spiritOfMischief -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			

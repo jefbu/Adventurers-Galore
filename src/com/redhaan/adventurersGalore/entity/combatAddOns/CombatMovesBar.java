@@ -47,7 +47,7 @@ public class CombatMovesBar extends GameObject {
 	@Override
 	public void update(GameContainer gameContainer, float deltaTime) {
 		if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD1)) { selectedNumber = 1; }
-		else if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD2)) { selectedNumber = 2; }
+		else if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD2) && !adventurer.spells.isEmpty()) { selectedNumber = 2; }
 		else if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD3)) { selectedNumber = 3; }
 		else if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD4)) { selectedNumber = 4; }
 
@@ -61,7 +61,7 @@ public class CombatMovesBar extends GameObject {
 				skillNumber = 1; 
 				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { selectedNumber = 1; }
 			}
-			else if (gameContainer.getInput().getMouseX() < xStartPoint + GameManager.GAMETILESIZE * 2) { 
+			else if (gameContainer.getInput().getMouseX() < xStartPoint + GameManager.GAMETILESIZE * 2 && !adventurer.spells.isEmpty()) { 
 				skillNumber = 2; 
 				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { selectedNumber = 2; }
 			}

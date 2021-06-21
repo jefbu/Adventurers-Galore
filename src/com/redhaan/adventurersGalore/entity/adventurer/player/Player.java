@@ -17,7 +17,7 @@ public class Player extends Adventurer {
 	public Player() {
 		
 		super();
-		job = Job.knight;
+		job = Job.archMage;
 		icon = job.icon;
 		inParty = true;
 		currentStats.move = 18;
@@ -29,6 +29,7 @@ public class Player extends Adventurer {
 		calculateSecondaryStats();
 		name = "Moltke";
 		gender = "Female";
+		genderInt = 2;
 		age = 58;
 		currentStats.TST = 100;
 		homeTown = Town.apastan;

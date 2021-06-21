@@ -12,9 +12,9 @@ import com.redhaan.adventurersGalore.combat.PlayerCombatSituation;
 import com.redhaan.adventurersGalore.entity.Monster;
 import com.redhaan.adventurersGalore.entity.adventurer.personality.Personality;
 import com.redhaan.adventurersGalore.entity.adventurer.skills.Skills;
-import com.redhaan.adventurersGalore.entity.adventurer.spells.Spell;
 import com.redhaan.adventurersGalore.entity.combatAddOns.CombatMovesBar;
 import com.redhaan.adventurersGalore.entity.combatAddOns.HealthBar;
+import com.redhaan.adventurersGalore.entity.combatAddOns.SpellOptions;
 import com.redhaan.adventurersGalore.entity.town.Town;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -58,6 +58,8 @@ public class Adventurer extends Monster {
 	public ArrayList<CombatMove> combatMoves;
 	private int combatAnimationTypeNumber;
 	
+	private SpellOptions spellOptions;
+	
 	Monster opponent;
 	Monster selectedAlly;
 
@@ -80,6 +82,7 @@ public class Adventurer extends Monster {
 		targetsInRange = new ArrayList<Monster>();
 		combatMoves = new ArrayList<CombatMove>();
 		combatMovesBar = new CombatMovesBar(this);
+		spellOptions = new SpellOptions(this);
 		combatAnimationTypeNumber = 1;
 
 	}
@@ -171,6 +174,7 @@ public class Adventurer extends Monster {
 					break;
 				
 				case selected_moved_noCombatMoveChosen_notActed:
+					
 					idleTimer += (deltaTime * idleAnimationSpeed);
 					if (idleTimer > 4) {
 						idleTimer = 0;
@@ -222,6 +226,9 @@ public class Adventurer extends Monster {
 					}
 
 						// 'MAGIC' COMBATMOVE ACTIVATED
+					else if (combatMoves.get(CombatMovesBar.selectedNumber - 1).name == "Magic") {
+						spellOptions.update(gameContainer, deltaTime);
+					}
 
 						// 'SHIELDS UP!' COMBATMOVE ACTIVATED
 					else if (combatMoves.get(CombatMovesBar.selectedNumber - 1).name == "Shields Up!") {
@@ -277,36 +284,6 @@ public class Adventurer extends Monster {
 							hasActed = true;
 							CombatMovesBar.selectedNumber = 0;
 					}
-
-
-
-
-					/*combatMovesBar.update(gameContainer, deltaTime);
-
-					enemiesInRange = checkEnemiesInWeaponRange(combatX, combatY, weapon.minRange, weapon.maxRange);
-					if (enemiesInRange.size() > 0) {
-
-						if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
-
-							Enemy enemy = checkSelectedEnemy(enemiesInRange,
-									gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE,
-									gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE);
-							if (enemy == null) {
-								System.out.println("enemy null");
-								selected = false;
-								hasActed = true;
-							} else {
-								actingAnimation = true;
-								Attack.attack(this, enemy);
-							}
-						}
-
-					}
-
-					else {
-						hasActed = true;
-						selected = false;
-					}*/
 
 					break;
 
@@ -387,6 +364,7 @@ public class Adventurer extends Monster {
 						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
 								(int) idleTimer + genderInt, 0);
 						combatMovesBar.render(gameContainer, renderer);
+						if (combatMoves.get(CombatMovesBar.selectedNumber - 1).name == "Magic") { spellOptions.render(gameContainer, renderer); }
 						for (Monster monster: targetsInRange) {
 							renderer.drawRectOpaque(
 									monster.getCombatX() * GameManager.GAMETILESIZE, monster.getCombatY() * GameManager.GAMETILESIZE, GameManager.GAMETILESIZE, GameManager.GAMETILESIZE, 0x44ffffff);

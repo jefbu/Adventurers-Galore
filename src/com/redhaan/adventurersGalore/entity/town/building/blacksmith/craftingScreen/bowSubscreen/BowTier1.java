@@ -8,6 +8,8 @@ import com.redhaan.adventurersGalore.entity.item.items.Hide;
 import com.redhaan.adventurersGalore.entity.item.items.OakWood;
 import com.redhaan.adventurersGalore.entity.item.weapon.bows.ShortBow;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Dirk;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -52,6 +54,8 @@ public class BowTier1 extends GameObject {
 					Inventory.hide -= 3;
 					Inventory.antlers -= 2;
 					Inventory.oakwood -= 5;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			

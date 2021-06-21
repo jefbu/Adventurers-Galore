@@ -59,6 +59,7 @@ public class WeaponRow extends GameObject {
 				
 				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1) && !dustbinHover) {
 					if (weapon != GameManager.adventurers.allAdventurers.get(PartyScreen.member).weapon) {
+						GameManager.adventurers.allAdventurers.get(PartyScreen.member).affinities.calculateAffinites(GameManager.adventurers.allAdventurers.get(PartyScreen.member).weapon, weapon);
 						Inventory.weapons.remove(weapon);
 						Inventory.weapons.add(GameManager.adventurers.allAdventurers.get(PartyScreen.member).weapon);
 						GameManager.adventurers.allAdventurers.get(PartyScreen.member).weapon = weapon;
@@ -101,9 +102,9 @@ public class WeaponRow extends GameObject {
 			
 		renderer.drawRectOpaque(216, 48 + 45 * number, 20, 32, InventoryScreen.highlightColour);
 			renderer.drawText(Integer.toString(weapon.weight), 222, 62 + 45 * number, InventoryScreen.passiveColour);
-			
+		
 		renderer.drawRectOpaque(241, 48 + 45 * number, 20, 32, InventoryScreen.highlightColour);
-			renderer.drawImageTile(icon, 235, 49 + 45 * number, weapon.upgrades, 0);		
+			if (weapon.upgrades > 0) { renderer.drawImageTile(icon, 235, 49 + 45 * number, weapon.upgrades, 0);	}	
 			
 		renderer.drawRectOpaque(266, 48 + 45 * number, 20, 32, InventoryScreen.highlightColour);	
 			if(weapon.gemStone != null) {

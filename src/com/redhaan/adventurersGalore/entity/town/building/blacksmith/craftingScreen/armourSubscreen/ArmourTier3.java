@@ -16,6 +16,8 @@ import com.redhaan.adventurersGalore.entity.item.items.Pelt;
 import com.redhaan.adventurersGalore.entity.item.items.Silver;
 import com.redhaan.adventurersGalore.entity.item.items.SpiritOfMischief;
 import com.redhaan.adventurersGalore.entity.item.items.ViolentSpirit;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -78,6 +80,8 @@ public class ArmourTier3 extends GameObject {
 					Inventory.pelt -= 8;
 					Inventory.ivory -= 5;
 					Inventory.heartSpirit -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			
@@ -94,6 +98,8 @@ public class ArmourTier3 extends GameObject {
 					Inventory.hide -= 8;
 					Inventory.ivory -= 5;
 					Inventory.violentSpirit -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			
@@ -110,6 +116,8 @@ public class ArmourTier3 extends GameObject {
 					Inventory.iron -= 5;
 					Inventory.coral -= 5;
 					Inventory.spiritOfMischief -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			
@@ -126,6 +134,8 @@ public class ArmourTier3 extends GameObject {
 					Inventory.iron -= 3;
 					Inventory.silver -= 5;
 					Inventory.heartSpirit -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			

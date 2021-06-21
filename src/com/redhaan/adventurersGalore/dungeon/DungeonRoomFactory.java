@@ -9,10 +9,11 @@ import com.redhaan.adventurersGalore.entity.TreasureChest;
 public abstract class DungeonRoomFactory {
 	
 	static Random random = new Random();
+	static ArrayList<DungeonRoom> list = new ArrayList<DungeonRoom>();
 	
 	public static ArrayList<DungeonRoom> createDungeonRooms(int dungeonLayoutType) {
 		
-		ArrayList<DungeonRoom> list = new ArrayList<DungeonRoom>();
+		list.clear();
 		
 		switch(dungeonLayoutType) {
 		

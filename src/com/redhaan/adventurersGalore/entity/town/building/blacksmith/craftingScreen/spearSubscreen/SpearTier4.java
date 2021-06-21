@@ -7,6 +7,8 @@ import com.redhaan.adventurersGalore.entity.item.items.Coral;
 import com.redhaan.adventurersGalore.entity.item.items.ViolentSpirit;
 import com.redhaan.adventurersGalore.entity.item.items.Wanderlust;
 import com.redhaan.adventurersGalore.entity.item.weapon.spears.Naginata;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -50,6 +52,8 @@ public class SpearTier4 extends GameObject {
 					Inventory.coral -= 5;
 					Inventory.violentSpirit -= 1;
 					Inventory.wanderlust -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			

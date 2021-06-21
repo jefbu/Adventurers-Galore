@@ -7,6 +7,8 @@ import com.redhaan.adventurersGalore.entity.item.items.Fang;
 import com.redhaan.adventurersGalore.entity.item.items.Iron;
 import com.redhaan.adventurersGalore.entity.item.items.Tusk;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Dirk;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -51,6 +53,8 @@ public class DaggerTier2 extends GameObject {
 					Inventory.iron -= 3;
 					Inventory.fang -= 8;
 					Inventory.tusk -= 8;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			

@@ -7,6 +7,8 @@ import com.redhaan.adventurersGalore.entity.item.items.EvilSpirit;
 import com.redhaan.adventurersGalore.entity.item.items.Iron;
 import com.redhaan.adventurersGalore.entity.item.items.LuckyClover;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Katar;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
+import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -49,6 +51,8 @@ public class DaggerTier4 extends GameObject {
 					Inventory.iron -= 5;
 					Inventory.evilSpirit -= 1;
 					Inventory.luckyClover -= 1;
+					ScrappingScreen.initialised = false;
+					SharpeningScreen.initialised = false;
 				}
 			}
 			
