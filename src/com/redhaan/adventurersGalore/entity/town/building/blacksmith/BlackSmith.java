@@ -19,7 +19,7 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 
 		private static final long serialVersionUID = 1L;
 	
-		private ImageTile blacksmith;
+		private static ImageTile blacksmith = new ImageTile("/blacksmith.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
 		private int timer;
 		private int animation;
 		private boolean generalHover;
@@ -45,7 +45,6 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 			super();
 			x = 1;
 			y = 0;
-			blacksmith = new ImageTile("/blacksmith.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
 			
 			timer = 0;
 			animation = 0;

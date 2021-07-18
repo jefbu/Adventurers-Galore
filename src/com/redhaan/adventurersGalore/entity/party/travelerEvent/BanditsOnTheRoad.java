@@ -6,7 +6,6 @@ import java.util.Random;
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameState;
 import com.redhaan.adventurersGalore.combat.Combat;
-import com.redhaan.adventurersGalore.combat.CombatMapRoller;
 import com.redhaan.adventurersGalore.combat.CombatPhase;
 import com.redhaan.adventurersGalore.combat.combatAI.HighLevelPlan;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
@@ -15,7 +14,6 @@ import com.redhaan.adventurersGalore.entity.enemies.Pirate;
 import com.redhaan.adventurersGalore.entity.enemies.Wolf;
 import com.redhaan.adventurersGalore.entity.party.Party;
 import com.redhaan.adventurersGalore.worldMap.WorldMap;
-import com.redhaan.adventurersGalore.worldMap.WorldMapTiles;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;

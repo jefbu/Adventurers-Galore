@@ -11,7 +11,6 @@ import com.redhaan.adventurersGalore.entity.party.Party;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
-import gameEngine.ecclesiastes.gfx.Image;
 
 public class DungeonPopup extends GameObject {
 	

@@ -4,8 +4,10 @@ import java.awt.event.MouseEvent;
 
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.item.items.Claw;
+import com.redhaan.adventurersGalore.entity.item.items.CraftItems;
 import com.redhaan.adventurersGalore.entity.item.items.Fang;
 import com.redhaan.adventurersGalore.entity.item.items.Iron;
+import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Dagger;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Knife;
 import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
@@ -87,41 +89,41 @@ public class DaggerTier1 extends GameObject {
 	public void render(GameContainer gameContainer, Renderer renderer) {
 				
 		renderer.drawRectOpaque(30, 155, 570, 40, 0xff181205);
-			renderer.drawImageTile(dagger.icon, 35, 160, dagger.xTile, dagger.yTile);
+			renderer.drawImageTile(Weapon.icon, 35, 160, dagger.xTile, dagger.yTile);
 			renderer.drawRectOpaque(70, 160, 80, 30, 0xff231911);
 			renderer.drawText(dagger.name, 75, 170, 0xff685245);
 	
 			renderer.drawRectOpaque(155, 160, 70, 30, 0xff231911);		
-			renderer.drawImageTile(iron.icon, 162, 167, iron.xTile, iron.yTile);
+			renderer.drawImageTile(CraftItems.icon, 162, 167, iron.xTile, iron.yTile);
 			renderer.drawText("3", 185, 171, 0xff886622);
 			if(Inventory.iron >= 3) { renderer.drawText("(" + Inventory.iron + ")", 192, 171, 0xff447722); }
 			else { renderer.drawText("(" + Inventory.iron + ")", 192, 171, 0xff774422); }
 		
 			renderer.drawRectOpaque(230, 160, 70, 30, 0xff231911);
-			renderer.drawImageTile(fang.icon, 237, 167, fang.xTile, fang.yTile);
+			renderer.drawImageTile(CraftItems.icon, 237, 167, fang.xTile, fang.yTile);
 			renderer.drawText("8", 260, 171, 0xff886622);
 			if(Inventory.fang >= 8) { renderer.drawText("(" + Inventory.fang + ")", 267, 171, 0xff447722); }
 			else { renderer.drawText("(" + Inventory.fang + ")", 267, 171, 0xff774422); }
 		
 		renderer.drawRectOpaque(30, 200, 570, 40, 0xff181205);
-			renderer.drawImageTile(knife.icon, 35, 205, knife.xTile, knife.yTile);
+			renderer.drawImageTile(Weapon.icon, 35, 205, knife.xTile, knife.yTile);
 			renderer.drawRectOpaque(70, 205, 80, 30, 0xff231911);
 			renderer.drawText(knife.name, 75, 215, 0xff685245);
 			
 			renderer.drawRectOpaque(155, 205, 70, 30, 0xff231911);
-			renderer.drawImageTile(iron.icon, 162, 212, iron.xTile, iron.yTile);
+			renderer.drawImageTile(CraftItems.icon, 162, 212, iron.xTile, iron.yTile);
 			renderer.drawText("2", 185, 216, 0xff886622);
 			if(Inventory.iron >= 2) { renderer.drawText("(" + Inventory.iron + ")", 192, 216, 0xff447722); }
 			else { renderer.drawText("(" + Inventory.iron + ")", 192, 216, 0xff774422); }	
 			
 			renderer.drawRectOpaque(230, 205, 70, 30, 0xff231911);
-			renderer.drawImageTile(claw.icon, 237, 212, claw.xTile, claw.yTile);
+			renderer.drawImageTile(CraftItems.icon, 237, 212, claw.xTile, claw.yTile);
 			renderer.drawText("5", 260, 216, 0xff886622);
 			if(Inventory.claw >= 5) { renderer.drawText("(" + Inventory.claw + ")", 267, 216, 0xff447722); }
 			else { renderer.drawText("(" + Inventory.claw + ")", 267, 216, 0xff774422); }	
 			
 			renderer.drawRectOpaque(305, 205, 70, 30, 0xff231911);
-			renderer.drawImageTile(fang.icon, 312, 212, fang.xTile, fang.yTile);
+			renderer.drawImageTile(CraftItems.icon, 312, 212, fang.xTile, fang.yTile);
 			renderer.drawText("5", 335, 216, 0xff886622);
 			if(Inventory.fang >= 5) { renderer.drawText("(" + Inventory.fang + ")", 342, 216, 0xff447722); }
 			else { renderer.drawText("(" + Inventory.fang + ")", 342, 216, 0xff774422); }

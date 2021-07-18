@@ -3,9 +3,10 @@ package com.redhaan.adventurersGalore.entity.town.building.blacksmith.craftingSc
 import java.awt.event.MouseEvent;
 
 import com.redhaan.adventurersGalore.GameObject;
+import com.redhaan.adventurersGalore.entity.item.items.CraftItems;
 import com.redhaan.adventurersGalore.entity.item.items.Iron;
 import com.redhaan.adventurersGalore.entity.item.items.OakWood;
-import com.redhaan.adventurersGalore.entity.item.weapon.bows.ShortBow;
+import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
 import com.redhaan.adventurersGalore.entity.item.weapon.spears.Spear;
 import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
 import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
@@ -65,18 +66,18 @@ public class SpearTier1 extends GameObject {
 	public void render(GameContainer gameContainer, Renderer renderer) {
 				
 		renderer.drawRectOpaque(30, 155, 570, 40, 0xff181205);
-			renderer.drawImageTile(spear.icon, 35, 160, spear.xTile, spear.yTile);
+			renderer.drawImageTile(Weapon.icon, 35, 160, spear.xTile, spear.yTile);
 			renderer.drawRectOpaque(70, 160, 80, 30, 0xff231911);
 			renderer.drawText(spear.name, 75, 170, 0xff685245);
 		
 			renderer.drawRectOpaque(155, 160, 70, 30, 0xff231911);		
-			renderer.drawImageTile(iron.icon, 162, 167, iron.xTile, iron.yTile);
+			renderer.drawImageTile(CraftItems.icon, 162, 167, iron.xTile, iron.yTile);
 			renderer.drawText("3", 185, 171, 0xff886622);
 			if(Inventory.iron >= 3) { renderer.drawText("(" + Inventory.iron + ")", 192, 171, 0xff447722); }
 			else { renderer.drawText("(" + Inventory.iron + ")", 192, 171, 0xff774422); }
 		
 			renderer.drawRectOpaque(230, 160, 70, 30, 0xff231911);
-			renderer.drawImageTile(oakWood.icon, 237, 167, oakWood.xTile, oakWood.yTile);
+			renderer.drawImageTile(CraftItems.icon, 237, 167, oakWood.xTile, oakWood.yTile);
 			renderer.drawText("5", 260, 171, 0xff886622);
 			if(Inventory.oakwood >= 5) { renderer.drawText("(" + Inventory.oakwood + ")", 267, 171, 0xff447722); }
 			else { renderer.drawText("(" + Inventory.oakwood + ")", 267, 171, 0xff774422); }

@@ -11,7 +11,7 @@ public abstract class CombatMapRoller {
 	public static CombatMap rollCombatMap(WorldMapTiles terrainType) {
 		
 		Image image = null;
-		int deploySituation = 0;
+		int deploySituation = 1;
 		Random random = new Random();
 		int roll = random.nextInt(100) + 1;
 		

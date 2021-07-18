@@ -14,6 +14,8 @@ import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
 public class TownList extends GameObject {
+
+	private static final long serialVersionUID = 1L;
 	
 	public static boolean active;
 	private int selectMultiplier;

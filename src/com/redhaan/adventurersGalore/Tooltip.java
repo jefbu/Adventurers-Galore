@@ -5,9 +5,12 @@ import gameEngine.ecclesiastes.Renderer;
 
 public class Tooltip extends GameObject {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private boolean active;
 	private int counter;
-	private int xPosition, yPosition;
 	private int oldXPosition, oldYPosition;
 	
 	public Tooltip() {
@@ -16,8 +19,6 @@ public class Tooltip extends GameObject {
 		counter = 0;
 		oldXPosition = 100;
 		oldYPosition = 100;
-		xPosition = 0;
-		yPosition = 0;
 		
 	}
 	
@@ -26,7 +27,7 @@ public class Tooltip extends GameObject {
 	public void update(GameContainer gameContainer, float deltaTime) {
 		
 		
-		if (counter >= 60 && !active) { active = true; }
+		/*if (counter >= 900 && !active) { active = true; }
 
 		else if (gameContainer.getInput().getMouseX() == oldXPosition && gameContainer.getInput().getMouseY() == oldYPosition) { counter++; }
 		
@@ -36,7 +37,48 @@ public class Tooltip extends GameObject {
 			oldYPosition = gameContainer.getInput().getMouseY();
 			active = false;
 		}
-
+		
+		if (active) {
+			
+			switch (GameManager.gameState) {
+			
+			case Combat:
+				break;
+			case InTown:
+				break;
+			case Inventory:
+				break;
+			case PartyCohesionCheckerUI:
+				break;
+			case PartyScreen:
+				break;
+			case QuestScreen:
+				break;
+			case QuestUI:
+				break;
+			case Titlescreen:
+				break;
+			case Transition:
+				break;
+			case WorldMap:
+				switch (WorldMap.subState) {
+				case DetailMap:
+					break;
+				case GlobalMap: 
+					break;
+				case TravelerEvent: break;
+				default:
+					break;
+				
+				}
+				break;
+			default:
+				break;
+						
+			}
+			
+		}
+	*/
 		
 	}
 

@@ -1,9 +1,6 @@
 package com.redhaan.adventurersGalore.entity.item.weapon.daggers;
 
-import java.util.Random;
-
 import com.redhaan.adventurersGalore.entity.item.ItemID;
-import com.redhaan.adventurersGalore.entity.item.weapon.Rune;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
 import com.redhaan.adventurersGalore.entity.item.weapon.WeaponType;
 import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.Amethyst;

@@ -86,7 +86,7 @@ public class WeaponRow extends GameObject {
 		if(Inventory.weaponChange) { renderer.drawRect(19, 44, 602, 40, 0xffDDBB66); }
 		
 		renderer.drawRectOpaque(25, 48 + 45 * number, 36, 32, InventoryScreen.highlightColour);
-			renderer.drawImageTile(weapon.icon, 27, 49 + 45 * number, weapon.xTile, weapon.yTile);
+			renderer.drawImageTile(Weapon.icon, 27, 49 + 45 * number, weapon.xTile, weapon.yTile);
 			
 		renderer.drawRectOpaque(66, 48 + 45 * number, 70, 32, InventoryScreen.highlightColour);
 			renderer.drawText(weapon.name, 75, 62 + 45 * number, InventoryScreen.passiveColour);

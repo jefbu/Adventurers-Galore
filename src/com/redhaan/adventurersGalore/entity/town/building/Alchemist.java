@@ -1,5 +1,7 @@
 package com.redhaan.adventurersGalore.entity.town.building;
 
+import com.redhaan.adventurersGalore.inTown.TownMap;
+
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 
@@ -20,8 +22,21 @@ public class Alchemist extends Building {
 	
 	public void render(GameContainer gameContainer, Renderer renderer) {
 		
-		renderer.drawImageTile(icon, 240, 60, x, y);
+		switch (TownMap.subState) {
 		
+		case General:
+			renderer.drawImageTile(icon, 240, 60, x, y);
+			break;
+		
+		case Alchemist:
+			break;
+			
+		case Inn: break;
+		case Seer: break;
+		case Blacksmith: break;
+		
+		}
+				
 	}
 	
 

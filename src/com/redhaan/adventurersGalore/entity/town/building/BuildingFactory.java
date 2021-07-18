@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import com.redhaan.adventurersGalore.entity.town.building.blacksmith.BlackSmith;
+import com.redhaan.adventurersGalore.entity.town.building.inn.Inn;
+import com.redhaan.adventurersGalore.entity.town.building.seer.Seer;
 
 public abstract class BuildingFactory {
 	
@@ -16,6 +18,7 @@ public abstract class BuildingFactory {
 		createAlchemist(list);
 		createJeweller(list);
 		createBlackSmiths(list, townSize);
+		createSeer(list, townSize);
 				
 		
 		
@@ -38,6 +41,21 @@ public abstract class BuildingFactory {
 		case 1: if (roll > 80) { list.add(new BlackSmith()); } break;
 		case 2: if (roll > 50) { list.add(new BlackSmith()); } break;
 		case 3: if (roll > 0) { list.add(new BlackSmith()); } break;
+		case 4: list.add(new BlackSmith()); break;
+		default: System.out.println("error in switch blacksmith"); break;
+		}
+		
+	}
+	
+	private static void createSeer(ArrayList<Building> list, int townSize) {
+		
+		Random random = new Random();
+		int roll = random.nextInt(100) + 1;
+		
+		switch (townSize) {
+		case 1: if (roll > 80) { list.add(new Seer()); } break;
+		case 2: if (roll > 50) { list.add(new Seer()); } break;
+		case 3: if (roll > 0) { list.add(new Seer()); } break;
 		case 4: list.add(new BlackSmith()); break;
 		default: System.out.println("error in switch blacksmith"); break;
 		}

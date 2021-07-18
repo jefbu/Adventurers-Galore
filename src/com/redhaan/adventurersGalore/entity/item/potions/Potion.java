@@ -1,7 +1,5 @@
 package com.redhaan.adventurersGalore.entity.item.potions;
 
-import com.redhaan.adventurersGalore.entity.adventurer.Sigil;
-
 public class Potion {
 	
 	public int xRow, yRow;

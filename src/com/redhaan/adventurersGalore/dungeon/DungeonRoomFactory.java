@@ -3,7 +3,6 @@ package com.redhaan.adventurersGalore.dungeon;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.redhaan.adventurersGalore.entity.Monster;
 import com.redhaan.adventurersGalore.entity.TreasureChest;
 
 public abstract class DungeonRoomFactory {

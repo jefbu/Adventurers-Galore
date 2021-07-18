@@ -78,7 +78,7 @@ public class ArmourRow extends GameObject {
 		if(Inventory.armourChange) { renderer.drawRect(19, 44, 602, 40, 0xffDDBB66); }
 		
 		renderer.drawRectOpaque(25, 48 + 45 * number, 36, 32, InventoryScreen.highlightColour);
-		renderer.drawImageTile(armour.icon, 27, 49 + 45 * number, armour.xTile, armour.yTile);
+		renderer.drawImageTile(Armour.icon, 27, 49 + 45 * number, armour.xTile, armour.yTile);
 		
 		renderer.drawRectOpaque(66, 48 + 45 * number, 95, 32, InventoryScreen.highlightColour);
 		renderer.drawText(armour.name, 75, 62 + 45 * number, InventoryScreen.passiveColour);

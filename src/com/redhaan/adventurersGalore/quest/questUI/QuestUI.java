@@ -7,14 +7,11 @@ import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.GameState;
 import com.redhaan.adventurersGalore.Transition;
 import com.redhaan.adventurersGalore.combat.Combat;
-import com.redhaan.adventurersGalore.combat.CombatMapRoller;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.entity.enemies.Enemy;
 import com.redhaan.adventurersGalore.entity.party.PartyCohesionChecker;
 import com.redhaan.adventurersGalore.quest.Quest;
 import com.redhaan.adventurersGalore.quest.QuestStep;
-import com.redhaan.adventurersGalore.worldMap.WorldMapTiles;
-
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
 

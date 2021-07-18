@@ -11,6 +11,10 @@ import gameEngine.ecclesiastes.Renderer;
 
 public class SpearSubScreen extends GameObject {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<ItemRow> spearRows;
 	
 	public SpearSubScreen() {

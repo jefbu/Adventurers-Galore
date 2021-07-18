@@ -62,6 +62,8 @@ public class Adventurer extends Monster {
 	
 	Monster opponent;
 	Monster selectedAlly;
+	
+	public boolean known;
 
 	public Adventurer() {
 
@@ -84,6 +86,8 @@ public class Adventurer extends Monster {
 		combatMovesBar = new CombatMovesBar(this);
 		spellOptions = new SpellOptions(this);
 		combatAnimationTypeNumber = 1;
+		
+		known = true;
 
 	}
 
@@ -96,8 +100,7 @@ public class Adventurer extends Monster {
 
 			switch (Combat.combatState) {
 			
-			case EnemyTurn:
-				break;				
+			case EnemyTurn: break;				
 			case PlayerTurn:
 
 				if (actingAnimation) {

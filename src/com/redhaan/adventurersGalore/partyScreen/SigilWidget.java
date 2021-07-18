@@ -5,7 +5,6 @@ import java.awt.event.MouseEvent;
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.SpellAnimation;
-import com.redhaan.adventurersGalore.entity.adventurer.spells.SpellEffect;
 import com.redhaan.adventurersGalore.entity.adventurer.spells.SpellType;
 
 import gameEngine.ecclesiastes.GameContainer;

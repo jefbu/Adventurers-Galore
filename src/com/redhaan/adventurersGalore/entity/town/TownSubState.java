@@ -5,6 +5,8 @@ public enum TownSubState {
 	General,
 	Blacksmith,
 	Alchemist,
-	Inn
+	Inn,
+	Seer,
+	Jeweller
 
 }

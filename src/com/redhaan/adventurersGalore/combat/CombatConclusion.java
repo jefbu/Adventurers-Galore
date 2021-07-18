@@ -9,12 +9,15 @@ import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.GameState;
 import com.redhaan.adventurersGalore.Toast;
 import com.redhaan.adventurersGalore.Transition;
-import com.redhaan.adventurersGalore.dungeon.DungeonConclusion;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.entity.adventurer.LevelUpRoller;
 import com.redhaan.adventurersGalore.entity.adventurer.Stats;
 import com.redhaan.adventurersGalore.entity.enemies.Enemy;
 import com.redhaan.adventurersGalore.entity.item.Item;
+import com.redhaan.adventurersGalore.entity.item.ItemID;
+import com.redhaan.adventurersGalore.entity.item.armour.Armour;
+import com.redhaan.adventurersGalore.entity.item.items.CraftItems;
+import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -34,6 +37,8 @@ public class CombatConclusion extends GameObject {
 	private SoundClip victorySound;
 	private SoundClip lossSound;
 	
+	private boolean closeHover;
+	
 	public CombatConclusion() {
 		random = new Random();
 		playerVictorious = false;
@@ -43,6 +48,8 @@ public class CombatConclusion extends GameObject {
 		
 		victorySound = new SoundClip("/victory.wav");
 		lossSound = new SoundClip("/loss.wav");
+		
+		closeHover = false;
 	}
 	
 
@@ -130,15 +137,19 @@ public class CombatConclusion extends GameObject {
 				
 			}
 			
-			if (gameContainer.getInput().getMouseX() > 500 && gameContainer.getInput().getMouseX() < 551 && 
-					gameContainer.getInput().getMouseY() > 300 && gameContainer.getInput().getMouseY() < 321) {
+			if (gameContainer.getInput().getMouseX() > 550 && gameContainer.getInput().getMouseX() < 595 && 
+					gameContainer.getInput().getMouseY() > 390 && gameContainer.getInput().getMouseY() < 410) {
+				
+				closeHover = true;
 				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
 					strings.clear();
 					loot.clear();
 					conclusionStarted = false;
-					GameManager.gameState = GameState.WorldMap;
+					Transition.nextGameState = GameState.WorldMap;
+					GameManager.gameState = GameState.Transition;
 				}
-			}
+				
+			} else { closeHover = false; }
 			
 		}
 	}	
@@ -150,23 +161,48 @@ public class CombatConclusion extends GameObject {
 			
 		renderer.drawRectOpaque(10, 20, 600, 400, 0xff211814);
 		
-		renderer.drawRectOpaque(15, 25, 580, 120, 0xff141821);
+		renderer.drawRectOpaque(15, 25, 120, 250, 0xff141821);
+		renderer.drawRectOpaque(15, 280, 120, 135, 0xff141821);
+		renderer.drawRectOpaque(140, 25, 465, 390, 0xff141821);
+		
 		if(playerVictorious) {
 			
-			renderer.drawText("The Spoils of War: ", 20, 30, 0xff545481);
+			renderer.drawText("The Spoils of War: ", 20, 30, 0xff9191D8);
+			
+			int craftItems = 0;
+			int equipment = 0;
+			
 			for (int i = 0; i < loot.size(); i++) {
-				renderer.drawText(loot.get(i).name, 20 + i * 50, 50, 0xff545481);
+				if (loot.get(i).ID != ItemID.Weapon && loot.get(i).ID != ItemID.Armour) {
+					renderer.drawImageTile(CraftItems.icon, 20, 50 + craftItems * 20, loot.get(i).xTile, loot.get(i).yTile);
+					renderer.drawText(loot.get(i).name, 40, 55 + craftItems * 20, 0xff545481);
+					craftItems++;
+				}
+				else if (loot.get(i).ID == ItemID.Weapon) { 
+					renderer.drawImageTile(Weapon.icon, 10, 285 + equipment * 32, loot.get(i).xTile, loot.get(i).yTile); 
+					renderer.drawText(loot.get(i).name, 40, 295 + equipment * 32, 0xff545481);
+					equipment++;
+					}
+				else if (loot.get(i).ID == ItemID.Armour) { 
+					renderer.drawImageTile(Armour.icon, 10, 285 + equipment * 32, loot.get(i).xTile, loot.get(i).yTile); 
+					renderer.drawText(loot.get(i).name, 40, 295 + equipment * 32, 0xff545481);
+					equipment++;
+					}
 			}
-	
+			
+		
 			
 			for (int i = 0; i < strings.size(); i++) {
-				renderer.drawText(strings.get(i), 10, 200 + i * 15, 0xffCC8855);
+				renderer.drawText(strings.get(i), 150, 50 + i * 20, 0xffCC8855);
 			}
 		
 		}
-								
-		renderer.drawRectOpaque(530, 350, 50, 20, 0xff141824);
-
+		
+		
+		renderer.drawRectOpaque(550, 390, 50, 20, 0xff9191D8);
+		renderer.drawText("Close", 565, 395, 0xff141821);
+		if (closeHover) { renderer.drawRect(550, 390, 50, 20, 0xff91D891); }
+		
 	}
 	
 	

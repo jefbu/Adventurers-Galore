@@ -109,9 +109,10 @@ public class GameManager extends AbstractGame {
 		float screenHeight = (float) screenSize.getHeight();
 		float scale = screenHeight / (GAMEHEIGHT); 
 		gameContainer.setScale(scale);
-		int dpi = Toolkit.getDefaultToolkit().getScreenResolution();
 		
 		/*
+		int dpi = Toolkit.getDefaultToolkit().getScreenResolution();
+		
 		System.out.println("Screen width: " + screenSize.getWidth());
 		System.out.println("Screen height: " + screenHeight);
 		System.out.println("Scale: " + scale);

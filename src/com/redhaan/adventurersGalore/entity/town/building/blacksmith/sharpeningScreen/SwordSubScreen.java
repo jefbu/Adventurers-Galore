@@ -12,6 +12,10 @@ import gameEngine.ecclesiastes.Renderer;
 public class SwordSubScreen extends GameObject {
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<ItemRow> swordRows;
 
 	public SwordSubScreen() {

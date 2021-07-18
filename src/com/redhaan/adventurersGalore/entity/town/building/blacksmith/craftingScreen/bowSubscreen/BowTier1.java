@@ -4,10 +4,11 @@ import java.awt.event.MouseEvent;
 
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.entity.item.items.Antlers;
+import com.redhaan.adventurersGalore.entity.item.items.CraftItems;
 import com.redhaan.adventurersGalore.entity.item.items.Hide;
 import com.redhaan.adventurersGalore.entity.item.items.OakWood;
+import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
 import com.redhaan.adventurersGalore.entity.item.weapon.bows.ShortBow;
-import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Dirk;
 import com.redhaan.adventurersGalore.entity.town.building.blacksmith.scrappingScreen.ScrappingScreen;
 import com.redhaan.adventurersGalore.entity.town.building.blacksmith.sharpeningScreen.SharpeningScreen;
 import com.redhaan.adventurersGalore.inventory.Inventory;
@@ -17,6 +18,11 @@ import gameEngine.ecclesiastes.Renderer;
 
 public class BowTier1 extends GameObject {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private ShortBow shortBow;
 	
 	private Hide hide;
@@ -70,25 +76,25 @@ public class BowTier1 extends GameObject {
 	public void render(GameContainer gameContainer, Renderer renderer) {
 				
 		renderer.drawRectOpaque(30, 155, 570, 40, 0xff181205);
-			renderer.drawImageTile(shortBow.icon, 35, 160, shortBow.xTile, shortBow.yTile);
+			renderer.drawImageTile(Weapon.icon, 35, 160, shortBow.xTile, shortBow.yTile);
 			renderer.drawRectOpaque(70, 160, 80, 30, 0xff231911);
 			renderer.drawText(shortBow.name, 75, 170, 0xff685245);
 		
 			renderer.drawRectOpaque(155, 160, 70, 30, 0xff231911);		
-			renderer.drawImageTile(hide.icon, 162, 167, hide.xTile, hide.yTile);
+			renderer.drawImageTile(CraftItems.icon, 162, 167, hide.xTile, hide.yTile);
 			renderer.drawText("3", 185, 171, 0xff886622);
 			if(Inventory.hide >= 3) { renderer.drawText("(" + Inventory.hide + ")", 192, 171, 0xff447722); }
 			else { renderer.drawText("(" + Inventory.hide + ")", 192, 171, 0xff774422); }
 		
 			renderer.drawRectOpaque(230, 160, 70, 30, 0xff231911);
-			renderer.drawImageTile(antlers.icon, 237, 167, antlers.xTile, antlers.yTile);
+			renderer.drawImageTile(CraftItems.icon, 237, 167, antlers.xTile, antlers.yTile);
 			renderer.drawText("2", 260, 171, 0xff886622);
 			if(Inventory.antlers >= 2) { renderer.drawText("(" + Inventory.antlers + ")", 267, 171, 0xff447722); }
 			else { renderer.drawText("(" + Inventory.antlers + ")", 267, 171, 0xff774422); }
 		
 			
 			renderer.drawRectOpaque(305, 160, 70, 30, 0xff231911);
-			renderer.drawImageTile(oakWood.icon, 312, 167, oakWood.xTile, oakWood.yTile);
+			renderer.drawImageTile(CraftItems.icon, 312, 167, oakWood.xTile, oakWood.yTile);
 			renderer.drawText("5", 335, 171, 0xff886622);
 			if(Inventory.oakwood >= 5) { renderer.drawText("(" + Inventory.oakwood + ")", 342, 171, 0xff447722); }
 			else { renderer.drawText("(" + Inventory.oakwood + ")", 342, 171, 0xff774422); }

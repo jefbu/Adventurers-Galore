@@ -24,7 +24,7 @@ public class Adventurers extends GameObject {
 		Player player = new Player();
 		allAdventurers.add(player);
 		
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < 107; i++) {
 			allAdventurers.add(adventurerFactory.createRandomAdventurer());
 		}
 		

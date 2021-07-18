@@ -29,6 +29,7 @@ public class Player extends Adventurer {
 		calculateSecondaryStats();
 		name = "Moltke";
 		gender = "Female";
+		genderInt = 4;
 		age = 58;
 		currentStats.TST = 100;
 		homeTown = Town.apastan;

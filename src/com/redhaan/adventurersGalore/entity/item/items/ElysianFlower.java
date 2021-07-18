@@ -5,6 +5,11 @@ import com.redhaan.adventurersGalore.entity.item.ItemID;
 public class ElysianFlower extends CraftItems {
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public ElysianFlower() {
 		
 		name = "Elysian Flower";

@@ -13,13 +13,11 @@ public class WeaponAffinityWidget implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private ImageTile icon;
-	private ImageTile jewelIcon;
 	
 	
 	public WeaponAffinityWidget() {
 		
 		icon = new ImageTile("/smallIcons.png", GameManager.GAMETILESIZE / 4, GameManager.GAMETILESIZE / 4);
-		jewelIcon = new ImageTile("/generic_icons.png", GameManager.GAMETILESIZE / 2, GameManager.GAMETILESIZE / 2);
 		
 	}
 

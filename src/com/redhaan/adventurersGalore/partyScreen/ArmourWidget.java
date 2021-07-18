@@ -64,7 +64,7 @@ public class ArmourWidget extends GameObject {
 			}
 		else { renderer.drawRectOpaque(offX, offY, width, height, passiveColour); }
 		
-		renderer.drawImageTile(armour.icon, offX + 14, offY + 5, armour.xTile, armour.yTile);	
+		renderer.drawImageTile(Armour.icon, offX + 14, offY + 5, armour.xTile, armour.yTile);	
 		renderer.drawText(Integer.toString(armour.defence), offX + 23, offY + 50, 0xffBBFFBB);
 		renderer.drawText(Integer.toString(armour.weight), offX + 23, offY + 60, 0xffDDDDDD);
 	

@@ -1,15 +1,16 @@
 package com.redhaan.adventurersGalore.entity.item.weapon.spears;
 
-import java.util.Random;
-
 import com.redhaan.adventurersGalore.entity.item.ItemID;
-import com.redhaan.adventurersGalore.entity.item.weapon.Rune;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
 import com.redhaan.adventurersGalore.entity.item.weapon.WeaponType;
 
 public class GaeBolg extends Weapon {
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final int TIER = 5;
 	
 	public GaeBolg() {

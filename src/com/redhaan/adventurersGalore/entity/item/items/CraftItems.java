@@ -8,6 +8,7 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 public class CraftItems extends Item {
 
 	private static final long serialVersionUID = 1L;
+	public static ImageTile icon;
 
 	public CraftItems() {
 	
