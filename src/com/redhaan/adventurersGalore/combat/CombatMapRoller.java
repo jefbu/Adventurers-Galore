@@ -13,35 +13,49 @@ public abstract class CombatMapRoller {
 		Image image = null;
 		int deploySituation = 1;
 		Random random = new Random();
-		int roll = random.nextInt(100) + 1;
+		int deployRoll = random.nextInt(100) + 1;
+		int mapRoll = random.nextInt(100) + 1;
 		
 		switch (terrainType) {
 		
 		case DESERT:
 			image = new Image("/combatMaps/combatMapGrass1.png");
 			break;
+			
 		case FOREST:
-			image = new Image("/combatMaps/combatMapGrass1.png");
+			if (mapRoll > 90) { image = new Image("/combatMaps/combatMapForest1.png"); }
+			else { image = new Image("/combatMaps/combatMapForest2.png"); }
 			break;
+			
 		case GRASS:
-			image = new Image("/combatMaps/combatMapGrass1.png");
-			if (roll > 50) { deploySituation = 1; }
+			if (mapRoll > 90) { image = new Image("/combatMaps/combatMapGrass1.png"); }
+			else if (mapRoll > 80) { image = new Image("/combatMaps/combatMapGrass2.png"); }
+			else { image = new Image("/combatMaps/combatMapGrass3.png"); }
+
+			if (deployRoll > 50) { deploySituation = 1; }
 			else { deploySituation = 2; }
+			
 			break;
+		
 		case ICE:
-			image = new Image("/combatMaps/combatMapGrass1.png");
+			image = new Image("/combatMaps/combatMapIce1.png");
 			break;
+			
 		case MOUNTAIN:
 			image = new Image("/combatMaps/combatMapGrass1.png");
 			break;
+			
 		case OCEAN:
 			image = new Image("/combatMaps/combatMapGrass1.png");
 			break;
+			
 		case SHALLOW:
 			image = new Image("/combatMaps/combatMapGrass1.png");
 			break;
+			
 		case SWAMP:
-			image = new Image("/combatMaps/combatMapGrass1.png");
+			if (mapRoll > 90) { image = new Image("/combatMaps/combatMapForest1.png"); }
+			else { image = new Image("/combatMaps/combatMapForest2.png"); }
 			break;
 
 		

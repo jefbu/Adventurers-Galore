@@ -5,6 +5,7 @@ public enum PersonalityTrait {
 	Cynical,
 	Drunk,
 	Pedantic,
-	Witty
+	Affable,
+	
 
 }

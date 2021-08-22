@@ -41,6 +41,7 @@ public class Adventurer extends Monster {
 	public boolean selected;
 	public boolean hasMoved;
 	public boolean hasActed;
+	private boolean justMoved;
 	ArrayList<Monster> targetsInRange;
 	// public PlayerTurnLeftClickSituation leftClickSituation;
 	public int battlesPassed;
@@ -51,6 +52,7 @@ public class Adventurer extends Monster {
 	public ArrayList<Sigil> spells;
 	public Tattoo tattoo;
 	public Skills skills;
+	public Portrait portrait;
 
 	public Personality personality;
 	public Titbit titbit;
@@ -75,12 +77,14 @@ public class Adventurer extends Monster {
 		selected = false;
 		hasMoved = false;
 		hasActed = false;
+		justMoved = false;
 		// leftClickSituation = PlayerTurnLeftClickSituation.NothingToDo;
 		battlesPassed = 0;
 		spells = new ArrayList<Sigil>();
 		personality = new Personality();
 		titbit = new Titbit();
 		skills = new Skills();
+		portrait = new Portrait();
 		targetsInRange = new ArrayList<Monster>();
 		combatMoves = new ArrayList<CombatMove>();
 		combatMovesBar = new CombatMovesBar(this);
@@ -111,172 +115,201 @@ public class Adventurer extends Monster {
 						selected = false;
 						hasMoved = true;
 						hasActed = true;
+						turnPassed = true;
 						combatAnimationTypeNumber = 1;
-						CombatMovesBar.selectedNumber = 0;
+						combatMovesBar.selectedNumber = 1;
 						idleTimer = 0;
 					}
 				}
 				
-				combatSituation = decidePlayerCombatSituation();
-				
-				switch (combatSituation) {
-			
-				case notSelected_turnAvailable:
-										
-					idleTimer += (deltaTime * idleAnimationSpeed);
-					if (idleTimer > 4) {
-						idleTimer = 0;
-					}
-
-					if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
-						if (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE == getCombatX()
-								&& gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == getCombatY()) {
-							selected = true;
-						}
-					}
-
-					break;
-
-				case selected_notMoved_noCombatMoveChosen_notActed:
+				else {
 					
-					idleTimer += (deltaTime * idleAnimationSpeed);
-					if (idleTimer > 4) {
-						idleTimer = 0;
-					}
-
-					moveRange = MoveRangeFiller.fillMoveRange(getCombatX(), getCombatY(), currentStats.move);
-
-					if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { 
+					if (!turnPassed) {
 						
-						if (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE == combatX
-								&& gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == combatY) {
-							hasMoved = true;
-						}
-
-						else {
-							boolean inMoveRange = false;
-							for (int i = 0; i < moveRange.size(); i++) {
-								if (moveRange.get(i)[0] == gameContainer.getInput().getMouseX()
-										/ GameManager.GAMETILESIZE
-										&& moveRange.get(i)[1] == gameContainer.getInput().getMouseY()
-												/ GameManager.GAMETILESIZE) {
-									combatX = gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE;
-									combatY = gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE;
-									hasMoved = true;
-									inMoveRange = true;
-								}
-							}
-
-							if (!inMoveRange) { 
-								selected = false;
-							}
-						}
-						
-					}
-					
-					break;
-				
-				case selected_moved_noCombatMoveChosen_notActed:
-					
-					idleTimer += (deltaTime * idleAnimationSpeed);
-					if (idleTimer > 4) {
-						idleTimer = 0;
-					}
-					combatMovesBar.update(gameContainer, deltaTime);
-					break;
-					
-										
-				case selected_moved_combatMoveChosen_notActed:
-										
-					idleTimer += (deltaTime * idleAnimationSpeed);
-					if (idleTimer > 4) {
-						idleTimer = 0; 
-					}
-					
-					// 'FIGHT' or 'AIM' or 'BACKSTAB' COMBATMOVE ACTIVATED					
-					if (combatMoves.get(CombatMovesBar.selectedNumber - 1).name == "Fight" 
-							|| combatMoves.get(CombatMovesBar.selectedNumber - 1).name == "Aim!"
-							|| combatMoves.get(CombatMovesBar.selectedNumber - 1).name == "Back Stab") {
-					
-						if (combatMoves.get(CombatMovesBar.selectedNumber - 1).name == "Aim!") { Attack.aimedAttack = true; }
-						else if (combatMoves.get(CombatMovesBar.selectedNumber - 1).name == "Back Stab") { Attack.backstab = true; }
-					
-						targetsInRange = checkEnemiesInWeaponRange(getCombatX(), getCombatY(), 
-								weapon.minRange, weapon.maxRange);
-					
-						if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
-		
-							if (targetsInRange.size() > 0) {
-								opponent = checkSelectedEnemy(targetsInRange,
-										gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE,
-										gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE);
-
-								if (opponent != null) {
-									combatAnimationTypeNumber = 1;
-									actingAnimation = true;
-									Attack.attack(this, opponent);
-								} else {
-									selected = false;
-									hasActed = true;
-									CombatMovesBar.selectedNumber = 0;
-								}
-							} else {
-								selected = false;
+						if (selected) {
+							
+							justMoved = false;
+							
+							if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON3)) {
+								hasMoved = true;
 								hasActed = true;
-								CombatMovesBar.selectedNumber = 0;
+								turnPassed = true;
 							}
+							
+							if (!hasMoved) {
+								
+								idleTimer += (deltaTime * idleAnimationSpeed);
+								if (idleTimer > 4) {
+									idleTimer = 0;
+								}
+								
+								moveRange = MoveRangeFiller.fillMoveRange(combatX, combatY, currentStats.move);
+								
+								if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+
+										for (int i = 0; i < moveRange.size(); i++) {
+											if (moveRange.get(i)[0] == gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE && 
+													moveRange.get(i)[1] == gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE) {
+												combatX = gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE;
+												combatY = gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE;
+												hasMoved = true;
+												justMoved = true;
+											}
+										}
+
+									}
+								
+							}
+							
+							if (!hasActed && !justMoved) {
+								
+								idleTimer += (deltaTime * idleAnimationSpeed);
+								if (idleTimer > 4) {
+									idleTimer = 0;
+								}
+								
+								combatMovesBar.update(gameContainer, deltaTime);
+								
+								targetsInRange.clear();
+								
+								// 'FIGHT' or 'AIM' or 'BACKSTAB' COMBATMOVE ACTIVATED					
+								if (combatMoves.get(combatMovesBar.selectedNumber - 1).name == "Fight" 
+										|| combatMoves.get(combatMovesBar.selectedNumber - 1).name == "Aim!"
+										|| combatMoves.get(combatMovesBar.selectedNumber - 1).name == "Back Stab") { 
+								
+									if (combatMoves.get(combatMovesBar.selectedNumber - 1).name == "Aim!") { Attack.aimedAttack = true; }
+									else if (combatMoves.get(combatMovesBar.selectedNumber - 1).name == "Back Stab") { Attack.backstab = true; }
+								
+									targetsInRange = checkEnemiesInWeaponRange(getCombatX(), getCombatY(), 
+											weapon.minRange, weapon.maxRange);
+							
+									if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+					
+										if (targetsInRange.size() > 0) {
+											opponent = checkSelectedEnemy(targetsInRange,
+													gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE,
+													gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE);
+
+											if (opponent != null) {
+												combatAnimationTypeNumber = 1;
+												actingAnimation = true;
+												Attack.attack(this, opponent);
+											} else {
+												selected = false;
+												hasActed = true;
+												turnPassed = true;
+												combatMovesBar.selectedNumber = 1;
+											}
+										} else {
+											selected = false;
+										}
+									}
+								}
+								
+								
+								// 'MAGIC' COMBATMOVE ACTIVATED
+								else if (combatMoves.get(combatMovesBar.selectedNumber - 1).name == "Magic") {
+									spellOptions.update(gameContainer, deltaTime);
+								}
+								
+								
+								
+
+								// 'MEDITATE' COMBATMOVE ACTIVATED
+							else if (combatMoves.get(combatMovesBar.selectedNumber - 1).name == "Meditate") {
+								
+								targetsInRange = new ArrayList<Monster>();
+								targetsInRange.add(this);
+								
+								if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+									if (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE == getCombatX() && gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == getCombatY()) {
+										currentStats.MAG += 5;
+										combatAnimationTypeNumber = 3;
+										actingAnimation = true;
+										selected = false;
+										//hasMoved = true;
+										hasActed = true;
+									}
+									else {
+										selected = false;
+									}							
+								}
+							}
+								
+								
+								// 'SHIELDS UP!' COMBATMOVE ACTIVATED
+							else if (combatMoves.get(combatMovesBar.selectedNumber - 1).name == "Shields Up!") {
+									
+								targetsInRange = checkEligibleAdventurers(getCombatX(), getCombatY(), 5);
+								
+								if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+									
+									for (Monster adventurer: targetsInRange) {
+										if (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE  == adventurer.getCombatX() &&
+												gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == adventurer.getCombatY()) {
+											combatAnimationTypeNumber = 2;
+											actingAnimation = true;
+											selectedAlly = adventurer;
+											adventurer.currentStats.defence += 5;
+											hasActed = true;
+											hasMoved = true;
+											turnPassed = true;
+										}
+									}
+									
+								}
+
+							}
+								
+								
+								
+							}
+							
 						}
-					}
-
-						// 'MAGIC' COMBATMOVE ACTIVATED
-					else if (combatMoves.get(CombatMovesBar.selectedNumber - 1).name == "Magic") {
-						spellOptions.update(gameContainer, deltaTime);
-					}
-
-						// 'SHIELDS UP!' COMBATMOVE ACTIVATED
-					else if (combatMoves.get(CombatMovesBar.selectedNumber - 1).name == "Shields Up!") {
-							
-						targetsInRange = checkEligibleAdventurers(getCombatX(), getCombatY(), 5);
 						
-						if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+						else if (!selected) {
 							
-							for (Monster adventurer: targetsInRange) {
-								if (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE  == adventurer.getCombatX() &&
-										gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == adventurer.getCombatY()) {
-									System.out.println("clicked on" + adventurer.name);
-									combatAnimationTypeNumber = 2;
-									actingAnimation = true;
-									selectedAlly = adventurer;
-									adventurer.currentStats.defence += 5;
+							idleTimer += (deltaTime * idleAnimationSpeed);
+							if (idleTimer > 4) {
+								idleTimer = 0;
+							}
+
+							if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+								if (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE == getCombatX()
+										&& gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == getCombatY()) {
+									selected = true;
 								}
 							}
 							
 						}
-
+						
 					}					
+					
+				}
+				
+				break;
+			}
+			
+				
+			case InTown: break;
+			case Titlescreen: break;
+			case WorldMap: break;
+			case PartyScreen: break;
+			case QuestUI: break;
+			case Transition: break;
+			case QuestScreen: break;
+			case PartyCohesionCheckerUI: break;
+			case Inventory: break;
+				
+/*
+
+					
+
+
+
+					
 						
 
-						// 'MEDITATE' COMBATMOVE ACTIVATED
-					else if (combatMoves.get(CombatMovesBar.selectedNumber - 1).name == "Meditate") {
-						
-						targetsInRange = new ArrayList<Monster>();
-						targetsInRange.add(this);
-						
-						if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
-							if (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE == getCombatX() && gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == getCombatY()) {
-								currentStats.MAG += 5;
-								combatAnimationTypeNumber = 3;
-								actingAnimation = true;
-								selected = false;
-								//hasMoved = true;
-								hasActed = true;
-							}
-							else {
-								selected = false;
-								hasActed = true;
-							}							
-						}
-					} 
 						
 						// 'MOW DOWN!' COMBATMOVE ACTIVATED
 						
@@ -301,28 +334,8 @@ public class Adventurer extends Monster {
 			}
 
 			break;
-
-		case InTown:
-			break;
-		case Titlescreen:
-			break;
-		case WorldMap:
-			break;
-		case PartyScreen:
-			break;
-		case QuestUI:
-			break;
-		case Transition:
-			break;
-		case QuestScreen:
-			break;
-		case PartyCohesionCheckerUI:
-			break;
-		case Inventory:
-			break;
-
+*/
 		}
-
 	}
 
 	@Override
@@ -344,40 +357,31 @@ public class Adventurer extends Monster {
 				
 				if(!actingAnimation) {
 					
-					switch(combatSituation) {
+					if (turnPassed) {
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, genderInt, 0);
+					}
 					
-					case notSelected_turnAvailable:
-						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
-								(int) idleTimer + genderInt, 0);
-						break;
+					else if (!turnPassed) {
 						
-					case selected_notMoved_noCombatMoveChosen_notActed:
-						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
-								(int) idleTimer + genderInt, 0);
-						MoveAreaDrawer.drawMoveArea(moveRange, renderer);
-						break;
-					
-					case selected_moved_noCombatMoveChosen_notActed:
-						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
-								(int) idleTimer + genderInt, 0);
-						combatMovesBar.render(gameContainer, renderer);
-						break;
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, (int) idleTimer + genderInt, 0);
 						
-					case selected_moved_combatMoveChosen_notActed:
-						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
-								(int) idleTimer + genderInt, 0);
-						combatMovesBar.render(gameContainer, renderer);
-						if (combatMoves.get(CombatMovesBar.selectedNumber - 1).name == "Magic") { spellOptions.render(gameContainer, renderer); }
-						for (Monster monster: targetsInRange) {
-							renderer.drawRectOpaque(
-									monster.getCombatX() * GameManager.GAMETILESIZE, monster.getCombatY() * GameManager.GAMETILESIZE, GameManager.GAMETILESIZE, GameManager.GAMETILESIZE, 0x44ffffff);
+						if (selected) {
+							
+							if (!hasMoved) { MoveAreaDrawer.drawMoveArea(moveRange, renderer); }
+							if (!hasActed) { 
+								combatMovesBar.render(gameContainer, renderer);
+								
+								if (combatMoves.get(combatMovesBar.selectedNumber - 1).name == "Magic") { spellOptions.render(gameContainer, renderer); }
+								
+								for (Monster monster: targetsInRange) {
+									renderer.drawRectOpaque(
+										monster.getCombatX() * GameManager.GAMETILESIZE, monster.getCombatY() * GameManager.GAMETILESIZE, GameManager.GAMETILESIZE, GameManager.GAMETILESIZE, 0x44ffaa77);
+								}	
+							}
+							
 						}
-						break;
+
 						
-					case notSelected_turnFinished:
-						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, 0 + genderInt, 0);
-						break;
-					
 					}
 					
 				} else {
@@ -393,7 +397,7 @@ public class Adventurer extends Monster {
 								(int) attackTimer + genderInt, 1);	
 						renderer.drawImageTile(CombatMove.icon, selectedAlly.getCombatX() * GameManager.GAMETILESIZE, selectedAlly.getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 5, 2);
 						break;	
-					case 3:
+					case 3: System.out.println("meditating");
 						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
 								0 + genderInt, 1);	
 						renderer.drawImageTile(CombatMove.icon, getCombatX() * GameManager.GAMETILESIZE, getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 5, 3);
@@ -435,7 +439,7 @@ public class Adventurer extends Monster {
 	private PlayerCombatSituation decidePlayerCombatSituation() {
 		if (selected) {
 			if (hasMoved) {
-				if(CombatMovesBar.selectedNumber == 0) { return PlayerCombatSituation.selected_moved_noCombatMoveChosen_notActed; }
+				if(combatMovesBar.selectedNumber == 0) { return PlayerCombatSituation.selected_moved_noCombatMoveChosen_notActed; }
 				else { return PlayerCombatSituation.selected_moved_combatMoveChosen_notActed; }
 			} else {
 				return PlayerCombatSituation.selected_notMoved_noCombatMoveChosen_notActed;

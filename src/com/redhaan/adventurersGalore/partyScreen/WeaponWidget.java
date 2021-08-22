@@ -84,6 +84,7 @@ public class WeaponWidget extends GameObject {
 		String soulText = "Soulless";
 		if(weapon.soul != null) { soulText = weapon.soul.race.name + "slayer"; }
 		renderer.drawText(weapon.name + ", " + soulText, offX + 45, offY + 25, 0xffBBBBBB);
+		renderer.drawText("Range: " + weapon.minRange + " - " + weapon.maxRange, offX + 45, offY + 35, 0xffBBBBBB);
 		
 		renderer.drawText(Integer.toString(weapon.damage), offX + 45, offY + 14, 0xffBBFFBB);
 		renderer.drawText(Integer.toString(weapon.hit), offX + 65, offY + 14, 0xffBBBBFF);

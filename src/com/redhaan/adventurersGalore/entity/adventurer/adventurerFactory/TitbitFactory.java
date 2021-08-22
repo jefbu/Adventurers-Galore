@@ -3,6 +3,7 @@ package com.redhaan.adventurersGalore.entity.adventurer.adventurerFactory;
 import java.io.Serializable;
 import java.util.Random;
 
+import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.entity.adventurer.Titbit;
 
@@ -21,10 +22,12 @@ public class TitbitFactory implements Serializable {
 
 		rollHobbies(titbit);
 		rollFavouriteFood(titbit);
+		rollFavouriteSong(titbit);
 		rollDislikes(titbit);
 		rollOriginStory(titbit, adventurer);
 		rollMillionDollar(titbit);
 		rollLifeMotto(titbit);
+		rollIdiosynchracy(titbit);
 
 		return titbit;
 
@@ -34,57 +37,31 @@ public class TitbitFactory implements Serializable {
 
 		for (int i = 0; i < 2; i++) {
 
-			int roll = random.nextInt(12);
+			int roll = random.nextInt(20);
 
 			switch (roll) {
 
-			case 0:
-				titbit.strings.add("Likes: Poetry");
-				break;
-			case 1:
-				titbit.strings.add("Likes: Origami");
-				break;
-			case 2:
-				titbit.strings.add("Likes: Gardening");
-				break;
-			case 3:
-				titbit.strings.add("Likes: Going out for drinks");
-				break;
-			case 4:
-				titbit.strings.add("Likes: Fishing");
-				break;
-			case 5:
-				titbit.strings.add("Likes: Gambling on Drakehorse races");
-				break;
-			case 6:
-				titbit.strings.add("Likes: Cooking");
-			case 7:
-				int roll2 = random.nextInt(3);
-				String sport = "";
-				switch (roll2) {
-				case 0:
-					sport = "Gymnastics, particularly the Horizontal Bar";
-					break;
-				case 1:
-					sport = "Ragby";
-					break;
-				case 2:
-					sport = "Competition fencing";
-					break;
-				}
-				titbit.strings.add("likes: " + sport);
-				break;
-			case 8:
-				titbit.strings.add("Likes: Walking and Hiking");
-				break;
-			case 9:
-				titbit.strings.add("Likes: Dozing off in a hangmat in the sun with a cocktail");
-				break;
-			case 10:
-				titbit.strings.add("Likes: Making handcrafted furniture");
-				break;
-			case 11:
-				titbit.strings.add("Likes: Wine tasting and collecting");
+			case 0: titbit.strings.add("Likes: Poetry"); break;
+			case 1: titbit.strings.add("Likes: Origami"); break;
+			case 2: titbit.strings.add("Likes: Gardening"); break;
+			case 3: titbit.strings.add("Likes: Going out for drinks"); break;
+			case 4: titbit.strings.add("Likes: Fishing"); break;
+			case 5: titbit.strings.add("Likes: Gambling on Drakehorse races"); break;
+			case 6: titbit.strings.add("Likes: Cooking"); break;
+			case 7: titbit.strings.add("Likes: Gymnastics, particularly the Horizontal Bar"); break;
+			case 8: titbit.strings.add("Likes: Walking and Hiking"); break;
+			case 9: titbit.strings.add("Likes: Dozing off in a hangmat in the sun with a cocktail"); break;
+			case 10: titbit.strings.add("Likes: Making handcrafted furniture"); break;
+			case 11: titbit.strings.add("Likes: Wine tasting and collecting"); break;
+			case 12: titbit.strings.add("Likes: Board Game evenings with the family"); break;
+			case 13: titbit.strings.add("Likes: The Opera (at least they pretend they do)"); break;
+			case 14: titbit.strings.add("Likes: Coaching a children's football team"); break;
+			case 15: titbit.strings.add("Likes: Watching the neighbourhood from their window"); break;
+			case 16: titbit.strings.add("Likes: Casual dating"); break;
+			case 17: titbit.strings.add("Likes: A few drinks too many"); break;
+			case 18: titbit.strings.add("Likes: Reading pretentious non-fiction stuff"); break;
+			case 19: titbit.strings.add("Likes: Nothing. Has a hole where their heart used to be"); break;
+
 
 			}
 
@@ -94,57 +71,64 @@ public class TitbitFactory implements Serializable {
 
 	private void rollFavouriteFood(Titbit titbit) {
 
-		int roll = random.nextInt(7);
+		int roll = random.nextInt(10);
 
 		switch (roll) {
 
-		case 0:
-			titbit.strings.add("Favourite food: Kobold Steak");
-			break;
-		case 1:
-			titbit.strings.add("Favourite food: Fruits from Syrena");
-			break;
-		case 2:
-			titbit.strings.add("Favourite food: Fish from Vine Island");
-			break;
-		case 3:
-			titbit.strings.add("Favourite food: Tintreach Hot Noodles");
-			break;
-		case 4:
-			titbit.strings.add("Favourite food: Unicorn ribs");
-			break;
-		case 5:
-			titbit.strings
-					.add("Favourite food: Suirach (Parzumak Islands dish made of fermented broccoli and goat milk)");
-		case 6:
-			titbit.strings.add("Favourite food: Phoenix Barbecue");
-			break;
+		case 0: titbit.strings.add("Favourite food: Kobold Steak"); break;
+		case 1: titbit.strings.add("Favourite food: Fruits from Syrena"); break;
+		case 2: titbit.strings.add("Favourite food: Fish from Vine Island"); break;
+		case 3: titbit.strings.add("Favourite food: Tintreach Hot Noodles"); break;
+		case 4: titbit.strings.add("Favourite food: Unicorn ribs"); break;
+		case 5: titbit.strings.add("Favourite food: Suirach (Parzumak Islands dish made of fermented broccoli and goat milk)"); break;
+		case 6: titbit.strings.add("Favourite food: Phoenix Barbecue"); break;
+		case 7: titbit.strings.add("Favourite food: Kaghak Fried Centaur"); break;
+		case 8: titbit.strings.add("Favourite food: Captain Ymvernu Merman Fingers"); break;
+		case 9: titbit.strings.add("Favourite food: Caesar Salad?!"); break;
+
 
 		}
 
 	}
+	
+	private void rollFavouriteSong(Titbit titbit) {
+		
+		int roll = random.nextInt(10);
+		
+		switch(roll) {
+		
+		case 0: titbit.strings.add("Favourite song: yattl yiyu lltyitlyu (it's a Dryad song, look it up)"); break;
+		case 1: titbit.strings.add("Favourite song: There's some Gnomes in this House"); break;
+		case 2: titbit.strings.add("Favourite song: My Halfling will go on"); break;
+		case 3: titbit.strings.add("Favourite song: I've got some beer in the back of my truck by Michael Hartigan"); break;
+		case 4: titbit.strings.add("Favourite song: I am a Roc, I am a Naiad"); break;
+		case 5: titbit.strings.add("Favourite song: Purple Faun"); break;
+		case 6: titbit.strings.add("Favourite song: You've got that Goblin reeling"); break;
+		case 7: titbit.strings.add("Favourite song: Pixie Nymph (is not my lover)"); break;
+		case 8: titbit.strings.add("Favourite song: Hotel Cockatrice"); break;
+		case 9: titbit.strings.add("Favourite song: Dancing Undine"); break;
+
+		
+		}
+		
+	}
+	
 
 	private void rollDislikes(Titbit titbit) {
 
-		int roll = random.nextInt(5);
+		int roll = random.nextInt(8);
 
 		switch (roll) {
 
-		case 0:
-			titbit.strings.add("Can't stand false modesty");
-			break;
-		case 1:
-			titbit.strings.add("Can't stand people whistling tunes in public");
-			break;
-		case 2:
-			titbit.strings.add("Can't stand bureaucracy");
-			break;
-		case 3:
-			titbit.strings.add("Can't stand pompous Disciplian stiffnosed know-it-alls");
-			break;
-		case 4:
-			titbit.strings.add("Can't stand tardiness");
-			break;
+		case 0: titbit.strings.add("Can't stand false modesty"); break;
+		case 1: titbit.strings.add("Can't stand people whistling in public"); break;
+		case 2: titbit.strings.add("Can't stand bureaucracy"); break;
+		case 3: titbit.strings.add("Can't stand pompous Disciplian stiffnosed know-it-alls"); break;
+		case 4: titbit.strings.add("Can't stand tardiness"); break;
+		case 5: titbit.strings.add("Can't stand ortographic mistakes"); break;
+		case 6: titbit.strings.add("Can't stand Suirach (Parzumak Islands dish made of fermented broccoli and goat milk)"); break;
+		case 7: titbit.strings.add("Can't stand craft beers"); break;
+
 
 		}
 
@@ -332,51 +316,37 @@ public class TitbitFactory implements Serializable {
 
 	private void rollLifeMotto(Titbit titbit) {
 
-		int roll = random.nextInt(12);
+		int roll = random.nextInt(6);
 
 		switch (roll) {
 
-		case 0:
-			titbit.strings.add("Life motto: 'Better to judge between two enemies, than two friends. "
-					+ "One of the enemies will turn friend, but one of the friends will turn enemy'");
-			break;
-		case 1:
-			titbit.strings.add("Life motto: 'Most problems will solve themselves if you ignore them long enough'");
-			break;
-		case 2:
-			titbit.strings.add("Life motto: 'Life's a puzzle, it all goes back in the box in the end'");
-			break;
-		case 3:
-			titbit.strings
-					.add("Life motto: 'If you look at it from the universe's perspective, life is pretty meaningless'");
-			break;
-		case 4:
-			titbit.strings.add("Life motto: 'Never look further ahead in life than your next meal'");
-			break;
-		case 5:
-			titbit.strings.add("Life motto: 'Reality is a bore'");
-			break;
-		case 6:
-			titbit.strings.add("Life motto: 'What you lack in talent, can be compensated with entertainment'");
-			break;
-		case 7:
-			titbit.strings.add("Life motto: 'On this long road, the only one that can follow me, is me'");
-			break;
-		case 8:
-			titbit.strings.add(
-					"Life motto: 'Shame is a disease the body cures with time. Glorious death is forever'");
-			break;
-		case 9:
-			titbit.strings.add("Life motto: 'I've got some beer in the back of my truck'");
-			break;
-		case 10:
-			titbit.strings.add("Life motto: 'Failure is not the end'");
-			break;
-		case 11:
-			titbit.strings.add("Life motto: 'Try and keep up'");
+		case 0: titbit.strings.add("Life motto: 'First time right is an oxymoron'"); break;
+		case 1: titbit.strings.add("Life motto: 'Most problems will solve themselves if you ignore them long enough'"); break;
+		case 2: titbit.strings.add("Life motto: 'What you lack in talent, can be compensated with entertainment'"); break;
+		case 3: titbit.strings.add("Life motto: 'Never reward those that are late'"); break;
+		case 4: titbit.strings.add("Life motto: 'What you lack in entertainment, can be compensated with volume'"); break;
+		case 5: titbit.strings.add("Life motto: 'Failure is not the end'"); break;
 
 		}
 
 	}
+	
+	private void rollIdiosynchracy(Titbit titbit) {
+		
+		int roll = random.nextInt(5);
+		
+		switch (roll) {
+		
+		case 0: titbit.strings.add("Was born with an extra toe"); break;
+		case 1: titbit.strings.add("Has perfect absolute pitch hearing"); break;
+		case 2: titbit.strings.add("Has an unusually large family"); break;
+		case 3: titbit.strings.add("Has exceptionally large feet"); break;
+		case 4: titbit.strings.add("Was born on new year's eve just after midnight"); break;
+		
+		}
+		
+	}
+	
+	
 
 }

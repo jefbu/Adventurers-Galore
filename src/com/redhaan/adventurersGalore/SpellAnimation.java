@@ -79,7 +79,7 @@ public class SpellAnimation extends GameObject {
 				verticalGrowth = 0;
 				acceleration = 0;
 				active = false; 
-				SpellEffect.castSpell(spell, spellModifier);
+				SpellEffect.castSpell(Spell.castle, spellModifier);
 				}
 			
 		}

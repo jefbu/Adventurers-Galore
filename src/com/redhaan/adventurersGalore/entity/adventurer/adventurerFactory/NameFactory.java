@@ -32,9 +32,9 @@ public class NameFactory implements Serializable {
 	
 	private void rollHumanName(String gender) {
 		
-		int rarityRoll = random.nextInt(10) + 1;
+		int rarityRoll = random.nextInt(20) + 1;
 		
-		if (rarityRoll == 10) {
+		if (rarityRoll == 20) {
 			int nameRoll = random.nextInt(10) + 1;
 			switch(nameRoll) {
 			case 1: if (gender.equals("Male")) { name = "Napoleon"; } else { name = "Cleopatra"; } break;
@@ -44,14 +44,14 @@ public class NameFactory implements Serializable {
 			case 5: if (gender.equals("Male")) { name = "Hannibal"; } else { name = "Anna Comnena"; } break;
 			case 6: if (gender.equals("Male")) { name = "Joffre"; } else { name = "Hermione"; } break;
 			case 7: if (gender.equals("Male")) { name = "Bismarck"; } else { name = "Sansa"; } break;
-			case 8: if (gender.equals("Male")) { name = "El Cid"; } else { name = "Holly Golightly"; } break;
+			case 8: if (gender.equals("Male")) { name = "El Cid"; } else { name = "Holly G."; } break;
 			case 9: if (gender.equals("Male")) { name = "Hector"; } else { name = "Xena"; } break;
 			case 10: if (gender.equals("Male")) { name = "Musashi"; } else { name = "Lorelai"; } break;
 			}
 		}
 		
 		else {			
-			int nameRoll = random.nextInt(20) + 1;
+			int nameRoll = random.nextInt(40) + 1;
 			switch(nameRoll) {
 			case 1: if (gender.equals("Male")) { name = "George"; } else { name = "Lucy"; } break;
 			case 2: if (gender.equals("Male")) { name = "Peter"; } else { name = "Catherine"; } break;
@@ -72,7 +72,27 @@ public class NameFactory implements Serializable {
 			case 17: if (gender.equals("Male")) { name = "Sergei"; } else { name = "Svetlana"; } break;
 			case 18: if (gender.equals("Male")) { name = "Ivan"; } else { name = "Olga"; } break;
 			case 19: if (gender.equals("Male")) { name = "Dmitri"; } else { name = "Irina"; } break;
-			case 20: if (gender.equals("Male")) { name = "Andrei"; } else { name = "Yelena"; } break;			
+			case 20: if (gender.equals("Male")) { name = "Andrei"; } else { name = "Yelena"; } break;
+			case 21: if (gender.equals("Male")) { name = "Rodrigo"; } else { name = "Maria"; } break;
+			case 22: if (gender.equals("Male")) { name = "Jefferson"; } else { name = "Paula"; } break;
+			case 23: if (gender.equals("Male")) { name = "Heitor"; } else { name = "Rosa"; } break;
+			case 24: if (gender.equals("Male")) { name = "Arthur"; } else { name = "Daiane"; } break;
+			case 25: if (gender.equals("Male")) { name = "Joao"; } else { name = "Rebeca"; } break;
+			case 26: if (gender.equals("Male")) { name = "Lorenzo"; } else { name = "Carla"; } break;
+			case 27: if (gender.equals("Male")) { name = "Angelo"; } else { name = "Gabriella"; } break;
+			case 28: if (gender.equals("Male")) { name = "Enzo"; } else { name = "Giulia"; } break;
+			case 29: if (gender.equals("Male")) { name = "Filippo"; } else { name = "Sara"; } break;
+			case 30: if (gender.equals("Male")) { name = "Norberto"; } else { name = "Irene"; } break;
+			case 31: if (gender.equals("Male")) { name = "Constantine"; } else { name = "Sophia"; } break;
+			case 32: if (gender.equals("Male")) { name = "Nicholas"; } else { name = "Vasiliki"; } break;
+			case 33: if (gender.equals("Male")) { name = "Lars"; } else { name = "Ingrid"; } break;
+			case 34: if (gender.equals("Male")) { name = "Karl"; } else { name = "Hannah"; } break;
+			case 35: if (gender.equals("Male")) { name = "Qiang"; } else { name = "Li"; } break;
+			case 36: if (gender.equals("Male")) { name = "Wei"; } else { name = "Yelena"; } break;
+			case 37: if (gender.equals("Male")) { name = "Jun"; } else { name = "Fang"; } break;
+			case 38: if (gender.equals("Male")) { name = "Tao"; } else { name = "Xiuying"; } break;
+			case 39: if (gender.equals("Male")) { name = "Chen"; } else { name = "Min"; } break;
+			case 40: if (gender.equals("Male")) { name = "Haoran"; } else { name = "Jing"; } break;
 			}			
 		}
 				

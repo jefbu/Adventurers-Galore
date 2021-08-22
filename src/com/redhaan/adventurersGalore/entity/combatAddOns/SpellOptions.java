@@ -26,6 +26,8 @@ public class SpellOptions extends GameObject {
 	@Override
 	public void update(GameContainer gameContainer, float deltaTime) {
 				
+		System.out.println("spell options being updated");
+		
 		checkHover(gameContainer.getInput().getMouseX(), gameContainer.getInput().getMouseY());
 		
 		if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
@@ -45,6 +47,8 @@ public class SpellOptions extends GameObject {
 
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
+		
+		System.out.println("spell options rendering");
 		
 		renderer.drawRectOpaque(200, 40, 250, 15 + 15 * adventurer.spellSlots, 0xff201133);
 		if (adventurer.spells.size() > 0) { renderer.drawText(adventurer.spells.get(0).spellModifier.name + " " + adventurer.spells.get(0).spell.name, 205, 45, 0xff6899DD); }

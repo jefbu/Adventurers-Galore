@@ -27,6 +27,7 @@ public class AdventurerFactory implements Serializable {
 	private TattooFactory tattooFactory = new TattooFactory();
 	private TitbitFactory titbitFactory = new TitbitFactory();
 	private SkillFactory skillFactory = new SkillFactory();
+	private PortraitFactory portraitFactory = new PortraitFactory();
 
 	public AdventurerFactory() { }
 
@@ -84,6 +85,8 @@ public class AdventurerFactory implements Serializable {
 		adventurer.skills = skillFactory.rollSkills(adventurer);
 		
 		adventurer.combatMoves = defineCombatMoves(adventurer);
+		
+		adventurer.portrait = portraitFactory.rollPortrait(adventurer.gender, adventurer.age, adventurer.race);
 		
 		
 
@@ -202,7 +205,7 @@ public class AdventurerFactory implements Serializable {
 			case 0: adventurer.personality.traits.add(PersonalityTrait.Cynical); break;
 			case 1: adventurer.personality.traits.add(PersonalityTrait.Drunk); break;
 			case 2: adventurer.personality.traits.add(PersonalityTrait.Pedantic); break;
-			case 3: adventurer.personality.traits.add(PersonalityTrait.Witty); break;
+			case 3: adventurer.personality.traits.add(PersonalityTrait.Affable); break;
 			default: 	System.out.println("Error at personality trait factory");
 						adventurer.personality.traits.add(PersonalityTrait.Pedantic);
 						break;

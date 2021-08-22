@@ -20,7 +20,7 @@ public class CombatMovesBar extends GameObject {
 	private int xStartPoint;
 	private int yStartPoint;
 	private int skillNumber;
-	public static int selectedNumber;
+	public int selectedNumber;
 	private int counter;
 	private int animationNumber;
 	
@@ -35,7 +35,7 @@ public class CombatMovesBar extends GameObject {
 		xStartPoint = 240;
 		yStartPoint = 5;
 		skillNumber = 0;
-		selectedNumber = 0;
+		selectedNumber = 1;
 		counter = 0;
 		this.adventurer = adventurer;
 		
@@ -49,7 +49,7 @@ public class CombatMovesBar extends GameObject {
 		if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD1)) { selectedNumber = 1; }
 		else if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD2) && !adventurer.spells.isEmpty()) { selectedNumber = 2; }
 		else if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD3)) { selectedNumber = 3; }
-		else if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD4)) { selectedNumber = 4; }
+		else if (gameContainer.getInput().isKeyUp(KeyEvent.VK_NUMPAD4) && adventurer.combatMoves.size() > 3) { selectedNumber = 4; }
 
 		
 		if (gameContainer.getInput().getMouseX() > xStartPoint && gameContainer.getInput().getMouseX() < xStartPoint + skillBarSize + 1 &&
@@ -69,7 +69,7 @@ public class CombatMovesBar extends GameObject {
 				skillNumber = 3; 
 				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { selectedNumber = 3; }
 			}
-			else if (gameContainer.getInput().getMouseX() < xStartPoint + GameManager.GAMETILESIZE * 4) { 
+			else if (gameContainer.getInput().getMouseX() < xStartPoint + GameManager.GAMETILESIZE * 4 && adventurer.combatMoves.size() > 3) { 
 				skillNumber = 4; 
 				if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) { selectedNumber = 4; }
 			}

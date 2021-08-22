@@ -32,8 +32,8 @@ public class Party extends GameObject {
 		
 	public Party() {
 		
-		xTile = 15;
-		yTile = 16;
+		xTile = 70;
+		yTile = 30;
 		blinkColour = 0xff559977;
 		blinkTemp = 0;
 		icon = new ImageTile("/Knight.png", 32, 32);
