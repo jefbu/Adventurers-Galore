@@ -100,7 +100,6 @@ public abstract class ConversationTable {
 			conversation.lines.add(new Line("What an interesting story. And it sure needed to be this long.", 1));
 			conversation.talkers = talkers;
 			return conversation;
-			//comment
 			
 			
 		case 99:
