@@ -128,7 +128,7 @@ public abstract class ConversationTable {
 			conversation.lines.add(new Line("*runs away screaming*", 1));
 			conversation.talkers = talkers;
 			return conversation;
-			
+			// comment
 
 			
 		default:
