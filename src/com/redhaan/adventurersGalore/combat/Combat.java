@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
+import com.redhaan.adventurersGalore.SpellAnimation;
 import com.redhaan.adventurersGalore.combat.combatAI.HighLevelPlan;
 import com.redhaan.adventurersGalore.entity.Monster;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
@@ -84,11 +85,10 @@ public class Combat extends GameObject {
 							}
 						}
 					}
-					
 					turnEnder.update(gameContainer, deltaTime);
 					if(turnEnder.turnEnded) { continuePlayerTurn = false; }
 					
-					if(!continuePlayerTurn) {
+					if(!continuePlayerTurn && !SpellAnimation.active) { 
 						if (enemies.size() > 0) {
 							for (Enemy enemy: enemies) {
 								enemy.turnPassed = false;

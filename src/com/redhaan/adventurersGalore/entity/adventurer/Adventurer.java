@@ -4,6 +4,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import com.redhaan.adventurersGalore.GameManager;
+import com.redhaan.adventurersGalore.SpellAnimation;
 import com.redhaan.adventurersGalore.combat.Attack;
 import com.redhaan.adventurersGalore.combat.Combat;
 import com.redhaan.adventurersGalore.combat.MoveAreaDrawer;
@@ -121,7 +122,7 @@ public class Adventurer extends Monster {
 						idleTimer = 0;
 					}
 				}
-				
+
 				else {
 					
 					if (!turnPassed) {

@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
+import com.redhaan.adventurersGalore.SpellAnimation;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
@@ -29,14 +30,14 @@ public class TurnEnder extends GameObject {
 	public void update(GameContainer gameContainer, float deltaTime) {
 
 		if(gameContainer.getInput().isKeyUp(KeyEvent.VK_ENTER)) {
-			turnEnded = true;
+			if (!SpellAnimation.active) { turnEnded = true; }
 		}
 		
 		if (gameContainer.getInput().getMouseX() > 610 && gameContainer.getInput().getMouseX() < 627 &&
 				gameContainer.getInput().getMouseY() > 445 && gameContainer.getInput().getMouseY() < 462) {
 			hover = true;
 			if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
-				turnEnded = true;
+				if (!SpellAnimation.active) { turnEnded = true; }
 			}
 		} else { hover = false; }
 			

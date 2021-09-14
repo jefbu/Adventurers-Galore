@@ -5,7 +5,9 @@ import com.redhaan.adventurersGalore.GameState;
 import com.redhaan.adventurersGalore.Toast;
 import com.redhaan.adventurersGalore.Transition;
 import com.redhaan.adventurersGalore.calendar.Calendar;
+import com.redhaan.adventurersGalore.combat.Combat;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
+import com.redhaan.adventurersGalore.entity.enemies.Enemy;
 
 public abstract class SpellEffect {
 	
@@ -33,7 +35,12 @@ public abstract class SpellEffect {
 			break;
 			
 		case "Volcano of Swallowing Ash":
-			System.out.println("Booooom");
+			for (Enemy enemy: Combat.enemies) {
+				if (!enemy.isDead()) {
+					enemy.currentStats.HP -= 5;
+					if (enemy.currentStats.HP <= 0) { enemy.setDead(true); }
+				}
+			}
 			break;
 			
 		case "Library of Maddening Wisdom":

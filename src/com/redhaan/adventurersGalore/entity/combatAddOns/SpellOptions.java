@@ -25,9 +25,7 @@ public class SpellOptions extends GameObject {
 
 	@Override
 	public void update(GameContainer gameContainer, float deltaTime) {
-				
-		System.out.println("spell options being updated");
-		
+						
 		checkHover(gameContainer.getInput().getMouseX(), gameContainer.getInput().getMouseY());
 		
 		if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
@@ -35,8 +33,10 @@ public class SpellOptions extends GameObject {
 			case 0: break;
 			case 1: 
 				SpellAnimation.activate(adventurer.spells.get(0).spell, adventurer.spells.get(0).spellModifier); 
-				adventurer.hasActed = true;
 				adventurer.selected = false;
+				adventurer.hasMoved = true;
+				adventurer.hasActed = true;
+				adventurer.turnPassed = true;
 				break;
 			case 2: break;
 			case 3: break;
@@ -47,9 +47,7 @@ public class SpellOptions extends GameObject {
 
 	@Override
 	public void render(GameContainer gameContainer, Renderer renderer) {
-		
-		System.out.println("spell options rendering");
-		
+				
 		renderer.drawRectOpaque(200, 40, 250, 15 + 15 * adventurer.spellSlots, 0xff201133);
 		if (adventurer.spells.size() > 0) { renderer.drawText(adventurer.spells.get(0).spellModifier.name + " " + adventurer.spells.get(0).spell.name, 205, 45, 0xff6899DD); }
 		if (adventurer.spells.size() > 1) { renderer.drawText(adventurer.spells.get(1).spellModifier.name + " " + adventurer.spells.get(1).spell.name, 205, 60, 0xff6899DD); }

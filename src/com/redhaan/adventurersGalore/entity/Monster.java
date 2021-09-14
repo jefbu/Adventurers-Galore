@@ -34,6 +34,7 @@ public class Monster extends NPC {
 	protected int attackAnimationSpeed;
 	protected float idleTimer;
 	protected float attackTimer;
+	protected int spellWaitTimer;
 	public boolean actingAnimation;
 	public ArrayList<int[]> moveRange;
 	
@@ -68,6 +69,7 @@ public class Monster extends NPC {
 		random = new Random();
 		idleTimer = 0;
 		attackTimer = 0;
+		spellWaitTimer = 0;
 		idleAnimationSpeed = random.nextInt(5) + 3;
 		attackAnimationSpeed = random.nextInt(2) + 8;
 		moveRange = new ArrayList<int[]>();

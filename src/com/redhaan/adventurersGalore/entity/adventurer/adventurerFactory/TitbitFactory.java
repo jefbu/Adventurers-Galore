@@ -316,7 +316,7 @@ public class TitbitFactory implements Serializable {
 
 	private void rollLifeMotto(Titbit titbit) {
 
-		int roll = random.nextInt(6);
+		int roll = random.nextInt(8);
 
 		switch (roll) {
 
@@ -326,7 +326,9 @@ public class TitbitFactory implements Serializable {
 		case 3: titbit.strings.add("Life motto: 'Never reward those that are late'"); break;
 		case 4: titbit.strings.add("Life motto: 'What you lack in entertainment, can be compensated with volume'"); break;
 		case 5: titbit.strings.add("Life motto: 'Failure is not the end'"); break;
-
+		case 6: titbit.strings.add("Life motto: 'More is more'"); break;
+		case 7: titbit.strings.add("Life motto: 'Less is less'"); break;
+		
 		}
 
 	}
