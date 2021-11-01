@@ -27,6 +27,7 @@ public class TitbitFactory implements Serializable {
 		rollOriginStory(titbit, adventurer);
 		rollMillionDollar(titbit);
 		rollLifeMotto(titbit);
+		rollRobotTorfs(titbit);
 		rollIdiosynchracy(titbit);
 
 		return titbit;
@@ -295,6 +296,9 @@ public class TitbitFactory implements Serializable {
 			}
 		break;
 		
+		case SummonedSkeleton:
+			break;
+		
 		}
 
 	}
@@ -316,7 +320,7 @@ public class TitbitFactory implements Serializable {
 
 	private void rollLifeMotto(Titbit titbit) {
 
-		int roll = random.nextInt(8);
+		int roll = random.nextInt(12);
 
 		switch (roll) {
 
@@ -328,9 +332,46 @@ public class TitbitFactory implements Serializable {
 		case 5: titbit.strings.add("Life motto: 'Failure is not the end'"); break;
 		case 6: titbit.strings.add("Life motto: 'More is more'"); break;
 		case 7: titbit.strings.add("Life motto: 'Less is less'"); break;
-		
-		}
+		case 8: titbit.strings.add("Life motto: 'Love is weaker than logistics'"); break;
+		case 9: titbit.strings.add("Life motto: 'The wish is the basis for the thought'"); break;
+		case 10: titbit.strings.add("Life motto: 'Take desire in one hand, and nothing in the other. Mix the two together and see what's left'"); break;
+		case 11: titbit.strings.add("Life motto: 'Never point out a pun. Those who didn't see it won't laugh, and those who did won't anymore'"); break;
 
+
+		}
+	}
+	
+	private void rollRobotTorfs(Titbit titbit) {
+
+		int roll = random.nextInt(20);
+
+		switch (roll) {
+
+		case 0: titbit.strings.add("Drunk wisom (maybe?): 'To live in a clean environment. Arguments used to.'"); break;
+		case 1: titbit.strings.add("Drunk wisom (maybe?): 'Indignation is sadly often but replacing old preferences with new ones.'"); break;
+		case 2: titbit.strings.add("Drunk wisom (maybe?): 'The limits of enjoying life. But I won't. I will just do as I please'"); break;
+		case 3: titbit.strings.add("Drunk wisom (maybe?): 'The biggest strength of leadership is the heart to be a leader.'"); break;
+		case 4: titbit.strings.add("Drunk wisom (maybe?): 'Temperance is beautiful. But it ends where temperance starts.'"); break;
+		case 5: titbit.strings.add("Drunk wisom (maybe?): 'Life is the art of changing.'"); break;
+		case 6: titbit.strings.add("Drunk wisom (maybe?): 'A warm political party protects the mistrust above the knife in the back.'"); break;
+		case 7: titbit.strings.add("Drunk wisom (maybe?): 'Striving for failure does not make happy.'"); break;
+		case 8: titbit.strings.add("Drunk wisom (maybe?): 'For example, pretend to be affronted. There will always be someone with a symbol.'"); break;
+		case 9: titbit.strings.add("Drunk wisom (maybe?): 'Those who are always afraid will never be it anymore.'"); break;
+		case 10: titbit.strings.add("Drunk wisom (maybe?): 'Those who follow their ideals are bad politicians. Those who haven't got any also.'"); break;
+		case 11: titbit.strings.add("Drunk wisom (maybe?): 'If I was a ghost, I'd be Frank.'"); break;
+		case 12: titbit.strings.add("Drunk wisom (maybe?): 'The real conversation starts when feigned morality wins.'"); break;
+		case 13: titbit.strings.add("Drunk wisom (maybe?): 'Sustainability is the photo album that pierces the room.'"); break;
+		case 14: titbit.strings.add("Drunk wisom (maybe?): 'Predictable ideas boost our self esteem.'"); break;
+		case 15: titbit.strings.add("Drunk wisom (maybe?): 'To grow older is rarely to know more. Only to know more humans who know less.'"); break;
+		case 16: titbit.strings.add("Drunk wisom (maybe?): 'I love people that are reasonable. As long as they don't always behave that way.'"); break;
+		case 17: titbit.strings.add("Drunk wisom (maybe?): 'If we wait too long to cherish a few ideas, they risk becoming many.'"); break;
+		case 18: titbit.strings.add("Drunk wisom (maybe?): 'There are two guilty. Those that do, and those that tolerate.'"); break;
+		case 19: titbit.strings.add("Drunk wisom (maybe?): 'Urgency is an immediate problem.'"); break;
+
+
+
+
+		}
 	}
 	
 	private void rollIdiosynchracy(Titbit titbit) {

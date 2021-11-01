@@ -66,6 +66,7 @@ public class Inn extends Building {
 		case Alchemist: break;
 		case Blacksmith: break;	
 		case Seer: break;
+		case Jeweller: break;
 		
 		}
 				

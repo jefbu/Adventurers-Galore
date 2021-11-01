@@ -23,6 +23,7 @@ public class Stats implements Serializable {
 	public int defence;
 	public int critical;
 	public int hit;
+	public int evade;
 	
 	
 	public Stats() { }

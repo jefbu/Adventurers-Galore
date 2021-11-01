@@ -36,7 +36,7 @@ public class Dungeon extends GameObject {
 
 	public Dungeon() {
 		
-		discovered = true;
+		discovered = false;
 		popup = new DungeonPopup(this);
 		dungeonLayoutType = 1;
 		dungeonRooms = DungeonRoomFactory.createDungeonRooms(dungeonLayoutType);

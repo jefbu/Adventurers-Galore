@@ -10,6 +10,7 @@ import com.redhaan.adventurersGalore.GameState;
 import com.redhaan.adventurersGalore.Toast;
 import com.redhaan.adventurersGalore.Transition;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
+import com.redhaan.adventurersGalore.entity.adventurer.Job;
 import com.redhaan.adventurersGalore.entity.adventurer.LevelUpRoller;
 import com.redhaan.adventurersGalore.entity.adventurer.Stats;
 import com.redhaan.adventurersGalore.entity.enemies.Enemy;
@@ -56,7 +57,10 @@ public class CombatConclusion extends GameObject {
 	@Override
 	public void update(GameContainer gameContainer, float deltaTime) {
 		
-		if(Combat.dungeon) { 
+		if(Combat.dungeon) {
+			for (int i = 0; i < GameManager.adventurers.allAdventurers.size(); i++) {
+				if (GameManager.adventurers.allAdventurers.get(i).job == Job.summonedSkeleton) { GameManager.adventurers.allAdventurers.remove(i); }
+			}
 			Transition.nextGameState = GameState.WorldMap;
 			GameManager.gameState = GameState.Transition;
 			Toast.activate(false, "Kicked from Dungeon!", 265, 20);
@@ -69,7 +73,12 @@ public class CombatConclusion extends GameObject {
 				Combat.soundClip.stop();
 				Combat.soundStarted = false;
 				
-				for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {			
+				for (int i = 0; i < GameManager.adventurers.allAdventurers.size(); i++) {
+					if (GameManager.adventurers.allAdventurers.get(i).job == Job.summonedSkeleton) { GameManager.adventurers.allAdventurers.remove(i); i--; }
+				}
+				
+				for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {
+					
 					if(adventurer.inParty) {
 						adventurer.battlesPassed++;
 						adventurer.actingAnimation = false;

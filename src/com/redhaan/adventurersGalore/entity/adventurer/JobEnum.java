@@ -20,6 +20,10 @@ public enum JobEnum {
 	
 	Barbarian,
 	Berserker,
-	RedMist
+	RedMist,
+	
+	
+	
+	SummonedSkeleton
 
 }

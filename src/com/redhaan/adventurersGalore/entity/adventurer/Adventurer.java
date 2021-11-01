@@ -13,6 +13,8 @@ import com.redhaan.adventurersGalore.combat.PlayerCombatSituation;
 import com.redhaan.adventurersGalore.entity.Monster;
 import com.redhaan.adventurersGalore.entity.adventurer.personality.Personality;
 import com.redhaan.adventurersGalore.entity.adventurer.skills.Skills;
+import com.redhaan.adventurersGalore.entity.adventurer.spells.Spell;
+import com.redhaan.adventurersGalore.entity.adventurer.spells.SpellType;
 import com.redhaan.adventurersGalore.entity.combatAddOns.CombatMovesBar;
 import com.redhaan.adventurersGalore.entity.combatAddOns.HealthBar;
 import com.redhaan.adventurersGalore.entity.combatAddOns.SpellOptions;
@@ -67,6 +69,9 @@ public class Adventurer extends Monster {
 	Monster selectedAlly;
 	
 	public boolean known;
+	
+	int spellTargetInt;
+
 
 	public Adventurer() {
 
@@ -91,6 +96,7 @@ public class Adventurer extends Monster {
 		combatMovesBar = new CombatMovesBar(this);
 		spellOptions = new SpellOptions(this);
 		combatAnimationTypeNumber = 1;
+		spellTargetInt = 0;
 		
 		known = true;
 
@@ -111,6 +117,13 @@ public class Adventurer extends Monster {
 				if (actingAnimation) {
 					attackTimer += (deltaTime * attackAnimationSpeed);
 					if (attackTimer > 4) {
+						if (combatMoves.get(combatMovesBar.selectedNumber - 1).name == "Magic") {
+							switch(spellTargetInt) {
+							case 0: SpellAnimation.activate(spells.get(spellOptions.selectedSpell).spell, spells.get(spellOptions.selectedSpell).spellModifier, this, currentStats.MAG); break;
+							case 1: SpellAnimation.activate(spells.get(spellOptions.selectedSpell).spell, spells.get(spellOptions.selectedSpell).spellModifier, selectedAlly, currentStats.MAG); break;
+							case 2: SpellAnimation.activate(spells.get(spellOptions.selectedSpell).spell, spells.get(spellOptions.selectedSpell).spellModifier, opponent, currentStats.MAG); break;
+							}
+						}
 						attackTimer = 0;
 						actingAnimation = false;
 						selected = false;
@@ -211,6 +224,174 @@ public class Adventurer extends Monster {
 								// 'MAGIC' COMBATMOVE ACTIVATED
 								else if (combatMoves.get(combatMovesBar.selectedNumber - 1).name == "Magic") {
 									spellOptions.update(gameContainer, deltaTime);
+									
+									if (spellOptions.spellSelected) {
+									switch (spells.get(spellOptions.selectedSpell).spell.name) {
+									
+									case "Oasis of a Tranquil Heart": 
+										targetsInRange = checkEligibleAdventurers(getCombatX(), getCombatY(), currentStats.MAG / 3); 
+										spellTargetInt = 1;
+										break;
+									case "City full of Life": 
+										targetsInRange = new ArrayList<Monster>();
+										targetsInRange.add(this);
+										spellTargetInt = 0;
+										break;
+									case "Fields of Summer Rye": 
+										targetsInRange = checkEligibleAdventurers(getCombatX(), getCombatY(), currentStats.MAG / 3); 
+										spellTargetInt = 1;
+										break;
+									case "Grove of Age-old Broadleaves": 
+										targetsInRange = checkEligibleAdventurers(getCombatX(), getCombatY(), currentStats.MAG / 3); 
+										spellTargetInt = 1;
+										break;
+									case "Bountiful Vineyard": 
+										break;
+									case "Impregnable Castle": 
+										targetsInRange = checkEligibleAdventurers(getCombatX(), getCombatY(), currentStats.MAG / 3); 
+										spellTargetInt = 1;
+										break;
+									case "Skies of Longing Vagabonds": 
+										break;
+									case "Heath of Scorched Memories": 
+										targetsInRange = checkEligibleAdventurers(getCombatX(), getCombatY(), currentStats.MAG / 3); 
+										spellTargetInt = 1;
+										break;
+									case "River of Killing Currents": 
+										targetsInRange = checkEligibleAdventurers(getCombatX(), getCombatY(), currentStats.MAG / 3); 
+										spellTargetInt = 1;
+										break;
+									case "Meadow of Rest for the Wicked": 
+										targetsInRange = checkEnemiesInWeaponRange(getCombatX(), getCombatY(), 1, currentStats.MAG / 3); 
+										spellTargetInt = 2;
+										break;
+									case "Volcano of Swallowing Ash": 
+										targetsInRange = checkEnemiesInWeaponRange(getCombatX(), getCombatY(), 1, currentStats.MAG / 3); 
+										spellTargetInt = 2;
+										break;
+									case "Mountain of an Early Grave":
+										targetsInRange = checkEnemiesInWeaponRange(getCombatX(), getCombatY(), 1, currentStats.MAG); 
+										spellTargetInt = 2;
+										break;
+									case "Ravine to the Gates of Hell": 
+										targetsInRange = checkEnemiesInWeaponRange(getCombatX(), getCombatY(), 1, 1); 
+										spellTargetInt = 2;
+										break;
+									case "Ocean of Overwhelming Despair": 
+										targetsInRange = checkEnemiesInWeaponRange(getCombatX(), getCombatY(), 1, currentStats.MAG / 3); 
+										spellTargetInt = 2;
+										break;
+									case "Corrosive Morass": 
+										targetsInRange = checkEnemiesInWeaponRange(getCombatX(), getCombatY(), 1, currentStats.MAG / 3); 
+										spellTargetInt = 2;
+										break;
+									case "Taiga where Life cannot Grow": 
+										targetsInRange = checkEnemiesInWeaponRange(getCombatX(), getCombatY(), 1, currentStats.MAG / 3); 
+										spellTargetInt = 2;
+										break;
+									case "Impatient Graveyard": 
+										targetsInRange = new ArrayList<Monster>();
+										targetsInRange.add(this);
+										spellTargetInt = 0;
+										break;
+									case "Library of Maddening Wisdom": 
+										break;
+									
+									}
+									
+									switch (spellTargetInt) {
+									
+									case 0: 										
+										if(gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+											if (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE == getCombatX() && 
+													gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == getCombatY()) {
+												
+												switch (spells.get(spellOptions.selectedSpell).spell.name) {
+												
+												case "City full of Life": combatAnimationTypeNumber = 5; break;
+												case "Impatient Graveyard": combatAnimationTypeNumber = 18; break;
+												default: System.out.println("wrong spell type at self target (Adventurer class)"); break;
+												
+												}
+												
+												actingAnimation = true;
+												selected = false;
+												hasActed = true;
+												hasMoved = true;
+												turnPassed = true;
+											}							
+										}
+										break;
+									case 1:
+										if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+											
+											for (Monster adventurer: targetsInRange) {
+												if (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE  == adventurer.getCombatX() &&
+														gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == adventurer.getCombatY()) {
+													
+												switch (spells.get(spellOptions.selectedSpell).spell.name) {
+												
+												case "Oasis of a Tranquil Heart": combatAnimationTypeNumber = 4; break;
+												case "Fields of Summer Rye": combatAnimationTypeNumber = 6; break;
+												case "Grove of Age-old Broadleaves": combatAnimationTypeNumber = 7; break;
+												case "Impregnable Castle": combatAnimationTypeNumber = 8; break;
+												case "Heath of Scorched Memories": combatAnimationTypeNumber = 9; break;
+												case "River of Killing Currents": combatAnimationTypeNumber = 10; break;
+												default: System.out.println("wrong spell type at ally target (Adventurer class)"); break;
+												
+												}
+													actingAnimation = true;
+													selectedAlly = adventurer;
+													hasActed = true;
+													hasMoved = true;
+													turnPassed = true;
+												}
+											}
+											
+										}
+										break;
+									case 2:
+										if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
+											
+											if (targetsInRange.size() > 0) {
+												opponent = checkSelectedEnemy(targetsInRange,
+														gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE,
+														gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE);
+
+												if (opponent != null) {
+													
+													switch (spells.get(spellOptions.selectedSpell).spell.name) {
+													
+													case "Meadow of Rest for the Wicked": combatAnimationTypeNumber = 11; break;
+													case "Volcano of Swallowing Ash": combatAnimationTypeNumber = 12; break;
+													case "Mountain of an Early Grave": combatAnimationTypeNumber = 13; break;
+													case "Ravine to the Gates of Hell": combatAnimationTypeNumber = 14; break;
+													case "Ocean of Overwhelming Despair": combatAnimationTypeNumber = 15; break;
+													case "Corrosive Morass": combatAnimationTypeNumber = 16; break;
+													case "Taiga where Life cannot Grow": combatAnimationTypeNumber = 17; break;
+												
+													default: System.out.println("wrong spell type at ally target (Adventurer class)"); break;
+													
+													}
+													
+													actingAnimation = true;
+												} /*else {
+													selected = false;
+													hasActed = true;
+													turnPassed = true;
+													combatMovesBar.selectedNumber = 1; 
+												} */
+											} else {
+												selected = false;
+											}
+										}
+										break;
+									
+									}
+
+								}
+									
+									
 								}
 								
 								
@@ -241,7 +422,7 @@ public class Adventurer extends Monster {
 								// 'SHIELDS UP!' COMBATMOVE ACTIVATED
 							else if (combatMoves.get(combatMovesBar.selectedNumber - 1).name == "Shields Up!") {
 									
-								targetsInRange = checkEligibleAdventurers(getCombatX(), getCombatY(), 5);
+								targetsInRange = checkEligibleAdventurers(getCombatX(), getCombatY(), currentStats.MAG / 3);
 								
 								if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
 									
@@ -278,7 +459,13 @@ public class Adventurer extends Monster {
 							if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
 								if (gameContainer.getInput().getMouseX() / GameManager.GAMETILESIZE == getCombatX()
 										&& gameContainer.getInput().getMouseY() / GameManager.GAMETILESIZE == getCombatY()) {
-									selected = true;
+									boolean okay = true;
+									for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {
+										if (adventurer.inParty) {
+											if (adventurer.selected) { okay = false; }
+										}
+									}
+									if (okay) { selected = true; }
 								}
 							}
 							
@@ -301,41 +488,8 @@ public class Adventurer extends Monster {
 			case QuestScreen: break;
 			case PartyCohesionCheckerUI: break;
 			case Inventory: break;
-				
-/*
+										
 
-					
-
-
-
-					
-						
-
-						
-						// 'MOW DOWN!' COMBATMOVE ACTIVATED
-						
-						
-					else { 
-							selected = false; 
-							//hasMoved = true;
-							hasActed = true;
-							CombatMovesBar.selectedNumber = 0;
-					}
-
-					break;
-
-				case notSelected_turnFinished:
-					turnPassed = true;
-					break;
-
-				default:
-					break;
-
-				}
-			}
-
-			break;
-*/
 		}
 	}
 
@@ -355,7 +509,7 @@ public class Adventurer extends Monster {
 				break;
 
 			case PlayerTurn:
-				
+
 				if(!actingAnimation) {
 					
 					if (turnPassed) {
@@ -389,23 +543,97 @@ public class Adventurer extends Monster {
 					
 					switch(combatAnimationTypeNumber) {
 					
+					//fight
 					case 1:
-						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
-								(int) attackTimer + genderInt, 1);						
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, (int) attackTimer + genderInt, 1);						
 						break;
+					//shield
 					case 2:
-						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
-								(int) attackTimer + genderInt, 1);	
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, (int) attackTimer + genderInt, 1);	
 						renderer.drawImageTile(CombatMove.icon, selectedAlly.getCombatX() * GameManager.GAMETILESIZE, selectedAlly.getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 5, 2);
-						break;	
-					case 3: System.out.println("meditating");
-						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE,
-								0 + genderInt, 1);	
+						break;
+					//meditate
+					case 3:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, 0 + genderInt, 1);	
 						renderer.drawImageTile(CombatMove.icon, getCombatX() * GameManager.GAMETILESIZE, getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 5, 3);
-						break;						
-						
+						break;
+					//spells
+					//oasis
+					case 4:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, 0 + genderInt, 1);	
+						renderer.drawImageTile(CombatMove.icon, selectedAlly.getCombatX() * GameManager.GAMETILESIZE, selectedAlly.getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 9, 0);
+						break;
+					//city
+					case 5:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, 0 + genderInt, 1);	
+						renderer.drawImageTile(CombatMove.icon, getCombatX() * GameManager.GAMETILESIZE, getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 9, 1);
+						break;
+					//fields
+					case 6:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, 0 + genderInt, 1);	
+						renderer.drawImageTile(CombatMove.icon, selectedAlly.getCombatX() * GameManager.GAMETILESIZE, selectedAlly.getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 9, 2);
+						break;
+					//grove
+					case 7:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, 0 + genderInt, 1);	
+						renderer.drawImageTile(CombatMove.icon, selectedAlly.getCombatX() * GameManager.GAMETILESIZE, selectedAlly.getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 9, 3);
+						break;
+					//castle
+					case 8:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, 0 + genderInt, 1);	
+						renderer.drawImageTile(CombatMove.icon, selectedAlly.getCombatX() * GameManager.GAMETILESIZE, selectedAlly.getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 9, 4);
+						break;
+					//heath
+					case 9:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, 0 + genderInt, 1);	
+						renderer.drawImageTile(CombatMove.icon, selectedAlly.getCombatX() * GameManager.GAMETILESIZE, selectedAlly.getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 9, 5);
+						break;		
+					//river
+					case 10:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, 0 + genderInt, 1);	
+						renderer.drawImageTile(CombatMove.icon, selectedAlly.getCombatX() * GameManager.GAMETILESIZE, selectedAlly.getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 9, 6);
+						break;	
+					//meadow
+					case 11:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, 0 + genderInt, 1);	
+						renderer.drawImageTile(CombatMove.icon, opponent.getCombatX() * GameManager.GAMETILESIZE, opponent.getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 9, 7);
+						break;	
+					//volcano	
+					case 12:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, 0 + genderInt, 1);	
+						renderer.drawImageTile(CombatMove.icon, opponent.getCombatX() * GameManager.GAMETILESIZE, opponent.getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 9, 8);
+						break;	
+					//mountain
+					case 13:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, 0 + genderInt, 1);	
+						renderer.drawImageTile(CombatMove.icon, opponent.getCombatX() * GameManager.GAMETILESIZE, opponent.getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 9, 9);
+						break;
+					//ravine
+					case 14:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, 0 + genderInt, 1);	
+						renderer.drawImageTile(CombatMove.icon, opponent.getCombatX() * GameManager.GAMETILESIZE, opponent.getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 9, 10);
+						break;	
+					//ocean
+					case 15:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, 0 + genderInt, 1);	
+						renderer.drawImageTile(CombatMove.icon, opponent.getCombatX() * GameManager.GAMETILESIZE, opponent.getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 9, 11);
+						break;	
+					//morass
+					case 16:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, 0 + genderInt, 1);	
+						renderer.drawImageTile(CombatMove.icon, opponent.getCombatX() * GameManager.GAMETILESIZE, opponent.getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 9, 12);
+						break;	
+					//taiga
+					case 17:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, 0 + genderInt, 1);	
+						renderer.drawImageTile(CombatMove.icon, opponent.getCombatX() * GameManager.GAMETILESIZE, opponent.getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 9, 13);
+						break;	
+					//graveyard
+					case 18:
+						renderer.drawImageTile(icon, combatX * GameManager.GAMETILESIZE, combatY * GameManager.GAMETILESIZE, 0 + genderInt, 1);	
+						renderer.drawImageTile(CombatMove.icon, getCombatX() * GameManager.GAMETILESIZE, getCombatY() * GameManager.GAMETILESIZE, (int) attackTimer + 9, 14);
+						break;	
 					}
-				
 
 				}
 							
@@ -433,24 +661,6 @@ public class Adventurer extends Monster {
 		case Inventory:
 			break;
 
-		}
-
-	}
-
-	private PlayerCombatSituation decidePlayerCombatSituation() {
-		if (selected) {
-			if (hasMoved) {
-				if(combatMovesBar.selectedNumber == 0) { return PlayerCombatSituation.selected_moved_noCombatMoveChosen_notActed; }
-				else { return PlayerCombatSituation.selected_moved_combatMoveChosen_notActed; }
-			} else {
-				return PlayerCombatSituation.selected_notMoved_noCombatMoveChosen_notActed;
-			}
-		} else {
-			if (hasMoved) {
-				return PlayerCombatSituation.notSelected_turnFinished;
-			} else {
-				return PlayerCombatSituation.notSelected_turnAvailable;
-			}
 		}
 
 	}

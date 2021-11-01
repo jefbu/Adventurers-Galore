@@ -3,10 +3,11 @@ package com.redhaan.adventurersGalore.entity.adventurer;
 import java.io.Serializable;
 
 import com.redhaan.adventurersGalore.GameManager;
+import com.redhaan.adventurersGalore.entity.item.Item;
 
 import gameEngine.ecclesiastes.gfx.ImageTile;
 
-public class Tattoo implements Serializable {
+public class Tattoo extends Item implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	public ImageTile icon;

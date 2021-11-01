@@ -39,6 +39,23 @@ public class Inventory {
 	public static int gloriousMoment = 10;
 	public static int elysianFlower = 10;
 	public static int wanderlust = 10;
+	public static int snakeTongue = 4;
+	public static int robinEgg = 7;
+	public static int turtleShell = 7;
+	public static int volcanicAsh = 6;
+	public static int bile = 8;
+	public static int lizardEye = 9;
+	public static int ectoplasm = 11;
+	public static int giantToe = 5;
+	public static int bezoar = 6;
+	public static int vampireDust = 5;
+	public static int historicDocument = 7;
+	public static int phoenixFeather = 4;
+	public static int unicornHorn = 4;
+	public static int dragonBlood = 5;
+	public static int mummyWrapping = 8;
+	public static int daemonHeart = 9;
+	public static int manaTreeBranch = 4;
 
 	public static ArrayList<Item> armours;
 	public static ArrayList<Item> weapons;

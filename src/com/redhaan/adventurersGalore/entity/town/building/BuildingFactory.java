@@ -3,6 +3,7 @@ package com.redhaan.adventurersGalore.entity.town.building;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.redhaan.adventurersGalore.entity.town.building.alchemist.Alchemist;
 import com.redhaan.adventurersGalore.entity.town.building.blacksmith.BlackSmith;
 import com.redhaan.adventurersGalore.entity.town.building.inn.Inn;
 import com.redhaan.adventurersGalore.entity.town.building.seer.Seer;

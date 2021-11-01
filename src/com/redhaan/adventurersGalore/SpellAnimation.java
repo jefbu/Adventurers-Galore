@@ -1,5 +1,6 @@
 package com.redhaan.adventurersGalore;
 
+import com.redhaan.adventurersGalore.entity.Monster;
 import com.redhaan.adventurersGalore.entity.adventurer.spells.Spell;
 import com.redhaan.adventurersGalore.entity.adventurer.spells.SpellEffect;
 import com.redhaan.adventurersGalore.entity.adventurer.spells.SpellModifier;
@@ -23,6 +24,8 @@ public class SpellAnimation extends GameObject {
 	private static int colour;
 	private static Spell spell;
 	private static SpellModifier spellModifier;
+	private static Monster target;
+	private static int magic;
 	
 	public SpellAnimation() {
 		
@@ -36,6 +39,7 @@ public class SpellAnimation extends GameObject {
 		spellAnimation = 0;
 		spell = Spell.oasis;
 		colour = 0;
+		magic = 0;
 				
 	}
 		
@@ -79,7 +83,7 @@ public class SpellAnimation extends GameObject {
 				verticalGrowth = 0;
 				acceleration = 0;
 				active = false; 
-				SpellEffect.castSpell(spell, spellModifier);
+				SpellEffect.castSpell(spell, spellModifier, target, magic);
 				}
 			
 		}
@@ -105,10 +109,12 @@ public class SpellAnimation extends GameObject {
 	
 	
 	
-	public static void activate(Spell spell, SpellModifier spellModifier) {
+	public static void activate(Spell spell, SpellModifier spellModifier, Monster target, int magic) {
 		
 		SpellAnimation.spell = spell;
 		SpellAnimation.spellModifier = spellModifier;
+		SpellAnimation.target = target;
+		SpellAnimation.magic = magic;
 				
 		switch(spellModifier.name) {
 		

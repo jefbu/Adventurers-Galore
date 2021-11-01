@@ -69,6 +69,7 @@ public class GameManager extends AbstractGame {
 		gameObjects.add(new TownList());
 		gameObjects.add(new Tooltip());
 
+		//Does this need to be in?
 		//gameObjects.add(adventurers);
 
 		

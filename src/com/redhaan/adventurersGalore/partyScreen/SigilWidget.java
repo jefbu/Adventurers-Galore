@@ -45,7 +45,8 @@ public class SigilWidget extends GameObject {
 			hover = true; 
 			if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
 				SpellAnimation.activate(GameManager.adventurers.allAdventurers.get(PartyScreen.member).spells.get(0).spell, 
-						GameManager.adventurers.allAdventurers.get(PartyScreen.member).spells.get(0).spellModifier);
+						GameManager.adventurers.allAdventurers.get(PartyScreen.member).spells.get(0).spellModifier, 
+						null, GameManager.adventurers.allAdventurers.get(PartyScreen.member).currentStats.MAG);
 			}
 		}
 		

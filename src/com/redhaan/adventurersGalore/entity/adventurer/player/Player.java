@@ -24,6 +24,8 @@ public class Player extends Adventurer {
 		maxStats.move = 18;
 		currentStats.PHY = 35;
 		maxStats.PHY = 35;
+		currentStats.HP = 500;
+		maxStats.HP = 500;
 		weapon = new Lance();
 		armour = new ReinforcedLeather();
 		calculateSecondaryStats();

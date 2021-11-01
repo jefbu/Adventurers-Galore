@@ -3,8 +3,8 @@ package com.redhaan.adventurersGalore.entity.combatAddOns;
 import java.awt.event.MouseEvent;
 
 import com.redhaan.adventurersGalore.GameObject;
-import com.redhaan.adventurersGalore.SpellAnimation;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
+import com.redhaan.adventurersGalore.entity.adventurer.Sigil;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
@@ -15,11 +15,15 @@ public class SpellOptions extends GameObject {
 	
 	private Adventurer adventurer;
 	private int hoverOption;
+	public int selectedSpell;
+	public boolean spellSelected;
 	
 	public SpellOptions(Adventurer adventurer) {
 		
 		this.adventurer = adventurer;
 		hoverOption = 0;
+		selectedSpell = 0;
+		spellSelected = false;
 		
 	}
 
@@ -31,15 +35,9 @@ public class SpellOptions extends GameObject {
 		if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
 			switch(hoverOption) {
 			case 0: break;
-			case 1: 
-				SpellAnimation.activate(adventurer.spells.get(0).spell, adventurer.spells.get(0).spellModifier); 
-				adventurer.selected = false;
-				adventurer.hasMoved = true;
-				adventurer.hasActed = true;
-				adventurer.turnPassed = true;
-				break;
-			case 2: break;
-			case 3: break;
+			case 1: selectedSpell = 0; spellSelected = true; break;
+			case 2: selectedSpell = 1; spellSelected = true; break;
+			case 3: selectedSpell = 2; spellSelected = true; break;
 			}
 		}
 		

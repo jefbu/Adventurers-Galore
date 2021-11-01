@@ -50,24 +50,9 @@ public class GiantBat extends Enemy {
 		
 		int gemStoneLevel = rollGemStoneLevel(60, 30, 9, 1);
 		
-		dropTable.itemDrops.add(new Leather());
-		dropTable.itemDrops.add(new Fang());
-		dropTable.itemDrops.add(new BeastBlood());
-		dropTable.itemDrops.add(new Hide());
-		dropTable.itemDrops.add(new Sabre());
-		dropTable.itemDrops.add(new Lesses());
-		dropTable.itemDrops.add(new Amber(gemStoneLevel));
-		dropTable.itemDrops.add(new Cinqueada());
-		
-		dropTable.quantities[0] = 1;
-		dropTable.quantities[1] = 1;
-		dropTable.quantities[2] = 1;
-		dropTable.quantities[3] = 1;
-		dropTable.quantities[4] = 1;
-		dropTable.quantities[5] = 1;
-		dropTable.quantities[6] = 1;
-		dropTable.quantities[7] = 1;
-		
+		dropTable.add(new ItemDrop(new BeastBlood(), 900));
+
+
 		
 	}
 		

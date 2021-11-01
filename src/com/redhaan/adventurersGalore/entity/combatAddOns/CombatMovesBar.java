@@ -107,7 +107,8 @@ public class CombatMovesBar extends GameObject {
 		switch (selectedNumber) {
 		case 0:
 			renderer.drawImageTile(icons, xStartPoint + 1, yStartPoint + 1, 0, adventurer.combatMoves.get(0).row);
-			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, adventurer.combatMoves.get(1).row);
+			if (adventurer.spells.isEmpty()) { renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, 7); }
+			else { renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, adventurer.combatMoves.get(1).row); }
 			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, 0, adventurer.combatMoves.get(2).row);
 			if(adventurer.combatMoves.size() > 3) {
 				renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 3, yStartPoint + 1, 0, adventurer.combatMoves.get(3).row);
@@ -115,7 +116,8 @@ public class CombatMovesBar extends GameObject {
 			break;		
 		case 1:
 			renderer.drawImageTile(icons, xStartPoint + 1, yStartPoint + 1, animationNumber, adventurer.combatMoves.get(0).row);
-			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, adventurer.combatMoves.get(1).row);
+			if (adventurer.spells.isEmpty()) { renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, 7);  }
+			else { renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, adventurer.combatMoves.get(1).row); }
 			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, 0, adventurer.combatMoves.get(2).row);
 			if(adventurer.combatMoves.size() > 3) {
 				renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 3, yStartPoint + 1, 0, adventurer.combatMoves.get(3).row);
@@ -131,7 +133,8 @@ public class CombatMovesBar extends GameObject {
 			break;
 		case 3:
 			renderer.drawImageTile(icons, xStartPoint + 1, yStartPoint + 1, 0, adventurer.combatMoves.get(0).row);
-			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, adventurer.combatMoves.get(1).row);
+			if (adventurer.spells.isEmpty()) { renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, 7); System.out.println("empty");}
+			else { renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, adventurer.combatMoves.get(1).row); System.out.println("not empty");}
 			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, animationNumber, adventurer.combatMoves.get(2).row);
 			if(adventurer.combatMoves.size() > 3) {
 				renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 3, yStartPoint + 1, 0, adventurer.combatMoves.get(3).row);
@@ -139,7 +142,8 @@ public class CombatMovesBar extends GameObject {
 			break;
 		case 4:
 			renderer.drawImageTile(icons, xStartPoint + 1, yStartPoint + 1, 0, adventurer.combatMoves.get(0).row);
-			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, adventurer.combatMoves.get(1).row);
+			if (adventurer.spells.isEmpty()) { renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, 7); System.out.println("empty");}
+			else { renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE, yStartPoint + 1, 0, adventurer.combatMoves.get(1).row); System.out.println("not empty");}
 			renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 2, yStartPoint + 1, 0, adventurer.combatMoves.get(2).row);
 			if(adventurer.combatMoves.size() > 3) {
 				renderer.drawImageTile(icons, xStartPoint + 1 + GameManager.GAMETILESIZE * 3, yStartPoint + 1, animationNumber, adventurer.combatMoves.get(3).row);

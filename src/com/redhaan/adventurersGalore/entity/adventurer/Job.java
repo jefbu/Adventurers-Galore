@@ -88,6 +88,16 @@ public class Job implements Serializable {
 			20, 0, 15, 5, 5, 5, 5, 5, 2);
 	public static Job redMist = new Job(JobEnum.RedMist, "Red Mist", 8, 2, 6, 2, 0, 1, 1, 1, 1, new ImageTile("/redmist.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE), 
 			20, 0, 15, 5, 5, 5, 5, 5, 2);
+	
+	
+	
+	
+	public static Job summonedSkeleton = new Job(JobEnum.SummonedSkeleton, "Skeleton", 0, 0, 0, 0, 0, 0, 0, 0, 0, new ImageTile("/skeleton.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE),
+			0, 0, 0, 0, 0, 0, 0, 0, 0);
+	
+	
+	
+	
 
 
 }

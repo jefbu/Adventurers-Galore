@@ -101,6 +101,7 @@ public class Monster extends NPC {
 		calculateDefence();
 		calculateHit();
 		calculateCritical();
+		calculateEvade();
 	}
 	
 	
@@ -121,7 +122,7 @@ public class Monster extends NPC {
 	}
 	
 	private void calculateDefence() {
-		maxStats.defence = maxStats.PHY + armour.defence;
+		maxStats.defence = (maxStats.PHY / 2) + armour.defence;
 		currentStats.defence = maxStats.defence;
 	}
 	
@@ -133,6 +134,11 @@ public class Monster extends NPC {
 	private void calculateCritical() {
 		maxStats.critical = maxStats.DEX + maxStats.AGI / 2;
 		currentStats.critical = maxStats.critical;
+	}
+	
+	private void calculateEvade() {
+		maxStats.evade = (maxStats.AGI * 2) + maxStats.DEX;
+		currentStats.evade = maxStats.evade;
 	}
 	
 

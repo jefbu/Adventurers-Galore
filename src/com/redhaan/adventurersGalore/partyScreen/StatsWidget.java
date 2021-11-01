@@ -89,6 +89,13 @@ public class StatsWidget extends GameObject {
 			else if (GameManager.adventurers.allAdventurers.get(PartyScreen.member).maxStats.move > GameManager.adventurers.allAdventurers.get(PartyScreen.member).currentStats.move) {
 				renderer.drawText("(" + GameManager.adventurers.allAdventurers.get(PartyScreen.member).currentStats.move + ")", 65, 180, 0xffDDBBBB);
 			}
+		renderer.drawText("EVA: " + GameManager.adventurers.allAdventurers.get(PartyScreen.member).maxStats.evade, 105, 180, 0xffBBBBBB);
+			if(GameManager.adventurers.allAdventurers.get(PartyScreen.member).maxStats.evade < GameManager.adventurers.allAdventurers.get(PartyScreen.member).currentStats.evade) {
+				renderer.drawText("(" + GameManager.adventurers.allAdventurers.get(PartyScreen.member).currentStats.evade + ")", 145, 180, 0xffBBDDBB);
+			}
+			else if (GameManager.adventurers.allAdventurers.get(PartyScreen.member).maxStats.move > GameManager.adventurers.allAdventurers.get(PartyScreen.member).currentStats.move) {
+				renderer.drawText("(" + GameManager.adventurers.allAdventurers.get(PartyScreen.member).currentStats.move + ")", 145, 180, 0xffDDBBBB);
+			}
 
 			
 			

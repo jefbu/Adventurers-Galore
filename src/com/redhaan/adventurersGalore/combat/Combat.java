@@ -199,18 +199,18 @@ public class Combat extends GameObject {
 			
 			case Combat:
 				levelDrawer.drawLevel(renderer, combatMap.image, 0, 0, true);
+								
+				for (Monster enemy: enemies) {
+					if(!enemy.isDead()) {
+					enemy.render(gameContainer, renderer);
+					}
+				}
 				
 				for(Adventurer adventurer: GameManager.adventurers.allAdventurers) {
 					if(adventurer.inParty) {
 						if(!adventurer.isDead()) {
 							adventurer.render(gameContainer, renderer);
 						}
-					}
-				}
-				
-				for (Monster enemy: enemies) {
-					if(!enemy.isDead()) {
-					enemy.render(gameContainer, renderer);
 					}
 				}
 				

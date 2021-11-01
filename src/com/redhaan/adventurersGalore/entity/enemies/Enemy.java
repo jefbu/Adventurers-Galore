@@ -22,15 +22,17 @@ import gameEngine.ecclesiastes.gfx.ImageTile;
 public class Enemy extends Monster {
 	
 	Random random;
-	public DropTable dropTable;
+	public ArrayList<ItemDrop> dropTable;
 	public int row;
+	public EnemyAI ai;
+	public int range;
 
 	private static final long serialVersionUID = 1L;
 
 	public Enemy() {
 		
 		random = new Random();
-		dropTable = new DropTable();
+		dropTable = new ArrayList<ItemDrop>();
 		icon = new ImageTile("/Monsters.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
 		
 	}
@@ -136,13 +138,11 @@ public class Enemy extends Monster {
 	
 	public void rollLoot(ArrayList<Item> loot) {
 		
-		for (int i = 0; i < dropTable.itemDrops.size(); i++) {
-			int roll = random.nextInt(10000) + 1;
-			if (roll < dropTable.dropRates[i]) {
-				for (int ii = 0; ii < dropTable.quantities[i]; ii++) {
-					loot.add(dropTable.itemDrops.get(i));					
-				}
-			}
+		for (int i = 0; i < dropTable.size(); i++) {
+			
+			int roll = random.nextInt(1000) + 1;
+			if (roll < dropTable.get(i).dropRate) { loot.add(dropTable.get(i).item); }
+		
 		}
 		
 		

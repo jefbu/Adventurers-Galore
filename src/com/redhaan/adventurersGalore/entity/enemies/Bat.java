@@ -1,13 +1,11 @@
 package com.redhaan.adventurersGalore.entity.enemies;
 
-import com.redhaan.adventurersGalore.entity.item.armour.Leather;
-import com.redhaan.adventurersGalore.entity.item.items.BeastBlood;
-import com.redhaan.adventurersGalore.entity.item.items.Fang;
+import com.redhaan.adventurersGalore.entity.item.items.Bezoar;
+import com.redhaan.adventurersGalore.entity.item.items.GiantToe;
 import com.redhaan.adventurersGalore.entity.item.items.Hide;
-import com.redhaan.adventurersGalore.entity.item.items.Lesses;
+import com.redhaan.adventurersGalore.entity.item.items.Wing;
 import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Cinqueada;
-import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.Amber;
-import com.redhaan.adventurersGalore.entity.item.weapon.swords.Sabre;
+import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.Turquoise;
 
 public class Bat extends Enemy {
 	
@@ -19,55 +17,34 @@ public class Bat extends Enemy {
 		name = "Giant Bat";
 		row = 4;
 		
-		maxStats.HP = 20;
-		maxStats.MP = 15;
-		maxStats.PHY = 11;
-		maxStats.AGI = 12;
-		maxStats.MAG = 5;
-		maxStats.DEX = 11;
-		maxStats.INT = 6;
-		maxStats.PRC = 8;
-		maxStats.move = 7;
+		maxStats.HP = 18;
+		currentStats.HP = 18;
 		
-		currentStats.HP = 20;
-		currentStats.MP = 15;
-		currentStats.PHY = 11;
-		currentStats.AGI = 12;
-		currentStats.MAG = 5;
-		currentStats.DEX = 11;
-		currentStats.INT = 6;
-		currentStats.PRC = 8;
-		currentStats.move = 7;
-		
-		maxStats.attack = 20;
-		maxStats.defence = 10;
-		maxStats.hit = 75;
-		maxStats.critical = 10;
-		
-		currentStats.attack = 20;
+		maxStats.attack = 16;
+		currentStats.attack = 16;
+		maxStats.defence = 10;	
 		currentStats.defence = 10;
-		currentStats.hit = 75;
+		maxStats.hit = 80;
+		currentStats.hit = 80;
+		maxStats.evade = 20;
+		currentStats.evade = 20;
+		maxStats.critical = 10;
 		currentStats.critical = 10;
 		
-		int gemStoneLevel = rollGemStoneLevel(60, 30, 9, 1);
+		maxStats.move = 7;
+		currentStats.move = 7;
 		
-		dropTable.itemDrops.add(new Leather());
-		dropTable.itemDrops.add(new Fang());
-		dropTable.itemDrops.add(new BeastBlood());
-		dropTable.itemDrops.add(new Hide());
-		dropTable.itemDrops.add(new Sabre());
-		dropTable.itemDrops.add(new Lesses());
-		dropTable.itemDrops.add(new Amber(gemStoneLevel));
-		dropTable.itemDrops.add(new Cinqueada());
+		range = 1;
 		
-		dropTable.quantities[0] = 1;
-		dropTable.quantities[1] = 1;
-		dropTable.quantities[2] = 1;
-		dropTable.quantities[3] = 1;
-		dropTable.quantities[4] = 1;
-		dropTable.quantities[5] = 1;
-		dropTable.quantities[6] = 1;
-		dropTable.quantities[7] = 1;
+		ai = EnemyAI.Active;
+		
+		dropTable.add(new ItemDrop(new Hide(), 400));
+		dropTable.add(new ItemDrop(new GiantToe(), 250));
+		dropTable.add(new ItemDrop(new Wing(), 100));
+		dropTable.add(new ItemDrop(new Bezoar(), 15));
+		dropTable.add(new ItemDrop(new Cinqueada(), 2));
+		dropTable.add(new ItemDrop(new Turquoise(4), 1));
+
 		
 	}
 

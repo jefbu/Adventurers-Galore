@@ -1,6 +1,8 @@
 package com.redhaan.adventurersGalore.entity.item.potions;
 
-public class Potion {
+import com.redhaan.adventurersGalore.entity.item.Item;
+
+public class Potion extends Item {
 	
 	public int xRow, yRow;
 	public String name;

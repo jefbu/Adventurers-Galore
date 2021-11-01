@@ -3,10 +3,11 @@ package com.redhaan.adventurersGalore.entity.item.weapon;
 import java.io.Serializable;
 
 import com.redhaan.adventurersGalore.GameManager;
+import com.redhaan.adventurersGalore.entity.item.Item;
 
 import gameEngine.ecclesiastes.gfx.ImageTile;
 
-public class Rune implements Serializable {
+public class Rune extends Item implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	public String name;
