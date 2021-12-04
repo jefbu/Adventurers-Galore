@@ -1,13 +1,11 @@
 package com.redhaan.adventurersGalore.entity.enemies;
 
-import com.redhaan.adventurersGalore.entity.item.armour.Leather;
-import com.redhaan.adventurersGalore.entity.item.items.BeastBlood;
-import com.redhaan.adventurersGalore.entity.item.items.Fang;
-import com.redhaan.adventurersGalore.entity.item.items.Hide;
-import com.redhaan.adventurersGalore.entity.item.items.Lesses;
-import com.redhaan.adventurersGalore.entity.item.weapon.daggers.Cinqueada;
-import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.Amber;
-import com.redhaan.adventurersGalore.entity.item.weapon.swords.Sabre;
+import com.redhaan.adventurersGalore.entity.item.armour.Brigandine;
+import com.redhaan.adventurersGalore.entity.item.items.Bile;
+import com.redhaan.adventurersGalore.entity.item.items.GloriousMoment;
+import com.redhaan.adventurersGalore.entity.item.items.HistoricDocument;
+import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.Turquoise;
+import com.redhaan.adventurersGalore.entity.item.weapon.staves.Baton;
 
 public class Pirate extends Enemy {
 	
@@ -18,41 +16,33 @@ public class Pirate extends Enemy {
 		name = "Pirate";
 		row = 7;
 		
-		maxStats.HP = 20;
-		maxStats.MP = 15;
-		maxStats.PHY = 11;
-		maxStats.AGI = 12;
-		maxStats.MAG = 5;
-		maxStats.DEX = 11;
-		maxStats.INT = 6;
-		maxStats.PRC = 8;
-		maxStats.move = 7;
+		maxStats.HP = 21;
+		currentStats.HP = 21;
 		
-		currentStats.HP = 20;
-		currentStats.MP = 15;
-		currentStats.PHY = 11;
-		currentStats.AGI = 12;
-		currentStats.MAG = 5;
-		currentStats.DEX = 11;
-		currentStats.INT = 6;
-		currentStats.PRC = 8;
-		currentStats.move = 7;
+		maxStats.attack = 19;
+		currentStats.attack = 19;
+		maxStats.defence = 13;	
+		currentStats.defence = 13;
+		maxStats.hit = 85;
+		currentStats.hit = 85;
+		maxStats.evade = 15;
+		currentStats.evade = 15;
+		maxStats.critical = 20;
+		currentStats.critical = 20;
 		
-		maxStats.attack = 20;
-		maxStats.defence = 10;
-		maxStats.hit = 75;
-		maxStats.critical = 10;
+		maxStats.move = 4;
+		currentStats.move = 4;
 		
-		currentStats.attack = 20;
-		currentStats.defence = 10;
-		currentStats.hit = 75;
-		currentStats.critical = 10;
+		range = 1;
 		
-		int gemStoneLevel = rollGemStoneLevel(60, 30, 9, 1);
+		ai = EnemyAI.Aggressive;
 		
-		dropTable.add(new ItemDrop(new BeastBlood(), 900));
-
-			
+		dropTable.add(new ItemDrop(new Bile(), 300));
+		dropTable.add(new ItemDrop(new Turquoise(1), 150));
+		dropTable.add(new ItemDrop(new Baton(), 50));
+		dropTable.add(new ItemDrop(new HistoricDocument(), 20));
+		dropTable.add(new ItemDrop(new GloriousMoment(), 5));
+		dropTable.add(new ItemDrop(new Brigandine(), 3));			
 		
 	}
 

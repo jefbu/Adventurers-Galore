@@ -9,10 +9,10 @@ import com.redhaan.adventurersGalore.combat.Combat;
 import com.redhaan.adventurersGalore.combat.CombatPhase;
 import com.redhaan.adventurersGalore.combat.combatAI.HighLevelPlan;
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
-import com.redhaan.adventurersGalore.entity.enemies.Ghoul;
+import com.redhaan.adventurersGalore.entity.enemies.DarkKnight;
+import com.redhaan.adventurersGalore.entity.enemies.Gryphon;
 import com.redhaan.adventurersGalore.entity.enemies.Pirate;
-import com.redhaan.adventurersGalore.entity.enemies.SkeletonWarrior;
-import com.redhaan.adventurersGalore.entity.enemies.Zombie;
+import com.redhaan.adventurersGalore.entity.enemies.Wyvern;
 import com.redhaan.adventurersGalore.entity.party.Party;
 import com.redhaan.adventurersGalore.worldMap.WorldMap;
 
@@ -150,9 +150,9 @@ public class BanditsOnTheRoad extends TravelerEvent {
 			optionC = false;
 			WorldMap.subState = WorldMap.previousSubState;
 			
-			Combat.enemies.add(new Zombie());
-			Combat.enemies.add(new SkeletonWarrior());
-			Combat.enemies.add(new Ghoul());
+			Combat.enemies.add(new Wyvern());
+			Combat.enemies.add(new Gryphon());
+			Combat.enemies.add(new DarkKnight());
 			
 			Combat.highLevelPlan = HighLevelPlan.Attack;
 			Combat.combatPhase = CombatPhase.Setup;

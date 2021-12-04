@@ -20,8 +20,8 @@ public class Birdman extends Enemy {
 		maxStats.HP = 20;
 		currentStats.HP = 20;
 		
-		maxStats.attack = 18;
-		currentStats.attack = 18;
+		maxStats.attack = 19;
+		currentStats.attack = 19;
 		maxStats.defence = 12;	
 		currentStats.defence = 12;
 		maxStats.hit = 80;
