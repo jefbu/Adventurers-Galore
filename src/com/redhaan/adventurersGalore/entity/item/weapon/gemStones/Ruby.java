@@ -1,5 +1,7 @@
 package com.redhaan.adventurersGalore.entity.item.weapon.gemStones;
 
+import com.redhaan.adventurersGalore.entity.item.ItemID;
+
 public class Ruby extends GemStone {
 
 	private static final long serialVersionUID = 1L;
@@ -13,8 +15,17 @@ public class Ruby extends GemStone {
 		addLevelModifiers();
 		makeName();
 		
-		xTile = 8 + this.level;
-		yTile = 0;
+		xTile = 0 + this.level - 1;
+		yTile = 10;
+		
+		switch (level) {
+		
+		case 1: ID = ItemID.cheapRuby; break;
+		case 2: ID = ItemID.basicRuby; break;
+		case 3: ID = ItemID.qualityRuby; break;
+		case 4: ID = ItemID.flawlessRuby; break;
+		
+		}
 		
 	}
 

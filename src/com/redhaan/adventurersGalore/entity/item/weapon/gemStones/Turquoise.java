@@ -1,5 +1,7 @@
 package com.redhaan.adventurersGalore.entity.item.weapon.gemStones;
 
+import com.redhaan.adventurersGalore.entity.item.ItemID;
+
 public class Turquoise extends GemStone{
 
 	private static final long serialVersionUID = 1L;
@@ -13,8 +15,17 @@ public class Turquoise extends GemStone{
 		addLevelModifiers();
 		makeName();
 	
-		xTile = 8 + this.level;
-		yTile = 4;
+		xTile = 0 + this.level - 1;
+		yTile = 14;
+		
+		switch (level) {
+		
+		case 1: ID = ItemID.cheapTurquoise; break;
+		case 2: ID = ItemID.basicTurquoise; break;
+		case 3: ID = ItemID.qualityTurquoise; break;
+		case 4: ID = ItemID.flawlessTurquoise; break;
+		
+		}
 		
 	}
 

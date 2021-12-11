@@ -22,7 +22,7 @@ public class Dungeon extends GameObject {
 	public int tileRow;
 	public boolean discovered;
 	private static ImageTile worldMapDungeonTiles = new ImageTile("/spritesheets/mapTiles2.png", GameManager.GAMETILESIZE, GameManager.GAMETILESIZE);
-	DungeonPopup popup;
+	public DungeonPopup popup;
 	ArrayList<DungeonRoom> dungeonRooms;
 	public int activeRoom;
 	public int dungeonLayoutType;
@@ -32,6 +32,9 @@ public class Dungeon extends GameObject {
 	private boolean bossDefeated;
 	
 	public int lootCollected;
+	
+	public int expiration;
+	protected boolean renewable;
 		
 
 	public Dungeon() {
@@ -45,8 +48,11 @@ public class Dungeon extends GameObject {
 		miniMap.miniMapTiles.get(dungeonRooms.get(activeRoom).gridNumber).discovered = true;
 		dungeonConclusion = new DungeonConclusion(this);
 		bossDefeated = false;
+		tileRow = 0;
 		
 		lootCollected = 0;
+		expiration = 0;
+		renewable = false;
 		
 		for (DungeonRoom room: dungeonRooms) {
 			for (MiniMapTile tile: miniMap.miniMapTiles) {

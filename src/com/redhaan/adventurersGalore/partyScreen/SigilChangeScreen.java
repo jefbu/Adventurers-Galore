@@ -236,7 +236,7 @@ public class SigilChangeScreen extends GameObject {
 	private void drawPotionBox(Potion potion, int offX, int offY, Renderer renderer) {
 		
 		renderer.drawRectOpaque(offX, offY, width - 10, 18, 0xff686868);
-		renderer.drawImageTile(icon, offX + 5, offY, potion.xRow, potion.yRow);
+		renderer.drawImageTile(icon, offX + 5, offY, potion.xTile, potion.yTile);
 		renderer.drawText(potion.name, offX + 25, offY + 5, 0xff252537);
 	
 	}

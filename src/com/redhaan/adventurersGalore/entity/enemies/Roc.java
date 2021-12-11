@@ -1,9 +1,6 @@
 package com.redhaan.adventurersGalore.entity.enemies;
 
-import com.redhaan.adventurersGalore.entity.adventurer.Tattoo;
-import com.redhaan.adventurersGalore.entity.item.items.PhoenixFeather;
-import com.redhaan.adventurersGalore.entity.item.potions.Potion;
-import com.redhaan.adventurersGalore.entity.item.weapon.swords.Foil;
+import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.Sapphire;
 
 public class Roc extends Enemy {
 	
@@ -34,10 +31,10 @@ public class Roc extends Enemy {
 		
 		ai = EnemyAI.Active;
 		
-		dropTable.add(new ItemDrop(new PhoenixFeather(), 90));
-		dropTable.add(new ItemDrop(Potion.whitePotion, 120));
-		dropTable.add(new ItemDrop(new Foil(), 100));
-		dropTable.add(new ItemDrop(Tattoo.kestrel, 20));
+		//dropTable.add(new ItemDrop(new PhoenixFeather(), 90));
+		dropTable.add(new ItemDrop(new Sapphire(3), 900));
+		//dropTable.add(new ItemDrop(new Foil(), 100));
+		//dropTable.add(new ItemDrop(Tattoo.kestrel, 20));
 		
 	}
 

@@ -1,5 +1,7 @@
 package com.redhaan.adventurersGalore.entity.item.weapon.gemStones;
 
+import com.redhaan.adventurersGalore.entity.item.ItemID;
+
 public class Topaz extends GemStone {
 
 	private static final long serialVersionUID = 1L;
@@ -13,8 +15,17 @@ public class Topaz extends GemStone {
 		addLevelModifiers();
 		makeName();
 		
-		xTile = 8 + this.level;
-		yTile = 3;
+		xTile = 0 + this.level - 1;
+		yTile = 13;
+		
+		switch (level) {
+		
+		case 1: ID = ItemID.cheapTopaz; break;
+		case 2: ID = ItemID.basicTopaz; break;
+		case 3: ID = ItemID.qualityTopaz; break;
+		case 4: ID = ItemID.flawlessTopaz; break;
+		
+		}
 		
 	}
 

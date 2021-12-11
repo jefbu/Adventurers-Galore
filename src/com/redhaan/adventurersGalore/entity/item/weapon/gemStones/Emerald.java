@@ -1,5 +1,7 @@
 package com.redhaan.adventurersGalore.entity.item.weapon.gemStones;
 
+import com.redhaan.adventurersGalore.entity.item.ItemID;
+
 public class Emerald extends GemStone {
 
 	private static final long serialVersionUID = 1L;
@@ -13,8 +15,17 @@ public class Emerald extends GemStone {
 		addLevelModifiers();
 		makeName();
 		
-		xTile = 8 + this.level;
-		yTile = 1;
+		xTile = 0 + this.level - 1;
+		yTile = 11;
+		
+		switch (level) {
+		
+		case 1: ID = ItemID.cheapEmerald; break;
+		case 2: ID = ItemID.basicEmerald; break;
+		case 3: ID = ItemID.qualityEmerald; break;
+		case 4: ID = ItemID.flawlessEmerald; break;
+		
+		}
 		
 	}
 

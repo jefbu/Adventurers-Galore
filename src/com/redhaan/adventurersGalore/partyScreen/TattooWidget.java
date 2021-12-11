@@ -32,7 +32,7 @@ public class TattooWidget extends GameObject {
 		renderer.drawRectOpaque(offX, offY, width, height, 0xff282020);
 
 		if (GameManager.adventurers.allAdventurers.get(PartyScreen.member).tattoo != null) {
-			renderer.drawImageTile(GameManager.adventurers.allAdventurers.get(PartyScreen.member).tattoo.icon,
+			renderer.drawImageTile(GameManager.adventurers.allAdventurers.get(PartyScreen.member).tattoo.largeIcon,
 					offX + width / 2 - GameManager.GAMETILESIZE, offY + 5,
 					GameManager.adventurers.allAdventurers.get(PartyScreen.member).tattoo.iconX,
 					GameManager.adventurers.allAdventurers.get(PartyScreen.member).tattoo.iconY);

@@ -22,8 +22,7 @@ public class GemStone extends Item implements Serializable {
 	
 	public int level;
 	
-	public static ImageTile icon = new ImageTile("/smallIcons.png", GameManager.GAMETILESIZE / 4, GameManager.GAMETILESIZE / 4);
-	public int xTile, yTile;
+
 	
 	public GemStoneEnum gemStoneEnum;
 	
@@ -60,10 +59,10 @@ public class GemStone extends Item implements Serializable {
 		
 		switch(level) {
 		
-		case 1: name = "cheap " + name;
-		case 2: name = "basic " + name;
-		case 3: name = "quality " + name;
-		case 4: name = "flawless " + name;
+		case 1: name = "cheap " + name; break;
+		case 2: name = "basic " + name; break;
+		case 3: name = "quality " + name; break;
+		case 4: name = "flawless " + name; break;
 		
 		}
 		

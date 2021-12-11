@@ -21,6 +21,7 @@ public class DungeonFactory {
 	public Dungeon createRandomDungeon() {
 		
 		Dungeon dungeon = new Dungeon();
+		dungeon.renewable = true;
 		
 		boolean goOn = true;
 		while(goOn) {
@@ -63,6 +64,8 @@ public class DungeonFactory {
 			}
 			
 		}
+		
+		dungeon.expiration = 20 + random.nextInt(30);
 		
 		System.out.println("dungeon x Location: " + dungeon.xLocation);
 		System.out.println("dungeon y Location: " + dungeon.yLocation);

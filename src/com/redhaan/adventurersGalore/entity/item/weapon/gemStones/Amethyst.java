@@ -1,5 +1,7 @@
 package com.redhaan.adventurersGalore.entity.item.weapon.gemStones;
 
+import com.redhaan.adventurersGalore.entity.item.ItemID;
+
 public class Amethyst extends GemStone {
 
 	private static final long serialVersionUID = 1L;
@@ -13,8 +15,17 @@ public class Amethyst extends GemStone {
 		addLevelModifiers();
 		makeName();
 		
-		xTile = 8 + this.level;
-		yTile = 6;
+		xTile = 0 + this.level - 1;
+		yTile = 16;
+		
+		switch (level) {
+		
+		case 1: ID = ItemID.cheapAmethyst; break;
+		case 2: ID = ItemID.basicAmethyst; break;
+		case 3: ID = ItemID.qualityAmethyst; break;
+		case 4: ID = ItemID.flawlessAmethyst; break;
+		
+		}
 
 		
 	}

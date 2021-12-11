@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.GameState;
-import com.redhaan.adventurersGalore.entity.item.weapon.Rune;
+import com.redhaan.adventurersGalore.entity.item.items.CraftItems;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 import com.redhaan.adventurersGalore.inventory.InventoryScreen.MenuBar;
@@ -99,7 +99,7 @@ public class WeaponWidget extends GameObject {
 			}
 			if (weapon.runes.size() > 0) {
 				for (int ii = 0; ii < weapon.runes.size(); ii++) {
-					renderer.drawImageTile(Rune.icon, offX + 5 + (ii * 20), offY + 70, weapon.runes.get(ii).xRow, weapon.runes.get(ii).yRow);
+					renderer.drawImageTile(CraftItems.icon, offX + 5 + (ii * 20), offY + 72, weapon.runes.get(ii).xTile, weapon.runes.get(ii).yTile);
 				}
 			}
 

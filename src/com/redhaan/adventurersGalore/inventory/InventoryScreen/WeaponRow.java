@@ -5,8 +5,8 @@ import java.awt.event.MouseEvent;
 import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.GameState;
+import com.redhaan.adventurersGalore.entity.item.items.CraftItems;
 import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
-import com.redhaan.adventurersGalore.entity.item.weapon.gemStones.GemStone;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 import com.redhaan.adventurersGalore.partyScreen.PartyScreen;
 
@@ -108,7 +108,7 @@ public class WeaponRow extends GameObject {
 			
 		renderer.drawRectOpaque(266, 48 + 45 * number, 20, 32, InventoryScreen.highlightColour);	
 			if(weapon.gemStone != null) {
-				renderer.drawImageTile(GemStone.icon, 274, 63 + 45 * number, weapon.gemStone.xTile, weapon.gemStone.yTile);
+				renderer.drawImageTile(CraftItems.icon, 274, 63 + 45 * number, weapon.gemStone.xTile, weapon.gemStone.yTile);
 			}
 			
 		renderer.drawRectOpaque(291, 48 + 45 * number, 70, 32, InventoryScreen.highlightColour);

@@ -19,7 +19,7 @@ public class DungeonPopup extends GameObject {
 	private boolean visible;
 	private boolean alreadyClicked;
 	private Dungeon dungeon;
-	private int timer;
+	public int timer;
 
 	public DungeonPopup(Dungeon dungeon) {
 		visible = false;

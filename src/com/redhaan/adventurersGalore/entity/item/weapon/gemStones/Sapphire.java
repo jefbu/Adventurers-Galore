@@ -1,5 +1,7 @@
 package com.redhaan.adventurersGalore.entity.item.weapon.gemStones;
 
+import com.redhaan.adventurersGalore.entity.item.ItemID;
+
 public class Sapphire extends GemStone {
 
 	private static final long serialVersionUID = 1L;
@@ -13,8 +15,17 @@ public class Sapphire extends GemStone {
 		addLevelModifiers();
 		makeName();
 		
-		xTile = 8 + this.level;
-		yTile = 2;
+		xTile = 0 + this.level - 1;
+		yTile = 12;
+		
+		switch (level) {
+		
+		case 1: ID = ItemID.cheapSapphire; break;
+		case 2: ID = ItemID.basicSapphire; break;
+		case 3: ID = ItemID.qualitySapphire; break;
+		case 4: ID = ItemID.flawlessSapphire; break;
+		
+		}
 		
 	}
 

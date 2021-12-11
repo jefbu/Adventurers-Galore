@@ -1,5 +1,7 @@
 package com.redhaan.adventurersGalore.entity.item.weapon.gemStones;
 
+import com.redhaan.adventurersGalore.entity.item.ItemID;
+
 public class Amber extends GemStone {
 
 	private static final long serialVersionUID = 1L;
@@ -13,8 +15,19 @@ public class Amber extends GemStone {
 		addLevelModifiers();
 		makeName();
 		
-		xTile = 8 + this.level;
-		yTile = 7;
+		xTile = 0 + this.level - 1;
+		yTile = 17;
+		
+		switch (level) {
+		
+		case 1: ID = ItemID.cheapAmber; break;
+		case 2: ID = ItemID.basicAmber; break;
+		case 3: ID = ItemID.qualityAmber; break;
+		case 4: ID = ItemID.flawlessAmber; break;
+		
+		}
+			
+			
 	}
 
 }
