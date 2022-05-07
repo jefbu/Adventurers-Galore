@@ -21,24 +21,27 @@ public class Inventory {
 	public static int silver = 10;
 	public static int tusk = 10;
 	public static int wing = 10;
+	public static int ivory = 10;
+
 	public static int evilSpirit = 10;
 	public static int violentSpirit = 10;
 	public static int spiritOfMischief = 10;
 	public static int vagrantSpirit = 10;
 	public static int nobleSpirit = 10;
 	public static int heartSpirit = 10;
+	
 	public static int liquidInnocence = 10;
 	public static int stolenMoonlight = 10;
 	public static int rationalThought = 10;
 	public static int luckyClover = 10;
 	public static int reforgedPlough = 10;
-	public static int ivory = 10;
 	public static int springBreeze = 10;
 	public static int morningSunlight = 10;
 	public static int pentupAnger = 10;
 	public static int gloriousMoment = 10;
 	public static int elysianFlower = 10;
 	public static int wanderlust = 10;
+	
 	public static int snakeTongue = 4;
 	public static int robinEgg = 7;
 	public static int turtleShell = 7;
@@ -47,6 +50,7 @@ public class Inventory {
 	public static int lizardEye = 9;
 	public static int ectoplasm = 11;
 	public static int giantToe = 5;
+	
 	public static int bezoar = 6;
 	public static int vampireDust = 5;
 	public static int historicDocument = 7;

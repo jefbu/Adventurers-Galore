@@ -71,6 +71,8 @@ public class Adventurer extends Monster {
 	public boolean known;
 	
 	int spellTargetInt;
+	
+	public AdventurerGoal goal;
 
 
 	public Adventurer() {

@@ -8,6 +8,7 @@ import com.redhaan.adventurersGalore.GameState;
 import com.redhaan.adventurersGalore.combat.Combat;
 import com.redhaan.adventurersGalore.combat.CombatMap;
 import com.redhaan.adventurersGalore.entity.party.Party;
+import com.redhaan.adventurersGalore.entity.party.TravelerEngine;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
@@ -35,15 +36,20 @@ public class DungeonPopup extends GameObject {
 		
 		if(Party.getxTile() == dungeon.xLocation && Party.getyTile() == dungeon.yLocation) {
 			dungeon.discovered = true;
-			if (timer == 300) { visible = true; }
+			if (timer == 300) { 
+				visible = true; 
+				TravelerEngine.onHold = true;
+				}
 		} else { alreadyClicked = false; }
 		
 		if (gameContainer.getInput().isButtonUp(MouseEvent.BUTTON1)) {
 			if (gameContainer.getInput().getMouseX() > 400 && gameContainer.getInput().getMouseX() < 430 &&
 					gameContainer.getInput().getMouseY() > 260 && gameContainer.getInput().getMouseY() < 270) {
 				visible = false;
+				TravelerEngine.onHold = false;
 				alreadyClicked = true;
 				timer = 0;
+				dungeon.initialise();
 				Combat.dungeon = true;
 				CombatMap combatMap = dungeon.dungeonRooms.get(0).dungeonMap;
 				Combat.combatMap = combatMap;
@@ -52,6 +58,7 @@ public class DungeonPopup extends GameObject {
 			else if (gameContainer.getInput().getMouseX() > 350 && gameContainer.getInput().getMouseX() < 380 &&
 					gameContainer.getInput().getMouseY() > 260 && gameContainer.getInput().getMouseY() < 270) {
 				visible = false;
+				TravelerEngine.onHold = false;
 				alreadyClicked = true;
 				timer = 0;
 			}

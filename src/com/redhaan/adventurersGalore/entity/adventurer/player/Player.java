@@ -1,6 +1,8 @@
 package com.redhaan.adventurersGalore.entity.adventurer.player;
 
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
+import com.redhaan.adventurersGalore.entity.adventurer.AdventurerGoal;
+import com.redhaan.adventurersGalore.entity.adventurer.AdventurerGoalEnum;
 import com.redhaan.adventurersGalore.entity.adventurer.Affinities;
 import com.redhaan.adventurersGalore.entity.adventurer.CombatMove;
 import com.redhaan.adventurersGalore.entity.adventurer.Job;
@@ -50,6 +52,10 @@ public class Player extends Adventurer {
 		combatMoves.add(CombatMove.magic);
 		combatMoves.add(CombatMove.aim);
 		combatMoves.add(CombatMove.shieldsUp);
+		
+		goal = new AdventurerGoal();
+		goal.adventurerGoalEnum = AdventurerGoalEnum.Idle;
+		goal.town = homeTown;
 		
 	}
 

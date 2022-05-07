@@ -1,9 +1,11 @@
 package com.redhaan.adventurersGalore.dungeon;
 
+import com.redhaan.adventurersGalore.GameManager;
 import com.redhaan.adventurersGalore.GameObject;
 
 import gameEngine.ecclesiastes.GameContainer;
 import gameEngine.ecclesiastes.Renderer;
+import gameEngine.ecclesiastes.gfx.ImageTile;
 
 public class MiniMapTile extends GameObject {
 	
@@ -14,18 +16,20 @@ public class MiniMapTile extends GameObject {
 	private int offX, offY;
 	private int width, height;
 	private int lineWidth, lineHeight;
+	private static ImageTile icon = new ImageTile("/smallIcons.png", GameManager.GAMETILESIZE / 4, GameManager.GAMETILESIZE / 4);
+	private int timer;
 	
 	protected int orderNumber;
 	
-	protected boolean hasHorizontalLine, hasVerticalLine;
+	protected boolean hasHorizontalLineToTheRight, hasHorizontalLineToTheLeft, hasVerticalLineToTheTop, hasVerticalLineToTheBottom;
 	public boolean discovered;
 	
 	Dungeon dungeon;
 	
 	public MiniMapTile(int orderNumber, Dungeon dungeon) {
 		
-		hasHorizontalLine = false;
-		hasVerticalLine = false;
+		hasHorizontalLineToTheRight = false;
+		hasVerticalLineToTheTop = false;
 		discovered = false;
 		
 		this.dungeon = dungeon;
@@ -34,6 +38,7 @@ public class MiniMapTile extends GameObject {
 		height = 30;
 		lineWidth = 10;
 		lineHeight = 10;
+		timer = 0;
 		
 		this.orderNumber = orderNumber;
 		
@@ -69,7 +74,8 @@ public class MiniMapTile extends GameObject {
 
 	@Override
 	public void update(GameContainer gameContainer, float deltaTime) {
-		
+		timer++;
+		if (timer > 90) { timer = 0; }
 	}
 
 	@Override
@@ -78,15 +84,19 @@ public class MiniMapTile extends GameObject {
 		
 		renderer.drawRect(offX, offY, width, height, 0xff003300);
 		
-		if(dungeon.dungeonRooms.get(dungeon.activeRoom).gridNumber == orderNumber) {
-			renderer.drawRectOpaque(offX + 1, offY + 1, width - 2, height - 2, 0xff669966);
-			if(hasHorizontalLine) { renderer.drawRect(offX + width, offY + height / 2, lineWidth, 1, 0xff114411); }
-			if(hasVerticalLine) { renderer.drawRect(offX + width / 2, offY + height, 1, lineHeight, 0xff114411); }
-		}
-		else if(discovered) {
+		if(discovered) {
 			renderer.drawRectOpaque(offX + 1, offY + 1, width - 2, height - 2, 0xff114411);
-			if(hasHorizontalLine) { renderer.drawRect(offX + width, offY + height / 2, lineWidth, 1, 0xff114411); }
-			if(hasVerticalLine) { renderer.drawRect(offX + width / 2, offY + height, 1, lineHeight, 0xff114411); }
+			if(hasHorizontalLineToTheRight) { renderer.drawRect(offX + width, offY + height / 2, lineWidth, 1, 0xff114411); }
+			if(hasHorizontalLineToTheLeft) { renderer.drawRect(offX - lineWidth, offY + height / 2, lineWidth, 1, 0xff114411); }
+			if(hasVerticalLineToTheTop) { renderer.drawRect(offX + width / 2, offY + height, 1, lineHeight, 0xff114411); }
+			if(hasVerticalLineToTheBottom) { renderer.drawRect(offX + width / 2, offY - lineHeight, 1, lineHeight, 0xff114411); }
+		}
+		
+		if(dungeon.dungeonRooms.get(dungeon.activeRoom).gridNumber == orderNumber && timer < 60) {
+			renderer.drawImageTile(icon, offX + 6, offY + 12, 1, 9);
+		}
+		else if (dungeon.dungeonRooms.get(dungeon.activeRoom).gridNumber == orderNumber) { 
+			renderer.drawImageTile(icon, offX + 6, offY + 12, 2, 9); 
 		}
 		
 

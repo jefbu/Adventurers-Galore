@@ -12,11 +12,14 @@ import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.entity.adventurer.LevelUpRoller;
 import com.redhaan.adventurersGalore.entity.adventurer.Stats;
 import com.redhaan.adventurersGalore.entity.item.Item;
+import com.redhaan.adventurersGalore.entity.item.ItemID;
+import com.redhaan.adventurersGalore.entity.item.armour.Armour;
 import com.redhaan.adventurersGalore.entity.item.items.Antlers;
 import com.redhaan.adventurersGalore.entity.item.items.BeastBlood;
 import com.redhaan.adventurersGalore.entity.item.items.Bone;
 import com.redhaan.adventurersGalore.entity.item.items.Claw;
 import com.redhaan.adventurersGalore.entity.item.items.Coral;
+import com.redhaan.adventurersGalore.entity.item.items.CraftItems;
 import com.redhaan.adventurersGalore.entity.item.items.ElysianFlower;
 import com.redhaan.adventurersGalore.entity.item.items.EvilSpirit;
 import com.redhaan.adventurersGalore.entity.item.items.Fang;
@@ -43,6 +46,7 @@ import com.redhaan.adventurersGalore.entity.item.items.Tusk;
 import com.redhaan.adventurersGalore.entity.item.items.VagrantSpirit;
 import com.redhaan.adventurersGalore.entity.item.items.ViolentSpirit;
 import com.redhaan.adventurersGalore.entity.item.items.Wanderlust;
+import com.redhaan.adventurersGalore.entity.item.weapon.Weapon;
 import com.redhaan.adventurersGalore.inventory.Inventory;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -58,7 +62,7 @@ public class DungeonConclusion extends GameObject {
 	private static Random random = new Random();
 	private boolean initiated;
 	ArrayList<Item> loot;
-	SoundClip victorySound;
+	private static SoundClip victorySound = new SoundClip("/victory.wav");
 	private ArrayList<String> strings;
 
 	
@@ -66,7 +70,6 @@ public class DungeonConclusion extends GameObject {
 		initiated = false;
 		this.dungeon = dungeon;
 		loot = new ArrayList<Item>();
-		victorySound = new SoundClip("/victory.wav");
 		strings = new ArrayList<String>();
 	}
 	
@@ -151,12 +154,23 @@ public class DungeonConclusion extends GameObject {
 			renderer.drawRectOpaque(25, 25, 200, 435, 0xff182616);
 				renderer.drawText("Thou hast vanquished the dungeon!", 30, 30, 0xff547346);
 				renderer.drawText("Thy bounty:" , 30, 48, 0xff547346);
+				
 				for (int i = 0; i < loot.size(); i++) {
-					renderer.drawRectOpaque(30, 60 + i * 40, 180, 40, 0xff547346);
-					renderer.drawRectOpaque(65, 65 + i * 40, 135, 30, 0xff253320);
-					renderer.drawImageTile(loot.get(i).icon, 40, 72 + i * 40, loot.get(i).xTile, loot.get(i).yTile);
-					renderer.drawText(loot.get(i).name, 70, 75 + i * 40, 0xff547346);
+					if (loot.get(i).ID != ItemID.Weapon && loot.get(i).ID != ItemID.Armour) {
+						renderer.drawImageTile(CraftItems.icon, 40, 72 + i * 20, loot.get(i).xTile, loot.get(i).yTile);
+						renderer.drawText(loot.get(i).name, 40, 55 + i * 20, 0xff545481);
+					}
+					else if (loot.get(i).ID == ItemID.Weapon) { 
+						renderer.drawImageTile(Weapon.icon, 40, 72+ i * 32, loot.get(i).xTile, loot.get(i).yTile); 
+						renderer.drawText(loot.get(i).name, 40, 55 + i * 32, 0xff545481);
+						}
+					else if (loot.get(i).ID == ItemID.Armour) { 
+						renderer.drawImageTile(Armour.icon, 40, 72 + i * 32, loot.get(i).xTile, loot.get(i).yTile); 
+						renderer.drawText(loot.get(i).name, 40, 55 + i * 32, 0xff545481);
+						}
 				}
+				
+
 		
 			renderer.drawRectOpaque(230, 25, 380, 300, 0xff161826);
 				renderer.drawText("The following adventurers got mighty!", 235, 30, 0xff465473);

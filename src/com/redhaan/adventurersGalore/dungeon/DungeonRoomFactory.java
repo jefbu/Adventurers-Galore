@@ -13,15 +13,10 @@ public abstract class DungeonRoomFactory {
 	public static ArrayList<DungeonRoom> createDungeonRooms(int dungeonLayoutType) {
 		
 		list.clear();
-		
+		System.out.println("List cleared: " + System.currentTimeMillis());
 		switch(dungeonLayoutType) {
-		
-		case 1:
-			list.add(new DungeonRoom(2, 99, 99, 99, 1, 0));
-			list.add(new DungeonRoom(1, 99, 99, 8, 99, 2));
-			break;
 			
-		case 2:
+		case 1:
 			list.add(new DungeonRoom(22, 1, 99, 99, 99, 0));
 			list.add(new DungeonRoom(17, 4, 99, 0, 2, 1));
 			list.add(new DungeonRoom(16, 3, 1, 99, 99, 0));
@@ -33,10 +28,10 @@ public abstract class DungeonRoomFactory {
 			list.add(new DungeonRoom(6, 9, 7, 99, 99, 0));
 			list.add(new DungeonRoom(1, 99, 99, 8, 99, 2));
 			break;
-			
+			//ROOM SEQUENCE: TOP, RIGHT, BOTTOM, LEFT
 			
 		}
-		
+		System.out.println("Room created:" + System.currentTimeMillis());
 		
 		for (DungeonRoom room: list) {
 			
@@ -49,7 +44,7 @@ public abstract class DungeonRoomFactory {
 			}
 			
 		}
-
+		System.out.println("Added chest: " + System.currentTimeMillis());
 		
 		
 		

@@ -7,7 +7,9 @@ import com.redhaan.adventurersGalore.GameObject;
 import com.redhaan.adventurersGalore.Toast;
 import com.redhaan.adventurersGalore.combat.Combat;
 import com.redhaan.adventurersGalore.combat.Deployer;
+import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
 import com.redhaan.adventurersGalore.entity.enemies.Enemy;
+import com.redhaan.adventurersGalore.entity.party.Party;
 import com.redhaan.adventurersGalore.worldMap.WorldMap;
 
 import gameEngine.ecclesiastes.GameContainer;
@@ -35,6 +37,7 @@ public class Dungeon extends GameObject {
 	
 	public int expiration;
 	protected boolean renewable;
+	private boolean initialised;
 		
 
 	public Dungeon() {
@@ -42,28 +45,39 @@ public class Dungeon extends GameObject {
 		discovered = false;
 		popup = new DungeonPopup(this);
 		dungeonLayoutType = 1;
-		dungeonRooms = DungeonRoomFactory.createDungeonRooms(dungeonLayoutType);
 		activeRoom = 0;
-		miniMap = new DungeonMiniMap(this);
-		miniMap.miniMapTiles.get(dungeonRooms.get(activeRoom).gridNumber).discovered = true;
-		dungeonConclusion = new DungeonConclusion(this);
 		bossDefeated = false;
 		tileRow = 0;
-		
 		lootCollected = 0;
 		expiration = 0;
 		renewable = false;
+		initialised = false;
+
+	}
+	
+	public void initialise() {
+		
+		dungeonRooms = DungeonRoomFactory.createDungeonRooms(dungeonLayoutType);
+		miniMap = new DungeonMiniMap(this);
+		miniMap.miniMapTiles.get(dungeonRooms.get(activeRoom).gridNumber).discovered = true;
+		dungeonConclusion = new DungeonConclusion(this);
 		
 		for (DungeonRoom room: dungeonRooms) {
 			for (MiniMapTile tile: miniMap.miniMapTiles) {
 				if (room.gridNumber == tile.orderNumber) {
-					if (room.rightRoom < 99) { tile.hasHorizontalLine = true; }
-					if (room.bottomRoom < 99) { tile.hasVerticalLine = true; }
+					if (room.rightRoom < 99) { tile.hasHorizontalLineToTheRight = true; }
+					if (room.bottomRoom < 99) { tile.hasVerticalLineToTheTop = true; }
+					if (room.leftRoom < 99) { tile.hasHorizontalLineToTheLeft = true; }
+					if (room.topRoom < 99) { tile.hasVerticalLineToTheBottom = true; }
 				}
 			}
 		}
-
+		
+		initialised = true;
+		
 	}
+	
+	
 
 	@Override
 	public void update(GameContainer gameContainer, float deltaTime) {
@@ -87,7 +101,9 @@ public class Dungeon extends GameObject {
 			
 		case Combat: 
 	
-			if(Combat.dungeon) {
+			if(Combat.dungeon && Party.getxTile() == xLocation && Party.getyTile() == yLocation) {
+				
+				if(!initialised) { initialise(); }
 				
 				miniMap.update(gameContainer, deltaTime);
 				
@@ -125,21 +141,53 @@ public class Dungeon extends GameObject {
 						if (GameManager.adventurers.allAdventurers.get(i).getCombatX() == 12 && GameManager.adventurers.allAdventurers.get(i).getCombatY() == 0) {
 							if (dungeonRooms.get(activeRoom).topRoom < 20) { 
 									changeRoom(1);
+									for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {
+										if (adventurer.inParty) {
+											adventurer.turnPassed = false;
+											adventurer.hasMoved = false;
+											adventurer.hasActed = false;
+											adventurer.selected = false;
+										}
+									}
 								} 	
 						}
 						else if (GameManager.adventurers.allAdventurers.get(i).getCombatX() == 19 && GameManager.adventurers.allAdventurers.get(i).getCombatY() == 7) {
 							if (dungeonRooms.get(activeRoom).rightRoom < 20) { 
 									changeRoom(2);
+									for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {
+										if (adventurer.inParty) {
+											adventurer.turnPassed = false;
+											adventurer.hasMoved = false;
+											adventurer.hasActed = false;
+											adventurer.selected = false;
+										}
+									}
 								} 
 						}
 						else if (GameManager.adventurers.allAdventurers.get(i).getCombatX() == 12 && GameManager.adventurers.allAdventurers.get(i).getCombatY() == 14) {
 							if (dungeonRooms.get(activeRoom).bottomRoom < 20) { 
 									changeRoom(3);
+									for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {
+										if (adventurer.inParty) {
+											adventurer.turnPassed = false;
+											adventurer.hasMoved = false;
+											adventurer.hasActed = false;
+											adventurer.selected = false;
+										}
+									}
 								} 
 						}
 						else if (GameManager.adventurers.allAdventurers.get(i).getCombatX() == 5 && GameManager.adventurers.allAdventurers.get(i).getCombatY() == 7) {
 							if (dungeonRooms.get(activeRoom).leftRoom < 20) { 
 									changeRoom(4);
+									for (Adventurer adventurer: GameManager.adventurers.allAdventurers) {
+										if (adventurer.inParty) {
+											adventurer.turnPassed = false;
+											adventurer.hasMoved = false;
+											adventurer.hasActed = false;
+											adventurer.selected = false;
+										}
+									}
 								} 
 						}				
 					
@@ -226,7 +274,7 @@ public class Dungeon extends GameObject {
 			
 		case Combat: 
 			
-			if (Combat.dungeon) {
+			if (Combat.dungeon && Party.getxTile() == xLocation && Party.getyTile() == yLocation) {
 				
 				if (bossDefeated) { dungeonConclusion.render(gameContainer, renderer); }
 				

@@ -10,6 +10,9 @@ public abstract class DungeonMapChooser {
 	
 	
 	private static Random random = new Random();
+	private static CombatMap dungeonMap1 = new CombatMap(new Image("/combatMaps/dungeonMap1.png"), 1);
+	private static CombatMap dungeonMap2 = new CombatMap(new Image("/combatMaps/dungeonMap2.png"), 1);
+
 	
 	public static CombatMap chooseDungeonMap() {
 		
@@ -17,8 +20,8 @@ public abstract class DungeonMapChooser {
 		
 		switch(roll) {
 		
-		case 0: return new CombatMap(new Image("/combatMaps/dungeonMap1.png"), 1);
-		case 1: return new CombatMap(new Image("/combatMaps/dungeonMap2.png"), 1);
+		case 0: return dungeonMap1;
+		case 1: return dungeonMap2;
 		
 		default: return null;
 		

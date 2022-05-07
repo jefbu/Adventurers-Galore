@@ -118,6 +118,7 @@ public class TownMap extends GameObject {
 		case InTown: 
 			
 			renderer.drawImage(town, 0, 0);
+			renderer.drawText(activeTown.name, 10, 10, 0xffDD2222);
 			
 			for (Building building: activeTown.buildings) {
 				building.render(gameContainer, renderer);

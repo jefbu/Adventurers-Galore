@@ -64,11 +64,9 @@ public class DungeonFactory {
 			}
 			
 		}
+
 		
 		dungeon.expiration = 20 + random.nextInt(30);
-		
-		System.out.println("dungeon x Location: " + dungeon.xLocation);
-		System.out.println("dungeon y Location: " + dungeon.yLocation);
 		
 		return dungeon;		
 		

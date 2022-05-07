@@ -16,7 +16,7 @@ public class Calendar extends GameObject {
 
 	private static final long serialVersionUID = 1L;
 	public static int daysPassed;
-	private int monthDay;
+	public static int monthDay;
 	private int timer;
 	public static int calendarSpeed;
 	private Months month;

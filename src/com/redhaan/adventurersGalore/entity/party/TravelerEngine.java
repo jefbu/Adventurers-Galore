@@ -20,6 +20,7 @@ public class TravelerEngine extends GameObject {
 
 	private static final long serialVersionUID = 1L;
 	public static boolean traveling;
+	public static boolean onHold;
 	private int distanceTraveled;
 	private int timer;
 	private Random random;
@@ -28,6 +29,7 @@ public class TravelerEngine extends GameObject {
 	public TravelerEngine() {
 		
 		traveling = false;
+		onHold = false;
 		distanceTraveled = 0;
 		timer = 0;
 		random = new Random();
@@ -54,13 +56,13 @@ public class TravelerEngine extends GameObject {
 		case WorldMap:
 			
 			if(WorldMap.subState != SubState.TravelerEvent) {
-			if(traveling) {
+			if(traveling && !onHold) {
 							
 				timer++;
 				
 				if(timer * Calendar.calendarSpeed * deltaTime > 1) {
 					
-					TravelerEvent.rollTravelerEvent();
+					//TravelerEvent.rollTravelerEvent();
 					
 					int number = 0;
 					number = Party.getyTile() * 160 + Party.getxTile();
@@ -110,7 +112,7 @@ public class TravelerEngine extends GameObject {
 							dungeon.xLocation = Party.getxTile();
 							dungeon.yLocation = Party.getyTile();
 							dungeon.expiration = 15 + random.nextInt(30);
-							dungeon.popup.timer = 300;
+							dungeon.popup.timer = 299;
 							
 							int tileInt = dungeon.yLocation * 160 + dungeon.xLocation;
 							WorldMapTiles terrain = WorldMapTileInfo.tiles[tileInt];

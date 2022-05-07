@@ -28,7 +28,7 @@ public class DungeonRoom extends GameObject {
 	protected CombatMap dungeonMap;
 	
 	public boolean hasTreasure;
-	public TreasureChest treasureChest;
+	public TreasureChest treasureChest; 
 	
 	
 	public DungeonRoom(int gridNumber, int topRoom, int rightRoom, int bottomRoom, int leftRoom, int enemyType) {
@@ -78,9 +78,9 @@ public class DungeonRoom extends GameObject {
 		
 		case 1:
 			int roll = random.nextInt(100) + 1;
-			enemies.add(new Bat());
-			if (roll > 10) { enemies.add(new Bat()); }
-			if (roll > 30) { enemies.add(new Bat()); }
+			//enemies.add(new Bat());
+			//if (roll > 10) { enemies.add(new Bat()); }
+			//if (roll > 30) { enemies.add(new Bat()); }
 			if (roll > 60) { enemies.add(new GiantBat()); }
 			if (roll > 90) { enemies.add(new Bat()); }
 			break;

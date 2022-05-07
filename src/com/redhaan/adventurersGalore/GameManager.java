@@ -68,6 +68,7 @@ public class GameManager extends AbstractGame {
 		gameObjects.add(new SpellAnimation());
 		gameObjects.add(new TownList());
 		gameObjects.add(new Tooltip());
+		gameObjects.add(new AdventurerGoals());
 
 		//Does this need to be in?
 		//gameObjects.add(adventurers);

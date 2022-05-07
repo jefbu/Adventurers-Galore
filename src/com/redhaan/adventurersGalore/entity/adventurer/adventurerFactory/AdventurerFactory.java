@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Random;
 
 import com.redhaan.adventurersGalore.entity.adventurer.Adventurer;
+import com.redhaan.adventurersGalore.entity.adventurer.AdventurerGoal;
+import com.redhaan.adventurersGalore.entity.adventurer.AdventurerGoalEnum;
 import com.redhaan.adventurersGalore.entity.adventurer.CombatMove;
 import com.redhaan.adventurersGalore.entity.adventurer.personality.PersonalityTrait;
 import com.redhaan.adventurersGalore.entity.item.armour.ReinforcedLeather;
@@ -74,7 +76,11 @@ public class AdventurerFactory implements Serializable {
 		}
 
 		rollHomeTown();
-		rollPersonality();
+		rollPersonality();		
+		
+		adventurer.goal = new AdventurerGoal();
+		adventurer.goal.town = adventurer.homeTown;
+		adventurer.goal.adventurerGoalEnum = AdventurerGoalEnum.Idle;
 
 		
 		adventurer.spellSlots = spellFactory.rollSpellSlots(adventurer.tier, adventurer.job);

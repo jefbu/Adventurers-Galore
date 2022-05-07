@@ -23,7 +23,6 @@ public class Dungeons extends GameObject {
 		dungeonFactory = new DungeonFactory();
 				
 		allDungeons.add(dungeonFactory.createRandomDungeon());
-		allDungeons.add(dungeonFactory.createRandomDungeon());
 		
 		daysPassed = 0;
 		

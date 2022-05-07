@@ -44,7 +44,7 @@ public class Conversations extends GameObject {
 
 	@Override
 	public void update(GameContainer gameContainer, float deltaTime) {
-
+		/*
 		switch (GameManager.gameState) {
 
 		case WorldMap:
@@ -126,7 +126,7 @@ public class Conversations extends GameObject {
 			break;
 
 		}
-
+	*/
 	}
 
 	@Override
